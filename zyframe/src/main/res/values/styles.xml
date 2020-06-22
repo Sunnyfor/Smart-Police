@@ -1,0 +1,110 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="ZyTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/color_theme</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <!--通用EditText样式-->
+
+    <style name="style_common_edit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/dp_10</item>
+        <item name="android:paddingEnd">@dimen/dp_10</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:inputType">text</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <!--通用黑色字体-->
+
+    <style name="style_font_black">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/font_black</item>
+    </style>
+
+    <!--通用白色字体-->
+
+    <style name="style_font_white" parent="style_font_black">
+        <item name="android:textColor">@color/font_white</item>
+    </style>
+
+    <!--通用灰色字体-->
+
+    <style name="style_font_gray" parent="style_font_black">
+        <item name="android:textColor">@color/font_gray</item>
+    </style>
+
+
+    <!--菜单CardView样式-->
+    <style name="style_item_card_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+    </style>
+
+    <!--菜单条目字体样式-->
+    <style name="style_item_card_font" parent="style_font_black">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="style_item_card_img">
+        <item name="android:layout_width">@dimen/dp_15</item>
+        <item name="android:layout_height">@dimen/dp_15</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@drawable/svg_more</item>
+        <item name="contentDescription">@string/placeholder</item>
+    </style>
+
+    <!--    &lt;!&ndash;Menu菜单子项&ndash;&gt;-->
+    <!--    <style name="style_btn_menu">-->
+    <!--        <item name="android:layout_width">@dimen/dp_48</item>-->
+    <!--        <item name="android:layout_height">@dimen/dp_48</item>-->
+    <!--        <item name="android:layout_gravity">bottom|end</item>-->
+    <!--        <item name="android:layout_marginEnd">@dimen/dp_25</item>-->
+    <!--        <item name="android:layout_marginBottom">@dimen/dp_25</item>-->
+    <!--        <item name="android:textSize">@dimen/sp_12</item>-->
+    <!--        <item name="android:textColor">@color/font_white</item>-->
+    <!--        <item name="android:background">@drawable/sel_circle_blue</item>-->
+    <!--    </style>-->
+
+
+    <!--通用按钮样式-->
+
+    <style name="style_common_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:background">@drawable/sel_btn_able</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_20</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:layout_marginBottom">@dimen/dp_20</item>
+        <item name="android:textColor">@color/font_white</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <!--通用横线分割样式-->
+
+    <style name="style_line_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <!--通用竖线分割样式-->
+
+    <style name="style_line_vertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+</resources>

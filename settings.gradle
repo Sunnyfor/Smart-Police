@@ -1,3 +1,4 @@
+include ':wallet'
 include ':zyframe'
 include ':app'
 rootProject.name = "Smart Police"

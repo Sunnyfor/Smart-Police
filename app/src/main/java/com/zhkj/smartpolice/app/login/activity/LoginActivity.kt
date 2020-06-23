@@ -1,12 +1,12 @@
-package com.zhkj.smartpolice.login.activity
+package com.zhkj.smartpolice.app.login.activity
 
 import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.login.Presenter.UserLoginPresenter
-import com.zhkj.smartpolice.login.bean.UserInfoBean
-import com.zhkj.smartpolice.login.view.LoginView
+import com.zhkj.smartpolice.app.login.Presenter.UserLoginPresenter
+import com.zhkj.smartpolice.app.login.bean.UserInfoBean
+import com.zhkj.smartpolice.app.login.view.LoginView
 
 class LoginActivity : BaseActivity(), LoginView {
     override fun setLayout(): Int = R.layout.act_login

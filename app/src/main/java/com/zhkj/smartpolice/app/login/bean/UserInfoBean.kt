@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.login.bean
+package com.zhkj.smartpolice.app.login.bean
 
 /**
  * Desc

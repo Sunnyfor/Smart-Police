@@ -12,7 +12,9 @@ object UrlConstant {
 
 //    const val host = "https://10.0.0.153:8807" // 内网测试地址
 
-    const val host = "https://www.zhenhekj.com:8807" //正式地址
+//    const val host = "https://www.zhenhekj.com:8807" //正式地址
+
+    const val host = "http://122.51.69.116:88/" //测试环境
 
 
     val TEMP = ZyFrameStore.getContext().getExternalFilesDir("temp")?.path //内存卡缓存路径
@@ -65,4 +67,10 @@ object UrlConstant {
      * 协同回收站
      */
     const val JOINT_RECYCLE_URL = "app/synergy/synergyRubbish"
+
+
+    /**
+     * 用户登录
+     */
+    const val USER_LOGIN = "sys/login"
 }

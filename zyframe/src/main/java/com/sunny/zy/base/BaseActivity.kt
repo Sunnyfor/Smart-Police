@@ -10,8 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModelStoreOwner
 import com.sunny.zy.R
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.utils.ToastUtil
@@ -142,11 +140,15 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
     /**
      * 只有文字标题的toolbar
      */
-    fun simpleTitle(title: String): Toolbar {
+    fun simpleTitle(title: String, centerHorizontal: Boolean = false): Toolbar {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        toolbar.title = ""
         toolbar.visibility = View.VISIBLE
-        getTitleView().text = title
+        if (centerHorizontal) {
+            toolbar.title = ""
+            getTitleView().text = title
+        } else {
+            toolbar.title = title
+        }
         setSupportActionBar()
         return toolbar
     }
@@ -158,7 +160,10 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
         title: String
     ): Toolbar {
         val toolbar = simpleTitle(title)
-        toolbar.setNavigationIcon(R.drawable.svg_title_back)
+        toolbar.setNavigationIcon(R.drawable.svg_title_white)
+        toolbar.setNavigationOnClickListener {
+           finish()
+        }
         return toolbar
     }
 

@@ -117,9 +117,8 @@
 
     <!--菜单CardView样式-->
     <style name="style_item_card_view">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/dp_50</item>
-        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/dp_45</item>
     </style>
 
     <!--菜单条目字体样式-->

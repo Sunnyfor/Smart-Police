@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:background="@color/color_theme"
         android:elevation="@dimen/dp_4"
-        android:visibility="gone">
+        android:visibility="gone"
+        app:titleTextColor="@color/color_white">
 
         <TextView
             android:id="@id/tv_title"
@@ -24,5 +25,5 @@
         android:id="@id/frameBody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"/>
+        android:layout_below="@id/toolbar" />
 </RelativeLayout>

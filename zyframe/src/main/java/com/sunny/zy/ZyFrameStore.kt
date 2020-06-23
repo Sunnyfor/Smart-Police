@@ -4,6 +4,7 @@ import android.content.Context
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.bean.UserInfoBean
 import java.util.*
+import kotlin.system.exitProcess
 
 /**
  * 应用类
@@ -78,6 +79,9 @@ object ZyFrameStore {
      */
     fun removeActivity(baseActivity: BaseActivity) {
         activityStack.remove(baseActivity)
+        if (activityStack.isEmpty()) {
+            exitProcess(0)
+        }
     }
 
     /**
@@ -88,5 +92,6 @@ object ZyFrameStore {
             it.finish()
         }
         activityStack.clear()
+        exitProcess(0)
     }
 }

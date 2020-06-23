@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/logistics_dest"
+        android:icon="@drawable/svg_logistics_black"
+        android:title="@string/logistics" />
+    <item
+        android:id="@+id/mine_dest"
+        android:icon="@drawable/svg_mine_black"
+        android:title="@string/mine" />
+</menu>

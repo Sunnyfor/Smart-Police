@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">智慧警保</string>
+    <string name="logistics">后勤</string>
+    <string name="mine">我的</string>
 </resources>

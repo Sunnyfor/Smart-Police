@@ -1,2 +1,43 @@
 <resources>
+
+    <!--通用圆形图片样式-->
+
+    <style name="style_image_circle">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/svg_default_head</item>
+    </style>
+
+    <!--【个人界面】按钮布局：收藏、积分、福利-->
+
+    <style name="style_mine_layout_weight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+
+    <!--【个人界面】卡片样式-->
+
+    <style name="style_mine_layout_card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_20</item>
+        <item name="android:background">@drawable/sel_border_white</item>
+        <item name="android:elevation">@dimen/dp_5</item>
+        <item name="android:padding">@dimen/dp_10</item>
+    </style>
+
+    <!--【个人界面】功能布局：基本信息、个人简介、用户反馈-->
+
+    <style name="style_mine_item_function" parent="style_font_black_small">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

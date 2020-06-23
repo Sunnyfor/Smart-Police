@@ -39,4 +39,8 @@ dependencies {
     def nav_version = "2.3.0-rc01"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //支持圆角圆形的ImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fl_content" type="id" />
+    <item name="tv_start" type="id" />
+    <item name="iv_start" type="id" />
+    <item name="tv_end" type="id" />
+    <item name="iv_end" type="id" />
+</resources>

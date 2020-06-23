@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--标题栏-->
+        <LinearLayout
+            android:id="@+id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_120"
+            android:background="@drawable/sel_top_bg"
+            android:paddingTop="@dimen/dp_10"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                style="@style/style_common_icon"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/svg_btn_back" />
+
+            <TextView
+                style="@style/style_font_white_bigger"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:text="个人中心"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <!--登录小卡片-->
+        <LinearLayout
+            android:id="@+id/ll_login"
+            style="@style/style_mine_layout_card"
+            android:layout_marginTop="@dimen/dp_60"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UseCompoundDrawables">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_head"
+                    style="@style/style_image_circle"
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_margin="@dimen/dp_10"
+                    app:riv_oval="true" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/style_font_black"
+                    android:layout_gravity="center_vertical"
+                    android:text="登录 / 注册"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_invite"
+                    style="@style/style_mine_layout_weight">
+
+                    <TextView
+                        android:id="@+id/tv_history"
+                        style="@style/style_font_black_big"
+                        android:text="0"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/style_font_gray"
+                        android:text="浏览历史"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_collect"
+                    style="@style/style_mine_layout_weight">
+
+                    <TextView
+                        android:id="@+id/tv_collect"
+                        style="@style/style_font_black_big"
+                        android:text="0"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/style_font_gray"
+                        android:text="收藏"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_coupons"
+                    style="@style/style_mine_layout_weight">
+
+                    <TextView
+                        android:id="@+id/tv_coupons"
+                        style="@style/style_font_black_big"
+                        android:text="0"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        style="@style/style_font_gray"
+                        android:text="红包优惠券"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--功能区-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_15">
+
+        <LinearLayout
+            style="@style/style_mine_layout_weight"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                style="@style/style_common_icon"
+                android:background="@drawable/sel_mine_red"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_mine_food" />
+
+            <TextView
+                style="@style/style_font_black_small"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="订餐记录"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/style_mine_layout_weight"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                style="@style/style_common_icon"
+                android:background="@drawable/sel_mine_blue"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_mine_food" />
+
+            <TextView
+                style="@style/style_font_black_small"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="维修记录"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/style_mine_layout_weight"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                style="@style/style_common_icon"
+                android:background="@drawable/sel_mine_orange"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_mine_food" />
+
+            <TextView
+                style="@style/style_font_black_small"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="预约记录"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/style_mine_layout_weight"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                style="@style/style_common_icon"
+                android:background="@drawable/sel_mine_yellow"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_mine_food" />
+
+            <TextView
+                style="@style/style_font_black_small"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="购药记录"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <View style="@style/style_line_horizontal" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_20">
+
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_10"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_mine_wallet" />
+
+        <TextView
+            style="@style/style_font_black"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_toEndOf="@id/icon"
+            android:text="我的钱包"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            style="@style/style_font_black_bigger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon"
+            android:layout_alignStart="@id/icon"
+            android:text="0.00"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_recharge"
+            style="@style/style_common_btn_small"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:text="充值"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            style="@style/style_common_btn_small"
+            android:layout_toStartOf="@id/btn_recharge"
+            android:text="提现"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+
+    <View style="@style/style_line_horizontal" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="帮助"
+        app:startAfterTextColor="@color/color_black"
+        app:startAfterTextSize="@dimen/sp_16"
+        app:startIcon="@drawable/svg_mine_help" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="关于产品"
+        app:startAfterTextColor="@color/color_black"
+        app:startIcon="@drawable/svg_mine_about" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="清除缓存"
+        app:startAfterTextColor="@color/color_black"
+        app:startIcon="@drawable/svg_mine_cache" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="设置"
+        app:startAfterTextColor="@color/color_black"
+        app:startIcon="@drawable/svg_mine_setting" />
+
+
+</LinearLayout>

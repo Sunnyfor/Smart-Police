@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--钱包首页按钮的样式-->
+    <style name="wallet_home_button">
+        <item name="android:background">@drawable/sel_btn_border_white</item>
+        <item name="android:layout_width">@dimen/dp_76</item>
+        <item name="android:layout_height">@dimen/dp_20</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+
+    <style name="wallet_item_line">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:background">@color/color_line</item>
+        <item name="android:layout_marginStart">@dimen/dp_18</item>
+    </style>
+</resources>

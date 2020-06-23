@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view_top_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/color_theme"
+        app:layout_constraintDimensionRatio="5:3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/svg_wallet_wave"
+        app:layout_constraintBottom_toBottomOf="@id/view_top_bg"
+        app:layout_constraintDimensionRatio="20:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_balance_hint"
+        style="@style/style_font_white"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/balance"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintEnd_toEndOf="@id/view_top_bg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/view_top_bg"
+        app:layout_constraintTop_toTopOf="@id/view_top_bg" />
+
+    <TextView
+        android:id="@+id/tv_balance"
+        style="@style/style_font_white"
+        android:layout_marginTop="@dimen/dp_25"
+        android:text="@string/default_balance"
+        android:textSize="@dimen/sp_38"
+        app:layout_constraintEnd_toEndOf="@id/view_top_bg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/view_top_bg"
+        app:layout_constraintTop_toBottomOf="@id/tv_balance_hint" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_recharge"
+        style="@style/wallet_home_button"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/recharge"
+        app:layout_constraintEnd_toStartOf="@id/btn_withdrawal"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_balance" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_withdrawal"
+        style="@style/wallet_home_button"
+        android:layout_marginStart="@dimen/dp_34"
+        android:text="@string/withdrawal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/btn_recharge"
+        app:layout_constraintTop_toTopOf="@id/btn_recharge" />
+
+
+    <!--
+        支付码
+    -->
+    <View
+        android:id="@+id/view_pay_parent"
+        style="@style/style_item_card_view"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_top_bg" />
+
+    <View
+        android:id="@+id/view_code"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginStart="@dimen/dp_15"
+        android:background="@drawable/svg_wallet_qrcode"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_parent"
+        app:layout_constraintStart_toStartOf="@id/view_pay_parent"
+        app:layout_constraintTop_toTopOf="@id/view_pay_parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        style="@style/style_font_black_big"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="@string/pay_code"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_parent"
+        app:layout_constraintStart_toEndOf="@id/view_code"
+        app:layout_constraintTop_toTopOf="@id/view_pay_parent"
+        app:layout_goneMarginStart="@dimen/dp_16" />
+
+    <View
+        android:layout_width="@dimen/dp_14"
+        android:layout_height="@dimen/dp_14"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@drawable/svg_more"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_parent"
+        app:layout_constraintEnd_toEndOf="@id/view_pay_parent"
+        app:layout_constraintTop_toTopOf="@id/view_pay_parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <View
+        style="@style/wallet_item_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_pay_parent" />
+
+
+    <!--
+        转账、付款记录
+    -->
+    <View
+        android:id="@+id/view_record_parent"
+        style="@style/style_item_card_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_pay_parent" />
+
+    <View
+        android:id="@+id/view_record"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_20"
+        android:background="@drawable/svg_wallet_record"
+        app:layout_constraintBottom_toBottomOf="@id/view_record_parent"
+        app:layout_constraintStart_toStartOf="@id/view_record_parent"
+        app:layout_constraintTop_toTopOf="@id/view_record_parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        style="@style/style_font_black_big"
+        android:layout_marginStart="@dimen/dp_15"
+        android:text="@string/record"
+        app:layout_constraintBottom_toBottomOf="@id/view_record_parent"
+        app:layout_constraintStart_toEndOf="@id/view_record"
+        app:layout_constraintTop_toTopOf="@id/view_record_parent" />
+
+    <View
+        android:layout_width="@dimen/dp_14"
+        android:layout_height="@dimen/dp_14"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@drawable/svg_more"
+        app:layout_constraintBottom_toBottomOf="@id/view_record_parent"
+        app:layout_constraintEnd_toEndOf="@id/view_record_parent"
+        app:layout_constraintTop_toTopOf="@id/view_record_parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <View
+        style="@style/wallet_item_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_record_parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

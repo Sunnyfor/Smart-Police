@@ -8,7 +8,29 @@
         <item name="android:textColor">@color/font_black</item>
     </style>
 
+    <!--通用图标样式-->
 
+    <style name="style_common_icon">
+        <item name="android:layout_width">@dimen/dp_40</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:padding">@dimen/dp_10</item>
+    </style>
+
+    <!--通用横线分割样式-->
+
+    <style name="style_line_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
+
+    <!--通用竖线分割样式-->
+
+    <style name="style_line_vertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_line</item>
+    </style>
     <!--通用EditText样式-->
 
     <style name="style_common_edit">
@@ -30,16 +52,66 @@
         <item name="android:textColor">@color/font_black</item>
     </style>
 
+    <style name="style_font_black_smaller" parent="style_font_black">
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <style name="style_font_black_small" parent="style_font_black">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="style_font_black_big" parent="style_font_black">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="style_font_black_bigger" parent="style_font_black">
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+
     <!--通用白色字体-->
 
-    <style name="style_font_white" parent="style_font_black">
+    <style name="style_font_white">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:textColor">@color/font_white</item>
+    </style>
+
+    <style name="style_font_white_small" parent="style_font_white">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="style_font_white_smaller" parent="style_font_white">
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <style name="style_font_white_big" parent="style_font_white">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="style_font_white_bigger" parent="style_font_white">
+        <item name="android:textSize">@dimen/sp_18</item>
     </style>
 
     <!--通用灰色字体-->
 
-    <style name="style_font_gray" parent="style_font_black">
+    <style name="style_font_gray">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:textColor">@color/font_gray</item>
+    </style>
+
+    <style name="style_font_gray_smaller" parent="style_font_gray">
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <style name="style_font_gray_small" parent="style_font_gray">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="style_font_gray_big" parent="style_font_gray">
+        <item name="android:textSize">@dimen/sp_16</item>
     </style>
 
 
@@ -93,19 +165,4 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
-    <!--通用横线分割样式-->
-
-    <style name="style_line_horizontal">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0.5dp</item>
-        <item name="android:background">@color/color_line</item>
-    </style>
-
-    <!--通用竖线分割样式-->
-
-    <style name="style_line_vertical">
-        <item name="android:layout_width">0.5dp</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/color_line</item>
-    </style>
 </resources>

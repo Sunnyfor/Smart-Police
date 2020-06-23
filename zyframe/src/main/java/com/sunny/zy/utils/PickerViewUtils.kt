@@ -44,7 +44,7 @@ class PickerViewUtils(var context: Context) {
             pickerFields.forEach {
                 if (it.name == "mSelectionDivider") {
                     it.isAccessible = true
-                    it.set(picker, ColorDrawable(ContextCompat.getColor(context, R.color.red)))
+                    it.set(picker, ColorDrawable(ContextCompat.getColor(context, R.color.color_black)))
                 }
             }
         }

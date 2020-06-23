@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sunny.zy.widget.PullRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pullRefreshLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:srlEnableFooterFollowWhenLoadFinished="true"
+    app:srlEnableScrollContentWhenLoaded="true">
 
-    <com.sunny.zy.widget.PullRefreshLayout
-        android:id="@+id/pullRefreshLayout"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srlEnableFooterFollowWhenLoadFinished="true"
-        app:srlEnableScrollContentWhenLoaded="true">
+        android:layout_height="match_parent">
 
-        <FrameLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp_20" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/dp_20" />
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlClassicsSpinnerStyle="Translate" />
 
-            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srlClassicsSpinnerStyle="Translate" />
-
-            <include
-                android:id="@+id/empty_view"
-                layout="@layout/zy_layout_net_error"
-                android:visibility="gone" />
-        </FrameLayout>
-    </com.sunny.zy.widget.PullRefreshLayout>
-
-</RelativeLayout>
+        <include
+            android:id="@+id/empty_view"
+            layout="@layout/zy_layout_net_error"
+            android:visibility="gone" />
+    </FrameLayout>
+</com.sunny.zy.widget.PullRefreshLayout>

@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="ZyTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorPrimaryDark">@color/font_black</item>
         <item name="colorAccent">@color/color_theme</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/font_black</item>
     </style>
 
 

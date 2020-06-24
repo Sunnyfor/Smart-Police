@@ -23,30 +23,6 @@ class WithdrawalActivity : BaseActivity() {
             view_ali_parent,
             rbtn_ali
         )
-
-//        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-//            override fun onTabReselected(tab: TabLayout.Tab) {
-//
-//            }
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab) {
-//
-//            }
-//
-//            override fun onTabSelected(tab: TabLayout.Tab) {
-//                type = tab.position
-//                if (type == 0) {
-//                    tv_account.text = getString(R.string.wx_account)
-//                    edt_account.hint = getString(R.string.input_account_wx)
-//                } else {
-//                    tv_account.text = getString(R.string.ali_account)
-//                    edt_account.hint = getString(R.string.input_account_ali)
-//                }
-//            }
-//
-//        })
-
-
     }
 
     override fun loadData() {

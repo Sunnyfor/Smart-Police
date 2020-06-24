@@ -1,6 +1,8 @@
 package com.sunny.zy
 
+import android.app.Application
 import android.content.Context
+import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.bean.UserInfoBean
 import java.util.*
@@ -18,8 +20,8 @@ object ZyFrameStore {
 
     private val userInfoBean = UserInfoBean("", "", "")
 
-    fun init(context: Context) {
-        instance = context.applicationContext
+    fun init(application: Application) {
+        instance = application.applicationContext
     }
 
     fun getContext() = instance

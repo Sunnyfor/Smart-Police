@@ -55,14 +55,14 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
     abstract fun initView()
 
     /**
-     * 加载数据操作
-     */
-    abstract fun loadData()
-
-    /**
      * 点击事件回调
      */
     abstract fun onClickEvent(view: View)
+
+    /**
+     * 加载数据操作
+     */
+    abstract fun loadData()
 
     abstract fun close()
 

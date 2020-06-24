@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white"
     android:orientation="vertical">
 
 
@@ -69,6 +68,7 @@
                 android:id="@+id/ll_count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_10"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -133,6 +133,7 @@
         android:layout_margin="@dimen/dp_15">
 
         <LinearLayout
+            android:id="@+id/ll_meal"
             style="@style/style_mine_layout_weight"
             tools:ignore="UseCompoundDrawables">
 
@@ -140,7 +141,7 @@
                 style="@style/style_common_icon"
                 android:background="@drawable/sel_mine_red"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_food" />
+                android:src="@drawable/icon_mine_meal" />
 
             <TextView
                 style="@style/style_font_black_small"
@@ -157,7 +158,7 @@
                 style="@style/style_common_icon"
                 android:background="@drawable/sel_mine_blue"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_food" />
+                android:src="@drawable/icon_mine_fixup" />
 
             <TextView
                 style="@style/style_font_black_small"
@@ -174,7 +175,7 @@
                 style="@style/style_common_icon"
                 android:background="@drawable/sel_mine_orange"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_food" />
+                android:src="@drawable/icon_mine_order" />
 
             <TextView
                 style="@style/style_font_black_small"
@@ -191,7 +192,7 @@
                 style="@style/style_common_icon"
                 android:background="@drawable/sel_mine_yellow"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_food" />
+                android:src="@drawable/icon_mine_medicine" />
 
             <TextView
                 style="@style/style_font_black_small"
@@ -210,7 +211,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_20">
-
 
         <ImageView
             android:id="@+id/icon"
@@ -238,17 +238,26 @@
 
         <Button
             android:id="@+id/btn_recharge"
-            style="@style/style_common_btn_small"
+            style="@style/style_font_white_small"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_22"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/dp_10"
             android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/sel_mine_recharge"
             android:text="充值"
             tools:ignore="HardcodedText" />
 
         <Button
-            style="@style/style_common_btn_small"
+            style="@style/style_font_white_small"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_22"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@id/btn_recharge"
+            android:background="@drawable/sel_mine_withdraw"
             android:text="提现"
+            android:textColor="@color/colo_orange_ff9600"
             tools:ignore="HardcodedText" />
 
     </RelativeLayout>
@@ -258,17 +267,18 @@
 
     <com.zhkj.smartpolice.widget.ItemLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_60"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginStart="@dimen/dp_10"
         app:endIcon="@drawable/svg_btn_more"
         app:lineVisible="true"
         app:startAfterText="帮助"
         app:startAfterTextColor="@color/color_black"
-        app:startAfterTextSize="@dimen/sp_16"
         app:startIcon="@drawable/svg_mine_help" />
 
     <com.zhkj.smartpolice.widget.ItemLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_60"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginStart="@dimen/dp_10"
         app:endIcon="@drawable/svg_btn_more"
         app:lineVisible="true"
         app:startAfterText="关于产品"
@@ -277,7 +287,8 @@
 
     <com.zhkj.smartpolice.widget.ItemLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_60"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginStart="@dimen/dp_10"
         app:endIcon="@drawable/svg_btn_more"
         app:lineVisible="true"
         app:startAfterText="清除缓存"
@@ -286,7 +297,8 @@
 
     <com.zhkj.smartpolice.widget.ItemLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_60"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginStart="@dimen/dp_10"
         app:endIcon="@drawable/svg_btn_more"
         app:lineVisible="true"
         app:startAfterText="设置"

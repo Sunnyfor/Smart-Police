@@ -11,13 +11,6 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.zhkj.smartpolice.R
 
-/**
- * Desc 自定义子条目组件
- * 样式参考：https://dwz.cn/GQG6d3gP
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020年2月4日 16:07:39
- */
 class ItemLayout : RelativeLayout {
 
     val startImageView: ImageView by lazy {
@@ -56,7 +49,11 @@ class ItemLayout : RelativeLayout {
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
 
         val defaultMargin = resources.getDimension(R.dimen.dp_10)
         val defaultTextSize = resources.getDimension(R.dimen.sp_14)
@@ -65,7 +62,8 @@ class ItemLayout : RelativeLayout {
         val defaultLineHeight = resources.getDimension(R.dimen.dp_1)
 
 
-        val typeArray = context.theme.obtainStyledAttributes(attrs, R.styleable.ItemLayout, defStyleAttr, 0)
+        val typeArray =
+            context.theme.obtainStyledAttributes(attrs, R.styleable.ItemLayout, defStyleAttr, 0)
 
 
         /**
@@ -98,8 +96,10 @@ class ItemLayout : RelativeLayout {
          * 最左侧文字
          */
         val startText = typeArray.getString(R.styleable.ItemLayout_startText) ?: ""
-        val startTextSize = typeArray.getDimension(R.styleable.ItemLayout_startTextSize, defaultTextSize)
-        val startTextColor = typeArray.getColor(R.styleable.ItemLayout_startTextColor, defaultTextColor)
+        val startTextSize =
+            typeArray.getDimension(R.styleable.ItemLayout_startTextSize, defaultTextSize)
+        val startTextColor =
+            typeArray.getColor(R.styleable.ItemLayout_startTextColor, defaultTextColor)
 
         if (startText.isNotEmpty()) {
             val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
@@ -114,8 +114,10 @@ class ItemLayout : RelativeLayout {
          * 最左侧文字/图标 —— 文字
          */
         val startAfterText = typeArray.getString(R.styleable.ItemLayout_startAfterText) ?: ""
-        val startAfterTextSize = typeArray.getDimension(R.styleable.ItemLayout_startAfterTextSize, defaultTextSize)
-        val startAfterTextColor = typeArray.getColor(R.styleable.ItemLayout_startAfterTextColor, defaultTextColor)
+        val startAfterTextSize =
+            typeArray.getDimension(R.styleable.ItemLayout_startAfterTextSize, defaultTextSize)
+        val startAfterTextColor =
+            typeArray.getColor(R.styleable.ItemLayout_startAfterTextColor, defaultTextColor)
 
         if (startAfterText.isNotEmpty()) {
             val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
@@ -153,7 +155,8 @@ class ItemLayout : RelativeLayout {
          * 最右侧文字
          */
         val endText = typeArray.getString(R.styleable.ItemLayout_endText) ?: ""
-        val endTextSize = typeArray.getDimension(R.styleable.ItemLayout_endTextSize, defaultTextSize)
+        val endTextSize =
+            typeArray.getDimension(R.styleable.ItemLayout_endTextSize, defaultTextSize)
         val endTextColor = typeArray.getColor(R.styleable.ItemLayout_endTextColor, defaultTextColor)
 
         if (endText.isNotEmpty()) {
@@ -176,8 +179,10 @@ class ItemLayout : RelativeLayout {
          * 文字 —— 最右侧文字/图标
          */
         val endBeforeText = typeArray.getString(R.styleable.ItemLayout_endBeforeText) ?: ""
-        val endBeforeTextSize = typeArray.getDimension(R.styleable.ItemLayout_endBeforeTextSize, defaultTextSize)
-        val endBeforeTextColor = typeArray.getColor(R.styleable.ItemLayout_endBeforeTextColor, defaultTextColor)
+        val endBeforeTextSize =
+            typeArray.getDimension(R.styleable.ItemLayout_endBeforeTextSize, defaultTextSize)
+        val endBeforeTextColor =
+            typeArray.getColor(R.styleable.ItemLayout_endBeforeTextColor, defaultTextColor)
 
         if (endBeforeText.isNotEmpty()) {
             val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
@@ -208,7 +213,8 @@ class ItemLayout : RelativeLayout {
          * 分割线
          */
         val lineColor = typeArray.getColor(R.styleable.ItemLayout_lineColor, defaultLineColor)
-        val lineHeight = typeArray.getDimension(R.styleable.ItemLayout_lineHeight, defaultLineHeight)
+        val lineHeight =
+            typeArray.getDimension(R.styleable.ItemLayout_lineHeight, defaultLineHeight)
         val lineVisible = typeArray.getBoolean(R.styleable.ItemLayout_lineVisible, false)
 
         if (lineVisible) {

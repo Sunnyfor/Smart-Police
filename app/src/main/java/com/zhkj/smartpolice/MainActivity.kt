@@ -5,7 +5,7 @@ import com.sunny.zy.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
-    override fun setLayout(): Int = R.layout.activity_main
+    override fun setLayout(): Int = R.layout.act_main
 
     override fun initView() {
 

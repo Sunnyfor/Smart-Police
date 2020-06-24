@@ -1,5 +1,18 @@
 <resources>
 
+    <style name="popWindow_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
+    </style>
+
+    <!--标题栏样式-->
+
+    <style name="style_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:background">@color/color_transparent</item>
+    </style>
+
     <!--通用圆形图片样式-->
 
     <style name="style_image_circle">
@@ -16,8 +29,6 @@
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>
     </style>
-
-
 
     <!--【个人界面】卡片样式-->
 

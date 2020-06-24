@@ -19,13 +19,19 @@ class WalletActivity : BaseActivity() {
     }
 
     override fun loadData() {
-        setOnClickListener(btn_recharge)
+        setOnClickListener(
+            btn_recharge,
+            btn_withdrawal
+        )
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
             btn_recharge.id -> {
                 ARouter.getInstance().build(RouterPath.RECHARGE_ACTIVITY).navigation()
+            }
+            btn_withdrawal.id ->{
+                ARouter.getInstance().build(RouterPath.WITHDRAWAL_ACTIVITY).navigation()
             }
         }
     }

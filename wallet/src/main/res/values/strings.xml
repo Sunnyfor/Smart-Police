@@ -4,13 +4,22 @@
     <string name="default_balance">0.00</string>
     <string name="recharge">充值</string>
     <string name="withdrawal">提现</string>
+    <string name="withdrawal_money">提现金额</string>
     <string name="pay_code">支付码</string>
-    <string name="record">转账、付款记录</string>
+    <string name="record">账单记录</string>
     <string name="money">金额</string>
     <string name="input_money">输入金额</string>
-    <string name="rmb">元</string>
+    <string name="wx_account">微信账号</string>
+    <string name="ali_account">支付宝账号</string>
+    <string name="rmb">￥</string>
+    <string name="yuan">元</string>
+    <string name="available_balance">当前可提现余额0.00元</string>
     <string name="choose_pay_method">选择支付方式</string>
+    <string name="wx">微信</string>
+    <string name="ali">支付宝</string>
     <string name="wx_pay">微信支付</string>
     <string name="ali_pay">支付宝支付</string>
     <string name="start_recharge">立即充值</string>
+    <string name="input_account_wx">请输入微信账号</string>
+    <string name="input_account_ali">请输入支付宝账号</string>
 </resources>

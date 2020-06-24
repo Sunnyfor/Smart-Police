@@ -34,7 +34,7 @@
         android:id="@+id/tv_rmb"
         style="@style/wallet_item_text"
         android:layout_marginEnd="@dimen/dp_18"
-        android:text="@string/rmb"
+        android:text="@string/yuan"
         app:layout_constraintEnd_toEndOf="@id/view_recharge_parent"
         app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
 

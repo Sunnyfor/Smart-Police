@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/iv_top"
+        style="@style/style_font_black_big"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/sel_place_order_top"
+        android:gravity="center"
+        android:text="下单后请在2小时内完成取餐"
+        android:textColor="@color/color_theme"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:id="@+id/ll_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_24"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_55"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@color/color_gray"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@drawable/svg_place_order_delete"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            style="@style/style_font_gray_smaller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空购物车"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_bottom"
+        android:layout_below="@id/ll_clear"
+        android:layout_marginTop="@dimen/dp_6" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_theme">
+
+        <Button
+            android:id="@+id/btn_commit"
+            style="@style/style_common_btn"
+            android:layout_centerVertical="true"
+            android:text="确认下单"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+</RelativeLayout>

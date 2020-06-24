@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_205"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_meal" />
+
+    <RelativeLayout
+        style="@style/style_title"
+        android:background="#7F000000">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/svg_btn_back"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_desc"
+        style="@style/style_font_black_bigger"
+        android:layout_below="@id/iv_bg"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="菜品展示"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_bottom"
+        android:layout_below="@id/tv_desc">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_menu"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="match_parent"
+            android:background="@color/color_gray" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_theme">
+
+        <Button
+            android:id="@+id/btn_commit"
+            style="@style/style_common_btn"
+            android:layout_centerVertical="true"
+            android:text="确定选择"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+</RelativeLayout>

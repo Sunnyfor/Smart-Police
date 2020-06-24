@@ -74,6 +74,7 @@
         android:id="@+id/view_pay_parent"
         style="@style/style_item_card_view"
         android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/color_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_top_bg" />
 
@@ -111,7 +112,7 @@
         style="@style/wallet_item_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_pay_parent" />
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_parent" />
 
 
     <!--
@@ -120,6 +121,7 @@
     <View
         android:id="@+id/view_record_parent"
         style="@style/style_item_card_view"
+        android:background="@color/color_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_pay_parent" />
@@ -157,6 +159,6 @@
         style="@style/wallet_item_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_record_parent" />
+        app:layout_constraintBottom_toBottomOf="@id/view_record_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

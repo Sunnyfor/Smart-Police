@@ -18,4 +18,10 @@
         <item name="android:background">@color/color_line</item>
         <item name="android:layout_marginStart">@dimen/dp_18</item>
     </style>
+
+    <style name="wallet_item_text" parent="style_font_black">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dp_45</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>

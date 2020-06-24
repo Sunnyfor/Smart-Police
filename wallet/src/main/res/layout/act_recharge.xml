@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--金额输入框-->
+    <TextView
+        android:id="@+id/tv_money"
+        style="@style/wallet_item_text"
+        android:layout_marginStart="@dimen/dp_18"
+        android:text="@string/money"
+        android:textColor="@color/font_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_recharge_parent"
+        style="@style/style_item_card_view"
+        android:background="@color/color_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_money" />
+
+    <TextView
+        style="@style/style_font_black"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginStart="@dimen/dp_18"
+        android:gravity="center"
+        android:text="@string/input_money"
+        app:layout_constraintStart_toStartOf="@id/view_recharge_parent"
+        app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
+
+    <TextView
+        android:id="@+id/tv_rmb"
+        style="@style/wallet_item_text"
+        android:layout_marginEnd="@dimen/dp_18"
+        android:text="@string/rmb"
+        app:layout_constraintEnd_toEndOf="@id/view_recharge_parent"
+        app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
+
+    <EditText
+        style="@style/wallet_item_text"
+        android:layout_marginEnd="@dimen/dp_5"
+        android:autofillHints="no"
+        android:background="@color/color_transparent"
+        android:hint="@string/default_balance"
+        android:inputType="numberDecimal"
+        android:maxWidth="@dimen/dp_100"
+        app:layout_constraintEnd_toStartOf="@id/tv_rmb"
+        app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
+
+    <!--支付方式布局-->
+    <TextView
+        android:id="@+id/tv_pay_type"
+        style="@style/wallet_item_text"
+        android:layout_marginStart="@dimen/dp_18"
+        android:text="@string/choose_pay_method"
+        android:textColor="@color/font_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_recharge_parent" />
+
+    <!--微信支付-->
+    <View
+        android:id="@+id/view_wx_parent"
+        style="@style/style_item_card_view"
+        android:background="@color/color_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_pay_type" />
+
+    <View
+        android:id="@+id/view_wx_icon"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginStart="@dimen/dp_18"
+        android:background="@drawable/svg_pay_wx"
+        app:layout_constraintBottom_toBottomOf="@id/view_wx_parent"
+        app:layout_constraintStart_toStartOf="@id/view_wx_parent"
+        app:layout_constraintTop_toTopOf="@id/view_wx_parent" />
+
+    <TextView
+        style="@style/wallet_item_text"
+        android:layout_marginStart="@dimen/dp_20"
+        android:text="@string/wx_pay"
+        app:layout_constraintStart_toEndOf="@id/view_wx_icon"
+        app:layout_constraintTop_toTopOf="@id/view_wx_parent" />
+
+    <RadioButton
+        android:id="@+id/rbtn_wx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_18"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="@id/view_wx_parent"
+        app:layout_constraintEnd_toEndOf="@id/view_wx_parent"
+        app:layout_constraintTop_toTopOf="@id/view_wx_parent" />
+
+    <View
+        style="@style/wallet_item_line"
+        app:layout_constraintBottom_toBottomOf="@id/view_wx_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--支付宝支付-->
+    <View
+        android:id="@+id/view_ali_parent"
+        style="@style/style_item_card_view"
+        android:background="@color/color_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_wx_parent" />
+
+    <View
+        android:id="@+id/view_ali_icon"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginStart="@dimen/dp_18"
+        android:background="@drawable/svg_pay_ali"
+        app:layout_constraintBottom_toBottomOf="@id/view_ali_parent"
+        app:layout_constraintStart_toStartOf="@id/view_ali_parent"
+        app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
+
+    <TextView
+        style="@style/wallet_item_text"
+        android:layout_marginStart="@dimen/dp_20"
+        android:text="@string/ali_pay"
+        app:layout_constraintStart_toEndOf="@id/view_ali_icon"
+        app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
+
+    <RadioButton
+        android:id="@+id/rbtn_ali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_18"
+        android:checked="false"
+        app:layout_constraintBottom_toBottomOf="@id/view_ali_parent"
+        app:layout_constraintEnd_toEndOf="@id/view_ali_parent"
+        app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/style_common_btn"
+        android:text="@string/start_recharge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_ali_parent"
+        android:layout_marginTop="@dimen/dp_60"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

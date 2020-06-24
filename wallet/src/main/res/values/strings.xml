@@ -6,4 +6,11 @@
     <string name="withdrawal">提现</string>
     <string name="pay_code">支付码</string>
     <string name="record">转账、付款记录</string>
+    <string name="money">金额</string>
+    <string name="input_money">输入金额</string>
+    <string name="rmb">元</string>
+    <string name="choose_pay_method">选择支付方式</string>
+    <string name="wx_pay">微信支付</string>
+    <string name="ali_pay">支付宝支付</string>
+    <string name="start_recharge">立即充值</string>
 </resources>

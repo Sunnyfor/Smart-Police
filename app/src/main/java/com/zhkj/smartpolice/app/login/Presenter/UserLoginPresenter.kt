@@ -9,12 +9,7 @@ import com.zhkj.smartpolice.app.login.view.LoginView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-/**
- * Desc
- * Author 杨宁
- * Mail yang122612@yeah.net
- * Date 2020/6/23 19:41
- */
+
 class UserLoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
 
     fun onUserLogin(userName: String, password: String) {
@@ -27,11 +22,6 @@ class UserLoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
             ZyHttp.post(UrlConstant.USER_LOGIN,params,httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-//                httpResultBean?.bean.let {
-//                    if (it != null) {
-//                        view?.onUserLogin(it)
-//                    }
-//                }
                 view?.onUserLogin(httpResultBean.bean ?: return@launch)
             }
         }

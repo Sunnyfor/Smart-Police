@@ -8,4 +8,7 @@
     <color name="color_mine_fun_orange">#FE864C</color>
     <color name="color_mine_fun_yellow">#FFAD4A</color>
     <color name="colo_orange_ff9600">#FF9600</color>
+    <color name="color_login_font_amend">#ABABAB</color>
+    <color name="color_login_button">#2963E0</color>
+    <color name="color_login_button_press">#1F48A1</color>
 </resources>

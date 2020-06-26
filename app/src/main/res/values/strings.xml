@@ -2,4 +2,5 @@
     <string name="app_name">智慧警保</string>
     <string name="logistics">后勤</string>
     <string name="mine">我的</string>
+    <string name="login_title">欢迎使用智慧警报系统</string>
 </resources>

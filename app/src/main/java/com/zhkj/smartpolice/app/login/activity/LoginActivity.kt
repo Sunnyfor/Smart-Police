@@ -1,9 +1,11 @@
 package com.zhkj.smartpolice.app.login.activity
 
+import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
+import com.zhkj.smartpolice.MainActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.login.Presenter.UserLoginPresenter
 import com.zhkj.smartpolice.app.login.bean.UserInfoBean
@@ -23,13 +25,25 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loadData() {
-        userLoginPresenter.onUserLogin("admin","admin")
+        userLoginPresenter.onUserLogin("admin", "admin")
     }
 
     override fun onClickEvent(view: View) {
-        when(view.id) {
+        when (view.id) {
             R.id.loginButton -> {
-                ToastUtil.show("点击了登录按钮")
+                if (userName.text.toString() != null) {
+
+                    if (userPassword.text.toString() != null) {
+                        userLoginPresenter.onUserLogin(
+                            userName.text.toString(),
+                            userPassword.text.toString()
+                        )
+                    } else {
+                        ToastUtil.show("密码不能为空！")
+                    }
+                } else {
+                    ToastUtil.show("用户名不能为空！")
+                }
             }
         }
     }
@@ -40,7 +54,9 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun onUserLogin(userinfobean: UserInfoBean) {
         super.onUserLogin(userinfobean)
         userinfobean?.let {
-            LogUtil.i("当前下载的数据是=====$it")
+            ToastUtil.show("登录成功")
+            var intent: Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

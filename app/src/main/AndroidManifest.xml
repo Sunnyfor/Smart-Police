@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/ZyTheme">
 
-        <activity android:name=".MineActivity">
+        <activity android:name=".app.login.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".meal.MealActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".meal.MealActivity" />
+        <activity android:name=".MineActivity" />
 
     </application>
 

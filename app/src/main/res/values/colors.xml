@@ -11,4 +11,21 @@
     <color name="color_login_font_amend">#ABABAB</color>
     <color name="color_login_button">#2963E0</color>
     <color name="color_login_button_press">#1F48A1</color>
+
+<!--    后勤页面-->
+    <color name="bg_logistics_2963E0">#2963E0</color>
+    <color name="bg_logistics_6796FA">#6796FA</color>
+    <color name="bg_logistics_ffed7729">#ffed7729</color>
+    <color name="fun_logistics_666666">#666666</color>
+    <color name="bg_logistics_609CE5">#609CE5</color>
+    <color name="bg_logistics_F6BF56">#F6BF56</color>
+    <color name="bg_logistics_74BF68">#74BF68</color>
+    <color name="bg_logistics_E86359">#E86359</color>
+    <color name="bg_logistics_56BCF6">#56BCF6</color>
+    <color name="fun_logistics_1B1B1B">#1B1B1B</color>
+    <color name="color_logistics_E5E5E5">#E5E5E5</color>
+    <color name="bg_logistics_73CDFF">#73CDFF</color>
+    <color name="bg_logistics_5594FF">#5594FF</color>
+    <color name="bg_logistics_FF9A67">#FF9A67</color>
+    <color name="bg_logistics_FF645F">#FF645F</color>
 </resources>

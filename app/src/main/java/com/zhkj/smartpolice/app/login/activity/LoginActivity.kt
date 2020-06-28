@@ -1,6 +1,9 @@
 package com.zhkj.smartpolice.app.login.activity
 
 import android.content.Intent
+import android.text.InputType
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
@@ -14,6 +17,8 @@ import kotlinx.android.synthetic.main.act_login.*
 
 class LoginActivity : BaseActivity(), LoginView {
 
+    var isStatus: Boolean = false
+
     override fun setLayout(): Int = R.layout.act_login
 
     private val userLoginPresenter: UserLoginPresenter by lazy {
@@ -22,6 +27,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun initView() {
         loginButton.setOnClickListener(this)
+        passwordType.setOnClickListener(this)
     }
 
     override fun loadData() {
@@ -43,6 +49,19 @@ class LoginActivity : BaseActivity(), LoginView {
                     }
                 } else {
                     ToastUtil.show("用户名不能为空！")
+                }
+            }
+
+            R.id.passwordType -> {
+
+                if (isStatus) {
+                    passwordType.setBackgroundResource(R.drawable.svg_login_hide_password)
+                    userPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                    isStatus = false
+                } else {
+                    passwordType.setBackgroundResource(R.drawable.svg_login_show_password)
+                    userPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    isStatus = true
                 }
             }
         }

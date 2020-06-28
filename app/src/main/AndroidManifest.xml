@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhkj.smartpolice">
 
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 互联网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ZyTheme">
-
         <activity android:name=".app.login.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity" />
         <activity android:name=".meal.MealActivity" />
         <activity android:name=".MineActivity" />
-
     </application>
 
 </manifest>

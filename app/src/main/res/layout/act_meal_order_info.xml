@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/style_register_item_layout"
+        android:layout_marginTop="@dimen/dp_10">
+
+        <TextView
+            style="@style/style_register_item_text"
+            android:text="取餐人"
+            tools:ignore="HardcodedText" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_name"
+            style="@style/style_common_edit"
+            android:hint="请填写取餐人姓名"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/style_register_item_layout">
+
+        <TextView
+            style="@style/style_register_item_text"
+            android:text="手机号"
+            tools:ignore="HardcodedText" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_phone"
+            style="@style/style_common_edit"
+            android:hint="请填写你的手机号"
+            android:inputType="phone"
+            android:maxLength="13"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        style="@style/style_common_btn"
+        android:text="确定"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

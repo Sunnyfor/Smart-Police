@@ -1,6 +1,5 @@
 package com.sunny.zy.base
 
-import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.zy_activity_base.*
  *
  * Created by ZhangYe on 2018/8/2.
  */
-@SuppressLint("SourceLockedOrientationActivity")
 abstract class BaseActivity : AppCompatActivity(), IBaseView,
     View.OnClickListener {
 

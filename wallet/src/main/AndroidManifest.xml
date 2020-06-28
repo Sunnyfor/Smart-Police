@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhkj.smartpolice">
     <application>
+        <activity android:name=".wallet.activity.WalletActivity"/>
         <activity android:name=".wallet.activity.RechargeActivity" />
         <activity android:name=".wallet.activity.WithdrawalActivity"/>
         <activity android:name=".wallet.activity.PayCodeActivity"/>

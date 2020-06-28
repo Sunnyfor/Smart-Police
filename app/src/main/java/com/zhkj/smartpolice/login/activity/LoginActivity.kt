@@ -1,28 +1,26 @@
-package com.zhkj.smartpolice.app.login.activity
+package com.zhkj.smartpolice.login.activity
 
 import android.content.Intent
-import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
-import com.zhkj.smartpolice.MainActivity
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.app.login.Presenter.UserLoginPresenter
-import com.zhkj.smartpolice.app.login.bean.UserInfoBean
-import com.zhkj.smartpolice.app.login.view.LoginView
+import com.zhkj.smartpolice.app.MainActivity
+import com.zhkj.smartpolice.login.presenter.LoginPresenter
+import com.zhkj.smartpolice.login.bean.UserInfoBean
+import com.zhkj.smartpolice.login.view.LoginView
 import kotlinx.android.synthetic.main.act_login.*
 
 class LoginActivity : BaseActivity(), LoginView {
 
-    var isStatus: Boolean = false
+    private var isStatus: Boolean = false
 
     override fun setLayout(): Int = R.layout.act_login
 
-    private val userLoginPresenter: UserLoginPresenter by lazy {
-        UserLoginPresenter(this)
+    private val loginPresenter: LoginPresenter by lazy {
+        LoginPresenter(this)
     }
 
     override fun initView() {
@@ -31,38 +29,27 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loadData() {
-        userLoginPresenter.onUserLogin("admin", "admin")
+        loginPresenter.onUserLogin("admin", "admin")
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
             R.id.loginButton -> {
-                if (userName.text.toString() != null) {
-
-                    if (userPassword.text.toString() != null) {
-                        userLoginPresenter.onUserLogin(
-                            userName.text.toString(),
-                            userPassword.text.toString()
-                        )
-                    } else {
-                        ToastUtil.show("密码不能为空！")
-                    }
-                } else {
-                    ToastUtil.show("用户名不能为空！")
-                }
+                loginPresenter.onUserLogin(
+                    userName.text.toString(),
+                    userPassword.text.toString()
+                )
             }
 
             R.id.passwordType -> {
-
                 if (isStatus) {
                     passwordType.setBackgroundResource(R.drawable.svg_login_hide_password)
                     userPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-                    isStatus = false
                 } else {
                     passwordType.setBackgroundResource(R.drawable.svg_login_show_password)
                     userPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                    isStatus = true
                 }
+                isStatus = !isStatus
             }
         }
     }
@@ -72,10 +59,9 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onUserLogin(userinfobean: UserInfoBean) {
         super.onUserLogin(userinfobean)
-        userinfobean?.let {
+        userinfobean.let {
             ToastUtil.show("登录成功")
-            var intent: Intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }

@@ -1,7 +1,7 @@
-package com.zhkj.smartpolice.app.login.view
+package com.zhkj.smartpolice.login.view
 
 import com.sunny.zy.base.IBaseView
-import com.zhkj.smartpolice.app.login.bean.UserInfoBean
+import com.zhkj.smartpolice.login.bean.UserInfoBean
 
 
 interface LoginView: IBaseView {

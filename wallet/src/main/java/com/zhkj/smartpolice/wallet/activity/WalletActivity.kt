@@ -2,6 +2,7 @@ package com.zhkj.smartpolice.wallet.activity
 
 
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterPath
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.act_wallet.*
 /**
  * 钱包页面
  */
+@Route(path = RouterPath.WALLET_ACTIVITY)
 class WalletActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.act_wallet
 

@@ -1,6 +1,7 @@
 package com.zhkj.smartpolice.login.activity
 
 import android.content.Intent
+import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
@@ -26,6 +27,7 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun initView() {
         loginButton.setOnClickListener(this)
         passwordType.setOnClickListener(this)
+        tvRevampPassword.setOnClickListener(this)
     }
 
     override fun loadData() {
@@ -35,10 +37,18 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun onClickEvent(view: View) {
         when (view.id) {
             R.id.loginButton -> {
-                loginPresenter.onUserLogin(
-                    userName.text.toString(),
-                    userPassword.text.toString()
-                )
+                if (!TextUtils.isEmpty(userName.text.toString())) {
+                    if (!TextUtils.isEmpty(userPassword.text.toString())) {
+                        loginPresenter.onUserLogin(
+                            userName.text.toString(),
+                            userPassword.text.toString()
+                        )
+                    } else {
+                        ToastUtil.show("密码不能为空！")
+                    }
+                } else {
+                    ToastUtil.show("用户名不能为空！")
+                }
             }
 
             R.id.passwordType -> {
@@ -47,9 +57,14 @@ class LoginActivity : BaseActivity(), LoginView {
                     userPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 } else {
                     passwordType.setBackgroundResource(R.drawable.svg_login_show_password)
-                    userPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    userPassword.transformationMethod =
+                        HideReturnsTransformationMethod.getInstance()
                 }
                 isStatus = !isStatus
+            }
+
+            R.id.tvRevampPassword -> {
+                startActivity(Intent(this, AlterPasswordActivity::class.java))
             }
         }
     }
@@ -57,9 +72,9 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun close() {
     }
 
-    override fun onUserLogin(userinfobean: UserInfoBean) {
-        super.onUserLogin(userinfobean)
-        userinfobean.let {
+    override fun onUserLogin(userInfoBean: UserInfoBean) {
+        super.onUserLogin(userInfoBean)
+        userInfoBean.let {
             ToastUtil.show("登录成功")
             startActivity(Intent(this, MainActivity::class.java))
         }

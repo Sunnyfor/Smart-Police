@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_background_F0F1F2">
 
     <ImageView
         android:layout_width="match_parent"
@@ -10,22 +11,22 @@
         android:background="@drawable/sel_logistics_background" />
 
 
-    <ImageView
-        android:layout_width="@dimen/dp_9"
-        android:layout_height="@dimen/dp_17"
-        android:layout_marginLeft="@dimen/dp_8"
-        android:layout_marginTop="@dimen/dp_18"
-        android:background="@drawable/svg_return_button" />
+<!--    <ImageView-->
+<!--        android:layout_width="@dimen/dp_9"-->
+<!--        android:layout_height="@dimen/dp_17"-->
+<!--        android:layout_marginLeft="@dimen/dp_8"-->
+<!--        android:layout_marginTop="@dimen/dp_18"-->
+<!--        android:background="@drawable/svg_return_button" />-->
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_30"
-        android:layout_marginTop="@dimen/dp_16"
-        android:text="后勤"
-        android:textColor="@color/font_white"
-        android:textSize="@dimen/sp_17" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/dp_30"-->
+<!--        android:layout_marginTop="@dimen/dp_16"-->
+<!--        android:text="后勤"-->
+<!--        android:textColor="@color/font_white"-->
+<!--        android:textSize="@dimen/sp_17" />-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
         android:textColor="@color/font_white"
         android:textSize="@dimen/sp_20"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/dp_73"
+        android:layout_marginTop="@dimen/dp_53"
         android:layout_marginLeft="@dimen/dp_54"/>
 
 

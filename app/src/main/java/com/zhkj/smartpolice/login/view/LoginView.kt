@@ -8,5 +8,10 @@ interface LoginView: IBaseView {
     /**
      * 用户登录后返回信息
      */
-    fun onUserLogin(userinfobean: UserInfoBean) {}
+    fun onUserLogin(userInfoBean: UserInfoBean) {}
+
+    /**
+     * 修改登录密码返回信息
+     */
+    fun onAlterPassword(userinfobean: UserInfoBean){}
 }

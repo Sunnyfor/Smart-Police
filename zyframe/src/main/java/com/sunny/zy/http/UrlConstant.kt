@@ -73,4 +73,5 @@ object UrlConstant {
      * 用户登录
      */
     const val USER_LOGIN = "sys/login"
+    const val USER_ALTER_PASSWORD = "sys/user/password"
 }

@@ -12,6 +12,9 @@ import kotlinx.coroutines.launch
 
 class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
 
+    /**
+     * 登录用户信息接口请求
+     */
     fun onUserLogin(userName: String, password: String) {
         view?.showLoading()
         val params = HashMap<String, String>()
@@ -23,6 +26,25 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 view?.onUserLogin(httpResultBean.bean ?: return@launch)
+            }
+        }
+    }
+
+
+    /**
+     * 修改用户密码接口请求
+     */
+    fun onAlterPassword(formerPassword: String, newPassword: String) {
+        view?.showLoading()
+        val params = HashMap<String, String>()
+        params["password"] = formerPassword
+        params["newPassword"] = newPassword
+        var httpResultBean = object : HttpResultBean<UserInfoBean>() {}
+        launch(Main) {
+            ZyHttp.post(UrlConstant.USER_ALTER_PASSWORD, params, httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                view?.onAlterPassword(httpResultBean.bean ?:return@launch)
             }
         }
     }

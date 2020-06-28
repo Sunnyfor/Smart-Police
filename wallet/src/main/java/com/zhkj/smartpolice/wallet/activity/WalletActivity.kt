@@ -21,7 +21,8 @@ class WalletActivity : BaseActivity() {
     override fun loadData() {
         setOnClickListener(
             btn_recharge,
-            btn_withdrawal
+            btn_withdrawal,
+            view_pay_parent
         )
     }
 
@@ -30,8 +31,11 @@ class WalletActivity : BaseActivity() {
             btn_recharge.id -> {
                 ARouter.getInstance().build(RouterPath.RECHARGE_ACTIVITY).navigation()
             }
-            btn_withdrawal.id ->{
+            btn_withdrawal.id -> {
                 ARouter.getInstance().build(RouterPath.WITHDRAWAL_ACTIVITY).navigation()
+            }
+            view_pay_parent.id -> {
+                ARouter.getInstance().build(RouterPath.PAY_CODE_ACTIVITY).navigation()
             }
         }
     }

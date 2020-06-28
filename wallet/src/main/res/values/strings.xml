@@ -22,4 +22,5 @@
     <string name="start_recharge">立即充值</string>
     <string name="input_account_wx">请输入微信账号</string>
     <string name="input_account_ali">请输入支付宝账号</string>
+    <string name="default_bar_code">0000&#160;&#160;&#160;&#160;****&#160;&#160;&#160;&#160;****&#160;&#160;&#160;&#160;****&#160;&#160;&#160;&#160;00</string>
 </resources>

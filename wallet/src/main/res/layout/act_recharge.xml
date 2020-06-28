@@ -17,37 +17,42 @@
     <View
         android:id="@+id/view_recharge_parent"
         style="@style/style_item_card_view"
+        android:layout_height="@dimen/dp_60"
         android:background="@color/color_white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_money" />
 
-    <TextView
-        style="@style/style_font_black"
-        android:layout_height="@dimen/dp_45"
-        android:layout_marginStart="@dimen/dp_18"
-        android:gravity="center"
-        android:text="@string/input_money"
-        app:layout_constraintStart_toStartOf="@id/view_recharge_parent"
-        app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
+
 
     <TextView
         android:id="@+id/tv_rmb"
         style="@style/wallet_item_text"
-        android:layout_marginEnd="@dimen/dp_18"
-        android:text="@string/yuan"
-        app:layout_constraintEnd_toEndOf="@id/view_recharge_parent"
-        app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
+        android:layout_marginStart="@dimen/dp_18"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="@string/rmb"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view_recharge_parent"
+        app:layout_constraintBottom_toBottomOf="@id/view_recharge_parent"/>
 
     <EditText
+        android:id="@+id/edt_money"
         style="@style/wallet_item_text"
-        android:layout_marginEnd="@dimen/dp_5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_20"
         android:autofillHints="no"
-        android:background="@color/color_transparent"
         android:hint="@string/default_balance"
         android:inputType="numberDecimal"
-        android:maxWidth="@dimen/dp_100"
-        app:layout_constraintEnd_toStartOf="@id/tv_rmb"
-        app:layout_constraintTop_toTopOf="@id/view_recharge_parent" />
+        android:paddingStart="@dimen/dp_30"
+        android:paddingEnd="@dimen/dp_10"
+        android:textSize="@dimen/sp_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_rmb"
+        app:layout_constraintEnd_toEndOf="@id/view_recharge_parent"
+        app:layout_constraintStart_toStartOf="@id/tv_rmb"
+        app:layout_constraintTop_toTopOf="@id/tv_rmb" />
+
 
     <!--支付方式布局-->
     <TextView

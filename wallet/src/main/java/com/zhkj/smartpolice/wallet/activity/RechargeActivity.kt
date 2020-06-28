@@ -5,6 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterPath
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.wallet.utils.MoneyInputFilter
 import kotlinx.android.synthetic.main.act_recharge.*
 
 /**
@@ -22,6 +23,7 @@ class RechargeActivity : BaseActivity() {
 
     override fun initView() {
         defaultTitle("充值")
+        edt_money.filters = arrayOf(MoneyInputFilter())
     }
 
     override fun loadData() {

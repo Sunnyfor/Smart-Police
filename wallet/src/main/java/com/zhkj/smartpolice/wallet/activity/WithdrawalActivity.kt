@@ -5,6 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterPath
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.wallet.utils.MoneyInputFilter
 import kotlinx.android.synthetic.main.act_withdrawal.*
 
 @Route(path = RouterPath.WITHDRAWAL_ACTIVITY)
@@ -16,6 +17,7 @@ class WithdrawalActivity : BaseActivity() {
 
     override fun initView() {
         defaultTitle("提现")
+        edt_money.filters = arrayOf(MoneyInputFilter())
 
         setOnClickListener(
             view_wx_parent,

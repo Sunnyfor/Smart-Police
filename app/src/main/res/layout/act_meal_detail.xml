@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_240"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_meal_goods" />
+
+    <RelativeLayout
+        style="@style/style_title"
+        android:background="#7F000000">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/svg_btn_back"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/style_font_black_bigger"
+        android:layout_below="@id/iv_bg"
+        android:layout_marginStart="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textStyle="bold"
+        tools:text="手撕包菜" />
+
+    <TextView
+        android:id="@+id/tv_month_sales"
+        style="@style/style_font_gray"
+        android:layout_below="@id/tv_name"
+        android:layout_alignStart="@id/tv_name"
+        android:layout_marginTop="@dimen/dp_5"
+        tools:text="月售96" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/style_font_black_bigger"
+        android:layout_below="@id/tv_month_sales"
+        android:layout_alignStart="@id/tv_name"
+        android:layout_marginTop="@dimen/dp_5"
+        android:textColor="@color/colo_btn_orange"
+        tools:text="￥18" />
+
+    <TextView
+        android:id="@+id/tv_shopping_cart"
+        style="@style/style_font_white"
+        android:layout_below="@id/tv_month_sales"
+        android:layout_alignTop="@id/tv_price"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:background="@drawable/sel_btn_orange"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingEnd="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_2"
+        android:text="加入购物车"
+        tools:ignore="HardcodedText" />
+
+    <View
+        android:id="@+id/line"
+        style="@style/style_line_horizontal"
+        android:layout_height="@dimen/dp_10"
+        android:layout_below="@id/tv_price"
+        android:layout_marginTop="@dimen/dp_10" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/style_font_black_big"
+        android:layout_below="@id/line"
+        android:layout_alignStart="@id/tv_name"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="商品详情"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        style="@style/style_font_gray"
+        android:layout_below="@id/text"
+        android:layout_alignStart="@id/tv_name"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_15"
+        tools:text="整块无骨鸡肉腿，浓郁汉堡酱，香脆鲜美多汁。主要 原料：鸡腿肉，面包，生菜" />
+
+</RelativeLayout>

@@ -17,6 +17,6 @@ class MealGoodsAdapter(list: ArrayList<MealGoodsBean>) : BaseRecycleAdapter<Meal
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
         holder.itemView.tv_title.text = getData(position).title
-
+        holder.itemView.tv_price.text = getData(position).price
     }
 }

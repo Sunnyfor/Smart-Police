@@ -1,75 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dp_30">
+    android:paddingStart="@dimen/dp_10"
+    android:paddingEnd="@dimen/dp_10">
 
-    <ImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="@dimen/dp_100"
-        android:layout_height="@dimen/dp_94"
-        android:layout_marginStart="@dimen/dp_5"
-        android:scaleType="centerCrop"
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_image"
+        style="@style/style_image_circle"
+        android:layout_width="@dimen/dp_112"
+        android:layout_height="@dimen/dp_90"
         android:src="@drawable/bg_meal_goods"
+        app:riv_corner_radius="@dimen/dp_5"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/style_font_black_bigger"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_2"
-        android:layout_toEndOf="@id/iv_icon"
-        android:text="小炒手撕包菜"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/tv_count"
         style="@style/style_font_black_small"
-        android:layout_below="@id/tv_title"
-        android:layout_marginStart="@dimen/dp_10"
+        android:layout_below="@id/iv_image"
         android:layout_marginTop="@dimen/dp_12"
-        android:layout_toEndOf="@id/iv_icon"
-        android:background="@color/color_gray"
-        android:padding="@dimen/dp_5"
-        android:text="存100+"
-        android:textSize="@dimen/sp_10"
-        tools:ignore="HardcodedText" />
-
-
-    <TextView
-        android:id="@+id/tv_weight"
-        style="@style/style_font_black_small"
-        android:layout_below="@id/tv_count"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_toEndOf="@id/iv_icon"
-        android:background="@color/color_gray"
-        android:padding="@dimen/dp_5"
-        android:text="约450克"
-        android:textSize="@dimen/sp_10"
-        tools:ignore="HardcodedText" />
+        tools:text="小炒手撕包菜" />
 
     <TextView
         android:id="@+id/tv_price"
-        style="@style/style_font_black_big"
+        style="@style/style_font_black"
         android:layout_below="@id/tv_title"
-        android:layout_marginStart="@dimen/dp_180"
-        android:layout_marginTop="@dimen/dp_22"
-        android:text="¥9.8"
-        android:textColor="@color/font_red"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="¥ 0.0"
+        android:textColor="@color/colo_btn_orange"
         tools:ignore="HardcodedText" />
 
-    <Button
-        style="@style/style_font_black_small"
-        android:id="@+id/btn_select"
-        android:layout_width="@dimen/dp_56"
-        android:layout_height="@dimen/dp_38"
+    <ImageView
+        android:id="@+id/iv_select"
+        style="@style/style_common_icon"
         android:layout_below="@id/tv_title"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/sp_10"
-        android:background="@color/color_gray"
-        android:text="选规格"
-        tools:ignore="HardcodedText" />
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dp_7"
+        android:src="@drawable/svg_meal_add" />
 </RelativeLayout>

@@ -2,12 +2,14 @@
 <resources>
     <color name="color_theme">#2963DF</color>
     <color name="color_btn">#CCCCCC</color>
+    <color name="colo_btn_orange">#FF8300</color>
 
     <color name="color_mine_fun_red">#F65350</color>
     <color name="color_mine_fun_blue">#48B5FF</color>
     <color name="color_mine_fun_orange">#FE864C</color>
     <color name="color_mine_fun_yellow">#FFAD4A</color>
     <color name="colo_orange_ff9600">#FF9600</color>
+
     <color name="color_login_font_amend">#ABABAB</color>
     <color name="color_login_button">#2963E0</color>
     <color name="color_login_button_press">#1F48A1</color>

@@ -16,7 +16,7 @@
         android:theme="@style/ZyTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name="com.zhkj.smartpolice.login.activity.LoginActivity">
+        <activity android:name=".login.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

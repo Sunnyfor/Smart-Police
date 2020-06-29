@@ -7,12 +7,12 @@ import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
-import kotlinx.android.synthetic.main.item_place_order.view.*
+import kotlinx.android.synthetic.main.item_meal_order.view.*
 
-class PlaceOrderAdapter(list: ArrayList<MealGoodsBean>) : BaseRecycleAdapter<MealGoodsBean>(list) {
-    override fun setLayout(parent: ViewGroup, viewType: Int): View {
-        return LayoutInflater.from(context).inflate(R.layout.item_place_order, parent, false)
-    }
+class MealOrderAdapter(list: ArrayList<MealGoodsBean>) : BaseRecycleAdapter<MealGoodsBean>(list) {
+
+    override fun setLayout(parent: ViewGroup, viewType: Int): View =
+        LayoutInflater.from(context).inflate(R.layout.item_meal_order, parent, false)
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
         holder.itemView.tv_title.text = getData(position).title

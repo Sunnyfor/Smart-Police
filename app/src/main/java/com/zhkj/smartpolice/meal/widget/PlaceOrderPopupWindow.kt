@@ -8,7 +8,7 @@ import android.widget.PopupWindow
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.meal.adapter.PlaceOrderAdapter
+import com.zhkj.smartpolice.meal.adapter.MealOrderAdapter
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.popup_place_order.view.*
 
@@ -26,12 +26,12 @@ class PlaceOrderPopupWindow(context: Context, list: ArrayList<MealGoodsBean>) :
 
         contentView.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = PlaceOrderAdapter(list)
+            adapter = MealOrderAdapter(list)
             itemAnimator?.changeDuration = 0;
         }
 
         contentView.ll_clear.setOnClickListener {
-            contentView.recyclerView.adapter = PlaceOrderAdapter(arrayListOf())
+            contentView.recyclerView.adapter = MealOrderAdapter(arrayListOf())
         }
 
         contentView.btn_commit.setOnClickListener {

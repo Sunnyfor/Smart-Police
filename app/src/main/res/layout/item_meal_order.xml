@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_check"
+        style="@style/style_common_icon"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/dp_10"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dp_7"
+        android:src="@drawable/svg_meal_btn_checked" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/dp_90"
+        android:layout_height="@dimen/dp_76"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_toEndOf="@id/iv_check"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_meal_goods"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/style_font_black_big"
+        android:layout_alignTop="@id/iv_icon"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_toEndOf="@id/iv_icon"
+        android:text="小炒手撕包菜"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/style_font_orange_big"
+        android:layout_below="@id/tv_title"
+        android:layout_alignStart="@id/tv_title"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_toEndOf="@id/iv_icon"
+        tools:text="¥ 9.8" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_icon"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_cut"
+            style="@style/style_common_icon"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/svg_meal_order_cut" />
+
+        <EditText
+            android:id="@+id/et_count"
+            style="@style/style_font_black"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent"
+            android:focusable="false"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:text="1"
+            tools:ignore="HardcodedText,LabelFor" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            style="@style/style_common_icon"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/svg_meal_order_add" />
+    </LinearLayout>
+
+    <View
+        style="@style/style_line_horizontal"
+        android:layout_below="@id/iv_icon"
+        android:layout_marginTop="@dimen/dp_10" />
+</RelativeLayout>

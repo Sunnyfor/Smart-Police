@@ -45,11 +45,10 @@
 
     <TextView
         android:id="@+id/tv_price"
-        style="@style/style_font_black_bigger"
+        style="@style/style_font_orange_bigger"
         android:layout_below="@id/tv_month_sales"
         android:layout_alignStart="@id/tv_name"
         android:layout_marginTop="@dimen/dp_5"
-        android:textColor="@color/colo_btn_orange"
         tools:text="￥18" />
 
     <TextView

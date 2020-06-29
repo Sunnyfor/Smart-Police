@@ -35,6 +35,8 @@
 
         <activity android:name=".meal.MealActivity" />
         <activity android:name=".meal.MealDetailActivity" />
+        <activity android:name=".meal.MealOrderActivity" />
+        <activity android:name=".meal.MealOrderInfoActivity" />
 
     </application>
 

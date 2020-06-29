@@ -25,11 +25,10 @@
 
     <TextView
         android:id="@+id/tv_price"
-        style="@style/style_font_black"
+        style="@style/style_font_orange"
         android:layout_below="@id/tv_title"
         android:layout_marginTop="@dimen/dp_10"
         android:text="¥ 0.0"
-        android:textColor="@color/colo_btn_orange"
         tools:ignore="HardcodedText" />
 
     <ImageView

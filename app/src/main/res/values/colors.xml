@@ -2,7 +2,7 @@
 <resources>
     <color name="color_theme">#2963DF</color>
     <color name="color_btn">#CCCCCC</color>
-    <color name="colo_btn_orange">#FF8300</color>
+    <color name="font_orange">#FF8300</color>
 
     <color name="color_mine_fun_red">#F65350</color>
     <color name="color_mine_fun_blue">#48B5FF</color>

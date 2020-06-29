@@ -1,5 +1,29 @@
 <resources>
 
+    <!--通用橙色字体-->
+
+    <style name="style_font_orange">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/font_orange</item>
+    </style>
+
+    <style name="style_font_orange_small" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="style_font_orange_smaller" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <style name="style_font_orange_big" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="style_font_orange_bigger" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
 
     <!--【订餐】子条目样式-->
 

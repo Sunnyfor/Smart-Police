@@ -48,7 +48,7 @@
         android:background="@drawable/sel_logistics_frame_white">
 
         <RelativeLayout
-            android:id="@+id/dining"
+            android:id="@+id/rl_meal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_34"

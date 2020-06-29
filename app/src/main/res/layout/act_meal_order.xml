@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/line" />
+
+    <View
+        android:id="@+id/line"
+        style="@style/style_line_horizontal"
+        android:layout_above="@id/rl_bottom" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/iv_check_all"
+            style="@style/style_common_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_10"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/dp_7"
+            android:src="@drawable/svg_meal_btn_unchecked" />
+
+        <TextView
+            style="@style/style_font_black_big"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/iv_check_all"
+            android:text="全选"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            style="@style/style_font_orange_big"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_toStartOf="@id/tv_commit"
+            android:text="合计：￥ 0.00"
+            android:textColor="@color/font_red"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_commit"
+            style="@style/style_font_white_big"
+            android:layout_width="@dimen/dp_110"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/font_orange"
+            android:gravity="center"
+            android:text="结算"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+
+</RelativeLayout>

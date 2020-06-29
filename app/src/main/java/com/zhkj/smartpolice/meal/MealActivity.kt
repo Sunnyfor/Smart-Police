@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.meal
 
+import android.content.Intent
 import android.view.Gravity
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -56,7 +57,10 @@ class MealActivity : BaseActivity() {
             }
         }
 
-        tv_commit.setOnClickListener(this)
+        setOnClickListener(
+            tv_commit,
+            iv_shopping_cart
+        )
     }
 
     override fun onClickEvent(view: View) {
@@ -66,6 +70,7 @@ class MealActivity : BaseActivity() {
                     showAtLocation(contentView, Gravity.BOTTOM, 0, 0)
                 }
             }
+            iv_shopping_cart.id -> startActivity(Intent(this, MealOrderActivity::class.java))
         }
     }
 

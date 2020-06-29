@@ -33,9 +33,10 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT //强制屏幕
         window.statusBarColor = ContextCompat.getColor(this, R.color.color_theme)
         setContentView(R.layout.zy_activity_base)
-        val bodyView = LayoutInflater.from(this).inflate(setLayout(), null, false)
-        frameBody.addView(bodyView)
-
+        if (setLayout() != 0) {
+            val bodyView = LayoutInflater.from(this).inflate(setLayout(), null, false)
+            frameBody.addView(bodyView)
+        }
         ZyFrameStore.addActivity(this)
 
         initView()
@@ -160,7 +161,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
         val toolbar = simpleTitle(title)
         toolbar.setNavigationIcon(R.drawable.svg_title_white)
         toolbar.setNavigationOnClickListener {
-           finish()
+            finish()
         }
         return toolbar
     }

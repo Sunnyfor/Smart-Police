@@ -1,40 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_bar_code"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dp_80"
-        android:layout_margin="@dimen/dp_20"
-        android:contentDescription="@string/placeholder"
-        android:scaleType="centerCrop"
-        android:src="@drawable/svg_bar_code"
+    <TextView
+        android:id="@+id/tv_hint"
+        style="@style/style_font_gray"
+        tools:text="@string/placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_40"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_bar_code"
-        style="@style/style_font_black"
-        android:layout_marginTop="@dimen/dp_4"
-        android:text="@string/default_bar_code"
-        android:textSize="@dimen/sp_22"
-        app:layout_constraintEnd_toEndOf="@id/iv_bar_code"
-        app:layout_constraintStart_toStartOf="@id/iv_bar_code"
-        app:layout_constraintTop_toBottomOf="@id/iv_bar_code" />
-
-
     <ImageView
-        android:layout_width="@dimen/dp_200"
-        android:layout_height="@dimen/dp_200"
-        android:layout_marginTop="@dimen/dp_40"
+        android:id="@+id/iv_qr_code"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:contentDescription="@string/placeholder"
-        android:src="@drawable/svg_pay_qr_code"
+        android:paddingStart="@dimen/dp_18"
+        android:paddingEnd="@dimen/dp_18"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_bar_code" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/svg_pay_qr_code" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,12 +3,12 @@ package com.zhkj.smartpolice.wallet.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.RouterPath
+import com.sunny.zy.utils.RouterManager
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.wallet.utils.MoneyInputFilter
 import kotlinx.android.synthetic.main.act_withdrawal.*
 
-@Route(path = RouterPath.WITHDRAWAL_ACTIVITY)
+@Route(path = RouterManager.WITHDRAWAL_ACTIVITY)
 class WithdrawalActivity : BaseActivity() {
     var wx = 0
     var ali = 1

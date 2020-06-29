@@ -3,16 +3,15 @@ package com.zhkj.smartpolice.wallet.activity
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.RouterPath
+import com.sunny.zy.utils.RouterManager
 import com.zhkj.smartpolice.R
 import kotlinx.android.synthetic.main.act_wallet.*
 
 /**
  * 钱包页面
  */
-@Route(path = RouterPath.WALLET_ACTIVITY)
+@Route(path = RouterManager.WALLET_ACTIVITY)
 class WalletActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.act_wallet
 
@@ -30,15 +29,9 @@ class WalletActivity : BaseActivity() {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            btn_recharge.id -> {
-                ARouter.getInstance().build(RouterPath.RECHARGE_ACTIVITY).navigation()
-            }
-            btn_withdrawal.id -> {
-                ARouter.getInstance().build(RouterPath.WITHDRAWAL_ACTIVITY).navigation()
-            }
-            view_pay_parent.id -> {
-                ARouter.getInstance().build(RouterPath.PAY_CODE_ACTIVITY).navigation()
-            }
+            btn_recharge.id -> RouterManager.navigation(this, RouterManager.RECHARGE_ACTIVITY)
+            btn_withdrawal.id -> RouterManager.navigation(this, RouterManager.WITHDRAWAL_ACTIVITY)
+            view_pay_parent.id -> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY)
         }
     }
 

@@ -3,7 +3,7 @@ package com.zhkj.smartpolice.wallet.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.RouterPath
+import com.sunny.zy.utils.RouterManager
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.wallet.utils.MoneyInputFilter
 import kotlinx.android.synthetic.main.act_recharge.*
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.act_recharge.*
 /**
  * 充值页面
  */
-@Route(path = RouterPath.RECHARGE_ACTIVITY)
+@Route(path = RouterManager.RECHARGE_ACTIVITY)
 class RechargeActivity : BaseActivity() {
 
     var wxPay = 0

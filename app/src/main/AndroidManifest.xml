@@ -16,6 +16,7 @@
         android:theme="@style/ZyTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
         <activity android:name=".login.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".app.MainActivity" />
+
+        <!--登录模块-->
+
+        <activity android:name=".login.activity.AlterPasswordActivity" />
+
+        <!--餐厅模块-->
+
         <activity android:name=".meal.MealActivity" />
-        <activity android:name=".login.activity.AlterPasswordActivity"/>
+        <activity android:name=".meal.MealDetailActivity" />
+
     </application>
 
 </manifest>

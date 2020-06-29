@@ -3,10 +3,10 @@ package com.zhkj.smartpolice.wallet.activity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.RouterPath
+import com.sunny.zy.utils.RouterManager
 import com.zhkj.smartpolice.R
 
-@Route(path= RouterPath.PAY_CODE_ACTIVITY)
+@Route(path = RouterManager.PAY_CODE_ACTIVITY)
 class PayCodeActivity : BaseActivity() {
 
     override fun setLayout(): Int = R.layout.act_pay_code

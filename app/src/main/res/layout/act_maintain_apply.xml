@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_background_F0F1F2"
+    tools:context=".maintain.activity.MaintainApplyActivity">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_340"
+        android:layout_height="@dimen/dp_96"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="@dimen/dp_11"
+        android:background="@drawable/sel_maintain_apply_border">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="维修装备名称："
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_150"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@null"
+                android:hint="请填写维修装备名称"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_48"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="维修人姓名："
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_150"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@null"
+                android:hint="请填写你的姓名"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_two"
+        android:layout_width="@dimen/dp_340"
+        android:layout_height="@dimen/dp_192"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="@dimen/dp_117"
+        android:background="@drawable/sel_maintain_apply_border">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="维修人手机号"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_130"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@null"
+                android:hint="请填写你的手机号"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_48"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_48"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="维修地点部门"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <com.zhkj.smartpolice.util.CustomSpinner
+                android:id="@+id/cs_section"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_110"
+                android:layout_marginRight="@dimen/dp_10"
+                android:paddingLeft="@dimen/dp_20"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_95"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_95"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:text="维修预约时间"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_143"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:hint="请填写你维修的问题"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_two"
+        android:layout_marginLeft="@dimen/dp_26"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="上传图片"
+        android:textColor="@color/fun_3E3E3E"
+        android:textSize="@dimen/sp_14" />
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_67"
+        android:layout_height="@dimen/dp_67"
+        android:layout_below="@id/rl_two"
+        android:layout_marginLeft="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_34"
+        android:background="@drawable/sel_maintain_apply_border"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:src="@drawable/svg_camera_img" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:text="返回"
+        android:textColor="@color/fun_999999"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_login_button"
+        android:gravity="center"
+        android:text="提交申请"
+        android:textColor="@color/fun_FFFFFF"
+        android:textSize="@dimen/sp_16" />
+
+</RelativeLayout>

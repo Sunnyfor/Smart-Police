@@ -31,4 +31,10 @@
     <color name="bg_logistics_FF9A67">#FF9A67</color>
     <color name="bg_logistics_FF645F">#FF645F</color>
     <color name="bg_background_F0F1F2">#F0F1F2</color>
+
+<!--    维修模块-->
+    <color name="fun_3E3E3E">#3E3E3E</color>
+    <color name="fun_999999">#999999</color>
+    <color name="bg_DCDCDC">#DCDCDC</color>
+    <color name="fun_FFFFFF">#FFFFFF</color>
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:id="@+id/rl_button"
+    android:background="@color/color_white">
+
+    <TextView
+        android:id="@+id/custom_msg_tv"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"
+        android:text="开发部"
+        android:textColor="@color/fun_3E3E3E"/>
+    
+    <ImageView
+        android:id="@+id/custom_img"
+        android:layout_width="@dimen/dp_8"
+        android:layout_height="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_10"/>
+
+</RelativeLayout>

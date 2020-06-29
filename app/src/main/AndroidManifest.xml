@@ -16,7 +16,8 @@
         android:theme="@style/ZyTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity android:name=".maintain.activity.MaintainApplyActivity"></activity>
+        <activity android:name=".maintain.activity.PoliceMaintainActivity" />
         <activity android:name=".login.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,16 +29,13 @@
         <activity android:name=".app.MainActivity" />
 
         <!--登录模块-->
-
         <activity android:name=".login.activity.AlterPasswordActivity" />
 
         <!--餐厅模块-->
-
         <activity android:name=".meal.MealActivity" />
         <activity android:name=".meal.MealDetailActivity" />
         <activity android:name=".meal.MealOrderActivity" />
         <activity android:name=".meal.MealOrderInfoActivity" />
-
     </application>
 
 </manifest>

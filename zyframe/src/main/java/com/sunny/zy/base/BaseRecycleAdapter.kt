@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * baseAdapter
  * Created by zhangye on 2018/1/5.
  */
-abstract class BaseRecycleAdapter<T>(private var list: ArrayList<T>) :
+abstract class BaseRecycleAdapter<T>(var list: ArrayList<T>) :
     RecyclerView.Adapter<BaseRecycleViewHolder>() {
     private var isDouble = false
     private var onItemClickListener: ((view: View, position: Int) -> Unit)? = null
@@ -53,4 +53,3 @@ abstract class BaseRecycleAdapter<T>(private var list: ArrayList<T>) :
     }
 
 }
-

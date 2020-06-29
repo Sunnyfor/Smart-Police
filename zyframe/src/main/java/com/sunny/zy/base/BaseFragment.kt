@@ -59,13 +59,9 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
 
     abstract fun initView()
 
-    abstract fun loadData()
-
-    /**
-     * 点击事件回调
-     */
     abstract fun onClickEvent(view: View)
 
+    abstract fun loadData()
 
     override fun showMessage(message: String) {
         getBaseActivity().showMessage(message)

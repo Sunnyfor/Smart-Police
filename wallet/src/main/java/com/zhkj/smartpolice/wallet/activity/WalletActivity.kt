@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.act_wallet.*
  * 钱包页面
  */
 @Route(path = RouterManager.WALLET_ACTIVITY)
-class WalletActivity : BaseActivity() ,WalletContract.IWalletView {
+class WalletActivity : BaseActivity(), WalletContract.IWalletView {
 
     private val walletPresenter: WalletPresenter by lazy {
         WalletPresenter(this)

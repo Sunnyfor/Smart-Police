@@ -5,7 +5,7 @@ import android.view.View
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
-import com.zhkj.smartpolice.maintain.activity.MaintainApplyActivity
+import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.meal.MealActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 
@@ -17,6 +17,7 @@ class LogisticsFragment : BaseFragment() {
     override fun initView() {
         setOnClickListener(
             rl_meal,
+            rl_drugstore,
             rl_maintain
         )
 
@@ -29,6 +30,7 @@ class LogisticsFragment : BaseFragment() {
     override fun onClickEvent(view: View) {
         when (view.id) {
             rl_meal.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
+            rl_drugstore.id -> startActivity(Intent(requireContext(), DrugstoreActivity::class.java))
             rl_maintain.id -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java))
         }
     }

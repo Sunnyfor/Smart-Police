@@ -26,8 +26,8 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         this.savedInstanceState = savedInstanceState
-        if (rootView == null) {
-            rootView = FrameLayout(requireContext())
+        rootView = FrameLayout(requireContext())
+        if (setLayout() != 0) {
             bodyView = inflater.inflate(setLayout(), container, false)
             rootView?.addView(bodyView)
         }
@@ -62,6 +62,10 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
     abstract fun onClickEvent(view: View)
 
     abstract fun loadData()
+
+    fun setLayoutView(view: View) {
+        rootView?.addView(view)
+    }
 
     override fun showMessage(message: String) {
         getBaseActivity().showMessage(message)

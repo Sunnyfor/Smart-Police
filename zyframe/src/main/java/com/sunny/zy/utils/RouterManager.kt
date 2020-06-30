@@ -11,6 +11,7 @@ object RouterManager {
     const val RECHARGE_ACTIVITY = "/wallet/RechargeActivity"    //充值
     const val WITHDRAWAL_ACTIVITY = "/wallet/WithdrawalActivity"//提现
     const val PAY_CODE_ACTIVITY = "/wallet/PayCodeActivity"     //支付码
+    const val RECORD_ACTIVITY = "/wallet/RecordActivity"         //账单记录
 
     fun navigation(context: Context, path: String) {
         ARouter.getInstance()

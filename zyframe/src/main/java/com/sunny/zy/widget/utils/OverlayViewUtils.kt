@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sunny.zy.R
 import com.sunny.zy.base.ErrorViewType
-import kotlinx.android.synthetic.main.zy_layout_net_error.view.*
+import kotlinx.android.synthetic.main.zy_layout_error.view.*
 
 /**
  * Desc
@@ -27,7 +27,7 @@ class OverlayViewUtils {
 
         val view = when (viewType) {
             ErrorViewType.loading -> View.inflate(context, R.layout.zy_layout_loading, null)
-            else -> View.inflate(context, R.layout.zy_layout_net_error, null).apply {
+            else -> View.inflate(context, R.layout.zy_layout_error, null).apply {
 
                 when (viewType) {
                     ErrorViewType.networkError -> {

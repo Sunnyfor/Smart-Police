@@ -6,8 +6,7 @@ import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.UrlConstant
 import org.json.JSONObject
 import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
+import java.io.FileWriter
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
@@ -23,7 +22,7 @@ class GSonResponseParser : IResponseParser {
     private val mGSon = Gson()
 
     override fun <T> parserResponse(
-        data: InputStream,
+        data: String,
         type: Type,
         serializedName: String?
     ): T {
@@ -31,7 +30,7 @@ class GSonResponseParser : IResponseParser {
         if (type is Class<*>) {
             when (type.name) {
                 String::class.java.name -> {
-                    return writeString(data) as T
+                    return data as T
                 }
 
                 File::class.java.name -> {
@@ -40,7 +39,7 @@ class GSonResponseParser : IResponseParser {
             }
         } else {
             if (type is ParameterizedType) {
-                val jsonObj = JSONObject(writeString(data))
+                val jsonObj = JSONObject(data)
                 when (type.rawType) {
                     BaseModel::class.java -> {
                         val childType = type.actualTypeArguments[0]
@@ -53,25 +52,18 @@ class GSonResponseParser : IResponseParser {
                         return baseModel as T
                     }
                     PageModel::class.java -> {
-                        jsonObj.put("data", jsonObj.optJSONObject(serializedName))
-                        jsonObj.remove(serializedName)
+                        jsonObj.put("data", jsonObj.optJSONObject("page"))
+                        jsonObj.remove("page")
                         return mGSon.fromJson(jsonObj.toString(), type)
                     }
                 }
             }
         }
-        return mGSon.fromJson(writeString(data), type)
+        return mGSon.fromJson(data, type)
     }
 
 
-    private fun writeString(data: InputStream): String {
-        val byte = ByteArray(data.available())
-        data.read(byte)
-        return String(byte)
-    }
-
-
-    private fun writeResponseBodyToDisk(data: InputStream, serializedName: String?): File {
+    private fun writeResponseBodyToDisk(data: String, serializedName: String?): File {
         val pathFile = File(UrlConstant.TEMP ?: "")
         if (!pathFile.exists()) {
             pathFile.mkdirs()
@@ -81,19 +73,10 @@ class GSonResponseParser : IResponseParser {
             file.delete()
         }
         file.createNewFile()
-        val byte = ByteArray(4096)
-        var downloadSize = 0L
 
-        val outputStream = FileOutputStream(file)
-        while (true) {
-            val read = data.read(byte)
-            if (read == -1) {
-                break
-            }
-            outputStream.write(byte, 0, read)
-            downloadSize += read
-        }
-        outputStream.flush()
+        val writer = FileWriter(file)
+        writer.write(data)
+        writer.close()
         return file
     }
 

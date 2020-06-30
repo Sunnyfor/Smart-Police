@@ -10,6 +10,6 @@ import java.lang.reflect.Type
  * Date 2020/4/29 14:47
  */
 interface IResponseParser {
-    fun <T> parserResponse(data: InputStream, type: Type, serializedName: String? = null): T
+    fun <T> parserResponse(data: String, type: Type, serializedName: String? = null): T
 
 }

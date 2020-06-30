@@ -151,13 +151,12 @@ object ZyHttp {
             if (response.isSuccessful) {
                 response.body?.let {
                     httpResultBean.bean = iResponseParser.parserResponse<T>(
-                        it.byteStream(),
+                        it.string(),
                         httpResultBean.typeToken,
                         httpResultBean.serializedName
                     )
                 }
             }
-
 
         } catch (e: Exception) {
             //出现异常获取异常信息

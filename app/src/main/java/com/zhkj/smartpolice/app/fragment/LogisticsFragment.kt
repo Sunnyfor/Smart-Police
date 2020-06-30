@@ -29,7 +29,7 @@ class LogisticsFragment : BaseFragment() {
     override fun onClickEvent(view: View) {
         when (view.id) {
             rl_meal.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
-            rl_maintain.id -> startActivity(Intent(requireContext(), MaintainApplyActivity::class.java))
+            rl_maintain.id -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java))
         }
     }
 

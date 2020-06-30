@@ -129,7 +129,7 @@
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <com.zhkj.smartpolice.util.CustomSpinner
+            <com.zhkj.smartpolice.utils.CustomSpinner
                 android:id="@+id/cs_section"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -204,6 +204,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_uploading"
         android:layout_width="@dimen/dp_67"
         android:layout_height="@dimen/dp_67"
         android:layout_below="@id/rl_two"

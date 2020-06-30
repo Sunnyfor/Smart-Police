@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.maintain.activity.MaintainApplyActivity
 import com.zhkj.smartpolice.meal.MealActivity
 import kotlinx.android.synthetic.main.frag_logistics.*

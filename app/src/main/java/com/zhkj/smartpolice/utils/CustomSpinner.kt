@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.util
+package com.zhkj.smartpolice.utils
 
 import android.content.Context
 import android.util.AttributeSet

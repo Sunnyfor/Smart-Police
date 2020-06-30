@@ -93,4 +93,7 @@ dependencies {
 
     //支持圆角圆形的ImageView
     api 'com.makeramen:roundedimageview:2.3.0'
+
+//    //日期选择器
+    implementation 'com.contrarywind:Android-PickerView:4.1.6'
 }

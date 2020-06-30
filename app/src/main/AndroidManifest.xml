@@ -15,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/ZyTheme"
         android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup"
         tools:targetApi="m">
-        <activity android:name=".maintain.activity.MaintainApplyActivity"></activity>
+        <activity android:name=".maintain.activity.ApplyMaintainListActivity"></activity>
+        <activity android:name=".maintain.activity.MaintainApplyActivity" />
         <activity android:name=".maintain.activity.PoliceMaintainActivity" />
         <activity android:name=".login.activity.LoginActivity">
             <intent-filter>
@@ -25,13 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".app.MainActivity" />
-
-        <!--登录模块-->
-        <activity android:name=".login.activity.AlterPasswordActivity" />
-
-        <!--餐厅模块-->
+        <activity android:name=".app.MainActivity" /> <!-- 登录模块 -->
+        <activity android:name=".login.activity.AlterPasswordActivity" /> <!-- 餐厅模块 -->
         <activity android:name=".meal.MealActivity" />
         <activity android:name=".meal.MealDetailActivity" />
         <activity android:name=".meal.MealOrderActivity" />

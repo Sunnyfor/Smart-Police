@@ -32,7 +32,7 @@ class WalletPresenter(iBaseView: IBaseView) :
             showLoading()
             walletModel.loadPurse()?.let {
                 if (view is WalletContract.IWalletView) {
-                    (view as WalletContract.IWalletView).showPurse(it)
+                    (view as WalletContract.IWalletView).showPurseData(it)
                 }
             }
             hideLoading()
@@ -47,13 +47,30 @@ class WalletPresenter(iBaseView: IBaseView) :
             hideLoading()
             if (file != null) {
                 if (view is WalletContract.IPayCodeView) {
-                    (view as WalletContract.IPayCodeView).showPayCode(file)
+                    (view as WalletContract.IPayCodeView).showPayCodeData(file)
                 }
             } else {
                 view?.showError(ErrorViewType(ErrorViewType.emptyData, "生成付款码失败", 0))
             }
         }
     }
+
+    /**
+     * 加载钱包流水
+     */
+    override fun loadRecord(page: String, limit: String?) {
+        launch(Main) {
+            if (view is WalletContract.IRecordView) {
+                (view as WalletContract.IRecordView).showRecordData(
+                    walletModel.loadRecord(
+                        page,
+                        limit
+                    ) ?: arrayListOf()
+                )
+            }
+        }
+    }
+
 
     //启动倒计时刷新付款码
     fun startTimer() {
@@ -81,7 +98,7 @@ class WalletPresenter(iBaseView: IBaseView) :
 
     private fun showCountdown() {
         if (view is WalletContract.IPayCodeView) {
-            (view as WalletContract.IPayCodeView).showCountdown(count.toString())
+            (view as WalletContract.IPayCodeView).showCountdownData(count.toString())
         }
     }
 

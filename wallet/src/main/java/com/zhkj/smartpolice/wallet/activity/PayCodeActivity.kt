@@ -38,7 +38,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         walletPresenter.stopTimer()
     }
 
-    override fun showPayCode(file: File) {
+    override fun showPayCodeData(file: File) {
         walletPresenter.startTimer() //启动倒计时
         //加载显示付款码
         GlideApp.with(this)
@@ -47,7 +47,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
             .into(iv_qr_code)
     }
 
-    override fun showCountdown(number: String) {
+    override fun showCountdownData(number: String) {
         tv_hint.text = ("$number 秒后刷新")
     }
 }

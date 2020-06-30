@@ -30,7 +30,8 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
         setOnClickListener(
             btn_recharge,
             btn_withdrawal,
-            view_pay_parent
+            view_pay_parent,
+            view_record_parent
         )
     }
 
@@ -46,6 +47,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
             btn_recharge.id -> RouterManager.navigation(this, RouterManager.RECHARGE_ACTIVITY)
             btn_withdrawal.id -> RouterManager.navigation(this, RouterManager.WITHDRAWAL_ACTIVITY)
             view_pay_parent.id -> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY)
+            view_record_parent.id -> RouterManager.navigation(this,RouterManager.RECORD_ACTIVITY)
         }
     }
 
@@ -53,7 +55,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
 
     }
 
-    override fun showPurse(purseBean: PurseBean) {
+    override fun showPurseData(purseBean: PurseBean) {
         tv_balance.text = purseBean.balance
     }
 }

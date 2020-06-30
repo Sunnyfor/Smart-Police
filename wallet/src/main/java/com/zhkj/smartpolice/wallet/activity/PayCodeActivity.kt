@@ -2,6 +2,7 @@ package com.zhkj.smartpolice.wallet.activity
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.GlideApp
 import com.sunny.zy.utils.RouterManager
@@ -43,11 +44,23 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         //加载显示付款码
         GlideApp.with(this)
             .load(file)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .skipMemoryCache(true)
             .placeholder(R.drawable.svg_pay_qr_code)
             .into(iv_qr_code)
     }
 
     override fun showCountdownData(number: String) {
         tv_hint.text = ("$number 秒后刷新")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        walletPresenter.stopTimer()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        walletPresenter.startTimer()
     }
 }

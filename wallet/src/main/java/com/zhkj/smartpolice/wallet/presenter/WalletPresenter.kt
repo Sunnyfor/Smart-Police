@@ -42,6 +42,9 @@ class WalletPresenter(iBaseView: IBaseView) :
     //生成付款码
     override fun generatePayQrCode() {
         launch(Main) {
+            if (count != defaultCount) {
+                return@launch
+            }
             showLoading()
             val file = walletModel.generatePayQrCode()
             hideLoading()

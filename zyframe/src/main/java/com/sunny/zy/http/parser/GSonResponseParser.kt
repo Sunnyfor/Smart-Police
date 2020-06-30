@@ -4,9 +4,11 @@ import com.google.gson.Gson
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.UrlConstant
+import okhttp3.ResponseBody
 import org.json.JSONObject
 import java.io.File
-import java.io.FileWriter
+import java.io.FileOutputStream
+import java.io.InputStream
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
@@ -22,7 +24,7 @@ class GSonResponseParser : IResponseParser {
     private val mGSon = Gson()
 
     override fun <T> parserResponse(
-        data: String,
+        responseBody: ResponseBody,
         type: Type,
         serializedName: String?
     ): T {
@@ -30,16 +32,17 @@ class GSonResponseParser : IResponseParser {
         if (type is Class<*>) {
             when (type.name) {
                 String::class.java.name -> {
-                    return data as T
+                    return responseBody.string() as T
                 }
 
                 File::class.java.name -> {
-                    return writeResponseBodyToDisk(data, serializedName) as T
+                    return writeResponseBodyToDisk(responseBody.byteStream(), serializedName) as T
                 }
             }
         } else {
+            val json = responseBody.string()
             if (type is ParameterizedType) {
-                val jsonObj = JSONObject(data)
+                val jsonObj = JSONObject(json)
                 when (type.rawType) {
                     BaseModel::class.java -> {
                         val childType = type.actualTypeArguments[0]
@@ -59,11 +62,11 @@ class GSonResponseParser : IResponseParser {
                 }
             }
         }
-        return mGSon.fromJson(data, type)
+        return mGSon.fromJson(responseBody.string(), type)
     }
 
 
-    private fun writeResponseBodyToDisk(data: String, serializedName: String?): File {
+    private fun writeResponseBodyToDisk(data: InputStream, serializedName: String?): File {
         val pathFile = File(UrlConstant.TEMP ?: "")
         if (!pathFile.exists()) {
             pathFile.mkdirs()
@@ -74,9 +77,19 @@ class GSonResponseParser : IResponseParser {
         }
         file.createNewFile()
 
-        val writer = FileWriter(file)
-        writer.write(data)
-        writer.close()
+        val byte = ByteArray(4096)
+        var downloadSize = 0L
+        val outputStream = FileOutputStream(file)
+        while (true) {
+            val read = data.read(byte)
+            if (read == -1) {
+                break
+            }
+            outputStream.write(byte, 0, read)
+            downloadSize += read
+        }
+        outputStream.flush()
+
         return file
     }
 

@@ -151,7 +151,7 @@ object ZyHttp {
             if (response.isSuccessful) {
                 response.body?.let {
                     httpResultBean.bean = iResponseParser.parserResponse<T>(
-                        it.string(),
+                        it,
                         httpResultBean.typeToken,
                         httpResultBean.serializedName
                     )

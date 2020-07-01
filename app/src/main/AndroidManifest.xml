@@ -32,6 +32,7 @@
         <activity android:name=".login.activity.AlterPasswordActivity" />
 
         <!--餐厅模块-->
+        <activity android:name=".meal.RestaurantListActivity" />
         <activity android:name=".meal.MealActivity" />
         <activity android:name=".meal.MealDetailActivity" />
         <activity android:name=".meal.MealOrderActivity" />

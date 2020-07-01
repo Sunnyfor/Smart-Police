@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/dp_20">
 
             <TextView
-                android:id="@+id/tv_meal"
+                android:id="@+id/tv_restaurant"
                 style="@style/style_font_logistics_function"
                 android:drawableTop="@drawable/svg_logistics_meal"
                 android:text="餐厅"

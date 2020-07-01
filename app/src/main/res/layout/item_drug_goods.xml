@@ -10,16 +10,18 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/iv_image"
         style="@style/style_image_circle"
-        android:layout_width="@dimen/dp_112"
+        android:layout_width="@dimen/dp_90"
         android:layout_height="@dimen/dp_90"
-        android:layout_marginEnd="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
         android:src="@drawable/bg_meal_goods"
         app:riv_corner_radius="@dimen/dp_5"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/style_font_black_bigger"
+        style="@style/style_font_black_big"
+        android:layout_alignTop="@id/iv_image"
         android:layout_toEndOf="@id/iv_image"
         android:ellipsize="end"
         android:maxLines="1"
@@ -29,7 +31,7 @@
         android:id="@+id/tv_inventory"
         style="@style/style_font_gray_small"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_15"
         tools:text="库存46份" />
 
     <TextView
@@ -55,7 +57,7 @@
         style="@style/style_common_icon"
         android:layout_alignBottom="@id/tv_price"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/sel_logistics_drugstore_background"
         android:contentDescription="@string/app_name"
+        android:padding="@dimen/dp_5"
         android:src="@drawable/svg_drug_suggestion_box" />
 </RelativeLayout>

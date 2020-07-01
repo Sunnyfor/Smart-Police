@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_36"
+        android:layout_height="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_36"
         android:layout_marginEnd="@dimen/dp_36"
         android:gravity="center_vertical"
@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/iv_search"
-            android:layout_width="@dimen/dp_20"
-            android:layout_height="@dimen/dp_20"
+            android:layout_width="@dimen/dp_18"
+            android:layout_height="@dimen/dp_18"
             android:contentDescription="@string/app_name"
             android:src="@drawable/svg_btn_search" />
 

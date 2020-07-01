@@ -37,6 +37,7 @@
         <activity android:name=".meal.MealDetailActivity" />
         <activity android:name=".meal.MealOrderActivity" />
         <activity android:name=".meal.MealOrderInfoActivity" />
+        <activity android:name=".meal.MealRecordActivity" />
 
         <!--药店模块-->
         <activity android:name=".drugstore.DrugstoreActivity" />

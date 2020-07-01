@@ -5,7 +5,7 @@ import android.view.View
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.RouterManager
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.meal.MealActivity
+import com.zhkj.smartpolice.meal.MealRecordActivity
 import kotlinx.android.synthetic.main.frag_mine.*
 
 
@@ -24,7 +24,7 @@ class MineFragment : BaseFragment() {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            ll_meal.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
+            ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
             rl_wallet.id -> RouterManager.navigation(requireContext(), RouterManager.WALLET_ACTIVITY)
             btn_withdrawal.id -> RouterManager.navigation(requireContext(), RouterManager.WITHDRAWAL_ACTIVITY)
             btn_recharge.id -> RouterManager.navigation(requireContext(), RouterManager.RECHARGE_ACTIVITY)

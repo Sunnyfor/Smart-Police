@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_F6F6F6"
+    tools:context=".maintain.activity.AuditInfoActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="@dimen/dp_340"
+        android:layout_height="@dimen/dp_258"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@drawable/sel_audit_border_background"
+        android:paddingLeft="@dimen/sp_20"
+        android:paddingTop="@dimen/dp_32"
+        android:paddingRight="@dimen/sp_20">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_font_audit_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名：" />
+
+            <TextView
+                style="@style/style_font_audit_text_latyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="戴永明" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_font_audit_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="部门：" />
+
+            <TextView
+                style="@style/style_font_audit_text_latyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="财务部" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_64"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_font_audit_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修问题：" />
+
+            <TextView
+                style="@style/style_font_audit_text_latyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="冰箱" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/style_font_audit_function"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_96"
+            android:text="照片：" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_150"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_font_audit_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号：" />
+
+            <TextView
+                style="@style/style_font_audit_text_latyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text=" 18311111111 " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_150"
+            android:layout_marginTop="@dimen/dp_32"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_font_audit_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预约时间：" />
+
+            <TextView
+                style="@style/style_font_audit_text_latyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="06-25-18：00" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="@dimen/dp_103"
+        android:layout_height="@dimen/dp_33"
+        style="@style/style_button_layout"
+        android:text="拒绝比准"
+        android:background="@drawable/sel_audit_button_border"
+        android:layout_below="@id/rl_layout"
+        android:layout_marginTop="@dimen/dp_40" />
+
+    <TextView
+        android:layout_width="@dimen/dp_103"
+        android:layout_height="@dimen/dp_33"
+        style="@style/style_button_checked_layout"
+        android:text="确认审批"
+        android:background="@drawable/sel_audit_button_border_checked"
+        android:layout_below="@id/rl_layout"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

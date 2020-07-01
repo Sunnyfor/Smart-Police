@@ -7,6 +7,8 @@ import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.meal.RestaurantListActivity
+import com.zhkj.smartpolice.maintain.activity.AuditInfoActivity
+import com.zhkj.smartpolice.meal.MealActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 
 
@@ -31,7 +33,7 @@ class LogisticsFragment : BaseFragment() {
         when (view.id) {
             tv_restaurant.id -> startActivity(Intent(requireContext(), RestaurantListActivity::class.java))
             tv_drugstore.id -> startActivity(Intent(requireContext(), DrugstoreActivity::class.java))
-            tv_maintain.id -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java))
+            tv_maintain.id -> startActivity(Intent(requireContext(), AuditInfoActivity::class.java))
         }
     }
 

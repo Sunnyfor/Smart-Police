@@ -100,4 +100,26 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!--    【审批界面】基本信息标注样式-->
+    <style name="style_font_audit_function">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:textColor">@color/fun_999999</item>
+    </style>
+
+<!--    【审批界面】基本信息详情 字体样式-->
+    <style name="style_font_audit_text_latyou" parent="style_font_audit_function">
+        <item name="android:textColor">@color/fun_333333</item>
+    </style>
+
+    <style name="style_button_layout" parent="style_mine_layout_weight">
+        <item name="android:textColor">@color/fun_476FFF</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:layout_marginStart">@dimen/dp_40</item>
+    </style>
+
+    <style name="style_button_checked_layout" parent="style_mine_layout_weight">
+        <item name="android:textColor">@color/fun_FFFFFF</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:layout_marginEnd">@dimen/dp_40</item>
+    </style>
 </resources>

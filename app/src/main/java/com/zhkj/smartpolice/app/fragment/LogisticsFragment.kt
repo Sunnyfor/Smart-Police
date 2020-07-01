@@ -16,9 +16,9 @@ class LogisticsFragment : BaseFragment() {
 
     override fun initView() {
         setOnClickListener(
-            rl_meal,
-            rl_drugstore,
-            rl_maintain
+            tv_meal,
+            tv_drugstore,
+            tv_maintain
         )
 
     }
@@ -29,9 +29,9 @@ class LogisticsFragment : BaseFragment() {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            rl_meal.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
-            rl_drugstore.id -> startActivity(Intent(requireContext(), DrugstoreActivity::class.java))
-            rl_maintain.id -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java))
+            tv_meal.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
+            tv_drugstore.id -> startActivity(Intent(requireContext(), DrugstoreActivity::class.java))
+            tv_maintain.id -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java))
         }
     }
 

@@ -1,5 +1,13 @@
 <resources>
 
+    <!--后勤功能区-->
+
+    <style name="style_font_logistics_function" parent="style_font_black">
+        <item name="android:drawablePadding">@dimen/dp_6</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <!--通用橙色字体-->
 
     <style name="style_font_orange">

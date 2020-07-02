@@ -4,6 +4,7 @@ import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
+import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.wallet.bean.PurseBean
 import com.zhkj.smartpolice.wallet.bean.RecordBean
 import com.zhkj.smartpolice.wallet.http.WalletUrlConstant
@@ -52,5 +53,43 @@ class WalletModel {
             }
         }
         return null
+    }
+
+    /**
+     * 创建/更新支付密码
+     */
+    suspend fun updatePayPassword(oldPayPassword: String, newPayPassword: String): BaseModel<Any>? {
+        val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
+        val params = hashMapOf<String, String>()
+        params["oldPayPassword"] = oldPayPassword
+        params["newPayPassword"] = newPayPassword
+        ZyHttp.post(WalletUrlConstant.UPDATE_PAY_PASSWORD, params, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.code == "0") {
+                return httpResultBean.bean
+            } else {
+                ToastUtil.show(httpResultBean.bean?.msg)
+            }
+        }
+        return null
+    }
+
+
+    /**
+     * 验证支付密码
+     */
+    suspend fun verifyPayPassword(payPassword: String): Boolean {
+        val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
+        val params = hashMapOf<String, String>()
+        params["payPassword"] = payPassword
+        ZyHttp.post(WalletUrlConstant.VERIFY_PAY_PASSWORD, params, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.code == "0") {
+                return true
+            }else {
+                ToastUtil.show(httpResultBean.bean?.msg)
+            }
+        }
+        return false
     }
 }

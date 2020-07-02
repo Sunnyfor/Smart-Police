@@ -6,6 +6,12 @@
     <string name="withdrawal">提现</string>
     <string name="withdrawal_money">提现金额</string>
     <string name="pay_code">支付码</string>
+    <string name="pay_password">支付密码</string>
+    <string name="create_pay_password">创建支付密码</string>
+    <string name="modify_pay_password">修改支付密码</string>
+    <string name="pay_password_hint">请验证您的支付密码，确认本人操作</string>
+    <string name="create_pay_password_hint">请设置您的支付密码</string>
+    <string name="create_pay_sure_password_hint">请再次填写以确认支付密码</string>
     <string name="record">账单记录</string>
     <string name="money">金额</string>
     <string name="input_money">输入金额</string>

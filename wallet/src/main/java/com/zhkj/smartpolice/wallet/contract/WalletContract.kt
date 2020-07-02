@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.wallet.contract
 
+import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
 import com.zhkj.smartpolice.wallet.bean.PurseBean
@@ -20,6 +21,12 @@ interface WalletContract {
         fun showRecordData(recordBeans: ArrayList<RecordBean>)
     }
 
+    interface IPayPassWordView : IBaseView {
+        fun isSettingPayPassword(hasPayPassword: Boolean)
+        fun verifyPayPassword(isOk: Boolean)
+        fun updatePayPassword(baseModel: BaseModel<Any>)
+    }
+
     abstract class Presenter(iBaseView: IBaseView) : BasePresenter<IBaseView>(iBaseView) {
         //加载钱包数据
         abstract fun loadPurse()
@@ -29,5 +36,14 @@ interface WalletContract {
 
         //加载钱包流水
         abstract fun loadRecord(page: String, limit: String? = null)
+
+        //是否设置过支付密码
+        abstract fun isSettingPayPassword()
+
+        //创建或修改支付密码
+        abstract fun updatePayPassword(oldPayPassword: String, newPayPassword: String)
+
+        //验证支付密码
+        abstract fun verifyPayPassword(payPassword: String)
     }
 }

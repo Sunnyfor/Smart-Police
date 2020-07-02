@@ -15,4 +15,14 @@ object WalletUrlConstant {
      * 支付记录
      */
     const val PAY_RECORD_LIST = "pay/record/list"
+
+    /**
+     *  创建/修改支付密码
+     */
+    const val UPDATE_PAY_PASSWORD = "pay/purse/updatePayPassword"
+
+    /**
+     * 验证支付密码
+     */
+    const val VERIFY_PAY_PASSWORD = "pay/purse/verifyPayPassword"
 }

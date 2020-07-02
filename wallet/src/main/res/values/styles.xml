@@ -24,4 +24,11 @@
         <item name="android:layout_height">@dimen/dp_45</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+
+    <style name="wallet_pay_password_text" parent="style_font_black">
+        <item name="android:layout_width">@dimen/dp_44</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

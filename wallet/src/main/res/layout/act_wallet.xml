@@ -110,9 +110,9 @@
 
     <View
         style="@style/wallet_item_line"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/view_pay_parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <!--
@@ -157,8 +157,56 @@
 
     <View
         style="@style/wallet_item_line"
+        app:layout_constraintBottom_toBottomOf="@id/view_record_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!--
+      转账、付款记录
+  -->
+    <View
+        android:id="@+id/view_pay_password_parent"
+        style="@style/style_item_card_view"
+        android:background="@color/color_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/view_record_parent" />
+        app:layout_constraintTop_toBottomOf="@id/view_record_parent" />
+
+    <View
+        android:id="@+id/view_pay_password"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginStart="@dimen/dp_18"
+        android:background="@drawable/svg_wallet_pay_password"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_password_parent"
+        app:layout_constraintStart_toStartOf="@id/view_pay_password_parent"
+        app:layout_constraintTop_toTopOf="@id/view_pay_password_parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/tv_pay_password_title"
+        style="@style/style_font_black_big"
+        android:layout_marginStart="@dimen/dp_12"
+        android:text="@string/pay_password"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_password_parent"
+        app:layout_constraintStart_toEndOf="@id/view_pay_password"
+        app:layout_constraintTop_toTopOf="@id/view_pay_password_parent" />
+
+    <View
+        android:layout_width="@dimen/dp_14"
+        android:layout_height="@dimen/dp_14"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@drawable/svg_more"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_password_parent"
+        app:layout_constraintEnd_toEndOf="@id/view_pay_password_parent"
+        app:layout_constraintTop_toTopOf="@id/view_pay_password_parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <View
+        style="@style/wallet_item_line"
+        app:layout_constraintBottom_toBottomOf="@id/view_pay_password_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

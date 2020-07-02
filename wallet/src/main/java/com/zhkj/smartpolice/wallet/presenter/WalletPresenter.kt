@@ -74,6 +74,47 @@ class WalletPresenter(iBaseView: IBaseView) :
         }
     }
 
+    /**
+     * 是否设置过支付密码
+     */
+    override fun isSettingPayPassword() {
+        launch(Main) {
+            walletModel.loadPurse()?.let {
+                if (view is WalletContract.IPayPassWordView) {
+                    val hasPayPassword = !(it.payPassword == null || it.payPassword == "")
+                    (view as WalletContract.IPayPassWordView).isSettingPayPassword(hasPayPassword)
+                }
+            }
+        }
+
+    }
+
+    /**
+     * 创建/更新支付密码
+     */
+    override fun updatePayPassword(oldPayPassword: String, newPayPassword: String) {
+        launch(Main) {
+            val baseModel = walletModel.updatePayPassword(oldPayPassword, newPayPassword)
+            if (view is WalletContract.IPayPassWordView) {
+                if (baseModel?.code == "0") {
+                    (view as WalletContract.IPayPassWordView).updatePayPassword(baseModel)
+                }
+            }
+        }
+    }
+
+    /**
+     * /验证支付密码
+     */
+    override fun verifyPayPassword(payPassword: String) {
+        launch(Main) {
+            val isOK = walletModel.verifyPayPassword(payPassword)
+            if (view is WalletContract.IPayPassWordView) {
+                (view as WalletContract.IPayPassWordView).verifyPayPassword(isOK)
+            }
+        }
+    }
+
 
     //启动倒计时刷新付款码
     fun startTimer() {

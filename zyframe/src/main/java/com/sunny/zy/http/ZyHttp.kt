@@ -161,6 +161,7 @@ object ZyHttp {
         } catch (e: Exception) {
             //出现异常获取异常信息
             httpResultBean.exception = e
+            httpResultBean.msg = e.message
             e.printStackTrace()
         }
     }

@@ -17,15 +17,10 @@ abstract class HttpResultBean<T>(
     var bean: T? = null //数据结果
 
     fun isSuccess(): Boolean {
-        if (httpIsSuccess()) {
-            if (exception != null) {
-                ToastUtil.show(exception?.message)
-                return false
-            }
+        if (httpIsSuccess() && exception == null) {
             return true
-        } else {
-            ToastUtil.show(msg)
         }
+        ToastUtil.show(msg)
         return false
     }
 

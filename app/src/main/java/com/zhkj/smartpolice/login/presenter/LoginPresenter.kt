@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.login.presenter
 
+import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.http.UrlConstant
 import com.sunny.zy.http.ZyHttp
@@ -20,12 +21,13 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
         val params = HashMap<String, String>()
         params["userName"] = userName
         params["password"] = password
-        val httpResultBean = object : HttpResultBean<UserInfoBean>(){ }
+
+        val httpResultBean = object : HttpResultBean<BaseModel<ArrayList<UserInfoBean>>>(){ }
         launch (Main){
             ZyHttp.post(UrlConstant.USER_LOGIN,params,httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.onUserLogin(httpResultBean.bean ?: return@launch)
+                view?.onUserLogin(httpResultBean.bean?: return@launch)
             }
         }
     }
@@ -39,12 +41,12 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
         val params = HashMap<String, String>()
         params["password"] = formerPassword
         params["newPassword"] = newPassword
-        var httpResultBean = object : HttpResultBean<UserInfoBean>() {}
+        var httpResultBean = object : HttpResultBean<BaseModel<String>>() {}
         launch(Main) {
             ZyHttp.post(UrlConstant.USER_ALTER_PASSWORD, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.onAlterPassword(httpResultBean.bean ?:return@launch)
+                view?.onAlterPassword(httpResultBean.bean?.code?:return@launch)
             }
         }
     }

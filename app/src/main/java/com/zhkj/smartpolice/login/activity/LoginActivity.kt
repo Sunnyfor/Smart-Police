@@ -6,9 +6,13 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.base.BaseModel
+import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.MainActivity
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.presenter.LoginPresenter
 import com.zhkj.smartpolice.login.bean.UserInfoBean
 import com.zhkj.smartpolice.login.view.LoginView
@@ -31,7 +35,7 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loadData() {
-        loginPresenter.onUserLogin("admin", "admin")
+        loginPresenter.onUserLogin("demo1", "666666")
     }
 
     override fun onClickEvent(view: View) {
@@ -72,10 +76,14 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun close() {
     }
 
-    override fun onUserLogin(userInfoBean: UserInfoBean) {
+    override fun onUserLogin(userInfoBean: BaseModel<ArrayList<UserInfoBean>>) {
         super.onUserLogin(userInfoBean)
         userInfoBean.let {
+            LogUtil.i("获取登录数据========$userInfoBean")
             ToastUtil.show("登录成功")
+            it.data?.let {data ->
+                UserManager.setInfo(data.get(0))
+            }
             startActivity(Intent(this, MainActivity::class.java))
         }
     }

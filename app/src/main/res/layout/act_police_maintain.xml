@@ -11,5 +11,11 @@
         android:id="@+id/rv_left_navigation"
         android:layout_width="@dimen/dp_98"
         android:layout_height="match_parent"/>
-
+    
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_parts"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

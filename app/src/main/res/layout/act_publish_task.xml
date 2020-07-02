@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".maintain.activity.PublishTaskActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tv_return"/>
+
+
+    <TextView
+        android:id="@+id/tv_return"
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="@dimen/dp_50"
+        android:text="返回"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:textColor="@color/fun_999999"
+        android:background="@color/color_white"
+        android:textSize="@dimen/sp_16"/>
+
+    <TextView
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="@dimen/dp_50"
+        android:text="发送"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/bg_logistics_2963E0"
+        android:textColor="@color/fun_FFFFFF"
+        android:textSize="@dimen/sp_16"/>
+
+</RelativeLayout>

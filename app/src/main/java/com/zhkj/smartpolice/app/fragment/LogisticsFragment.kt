@@ -4,8 +4,10 @@ import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
+import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
 import com.zhkj.smartpolice.meal.MealActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 
@@ -30,8 +32,24 @@ class LogisticsFragment : BaseFragment() {
     override fun onClickEvent(view: View) {
         when (view.id) {
             tv_restaurant.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
-            tv_drugstore.id -> startActivity(Intent(requireContext(), DrugstoreActivity::class.java))
-            tv_maintain.id -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java))
+            tv_drugstore.id -> startActivity(
+                Intent(
+                    requireContext(),
+                    DrugstoreActivity::class.java
+                )
+            )
+            tv_maintain.id -> {
+                var userInfoBean = UserManager.getInfo()
+                when (userInfoBean.roleId) {
+                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))
+                    115 -> startActivity(
+                        Intent(
+                            requireContext(),
+                            ApplyMaintainListActivity::class.java
+                        )
+                    )
+                }
+            }
         }
     }
 

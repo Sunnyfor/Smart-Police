@@ -139,4 +139,17 @@
         android:layout_below="@id/rl_layout"
         android:layout_marginTop="@dimen/dp_40"
         android:layout_alignParentRight="true" />
+    
+    
+    <TextView
+        android:layout_width="@dimen/dp_118"
+        android:layout_height="@dimen/dp_33"
+        style="@style/style_button_checked_layout"
+        android:text="下发"
+        android:background="@drawable/sel_audit_button_border_checked"
+        android:layout_below="@id/rl_layout"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
 </RelativeLayout>

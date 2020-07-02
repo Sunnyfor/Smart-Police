@@ -11,9 +11,7 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_50"
-        android:background="@color/color_login_button"
-        app:tabIndicatorColor="@color/color_FF8400"
-        app:tabTextColor="@color/fun_FFFFFF" />
+        app:tabIndicatorColor="@color/color_FF8400" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_maintain"

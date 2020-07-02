@@ -5,7 +5,6 @@ import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.login.bean.UserInfoBean
 import com.zhkj.smartpolice.login.presenter.LoginPresenter
 import com.zhkj.smartpolice.login.view.LoginView
 import kotlinx.android.synthetic.main.act_alter_password.*
@@ -49,10 +48,10 @@ class AlterPasswordActivity : BaseActivity(), LoginView {
 
     }
 
-    override fun onAlterPassword(userInfoBean: UserInfoBean) {
+    override fun onAlterPassword(userInfoBean: String) {
         super.onAlterPassword(userInfoBean)
         userInfoBean?.let {
-            if (userInfoBean.code == 0) {
+            if (userInfoBean.equals("0")) {
                 ToastUtil.show("修改成功")
             }
         }

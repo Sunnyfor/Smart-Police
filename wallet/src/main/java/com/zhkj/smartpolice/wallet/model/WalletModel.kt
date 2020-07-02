@@ -8,6 +8,7 @@ import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.wallet.bean.PurseBean
 import com.zhkj.smartpolice.wallet.bean.RecordBean
 import com.zhkj.smartpolice.wallet.http.WalletUrlConstant
+import org.json.JSONObject
 import java.io.File
 
 class WalletModel {
@@ -60,10 +61,10 @@ class WalletModel {
      */
     suspend fun updatePayPassword(oldPayPassword: String, newPayPassword: String): BaseModel<Any>? {
         val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
-        val params = hashMapOf<String, String>()
-        params["oldPayPassword"] = oldPayPassword
-        params["newPayPassword"] = newPayPassword
-        ZyHttp.post(WalletUrlConstant.UPDATE_PAY_PASSWORD, params, httpResultBean)
+        val params = JSONObject()
+        params.put("oldPayPassword",oldPayPassword)
+        params.put("newPayPassword",newPayPassword)
+        ZyHttp.postJson(WalletUrlConstant.UPDATE_PAY_PASSWORD, params.toString(), httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.code == "0") {
                 return httpResultBean.bean

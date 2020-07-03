@@ -3,6 +3,7 @@ package com.zhkj.smartpolice.app.fragment
 import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseFragment
+import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
@@ -40,15 +41,17 @@ class LogisticsFragment : BaseFragment() {
             )
             tv_maintain.id -> {
                 var userInfoBean = UserManager.getInfo()
-                when (userInfoBean.roleId) {
-                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))
-                    115 -> startActivity(
-                        Intent(
-                            requireContext(),
-                            ApplyMaintainListActivity::class.java
-                        )
-                    )
-                }
+                LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
+                startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))
+//                when (userInfoBean.roleId) {
+//                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))
+//                    115 -> startActivity(
+//                        Intent(
+//                            requireContext(),
+//                            ApplyMaintainListActivity::class.java
+//                        )
+//                    )
+//                }
             }
         }
     }

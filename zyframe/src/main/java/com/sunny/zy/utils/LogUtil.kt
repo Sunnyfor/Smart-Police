@@ -205,12 +205,30 @@ object LogUtil {
     }
 
 
+    fun web(content: String) {
+        var msg = content
+        if (allowE) {
+            val caller = getCallerStackTraceElement()
+            val tag = generateTag(caller)
+
+            val maxStrLength = 2001 - tag.length
+            //大于4000时
+            while (msg.length > maxStrLength) {
+                Log.e(tag, msg.substring(0, maxStrLength))
+                msg = msg.substring(maxStrLength)
+            }
+            //剩余部分
+            Log.e(tag, msg)
+        }
+    }
+
+
     private fun generateTag(caller: StackTraceElement): String {
         var tag = "%s.%s(L:%d)"
         var callerClazzName = caller.className
         callerClazzName = callerClazzName.substring(callerClazzName.lastIndexOf(".") + 1)
         tag = String.format(tag, callerClazzName, caller.methodName, Integer.valueOf(caller.lineNumber))
-        tag = if (TextUtils.isEmpty(customTagPrefix)) tag else customTagPrefix + ":" + tag
+        tag = if (TextUtils.isEmpty(customTagPrefix)) tag else "$customTagPrefix:$tag"
         return tag
     }
 

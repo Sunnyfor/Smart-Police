@@ -61,14 +61,11 @@ class WalletPresenter(iBaseView: IBaseView) :
     /**
      * 加载钱包流水
      */
-    override fun loadRecord(page: String, limit: String?) {
+    override fun loadRecord(page: String) {
         launch(Main) {
             if (view is WalletContract.IRecordView) {
                 (view as WalletContract.IRecordView).showRecordData(
-                    walletModel.loadRecord(
-                        page,
-                        limit
-                    ) ?: arrayListOf()
+                    walletModel.loadRecord(page) ?: arrayListOf()
                 )
             }
         }

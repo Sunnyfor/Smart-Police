@@ -10,6 +10,7 @@ import com.zhkj.smartpolice.wallet.adapter.RecordAdapter
 import com.zhkj.smartpolice.wallet.bean.RecordBean
 import com.zhkj.smartpolice.wallet.contract.WalletContract
 import com.zhkj.smartpolice.wallet.presenter.WalletPresenter
+import kotlinx.coroutines.cancel
 
 /**
  * 钱包流水页面
@@ -54,7 +55,7 @@ class RecordActivity : BaseActivity(), WalletContract.IRecordView {
     }
 
     override fun close() {
-
+        presenter.cancel()
     }
 
     override fun showRecordData(recordBeans: ArrayList<RecordBean>) {

@@ -2,6 +2,7 @@ package com.zhkj.smartpolice.wallet.model
 
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
+import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.sunny.zy.utils.ToastUtil
@@ -42,11 +43,11 @@ class WalletModel {
     /**
      * 加载钱包流水
      */
-    suspend fun loadRecord(page: String, limit: String? = null): ArrayList<RecordBean>? {
+    suspend fun loadRecord(page: String): ArrayList<RecordBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<RecordBean>>() {}
         val params = hashMapOf<String, String>()
         params["page"] = page
-        params["limit"] = limit ?: "20"
+        params["limit"] = Constant.pageLimit
         ZyHttp.get(WalletUrlConstant.PAY_RECORD_LIST, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {

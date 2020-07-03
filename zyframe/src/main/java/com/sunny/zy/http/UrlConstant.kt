@@ -22,11 +22,6 @@ object UrlConstant {
     const val SYS_LOGIN = "sys/login" //登录接口
 
     /**
-     * 餐厅模块：餐厅列表
-     */
-    const val RESTAURANT_LIST_URL = "logistics/shop/list"
-
-    /**
      * 检查版本更新
      * versionNumber=1.0.0.1
      */

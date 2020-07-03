@@ -35,7 +35,7 @@ interface WalletContract {
         abstract fun generatePayQrCode()
 
         //加载钱包流水
-        abstract fun loadRecord(page: String, limit: String? = null)
+        abstract fun loadRecord(page: String)
 
         //是否设置过支付密码
         abstract fun isSettingPayPassword()

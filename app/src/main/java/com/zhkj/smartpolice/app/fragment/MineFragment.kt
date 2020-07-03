@@ -16,7 +16,7 @@ class MineFragment : BaseFragment() {
     override fun initView() {
         setOnClickListener(
             ll_meal,
-            rl_wallet,
+            tv_money, tv_wallet,
             btn_withdrawal,
             btn_recharge
         )
@@ -25,7 +25,7 @@ class MineFragment : BaseFragment() {
     override fun onClickEvent(view: View) {
         when (view.id) {
             ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
-            rl_wallet.id -> RouterManager.navigation(requireContext(), RouterManager.WALLET_ACTIVITY)
+            tv_money.id, tv_wallet.id -> RouterManager.navigation(requireContext(), RouterManager.WALLET_ACTIVITY)
             btn_withdrawal.id -> RouterManager.navigation(requireContext(), RouterManager.WITHDRAWAL_ACTIVITY)
             btn_recharge.id -> RouterManager.navigation(requireContext(), RouterManager.RECHARGE_ACTIVITY)
         }

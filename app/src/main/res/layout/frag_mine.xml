@@ -1,238 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--标题栏-->
-        <LinearLayout
-            android:id="@+id/ll_title"
+        <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_120"
             android:background="@drawable/sel_top_bg"
-            android:paddingTop="@dimen/dp_10"
-            tools:ignore="UseCompoundDrawables">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/iv_back"
-                style="@style/style_common_icon"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/svg_btn_back" />
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/style_common_icon"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/svg_btn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                style="@style/style_font_white_bigger"
-                android:layout_height="@dimen/dp_40"
-                android:layout_marginStart="@dimen/dp_20"
-                android:gravity="center_vertical"
-                android:text="个人中心"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
+        <TextView
+            style="@style/style_font_white_bigger"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_20"
+            android:gravity="center_vertical"
+            android:text="个人中心"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
-        <!--登录小卡片-->
-        <LinearLayout
-            android:id="@+id/ll_login"
+        <!--登录框-->
+
+        <View
+            android:id="@+id/v_login"
             style="@style/style_mine_layout_card"
-            android:layout_marginTop="@dimen/dp_60"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="68dp"
+            app:layout_constraintDimensionRatio="5:2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_head"
+            style="@style/style_image_circle"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintStart_toStartOf="@id/v_login"
+            app:layout_constraintTop_toTopOf="@id/v_login"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_font_black"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="登录 / 注册"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/iv_head"
+            app:layout_constraintStart_toEndOf="@id/iv_head"
+            app:layout_constraintTop_toTopOf="@id/iv_head"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv1"
+            style="@style/style_font_gray"
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/dp_5"
+            android:gravity="center_horizontal"
+            android:text="浏览历史"
+            app:layout_constraintEnd_toStartOf="@id/tv2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="@id/v_login"
+            app:layout_constraintTop_toBottomOf="@id/tv_history"
+            tools:ignore="HardcodedText" />
+
+
+        <TextView
+            android:id="@+id/tv2"
+            style="@style/style_font_gray"
+            android:layout_width="0dp"
+            android:gravity="center_horizontal"
+            android:text="收藏"
+            app:layout_constraintEnd_toStartOf="@id/tv3"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/tv1"
+            app:layout_constraintTop_toBottomOf="@id/tv_collect"
+            app:layout_constraintTop_toTopOf="@id/tv1"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv3"
+            style="@style/style_font_gray"
+            android:layout_width="0dp"
+            android:gravity="center_horizontal"
+            android:text="红包优惠券"
+            app:layout_constraintEnd_toEndOf="@id/v_login"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/tv2"
+            app:layout_constraintTop_toBottomOf="@id/tv_coupons"
+            app:layout_constraintTop_toTopOf="@id/tv1"
+            tools:ignore="HardcodedText" />
+
+
+        <TextView
+            android:id="@+id/tv_history"
+            style="@style/style_font_black_big"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@id/tv1"
+            app:layout_constraintStart_toStartOf="@id/tv1"
+            app:layout_constraintTop_toBottomOf="@id/iv_head"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_collect"
+            style="@style/style_font_black_big"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@id/tv2"
+            app:layout_constraintStart_toStartOf="@id/tv2"
+            app:layout_constraintTop_toTopOf="@id/tv_history"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_coupons"
+            style="@style/style_font_black_big"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@id/tv3"
+            app:layout_constraintStart_toStartOf="@id/tv3"
+            app:layout_constraintTop_toTopOf="@id/tv_history"
+            tools:ignore="HardcodedText" />
+
+        <!--订单记录-->
+
+        <LinearLayout
+            android:id="@+id/ll_function"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_login">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/ll_meal"
+                style="@style/style_mine_layout_weight"
                 tools:ignore="UseCompoundDrawables">
 
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_head"
-                    style="@style/style_image_circle"
-                    android:layout_width="@dimen/dp_50"
-                    android:layout_height="@dimen/dp_50"
-                    android:layout_margin="@dimen/dp_10"
-                    app:riv_oval="true" />
+                <ImageView
+                    style="@style/style_common_icon"
+                    android:background="@drawable/sel_mine_red"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_mine_meal" />
 
                 <TextView
-                    android:id="@+id/tv_name"
-                    style="@style/style_font_black"
-                    android:layout_gravity="center_vertical"
-                    android:text="登录 / 注册"
-                    android:textStyle="bold"
+                    style="@style/style_font_black_small"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="订餐记录"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_count"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:orientation="horizontal">
+                style="@style/style_mine_layout_weight"
+                tools:ignore="UseCompoundDrawables">
 
-                <LinearLayout
-                    android:id="@+id/ll_invite"
-                    style="@style/style_mine_layout_weight">
+                <ImageView
+                    style="@style/style_common_icon"
+                    android:background="@drawable/sel_mine_blue"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_mine_fixup" />
 
-                    <TextView
-                        android:id="@+id/tv_history"
-                        style="@style/style_font_black_big"
-                        android:text="0"
-                        tools:ignore="HardcodedText" />
+                <TextView
+                    style="@style/style_font_black_small"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="维修记录"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
 
-                    <TextView
-                        style="@style/style_font_gray"
-                        android:text="浏览历史"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
+            <LinearLayout
+                style="@style/style_mine_layout_weight"
+                tools:ignore="UseCompoundDrawables">
 
-                <LinearLayout
-                    android:id="@+id/ll_collect"
-                    style="@style/style_mine_layout_weight">
+                <ImageView
+                    style="@style/style_common_icon"
+                    android:background="@drawable/sel_mine_orange"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_mine_order" />
 
-                    <TextView
-                        android:id="@+id/tv_collect"
-                        style="@style/style_font_black_big"
-                        android:text="0"
-                        tools:ignore="HardcodedText" />
+                <TextView
+                    style="@style/style_font_black_small"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="预约记录"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
 
-                    <TextView
-                        style="@style/style_font_gray"
-                        android:text="收藏"
-                        tools:ignore="HardcodedText" />
+            <LinearLayout
+                style="@style/style_mine_layout_weight"
+                tools:ignore="UseCompoundDrawables">
 
-                </LinearLayout>
+                <ImageView
+                    style="@style/style_common_icon"
+                    android:background="@drawable/sel_mine_yellow"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_mine_medicine" />
 
-                <LinearLayout
-                    android:id="@+id/ll_coupons"
-                    style="@style/style_mine_layout_weight">
-
-                    <TextView
-                        android:id="@+id/tv_coupons"
-                        style="@style/style_font_black_big"
-                        android:text="0"
-                        tools:ignore="HardcodedText" />
-
-                    <TextView
-                        style="@style/style_font_gray"
-                        android:text="红包优惠券"
-                        tools:ignore="HardcodedText" />
-
-                </LinearLayout>
+                <TextView
+                    style="@style/style_font_black_small"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="购药记录"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
         </LinearLayout>
 
-    </RelativeLayout>
 
-    <!--功能区-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_15">
-
-        <LinearLayout
-            android:id="@+id/ll_meal"
-            style="@style/style_mine_layout_weight"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                style="@style/style_common_icon"
-                android:background="@drawable/sel_mine_red"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_meal" />
-
-            <TextView
-                style="@style/style_font_black_small"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="订餐记录"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/style_mine_layout_weight"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                style="@style/style_common_icon"
-                android:background="@drawable/sel_mine_blue"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_fixup" />
-
-            <TextView
-                style="@style/style_font_black_small"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="维修记录"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/style_mine_layout_weight"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                style="@style/style_common_icon"
-                android:background="@drawable/sel_mine_orange"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_order" />
-
-            <TextView
-                style="@style/style_font_black_small"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="预约记录"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/style_mine_layout_weight"
-            tools:ignore="UseCompoundDrawables">
-
-            <ImageView
-                style="@style/style_common_icon"
-                android:background="@drawable/sel_mine_yellow"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_mine_medicine" />
-
-            <TextView
-                style="@style/style_font_black_small"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="购药记录"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View style="@style/style_line_horizontal" />
-
-    <RelativeLayout
-        android:id="@+id/rl_wallet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_20">
+        <!--钱包模块-->
 
         <ImageView
-            android:id="@+id/icon"
+            android:id="@+id/iv_icon"
             android:layout_width="@dimen/dp_20"
             android:layout_height="@dimen/dp_20"
             android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_30"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/icon_mine_wallet" />
+            android:src="@drawable/icon_mine_wallet"
+            app:layout_constraintStart_toStartOf="@id/v_login"
+            app:layout_constraintTop_toBottomOf="@id/ll_function" />
 
         <TextView
+            android:id="@+id/tv_wallet"
             style="@style/style_font_black"
             android:layout_marginStart="@dimen/dp_10"
-            android:layout_toEndOf="@id/icon"
             android:text="我的钱包"
+            app:layout_constraintStart_toEndOf="@id/iv_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_icon"
             tools:ignore="HardcodedText" />
 
         <TextView
+            android:id="@+id/tv_money"
             style="@style/style_font_black_bigger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/icon"
-            android:layout_alignStart="@id/icon"
             android:text="0.00"
+            app:layout_constraintStart_toStartOf="@id/iv_icon"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -240,12 +256,11 @@
             style="@style/style_font_white_small"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_22"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_10"
             android:layout_marginEnd="@dimen/dp_10"
             android:background="@drawable/sel_mine_recharge"
             android:text="充值"
+            app:layout_constraintEnd_toEndOf="@id/v_login"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -253,57 +268,69 @@
             style="@style/style_font_white_small"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_22"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/btn_recharge"
+            android:layout_marginEnd="@dimen/dp_10"
             android:background="@drawable/sel_mine_withdraw"
             android:text="提现"
             android:textColor="@color/colo_orange_ff9600"
+            app:layout_constraintEnd_toStartOf="@id/btn_recharge"
+            app:layout_constraintTop_toTopOf="@id/btn_recharge"
             tools:ignore="HardcodedText" />
 
-    </RelativeLayout>
+        <!--功能区-->
 
+        <com.zhkj.smartpolice.widget.ItemLayout
+            android:id="@+id/item_help"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            app:endIcon="@drawable/svg_btn_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ll_function"
+            app:layout_constraintTop_toBottomOf="@id/tv_money"
+            app:lineVisible="true"
+            app:startAfterText="帮助"
+            app:startAfterTextColor="@color/color_black"
+            app:startIcon="@drawable/svg_mine_help" />
 
-    <View style="@style/style_line_horizontal" />
+        <com.zhkj.smartpolice.widget.ItemLayout
+            android:id="@+id/item_about"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_56"
+            app:endIcon="@drawable/svg_btn_more"
+            app:layout_constraintEnd_toEndOf="@id/item_help"
+            app:layout_constraintStart_toStartOf="@id/item_help"
+            app:layout_constraintTop_toBottomOf="@id/item_help"
+            app:lineVisible="true"
+            app:startAfterText="关于产品"
+            app:startAfterTextColor="@color/color_black"
+            app:startIcon="@drawable/svg_mine_about" />
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/dp_10"
-        app:endIcon="@drawable/svg_btn_more"
-        app:lineVisible="true"
-        app:startAfterText="帮助"
-        app:startAfterTextColor="@color/color_black"
-        app:startIcon="@drawable/svg_mine_help" />
+        <com.zhkj.smartpolice.widget.ItemLayout
+            android:id="@+id/item_cache"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_56"
+            app:endIcon="@drawable/svg_btn_more"
+            app:layout_constraintEnd_toEndOf="@id/item_help"
+            app:layout_constraintStart_toStartOf="@id/item_help"
+            app:layout_constraintTop_toBottomOf="@id/item_about"
+            app:lineVisible="true"
+            app:startAfterText="清除缓存"
+            app:startAfterTextColor="@color/color_black"
+            app:startIcon="@drawable/svg_mine_cache" />
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/dp_10"
-        app:endIcon="@drawable/svg_btn_more"
-        app:lineVisible="true"
-        app:startAfterText="关于产品"
-        app:startAfterTextColor="@color/color_black"
-        app:startIcon="@drawable/svg_mine_about" />
+        <com.zhkj.smartpolice.widget.ItemLayout
+            android:id="@+id/item_setting"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_56"
+            app:endIcon="@drawable/svg_btn_more"
+            app:layout_constraintEnd_toEndOf="@id/item_help"
+            app:layout_constraintStart_toStartOf="@id/item_help"
+            app:layout_constraintTop_toBottomOf="@id/item_cache"
+            app:lineVisible="true"
+            app:startAfterText="设置"
+            app:startAfterTextColor="@color/color_black"
+            app:startIcon="@drawable/svg_mine_setting" />
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/dp_10"
-        app:endIcon="@drawable/svg_btn_more"
-        app:lineVisible="true"
-        app:startAfterText="清除缓存"
-        app:startAfterTextColor="@color/color_black"
-        app:startIcon="@drawable/svg_mine_cache" />
-
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:layout_marginStart="@dimen/dp_10"
-        app:endIcon="@drawable/svg_btn_more"
-        app:lineVisible="true"
-        app:startAfterText="设置"
-        app:startAfterTextColor="@color/color_black"
-        app:startIcon="@drawable/svg_mine_setting" />
-
-
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -12,6 +12,8 @@ object Constant {
 
     var host = ""
 
+    const val pageLimit = "20"
+
     const val authorities = "com.example.housekeeping.provider"
 
     const val VERSION = "v1"  //接口版本

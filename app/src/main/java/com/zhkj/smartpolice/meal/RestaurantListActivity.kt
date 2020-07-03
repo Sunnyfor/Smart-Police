@@ -8,6 +8,7 @@ import com.zhkj.smartpolice.meal.adapter.RestaurantAdapter
 import com.zhkj.smartpolice.meal.bean.RestaurantBean
 import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
+import kotlinx.coroutines.cancel
 
 /**
  * 餐厅列表
@@ -50,14 +51,14 @@ class RestaurantListActivity : BaseActivity(), MealContract.IRestaurantView {
     }
 
     override fun loadData() {
-        presenter.loadRestaurantList()
+        presenter.loadRestaurantList(pullRefreshFragment.page.toString())
     }
 
     override fun close() {
-
+        presenter.cancel()
     }
 
-    override fun loadRestaurantList(data: ArrayList<RestaurantBean>) {
+    override fun showRestaurantList(data: ArrayList<RestaurantBean>) {
         hideLoading()
         pullRefreshFragment.addData(data)
     }

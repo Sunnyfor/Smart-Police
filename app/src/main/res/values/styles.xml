@@ -50,7 +50,7 @@
     <!--【订餐】子条目右侧字体-->
 
     <style name="style_register_item_text" parent="style_font_black_big">
-        <item name="android:layout_width">@dimen/dp_100</item>
+        <item name="android:layout_width">@dimen/dp_80</item>
         <item name="android:background">@color/color_transparent</item>
     </style>
 

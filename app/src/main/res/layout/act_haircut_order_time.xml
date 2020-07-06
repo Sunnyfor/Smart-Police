@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/style_font_black_bigger"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="洗衣预约"
+            tools:ignore="HardcodedText" />
+
+
+        <TextView
+            style="@style/style_font_gray_small"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="日期 &amp; 时间"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@color/color_white">
+
+            <TextView
+                android:id="@+id/tv_year"
+                style="@style/style_font_black"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:text="2020年"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_month"
+                style="@style/style_font_black"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:text="5月"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp_15"
+                android:padding="@dimen/dp_5"
+                android:src="@drawable/svg_more_down"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
+
+        <com.haibin.calendarview.CalendarLayout
+            android:id="@+id/calendarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_95"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="#fff"
+            android:orientation="vertical"
+            app:calendar_content_view_id="@+id/nestedScrollView"
+            app:calendar_show_mode="only_week_view"
+            app:default_status="shrink">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:calendar_padding="10dp"
+                app:current_day_lunar_text_color="#ff0000"
+                app:current_day_text_color="#ff0000"
+                app:current_month_lunar_text_color="#CFCFCF"
+                app:current_month_text_color="#333333"
+                app:lunar_text_size="10sp"
+                app:max_year="2050"
+                app:max_year_day="31"
+                app:max_year_month="12"
+                app:min_year="2008"
+                app:min_year_day="1"
+                app:min_year_month="1"
+                app:month_view_auto_select_day="last_select_day_ignore_current"
+                app:month_view_show_mode="mode_only_current"
+                app:other_month_lunar_text_color="#e1e1e1"
+                app:other_month_text_color="#e1e1e1"
+                app:scheme_lunar_text_color="#CFCFCF"
+                app:scheme_text_color="#333"
+                app:scheme_theme_color="#128c4b"
+                app:selected_lunar_text_color="#128c4b"
+                app:selected_text_color="#128c4b"
+                app:selected_theme_color="#80cfcfcf"
+                app:week_bar_height="46dp"
+                app:week_line_background="#00000000"
+                app:week_line_margin="16dp"
+                app:week_start_with="sun"
+                app:week_text_size="10sp"
+                app:week_view="com.sunny.protective.widget.calendar.MyWeekView"
+                app:year_view_background="#f6f6f6"
+                app:year_view_day_text_color="#333333"
+                app:year_view_day_text_size="8sp"
+                app:year_view_month_text_color="#ff0000"
+                app:year_view_month_text_size="20sp"
+                app:year_view_scheme_color="#f17706"
+                app:year_view_week_height="0dp"
+                app:year_view_week_text_color="#666666"
+                app:year_view_week_text_size="7sp" />
+        </com.haibin.calendarview.CalendarLayout>
+
+        <RadioGroup
+            android:id="@+id/radio_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@color/color_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/dp_8"
+            android:paddingEnd="@dimen/dp_8">
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_32"
+                android:layout_weight="1"
+                android:background="@drawable/sel_radio_theme_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="10:30 am"
+                android:textColor="@drawable/sel_radio_white_text"
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_32"
+                android:layout_weight="1"
+                android:background="@drawable/sel_radio_theme_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="11:00 am"
+                android:textColor="@drawable/sel_radio_white_text"
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_32"
+                android:layout_weight="1"
+                android:background="@drawable/sel_radio_theme_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="11:30 am"
+                android:textColor="@drawable/sel_radio_white_text"
+                tools:ignore="HardcodedText" />
+
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_32"
+                android:layout_weight="1"
+                android:background="@drawable/sel_radio_theme_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="12:00 pm"
+                android:textColor="@drawable/sel_radio_white_text"
+                tools:ignore="HardcodedText" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_102"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_14"
+            android:background="@color/color_white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/style_font_black_bigger"
+                android:layout_marginTop="@dimen/dp_26"
+                android:text="您选择的时间段为"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                style="@style/style_font_black_big"
+                android:layout_marginTop="@dimen/dp_6"
+                android:text="2020年5月6日  10:30"
+                android:textColor="@color/color_theme"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

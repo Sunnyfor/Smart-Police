@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_line">
+
+    <View
+        android:id="@+id/v_bg"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_100"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/sel_border_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/style_register_item_text"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="姓名"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toTopOf="@id/v_bg"
+        tools:ignore="HardcodedText" />
+
+    <com.sunny.zy.widget.edittext.ClearEditText
+        android:id="@+id/et_name"
+        style="@style/style_common_edit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_40"
+        android:background="@color/color_transparent"
+        android:hint="请填写你的真实姓名"
+        app:layout_constraintBottom_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/name"
+        app:layout_constraintTop_toTopOf="@id/name"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/phone"
+        style="@style/style_register_item_text"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="手机号"
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        tools:ignore="HardcodedText" />
+
+    <com.sunny.zy.widget.edittext.ClearEditText
+        android:id="@+id/et_phone"
+        style="@style/style_common_edit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_40"
+        android:background="@color/color_transparent"
+        android:hint="请填写你的手机号"
+        app:layout_constraintBottom_toBottomOf="@id/phone"
+        app:layout_constraintStart_toEndOf="@id/phone"
+        app:layout_constraintTop_toTopOf="@id/phone"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/order"
+        style="@style/style_font_black_big"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="选择预约时间"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toBottomOf="@id/v_bg"
+        tools:ignore="HardcodedText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/sel_border_white"
+        app:layout_constraintEnd_toEndOf="@id/v_bg"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toBottomOf="@id/order" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

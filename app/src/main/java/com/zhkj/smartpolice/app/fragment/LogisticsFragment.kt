@@ -6,10 +6,8 @@ import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
-import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
-import com.zhkj.smartpolice.meal.MealActivity
+import com.zhkj.smartpolice.merchant.MerchantListActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 
 
@@ -20,7 +18,10 @@ class LogisticsFragment : BaseFragment() {
     override fun initView() {
         setOnClickListener(
             tv_restaurant,
+            tv_haircut,
             tv_drugstore,
+            tv_laundry,
+            tv_stadium,
             tv_maintain
         )
 
@@ -32,15 +33,13 @@ class LogisticsFragment : BaseFragment() {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_restaurant.id -> startActivity(Intent(requireContext(), MealActivity::class.java))
-            tv_drugstore.id -> startActivity(
-                Intent(
-                    requireContext(),
-                    DrugstoreActivity::class.java
-                )
-            )
+            tv_restaurant.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_RESTAURANT)
+            tv_haircut.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_HAIRCUT)
+            tv_drugstore.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_DRUGSTORE)
+            tv_laundry.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_LAUNDRY)
+            tv_stadium.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_STADIUM)
             tv_maintain.id -> {
-                var userInfoBean = UserManager.getInfo()
+                val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))
 //                when (userInfoBean.roleId) {

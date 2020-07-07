@@ -15,6 +15,11 @@ object UrlConstant {
     const val RESTAURANT_LIST_URL = "logistics/shop/list"
 
     /**
+     * 个人中心：预约记录
+     */
+    const val RESERVE_RECORD_URL = "logistics/reserverecord/list"
+
+    /**
      * 用户登录
      */
     const val USER_LOGIN = "sys/login"

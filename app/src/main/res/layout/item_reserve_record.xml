@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    android:background="@drawable/sel_border_white"
+    android:padding="@dimen/dp_10">
+
+    <TextView
+        android:id="@+id/tv_shop_name"
+        style="@style/style_font_black_bigger"
+        tools:text="俊俏理发" />
+
+    <TextView
+        android:id="@+id/tv_merchant"
+        style="@style/style_font_black"
+        android:layout_alignBaseline="@id/tv_shop_name"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_toEndOf="@id/tv_shop_name"
+        tools:text="&amp;&amp; 理发师1" />
+
+    <TextView
+        android:id="@+id/tv_state"
+        style="@style/style_font_orange_small"
+        android:layout_alignBaseline="@id/tv_shop_name"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/font_red"
+        tools:text="完成" />
+
+    <TextView
+        android:id="@+id/tv_order_name"
+        style="@style/style_font_black"
+        android:layout_below="@id/tv_merchant"
+        android:layout_marginTop="@dimen/dp_10"
+        tools:text="预约人：admin（13148877284）" />
+
+    <TextView
+        android:id="@+id/tv_order_time"
+        style="@style/style_font_black"
+        android:layout_below="@id/tv_order_name"
+        android:layout_marginTop="@dimen/dp_5"
+        tools:text="预约时间：2020-07-07（17:00-21:00）" />
+
+    <TextView
+        android:id="@+id/tv_order_number"
+        style="@style/style_font_black"
+        android:layout_below="@id/tv_order_time"
+        android:layout_marginTop="@dimen/dp_5"
+        tools:text="订单号：" />
+
+    <TextView
+        android:id="@+id/tv_create_time"
+        style="@style/style_font_black"
+        android:layout_below="@id/tv_order_number"
+        android:layout_marginTop="@dimen/dp_5"
+        tools:text="创建时间：" />
+
+    <TextView
+        android:id="@+id/tv_remark"
+        style="@style/style_font_black"
+        android:layout_below="@id/tv_create_time"
+        android:layout_marginTop="@dimen/dp_5"
+        tools:text="备注：" />
+
+</RelativeLayout>

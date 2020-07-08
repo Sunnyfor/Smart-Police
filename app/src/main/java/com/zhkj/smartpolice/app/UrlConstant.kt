@@ -20,6 +20,11 @@ object UrlConstant {
     const val RESERVE_RECORD_URL = "logistics/reserverecord/list"
 
     /**
+     * 个人中心：维修记录
+     */
+    const val REPAIR_RECORD_URL = "logistics/apply/listMyApply"
+
+    /**
      * 用户登录
      */
     const val USER_LOGIN = "sys/login"

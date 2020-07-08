@@ -22,4 +22,16 @@ class ReservePresenter(iBaseView: IBaseView) : ReserveContract.Presenter(iBaseVi
             hideLoading()
         }
     }
+
+    override fun loadRepairRecord(page: String) {
+        launch(Dispatchers.Main) {
+            showLoading()
+            reverseModel.loadRepairRecord(page)?.let {
+                if (view is ReserveContract.IRepairRecordView) {
+                    (view as ReserveContract.IRepairRecordView).showRepairRecord(it)
+                }
+            }
+            hideLoading()
+        }
+    }
 }

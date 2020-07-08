@@ -34,7 +34,8 @@
         <!--商家模块-->
         <activity android:name=".merchant.MerchantListActivity" />
 
-        <!--预约模块-->
+        <!--个人中心-->
+        <activity android:name=".mine.activity.RepairRecordActivity" />
         <activity android:name=".mine.activity.ReserveRecordActivity" />
 
         <!--餐厅模块-->

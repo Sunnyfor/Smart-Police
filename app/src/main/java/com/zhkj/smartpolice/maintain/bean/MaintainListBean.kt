@@ -10,7 +10,7 @@ data class MaintainListBean(
     var labelId: Int,
     var labelName: String,
     var labelType: Int,
-    var linkId: Any,
+    var linkId: String,
     var publishState: Int,
     var shopId: Int,
     var sort: Int
@@ -22,27 +22,27 @@ data class MaintainListBean(
 }
 
 data class Goods(
-    var activeState: Int,
-    var classifyId: Any,
-    var createTime: String,
-    var description: String,
-    var expiryDate: Any,
-    var goodsClassifyLabel: Any,
-    var goodsId: Int,
-    var goodsName: String,
-    var groupId: Any,
-    var imageId: Any,
-    var inventory: Any,
-    var isAway: Any,
-    var isDelete: Int,
-    var isTop: Int,
-    var orderNumber: Int,
+    var activeState: String?,
+    var classifyId: String?,
+    var createTime: String?,
+    var description: String?,
+    var expiryDate: String?,
+    var goodsClassifyLabel: String?,
+    var goodsId: String?,
+    var goodsName: String?,
+    var groupId: String?,
+    var imageId: String?,
+    var inventory: String?,
+    var isAway: String?,
+    var isDelete: String?,
+    var isTop: String?,
+    var orderNumber: String?,
     var price: Double,
-    var publishState: Int,
-    var shopGoodsLabelEntityList: Any,
-    var shopId: Int,
-    var subsidyPrice: Any,
-    var updateUserId: Int
+    var publishState: String?,
+    var shopGoodsLabelEntityList: String?,
+    var shopId: String?,
+    var subsidyPrice: String?,
+    var updateUserId: String?
 
 ) {
     override fun toString(): String {

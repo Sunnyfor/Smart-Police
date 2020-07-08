@@ -2,9 +2,9 @@ package com.zhkj.smartpolice.login.presenter
 
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
-import com.sunny.zy.http.UrlConstant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.login.bean.UserInfoBean
 import com.zhkj.smartpolice.login.view.LoginView
 import kotlinx.coroutines.Dispatchers.Main

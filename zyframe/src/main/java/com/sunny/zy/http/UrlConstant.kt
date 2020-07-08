@@ -68,17 +68,4 @@ object UrlConstant {
      */
     const val JOINT_RECYCLE_URL = "app/synergy/synergyRubbish"
 
-
-    /**
-     * 用户登录
-     */
-    const val USER_LOGIN = "sys/login"
-    const val USER_ALTER_PASSWORD = "sys/user/password"
-
-    /**
-     * 维修功能
-     */
-    const val MAINTAIN_CLASSIFY = "logistics/shop/list" //维修部件分类
-
-    const val MAINTAIN_liST = "logistics/shopgoodslabel/listLabelGoods" //维修部件列表
 }

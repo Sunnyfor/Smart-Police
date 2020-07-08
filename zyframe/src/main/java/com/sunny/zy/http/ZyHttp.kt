@@ -31,7 +31,7 @@ object ZyHttp {
     /**
      * 初始化OKHttp
      */
-    private fun <T> getOkHttpClient(httpResultBean: HttpResultBean<T>): OkHttpClient {
+     fun <T> getOkHttpClient(httpResultBean: HttpResultBean<T>): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HeaderInterceptor())
             .addNetworkInterceptor(

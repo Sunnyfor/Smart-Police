@@ -1,6 +1,9 @@
 package com.zhkj.smartpolice.maintain.activity
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.sunny.zy.base.BaseActivity
@@ -8,6 +11,8 @@ import com.sunny.zy.base.PageModel
 import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.maintain.adapter.MaintainClassifyAdapter
+import com.zhkj.smartpolice.maintain.adapter.PartsListAdapter
+import com.zhkj.smartpolice.maintain.bean.Goods
 import com.zhkj.smartpolice.maintain.bean.MaintainClassifyBean
 import com.zhkj.smartpolice.maintain.bean.MaintainListBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
@@ -16,6 +21,7 @@ import kotlinx.android.synthetic.main.act_police_maintain.*
 
 class PoliceMaintainActivity : BaseActivity(), IMaintainView {
     var maintainClassifyList: ArrayList<MaintainListBean> = ArrayList()
+    var goodsList: ArrayList<Goods> = ArrayList()
 
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
@@ -25,11 +31,31 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
         LinearLayoutManager(this)
     }
 
+    /**
+     * 左侧分类栏适配
+     */
     private val adapter: MaintainClassifyAdapter by lazy {
-        MaintainClassifyAdapter(maintainClassifyList,PoliceMaintainActivity@this).apply {
-            setOnItemClickListener {view, position ->
+        MaintainClassifyAdapter(maintainClassifyList).apply {
+            setOnItemClickListener { view, position ->
                 LogUtil.i("点击了这条Item的数据=========${getData(position).goodsList}")
-//                onclicklistener.setOnclicklistener(position)
+                goodsList.clear()
+                goodsList.addAll(getData(position).goodsList)
+                partsAdapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+
+    private val partsAdapter: PartsListAdapter by lazy {
+        PartsListAdapter(goodsList).apply {
+            setOnItemClickListener { _, position ->
+                MaintainApplyActivity.intent(
+                    this@PoliceMaintainActivity,
+                    getData(position).activeState,
+                    getData(position).classifyId,
+                    getData(position).createTime,
+                    getData(position).goodsName
+                )
             }
         }
     }
@@ -41,6 +67,8 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
         defaultTitle("维修部件")
         rv_left_navigation.layoutManager = layoutManager
         rv_left_navigation.adapter = adapter
+        rv_parts.layoutManager = GridLayoutManager(this, 2)
+        rv_parts.adapter = partsAdapter
     }
 
     override fun onClickEvent(view: View) {
@@ -75,23 +103,13 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
                 maintainClassifyList.clear()
                 maintainClassifyList.addAll(data.list)
                 adapter.notifyDataSetChanged()
+                data.list?.let { list ->
+                    goodsList.clear()
+                    goodsList.addAll(list.get(0).goodsList)
+                    partsAdapter.notifyDataSetChanged()
+                }
             }
         }
     }
-
-
-
-//    lateinit var onclicklistener: onClicklistener
-//
-//
-//    interface onClicklistener {
-//        fun setOnclicklistener(position: Int){}
-//    }
-//
-//
-//    fun setOnClicklistener(onClicklistener: onClicklistener){
-//        this.onclicklistener = onclicklistener
-//    }
-
 
 }

@@ -1,12 +1,10 @@
 package com.zhkj.smartpolice.maintain.presenter
 
-import android.text.Layout
-import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
-import com.sunny.zy.http.UrlConstant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.maintain.bean.MaintainClassifyBean
 import com.zhkj.smartpolice.maintain.bean.MaintainListBean
 import com.zhkj.smartpolice.maintain.view.IMaintainView
@@ -30,11 +28,11 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 view?.onMaintainClassify(httpResultBean.bean ?: return@launch)
+                view?.onMaintainClassify(httpResultBean.bean ?: return@launch)
             }
         }
     }
-
-
+    
     /**
      * 维修部件分类请求
      */

@@ -42,7 +42,6 @@ class RepairRecordActivity : BaseActivity(), ReserveContract.IRepairRecordView {
     }
 
     override fun loadData() {
-        showLoading()
         presenter.loadRepairRecord(pullRefreshFragment.page.toString())
     }
 
@@ -51,7 +50,6 @@ class RepairRecordActivity : BaseActivity(), ReserveContract.IRepairRecordView {
     }
 
     override fun showRepairRecord(data: ArrayList<RepairRecordBean>) {
-        hideLoading()
         pullRefreshFragment.addData(data)
     }
 

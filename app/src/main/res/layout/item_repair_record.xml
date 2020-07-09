@@ -32,37 +32,46 @@
 
     <TextView
         android:id="@+id/tv_apply_name"
-        style="@style/style_font_black"
+        style="@style/style_font_gray_small"
         android:layout_below="@id/tv_money"
         android:layout_marginTop="@dimen/dp_10"
         tools:text="申请人：admin（13148877284）" />
 
     <TextView
         android:id="@+id/tv_apply_time"
-        style="@style/style_font_black"
+        style="@style/style_font_gray_small"
         android:layout_below="@id/tv_apply_name"
         android:layout_marginTop="@dimen/dp_5"
         tools:text="申请时间：2020-07-07（17:00-21:00）" />
 
     <TextView
         android:id="@+id/tv_order_number"
-        style="@style/style_font_black"
+        style="@style/style_font_gray_small"
         android:layout_below="@id/tv_apply_time"
         android:layout_marginTop="@dimen/dp_5"
         tools:text="订单号：" />
 
     <TextView
-        android:id="@+id/tv_create_time"
+        android:id="@+id/content"
         style="@style/style_font_black"
         android:layout_below="@id/tv_order_number"
-        android:layout_marginTop="@dimen/dp_5"
-        tools:text="创建时间：" />
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="维修内容："
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_order_time"
+        style="@style/style_font_gray_small"
+        android:layout_alignBaseline="@id/content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_toEndOf="@id/content"
+        tools:text="( 2020年7月9日 11:57:34 )" />
 
     <TextView
         android:id="@+id/tv_content"
-        style="@style/style_font_black"
-        android:layout_below="@id/tv_create_time"
+        style="@style/style_font_gray"
+        android:layout_below="@id/content"
         android:layout_marginTop="@dimen/dp_5"
-        tools:text="维修内容：" />
+        tools:text="维修记录" />
 
 </RelativeLayout>

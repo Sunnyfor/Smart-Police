@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_name"
+        style="@style/style_register_item_layout"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="登录账号" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_cache"
+        style="@style/style_register_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="清除缓存" />
+
+
+    <!--
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.zhkj.smartpolice.widget.ItemLayout
+                android:id="@+id/item_version"
+                style="@style/style_register_item_layout"
+                app:endIcon="@drawable/svg_btn_more"
+                app:endText="@string/app_name"
+                app:startAfterText="当前版本" />
+
+            <View
+                android:id="@+id/v_point"
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_8"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/sel_red_circle" />
+
+        </RelativeLayout>
+
+        <View style="@style/style_line_horizontal" />-->
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_logout"
+        style="@style/style_common_btn"
+        android:layout_marginTop="@dimen/dp_80"
+        android:text="退出登录"
+        tools:ignore="HardcodedText" />
+
+    <!--
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom|center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_service"
+                style="@style/style_font_black"
+                android:text="《服务协议》"
+                android:textColor="@color/color_theme"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                style="@style/style_font_black"
+                android:text="丨"
+                android:textColor="@color/color_theme"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_privacy"
+                style="@style/style_font_black"
+                android:text="《隐私政策》"
+                android:textColor="@color/color_theme"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/style_font_gray_small"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:text="Copyright @ 2015-2020. All Rights Reserved."
+            tools:ignore="HardcodedText" />
+    -->
+
+</LinearLayout>

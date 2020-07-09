@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--按钮不可点击样式-->
+
+    <solid android:color="@color/btn_unpressed_color" />
+
+    <corners android:radius="@dimen/dp_3" />
+
+</shape>

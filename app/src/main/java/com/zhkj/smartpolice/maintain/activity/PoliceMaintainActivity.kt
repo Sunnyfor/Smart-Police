@@ -1,11 +1,8 @@
 package com.zhkj.smartpolice.maintain.activity
 
-import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.utils.LogUtil
@@ -20,8 +17,8 @@ import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.android.synthetic.main.act_police_maintain.*
 
 class PoliceMaintainActivity : BaseActivity(), IMaintainView {
-    var maintainClassifyList: ArrayList<MaintainListBean> = ArrayList()
-    var goodsList: ArrayList<Goods> = ArrayList()
+    private var maintainClassifyList: ArrayList<MaintainListBean> = ArrayList()
+    private var goodsList: ArrayList<Goods> = ArrayList()
 
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
@@ -36,7 +33,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
      */
     private val adapter: MaintainClassifyAdapter by lazy {
         MaintainClassifyAdapter(maintainClassifyList).apply {
-            setOnItemClickListener { view, position ->
+            setOnItemClickListener { _, position ->
                 LogUtil.i("点击了这条Item的数据=========${getData(position).goodsList}")
                 goodsList.clear()
                 goodsList.addAll(getData(position).goodsList)
@@ -87,7 +84,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
 
     override fun onMaintainClassify(pageModel: PageModel<MaintainClassifyBean>) {
         super.onMaintainClassify(pageModel)
-        pageModel?.let {
+        pageModel.let {
             it.data?.let { data ->
                 maintainPresenter.onMaintainList(data.list.get(0).shopId, 1)
 
@@ -97,13 +94,13 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
 
     override fun onMaintainList(pagemodel: PageModel<MaintainListBean>) {
         super.onMaintainList(pagemodel)
-        pagemodel?.let {
+        pagemodel.let {
             LogUtil.i("维修部件里的信息=========$it")
             it.data?.let { data ->
                 maintainClassifyList.clear()
                 maintainClassifyList.addAll(data.list)
                 adapter.notifyDataSetChanged()
-                data.list?.let { list ->
+                data.list.let { list ->
                     goodsList.clear()
                     goodsList.addAll(list.get(0).goodsList)
                     partsAdapter.notifyDataSetChanged()

@@ -59,4 +59,14 @@ object UrlConstant {
      */
     const val ACCESSORY = "${UrlConstant.host}/sys/attachment/download"
 
+    /**
+     * 维修功能：申请维修提交
+     */
+    const val APPLY_MAINTAIN = "logistics/apply/save"
+
+    /**
+     * 维修功能：部门树结构
+     */
+    const val DEPARTMENT_STRUCTURE = "sys/dept/findListByTree "
+
 }

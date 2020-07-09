@@ -42,4 +42,5 @@
     <color name="fun_333333">#333333</color>
     <color name="fun_476FFF">#476FFF</color>
     <color name="fun_313131">#313131</color>
+    <color name="fun_2963E0">@color/bg_logistics_2963E0</color>
 </resources>

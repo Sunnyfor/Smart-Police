@@ -2,6 +2,7 @@ package com.zhkj.smartpolice.maintain.view
 
 import com.sunny.zy.base.IBaseView
 import com.sunny.zy.base.PageModel
+import com.zhkj.smartpolice.maintain.bean.DepartmentStructureBean
 import com.zhkj.smartpolice.maintain.bean.MaintainClassifyBean
 import com.zhkj.smartpolice.maintain.bean.MaintainListBean
 import com.zhkj.smartpolice.maintain.bean.SucceedBean
@@ -23,4 +24,9 @@ interface IMaintainView : IBaseView {
      * 维修申请提交
      */
     fun onMaintainRequestPush(succeedBean: SucceedBean){ }
+
+    /**
+     * 部门树结构
+     */
+    fun onDepartmentStructure(departmentStructureBean: DepartmentStructureBean) { }
 }

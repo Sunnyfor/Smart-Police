@@ -34,7 +34,7 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loadData() {
-        loginPresenter.onUserLogin("admin", "admin")
+        loginPresenter.onUserLogin("demo1", "666666")
     }
 
     override fun onClickEvent(view: View) {
@@ -85,7 +85,11 @@ class LoginActivity : BaseActivity(), LoginView {
                     UserManager.setInfo(data.get(0))
                 }
             }
-            startActivity(Intent(this, MainActivity::class.java))
+            if (!it.code.equals("0")) {
+                ToastUtil.show(it.msg)
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
         }
     }
 }

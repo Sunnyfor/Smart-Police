@@ -1,14 +1,12 @@
 package com.zhkj.smartpolice.maintain.presenter
 
+import com.google.gson.Gson
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
-import com.zhkj.smartpolice.maintain.bean.MaintainClassifyBean
-import com.zhkj.smartpolice.maintain.bean.MaintainListBean
-import com.zhkj.smartpolice.maintain.bean.MaintainRequestPushBean
-import com.zhkj.smartpolice.maintain.bean.SucceedBean
+import com.zhkj.smartpolice.maintain.bean.*
 import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -34,7 +32,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
             }
         }
     }
-    
+
     /**
      * 维修部件分类请求
      */
@@ -59,11 +57,33 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
      * 维修申请提交请求
      */
 
-    fun onMaintainRequestPush(maintainRequestPushBean: MaintainRequestPushBean){
-
-        val httpResultBean = object : HttpResultBean<SucceedBean>(){ }
+    fun onMaintainRequestPush(maintainRequestPushBean: MaintainRequestPushBean) {
+        view?.showLoading()
+        var gson = Gson()
+        var toJson = gson.toJson(maintainRequestPushBean);
+        val httpResultBean = object : HttpResultBean<SucceedBean>() {}
         launch(Main) {
-//            ZyHttp.postJson()
+            ZyHttp.postJson(UrlConstant.APPLY_MAINTAIN, toJson, httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                view?.onMaintainRequestPush(httpResultBean.bean ?: return@launch)
+            }
+        }
+    }
+
+    /**
+     * 维修中心：部门选择树
+     */
+
+    fun onDepartmentStructure() {
+        view?.showLoading()
+        val httpResultBean = object : HttpResultBean<DepartmentStructureBean>() {}
+        launch(Main) {
+            ZyHttp.get(UrlConstant.DEPARTMENT_STRUCTURE, null, httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                view?.onDepartmentStructure(httpResultBean.bean ?: return@launch)
+            }
         }
     }
 }

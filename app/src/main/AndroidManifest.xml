@@ -62,6 +62,7 @@
         <activity android:name=".maintain.activity.ApplyMaintainListActivity" />
         <activity android:name=".maintain.activity.AuditInfoActivity" />
         <activity android:name=".maintain.activity.PublishTaskActivity" />
+        <activity android:name=".maintain.activity.MaintainContentActivity"/>
 
     </application>
 

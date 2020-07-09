@@ -25,10 +25,17 @@
         <item name="android:textSize">@dimen/sp_10</item>
     </style>
 
+    <style name="style_font_black_largers" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/fun_2963E0</item>
+    </style>
+
     <style name="style_font_black_larger" parent="style_font_orange">
         <item name="android:textSize">@dimen/sp_15</item>
         <item name="android:textColor">@color/fun_333333</item>
     </style>
+    
+
 
     <style name="style_font_orange_big" parent="style_font_orange">
         <item name="android:textSize">@dimen/sp_16</item>

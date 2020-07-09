@@ -16,6 +16,8 @@
     <color name="color_white">#FFFFFF</color>
 
     <color name="btn_pressed_color">#C42A90FC</color>
+    <color name="btn_unpressed_color">@color/color_theme</color>
+    <color name="btn_disable_color">#949AA5</color>
 
     <color name="bg_bubble_left">#EEEDED</color>
     <color name="bg_bubble_right">#FF9A50</color>

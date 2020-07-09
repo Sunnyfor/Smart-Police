@@ -8,6 +8,27 @@
         <item name="android:textColor">@color/font_black</item>
     </style>
 
+    <!--通用对话框样式-->
+
+    <style name="style_common_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!--通用对话框布局样式-->
+
+    <style name="style_common_dialog_layout">
+        <item name="android:layout_width">@dimen/dp_260</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/sel_border_white</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
     <!--通用图标样式-->
 
     <style name="style_common_icon">

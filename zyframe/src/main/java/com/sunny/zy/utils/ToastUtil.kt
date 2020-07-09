@@ -31,7 +31,7 @@ object ToastUtil {
     }
 
     fun show() {
-        show("阿猿正在玩命开发，敬请期待...", Toast.LENGTH_LONG)
+        show("功能正在开发，敬请期待...", Toast.LENGTH_LONG)
     }
 
     fun showInterfaceError(code: String, msg: String) {

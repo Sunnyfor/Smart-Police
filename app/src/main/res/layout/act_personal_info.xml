@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_head"
+        style="@style/style_image_circle"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_gravity="center_horizontal"
+        app:riv_oval="true" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_name"
+        style="@style/style_mine_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="姓名" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_nickName"
+        style="@style/style_mine_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="昵称" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_phone"
+        style="@style/style_mine_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="手机号" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_email"
+        style="@style/style_mine_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="邮箱" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_sign"
+        style="@style/style_mine_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:endText="@string/app_name"
+        app:lineVisible="true"
+        app:startAfterText="个人简介" />
+
+</LinearLayout>

@@ -17,6 +17,7 @@ import com.zhkj.smartpolice.mine.bean.UserBean
 import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
 import com.sunny.zy.utils.isStrEmpty
+import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import kotlinx.android.synthetic.main.frag_mine.*
 import kotlinx.coroutines.cancel
 
@@ -31,6 +32,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
 
     override fun initView() {
         setOnClickListener(
+            iv_head,
             ll_meal, ll_repair, ll_reserve, ll_medicine,
             tv_money, tv_wallet,
             btn_withdrawal, btn_recharge,
@@ -40,6 +42,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
+            iv_head.id -> startActivity(Intent(requireContext(), PersonalInfoActivity::class.java))
             ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
             ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
             ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))

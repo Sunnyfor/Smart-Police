@@ -37,6 +37,7 @@
         <!--个人中心-->
         <activity android:name=".mine.activity.RepairRecordActivity" />
         <activity android:name=".mine.activity.ReserveRecordActivity" />
+        <activity android:name=".mine.activity.PersonalInfoActivity" />
         <activity android:name=".mine.activity.SettingActivity" />
 
         <!--餐厅模块-->

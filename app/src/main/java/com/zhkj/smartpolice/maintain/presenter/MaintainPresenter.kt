@@ -7,6 +7,8 @@ import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.maintain.bean.MaintainClassifyBean
 import com.zhkj.smartpolice.maintain.bean.MaintainListBean
+import com.zhkj.smartpolice.maintain.bean.MaintainRequestPushBean
+import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -50,6 +52,18 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
                 view?.hideLoading()
                 view?.onMaintainList(httpResultBean.bean ?: return@launch)
             }
+        }
+    }
+
+    /**
+     * 维修申请提交请求
+     */
+
+    fun onMaintainRequestPush(maintainRequestPushBean: MaintainRequestPushBean){
+
+        val httpResultBean = object : HttpResultBean<SucceedBean>(){ }
+        launch(Main) {
+//            ZyHttp.postJson()
         }
     }
 }

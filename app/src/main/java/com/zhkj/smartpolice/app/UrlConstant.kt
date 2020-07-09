@@ -5,6 +5,11 @@ import com.sunny.zy.http.UrlConstant
 object UrlConstant {
 
     /**
+     * 图片下载地址
+     */
+    const val IMAGE_PATH_URL = "${UrlConstant.host}/sys/attachment/download?attID="
+
+    /**
      * 餐厅模块：订餐记录
      */
     const val MEAL_RECORD_URL = "logistics/shoporders/list"
@@ -13,6 +18,11 @@ object UrlConstant {
      * 餐厅模块：餐厅列表
      */
     const val RESTAURANT_LIST_URL = "logistics/shop/list"
+
+    /**
+     * 个人中心：用户信息
+     */
+    const val USER_INFO_URL = "/sys/user/info"
 
     /**
      * 个人中心：预约记录

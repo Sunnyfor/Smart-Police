@@ -51,7 +51,7 @@
             style="@style/style_image_circle"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintStart_toStartOf="@id/v_login"
             app:layout_constraintTop_toTopOf="@id/v_login"
@@ -59,15 +59,25 @@
 
         <TextView
             android:id="@+id/tv_name"
-            style="@style/style_font_black"
+            style="@style/style_font_black_bigger"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/dp_10"
+            android:maxLines="1"
             android:text="登录 / 注册"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/iv_head"
             app:layout_constraintStart_toEndOf="@id/iv_head"
             app:layout_constraintTop_toTopOf="@id/iv_head"
             tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_sign"
+            style="@style/style_font_gray_small"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/dp_5"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="签名" />
 
         <TextView
             android:id="@+id/tv1"
@@ -204,6 +214,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_medicine"
                 style="@style/style_mine_layout_weight"
                 tools:ignore="UseCompoundDrawables">
 
@@ -309,26 +320,13 @@
             app:startIcon="@drawable/svg_mine_about" />
 
         <com.zhkj.smartpolice.widget.ItemLayout
-            android:id="@+id/item_cache"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_56"
-            app:endIcon="@drawable/svg_btn_more"
-            app:layout_constraintEnd_toEndOf="@id/item_help"
-            app:layout_constraintStart_toStartOf="@id/item_help"
-            app:layout_constraintTop_toBottomOf="@id/item_about"
-            app:lineVisible="true"
-            app:startAfterText="清除缓存"
-            app:startAfterTextColor="@color/color_black"
-            app:startIcon="@drawable/svg_mine_cache" />
-
-        <com.zhkj.smartpolice.widget.ItemLayout
             android:id="@+id/item_setting"
             android:layout_width="0dp"
             android:layout_height="@dimen/dp_56"
             app:endIcon="@drawable/svg_btn_more"
             app:layout_constraintEnd_toEndOf="@id/item_help"
             app:layout_constraintStart_toStartOf="@id/item_help"
-            app:layout_constraintTop_toBottomOf="@id/item_cache"
+            app:layout_constraintTop_toBottomOf="@id/item_about"
             app:lineVisible="true"
             app:startAfterText="设置"
             app:startAfterTextColor="@color/color_black"

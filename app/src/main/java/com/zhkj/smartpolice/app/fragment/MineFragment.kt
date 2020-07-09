@@ -69,7 +69,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
             .placeholder(R.drawable.svg_default_head)
             .into(iv_head)
 
-        tv_name.text = isStrEmpty("${data.userName} ( ${data.mobile} )", "登录 / 注册")
+        tv_name.text = isStrEmpty("${data.nickName} ( ${data.mobile} )", "登录 / 注册")
         tv_sign.text = isStrEmpty(data.sign)
     }
 }

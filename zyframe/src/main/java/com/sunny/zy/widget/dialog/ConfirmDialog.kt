@@ -4,8 +4,8 @@ import android.app.Activity
 import android.view.Gravity
 import android.view.View
 import com.sunny.zy.base.BaseDialog
-import kotlinx.android.synthetic.main.dialog_confirm.*
 import kotlinx.android.synthetic.main.layout_dialog_btn.*
+import kotlinx.android.synthetic.main.zy_dialog_confirm.*
 
 /**
  * Desc 确认对话框

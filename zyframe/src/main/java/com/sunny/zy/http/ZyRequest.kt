@@ -2,8 +2,11 @@ package com.sunny.zy.http
 
 import okhttp3.FormBody
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
 import okhttp3.Request
+import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
 
 /**
  * Desc
@@ -67,8 +70,19 @@ class ZyRequest {
     }
 
 
-//    fun downLoadRequest(url:String,params: HashMap<String, String>?):Request{
-//        val urlSb = getUrlSb(url)
-//
-//    }
+    /**
+     * FORM形式上传文件
+     */
+    fun formUploadRequest(url: String, filePath: String): Request {
+        val urlSb = getUrlSb(url)
+        val body = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart(
+                "file",
+                filePath.split("/").last(),
+                File(filePath).asRequestBody("multipart/form-data".toMediaType())
+            )
+
+        return Request.Builder().url(urlSb.toString()).post(body.build()).build()
+    }
 }

@@ -6,15 +6,11 @@ package com.sunny.zy.http
  */
 object Constant {
 
-    fun isDebug(): Boolean = true
-
     var isLog = true //是否打印LOG
-
-    var host = ""
 
     const val pageLimit = "20"
 
-    const val authorities = "com.example.housekeeping.provider"
+    const val authorities = "com.zhkj.smartpolice.provider"
 
     const val VERSION = "v1"  //接口版本
 }

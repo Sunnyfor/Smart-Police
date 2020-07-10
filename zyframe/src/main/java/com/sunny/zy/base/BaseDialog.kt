@@ -11,7 +11,7 @@ import com.sunny.zy.R
  * Mail yongzuo.chen@foxmail.com
  * Date 2019/10/31 0031 14:55
  */
-open class BaseDialog(activity: Activity, layout: Int = R.layout.dialog_confirm) : Dialog(activity, R.style.style_common_dialog) {
+open class BaseDialog(activity: Activity, layout: Int = R.layout.zy_dialog_confirm) : Dialog(activity, R.style.style_common_dialog) {
 
     var onConfirmListener: (() -> Unit)? = null
     var onCancelListener: (() -> Unit)? = null

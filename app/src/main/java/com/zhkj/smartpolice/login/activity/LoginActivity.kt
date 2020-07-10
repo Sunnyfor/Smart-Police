@@ -5,9 +5,11 @@ import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.MainActivity
@@ -17,6 +19,7 @@ import com.zhkj.smartpolice.login.presenter.LoginPresenter
 import com.zhkj.smartpolice.login.view.LoginView
 import kotlinx.android.synthetic.main.act_login.*
 
+@Route(path = RouterManager.LOGIN_ACTIVITY)
 class LoginActivity : BaseActivity(), LoginView {
 
     private var isStatus: Boolean = false

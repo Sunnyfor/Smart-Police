@@ -125,6 +125,16 @@ object ZyHttp {
         }
     }
 
+    /**
+     * form表单上传图片
+     */
+    suspend fun <T> formUpload(url: String, filePath: String, httpResultBean: HttpResultBean<T>) {
+        return withContext(Dispatchers.IO) {
+            //创建okHttp请求
+            val request = zyRequest.formUploadRequest(url, filePath)
+            execution(request, httpResultBean)
+        }
+    }
 
     /**
      * 执行网络请求并处理结果

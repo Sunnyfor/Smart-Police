@@ -7,7 +7,12 @@ object UrlConstant {
     /**
      * 图片下载地址
      */
-    const val IMAGE_PATH_URL = "${UrlConstant.host}/sys/attachment/download?attID="
+    const val LOAD_IMAGE_PATH_URL = "${UrlConstant.host}/sys/attachment/download?attID="
+
+    /**
+     * 图片上传地址
+     */
+    const val UPLOAD_IMAGE_PATH_URL = "sys/attachment/upload"
 
     /**
      * 餐厅模块：订餐记录

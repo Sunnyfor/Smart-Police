@@ -4,16 +4,34 @@ import com.sunny.zy.base.BaseModel
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.mine.bean.ImageBean
 import com.zhkj.smartpolice.mine.bean.UserBean
 import org.json.JSONObject
 
 class UserModel {
 
     /**
+     * 上传图片
+     */
+    suspend fun uploadImage(url: String, filePath: String): ImageBean? {
+
+        val httpResultBean = object : HttpResultBean<BaseModel<ImageBean>>() {}
+
+        ZyHttp.formUpload(url, filePath, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.data
+            }
+        }
+        return null
+    }
+
+    /**
      *  个人信息
      */
     suspend fun loadUserInfo(): UserBean? {
         val httpResultBean = object : HttpResultBean<BaseModel<UserBean>>("user") {}
+
         ZyHttp.get(UrlConstant.LOAD_USER_INFO_URL, null, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {

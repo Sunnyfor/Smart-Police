@@ -73,7 +73,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
         UserManager.setUserBean(data)
 
         Glide.with(requireContext())
-            .load("${UrlConstant.IMAGE_PATH_URL}${data.avatar}")
+            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${data.avatar}")
             .placeholder(R.drawable.svg_default_head)
             .into(iv_head)
 

@@ -22,7 +22,12 @@ object UrlConstant {
     /**
      * 个人中心：用户信息
      */
-    const val USER_INFO_URL = "/sys/user/info"
+    const val LOAD_USER_INFO_URL = "sys/user/info"
+
+    /**
+     * 个人中心：用户信息更新
+     */
+    const val UPDATE_USER_INFO_URL = "sys/user/updateInfo"
 
     /**
      * 个人中心：预约记录

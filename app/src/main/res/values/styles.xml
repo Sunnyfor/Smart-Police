@@ -49,12 +49,23 @@
 
     <style name="style_mine_item_layout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/dp_60</item>
+        <item name="android:layout_height">@dimen/dp_35</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_20</item>
+    </style>
+
+    <!--【个人资料】子条目编辑框样式-->
+
+    <style name="style_mine_item_edit" parent="style_common_edit">
+        <item name="android:background">@drawable/sel_border_gray</item>
     </style>
 
     <!--【订餐】子条目样式-->
 
-    <style name="style_register_item_layout" parent="style_mine_item_layout">
+    <style name="style_register_item_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_60</item>
         <item name="android:paddingLeft">@dimen/dp_20</item>
         <item name="android:paddingRight">@dimen/dp_20</item>
     </style>

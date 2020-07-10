@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,48 +11,91 @@
         style="@style/style_image_circle"
         android:layout_width="@dimen/dp_100"
         android:layout_height="@dimen/dp_100"
-        android:layout_marginTop="@dimen/dp_20"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_20"
         app:riv_oval="true" />
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:id="@+id/item_name"
+    <LinearLayout
         style="@style/style_mine_item_layout"
-        app:endIcon="@drawable/svg_btn_more"
-        app:endText="@string/app_name"
-        app:lineVisible="true"
-        app:startAfterText="姓名" />
+        android:layout_marginTop="@dimen/dp_20">
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:id="@+id/item_nickName"
-        style="@style/style_mine_item_layout"
-        app:endIcon="@drawable/svg_btn_more"
-        app:endText="@string/app_name"
-        app:lineVisible="true"
-        app:startAfterText="昵称" />
+        <TextView
+            style="@style/style_register_item_text"
+            android:text="姓名 *"
+            tools:ignore="HardcodedText" />
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:id="@+id/item_phone"
-        style="@style/style_mine_item_layout"
-        app:endIcon="@drawable/svg_btn_more"
-        app:endText="@string/app_name"
-        app:lineVisible="true"
-        app:startAfterText="手机号" />
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_username"
+            style="@style/style_mine_item_edit"
+            android:enabled="false"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:id="@+id/item_email"
-        style="@style/style_mine_item_layout"
-        app:endIcon="@drawable/svg_btn_more"
-        app:endText="@string/app_name"
-        app:lineVisible="true"
-        app:startAfterText="邮箱" />
 
-    <com.zhkj.smartpolice.widget.ItemLayout
-        android:id="@+id/item_sign"
+    <LinearLayout
         style="@style/style_mine_item_layout"
-        app:endIcon="@drawable/svg_btn_more"
-        app:endText="@string/app_name"
-        app:lineVisible="true"
-        app:startAfterText="个人简介" />
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/style_register_item_text"
+            android:text="昵称"
+            tools:ignore="HardcodedText" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_nickname"
+            style="@style/style_mine_item_edit"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+    <LinearLayout style="@style/style_mine_item_layout">
+
+        <TextView
+            style="@style/style_register_item_text"
+            android:text="手机号"
+            tools:ignore="HardcodedText" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_phone"
+            style="@style/style_mine_item_edit"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+    <LinearLayout style="@style/style_mine_item_layout">
+
+        <TextView
+            style="@style/style_register_item_text"
+            android:text="邮箱"
+            tools:ignore="HardcodedText" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_email"
+            style="@style/style_mine_item_edit"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_50"
+        android:gravity="center_horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            style="@style/style_common_btn"
+            android:layout_weight="1"
+            android:background="@drawable/sel_btn_disable"
+            android:text="取消"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_modify"
+            style="@style/style_common_btn"
+            android:layout_weight="1"
+            android:text="修改"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
 
 </LinearLayout>

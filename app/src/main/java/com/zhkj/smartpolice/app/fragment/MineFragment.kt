@@ -56,15 +56,20 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
     }
 
     override fun loadData() {
-        presenter.loadUserInfo()
+        UserManager.getUserBean().let {
+            if (it.userName.isNullOrEmpty()) {
+                presenter.loadUserInfo()
+            } else {
+                loadUserInfo(it)
+            }
+        }
     }
 
     override fun close() {
         presenter.cancel()
     }
 
-    override fun showUserInfo(data: UserBean) {
-
+    override fun loadUserInfo(data: UserBean) {
         UserManager.setUserBean(data)
 
         Glide.with(requireContext())
@@ -74,5 +79,9 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
 
         tv_name.text = isStrEmpty("${data.nickName} ( ${data.mobile} )", "登录 / 注册")
         tv_sign.text = isStrEmpty(data.sign)
+    }
+
+    override fun updateUserInfo(msg: String) {
+
     }
 }

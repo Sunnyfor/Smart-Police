@@ -60,6 +60,7 @@
                 android:textSize="@dimen/sp_14" />
 
             <EditText
+                android:id="@+id/et_apply_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_150"
@@ -96,6 +97,7 @@
                 android:textSize="@dimen/sp_14" />
 
             <EditText
+                android:id="@+id/tv_apply_cellphone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_130"
@@ -197,13 +199,17 @@
 
             <TextView
                 android:id="@+id/tv_info"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_20"
                 android:hint="请填写你维修的问题"
                 android:textColor="@color/fun_3E3E3E"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/sp_14"
+                android:ellipsize="end"
+                android:maxEms="7"
+                android:singleLine="true"/>
 
         </RelativeLayout>
 
@@ -249,6 +255,7 @@
         android:textSize="@dimen/sp_16" />
 
     <TextView
+        android:id="@+id/tv_maintain_put"
         android:layout_width="@dimen/dp_180"
         android:layout_height="@dimen/dp_50"
         android:layout_alignParentEnd="true"

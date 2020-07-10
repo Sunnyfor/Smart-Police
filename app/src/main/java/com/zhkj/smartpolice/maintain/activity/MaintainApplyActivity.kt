@@ -10,8 +10,11 @@ import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.maintain.bean.DepartmentStructureBean
+import com.zhkj.smartpolice.maintain.bean.MaintainRequestPushBean
+import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
+import com.zhkj.smartpolice.utils.CustomSpinner.OnCustomItemCheckedListener
 import kotlinx.android.synthetic.main.act_maintain_apply.*
 
 class MaintainApplyActivity : BaseActivity(), IMaintainView {
@@ -19,8 +22,11 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
     private var activeState: String? = null
     private var classifyId: String? = null
     private var createTime: String? = null
+    private var goodsId: String? = null
     private var goodsName: String? = null
     private var info: String? = null
+    private var deptId: String? = null
+    private var deptName: String? = null
 
     companion object {
 
@@ -29,12 +35,14 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
             activeState: String?,
             classifyId: String?,
             createTime: String?,
+            goodsId: String?,
             goodsName: String?
         ) {
             val intent = Intent(context, MaintainApplyActivity::class.java)
             intent.putExtra("activeState", activeState)
             intent.putExtra("classifyId", classifyId)
             intent.putExtra("createTime", createTime)
+            intent.putExtra("goodsId", goodsId)
             intent.putExtra("goodsName", goodsName)
             context.startActivity(intent)
         }
@@ -55,6 +63,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
         activeState = intent.getStringExtra("activeState")
         classifyId = intent.getStringExtra("classifyId")
         createTime = intent.getStringExtra("createTime")
+        goodsId = intent.getStringExtra("goodsId")
         goodsName = intent.getStringExtra("goodsName")
         tv_goods_name.text = goodsName
         cs_section.showTextTv?.text = "选择部门"
@@ -63,6 +72,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
         tv_return.setOnClickListener(this)
         rl_date_select.setOnClickListener(this)
         rl_content.setOnClickListener(this)
+        tv_maintain_put.setOnClickListener(this)
     }
 
     override fun onClickEvent(view: View) {
@@ -105,8 +115,43 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
             }
 
             R.id.rl_content -> {
-                var intent = Intent(this, MaintainContentActivity::class.java)
-                startActivityForResult(intent,Constant.MAINTAIN_CONTENT_ANSWER)
+                val intent = Intent(this, MaintainContentActivity::class.java)
+                if (tv_info.text.toString().isNotEmpty()) {
+                    intent.putExtra("issue", tv_info.text.toString())
+                }
+                startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
+            }
+
+            R.id.tv_maintain_put -> {
+                if (et_apply_name.text.toString().isNotEmpty()) {
+                    if (tv_apply_cellphone.text.toString().isNotEmpty()) {
+                        if (cs_section != null) {
+                            if (!tv_date.text.toString().equals("请选择")) {
+                                var maintainRequestPushBean = MaintainRequestPushBean()
+                                maintainRequestPushBean.applyState = "1"
+                                maintainRequestPushBean.approvalId = "1"
+                                maintainRequestPushBean.petitioner = et_apply_name.text.toString()
+                                maintainRequestPushBean.petitionerPhone =
+                                    tv_apply_cellphone.text.toString()
+                                maintainRequestPushBean.createTime = tv_date.text.toString()
+                                maintainRequestPushBean.applyDate = tv_date.text.toString()
+                                maintainRequestPushBean.deptId = deptId
+                                maintainRequestPushBean.deptName = deptName
+                                maintainRequestPushBean.applyContent = tv_info.text.toString()
+                                maintainRequestPushBean.shopGoodsId = goodsId
+                                maintainPresenter.onMaintainRequestPush(maintainRequestPushBean)
+                            } else {
+                                ToastUtil.show("维修时间不能为空")
+                            }
+                        } else {
+                            ToastUtil.show("维修地点不能为空")
+                        }
+                    } else {
+                        ToastUtil.show("维修人手机号不能为空")
+                    }
+                } else {
+                    ToastUtil.show("维修人姓名不能为空")
+                }
             }
         }
     }
@@ -124,15 +169,24 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
      */
     override fun onDepartmentStructure(departmentStructureBean: DepartmentStructureBean) {
         super.onDepartmentStructure(departmentStructureBean)
-        departmentStructureBean?.let {
+        departmentStructureBean.let {
             it.data?.let { data ->
                 data.forEach { info ->
+                    list.clear()
                     if (info.name?.isNotEmpty() == true) {
                         LogUtil.i("部门选择树==============${info.name}")
                         list.add(info.name!!)
                     }
                 }
+                cs_section.textList.clear()
                 cs_section.textList.addAll(list)
+                cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
+                    override fun OnCustomItemChecked(position: Int) {
+                        LogUtil.i("我点击了那个===========${data.get(position).id}")
+                        deptId = data.get(position).id
+                        deptName = data.get(position).name
+                    }
+                })
             }
 
         }
@@ -140,8 +194,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        when(requestCode){
+        when (requestCode) {
             Constant.MAINTAIN_CONTENT_ANSWER -> {
                 data?.let {
                     info = data.getStringExtra("info")
@@ -149,6 +202,13 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
                     LogUtil.i("维修问题回传============$info")
                 }
             }
+        }
+    }
+
+    override fun onMaintainRequestPush(succeedBean: SucceedBean) {
+        super.onMaintainRequestPush(succeedBean)
+        succeedBean.let {
+            LogUtil.i("提交返回结果==========================$succeedBean")
         }
     }
 }

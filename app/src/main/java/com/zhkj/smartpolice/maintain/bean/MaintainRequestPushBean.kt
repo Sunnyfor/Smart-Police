@@ -1,35 +1,35 @@
 package com.zhkj.smartpolice.maintain.bean
 
 
-data class MaintainRequestPushBean(
-    var applyContent: String,
-    var applyDate: String,
-    var applyId: Int,
-    var applyState: Int,
-    var approvalId: Int,
-    var attachmentGroupId: String,
-    var createTime: String,
-    var createUserId: Int,
-    var deptId: Int,
-    var deptName: String,
-    var money: Int,
-    var petitioner: String,
-    var petitionerPhone: String,
-    var processId: Int,
-    var publishState: Int,
-    var repairRecordEntity: RepairRecordEntity,
-    var shopGoodsId: Int
-)
+class MaintainRequestPushBean {
+    var applyContent: String? = null
+    var applyDate: String? = null
+    var applyId: String? = null
+    var applyState: String? = null
+    var approvalId: String? = null
+    var attachmentGroupId: String? = null
+    var createTime: String? = null
+    var createUserId: String? = null
+    var deptId: String? = null
+    var deptName: String? = null
+    var money: String? = null
+    var petitioner: String? = null
+    var petitionerPhone: String? = null
+    var processId: String? = null
+    var publishState: String? = null
+    var repairRecordEntity: RepairRecordEntity? = null
+    var shopGoodsId: String? = null
 
-data class RepairRecordEntity(
-    var content: String,
-    var createTime: String,
-    var createUserId: Int,
-    var createUserName: String,
-    var groupId: Int,
-    var operation: String,
-    var operationPhone: String,
-    var professionId: Int,
-    var recordId: Int,
-    var repairDate: String
-)
+    class RepairRecordEntity{
+        var content: String? = null
+        var createTime: String? = null
+        var createUserId: String? = null
+        var createUserName: String? = null
+        var groupId: String? = null
+        var operation: String? = null
+        var operationPhone: String? = null
+        var professionId: String? = null
+        var recordId: String? = null
+        var repairDate: String? = null
+    }
+}

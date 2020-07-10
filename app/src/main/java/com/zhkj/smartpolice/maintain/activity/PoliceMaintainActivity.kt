@@ -51,6 +51,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
                     getData(position).activeState,
                     getData(position).classifyId,
                     getData(position).createTime,
+                    getData(position).goodsId,
                     getData(position).goodsName
                 )
             }

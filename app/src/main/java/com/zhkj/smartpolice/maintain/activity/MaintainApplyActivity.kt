@@ -4,18 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.utils.CameraUtil
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.PickerViewUtils
 import com.sunny.zy.utils.ToastUtil
+import com.sunny.zy.widget.dialog.CameraDialog
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.Constant
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.maintain.bean.DepartmentStructureBean
 import com.zhkj.smartpolice.maintain.bean.MaintainRequestPushBean
 import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
+import com.zhkj.smartpolice.mine.model.UserPresenter
 import com.zhkj.smartpolice.utils.CustomSpinner.OnCustomItemCheckedListener
 import kotlinx.android.synthetic.main.act_maintain_apply.*
+import java.io.File
 
 class MaintainApplyActivity : BaseActivity(), IMaintainView {
     private var list: ArrayList<String> = ArrayList()
@@ -56,6 +61,18 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
         PickerViewUtils(this)
     }
 
+    private val presenter: UserPresenter by lazy {
+        UserPresenter(this)
+    }
+
+    private val cameraUtil: CameraUtil by lazy {
+        CameraUtil(this)
+    }
+
+    private val cameraDialog: CameraDialog by lazy {
+        CameraDialog(this, cameraUtil)
+    }
+
     override fun setLayout(): Int = R.layout.act_maintain_apply
 
     override fun initView() {
@@ -73,32 +90,18 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
         rl_date_select.setOnClickListener(this)
         rl_content.setOnClickListener(this)
         tv_maintain_put.setOnClickListener(this)
+
+        cameraUtil.setAspectXY(resources.getDimension(R.dimen.dp_100).toInt(), resources.getDimension(R.dimen.dp_100).toInt())
+        cameraUtil.onResultListener = object : CameraUtil.OnResultListener {
+            override fun onResult(file: File) {
+                presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path)
+            }
+        }
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            R.id.rl_uploading -> {
-//                val pickerViewUtils = PickerViewUtils(this)
-                val buttonSelector: HashMap<String, String> = HashMap()
-
-                buttonSelector["1"] = "拍照"
-                buttonSelector["2"] = "查看相册"
-
-                pickerViewUtils.showSingleChoice(buttonSelector,
-                    object : PickerViewUtils.OnSingleChoiceResultListener {
-                        override fun onPickerViewResult(id: String, value: String) {
-                            when (id) {
-                                "1" -> {
-                                    ToastUtil.show("我点击了拍照")
-                                }
-                                "2" -> {
-                                    ToastUtil.show("我点击了查看相册")
-                                }
-                            }
-                        }
-
-                    })
-            }
+            R.id.rl_uploading -> cameraDialog.show()
 
             R.id.tv_return -> {
                 finish()
@@ -127,7 +130,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
                     if (tv_apply_cellphone.text.toString().isNotEmpty()) {
                         if (cs_section != null) {
                             if (!tv_date.text.toString().equals("请选择")) {
-                                var maintainRequestPushBean = MaintainRequestPushBean()
+                                val maintainRequestPushBean = MaintainRequestPushBean()
                                 maintainRequestPushBean.applyState = "1"
                                 maintainRequestPushBean.approvalId = "1"
                                 maintainRequestPushBean.petitioner = et_apply_name.text.toString()
@@ -183,8 +186,8 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
                 cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
                     override fun OnCustomItemChecked(position: Int) {
                         LogUtil.i("我点击了那个===========${data.get(position).id}")
-                        deptId = data.get(position).id
-                        deptName = data.get(position).name
+                        deptId = data[position].id
+                        deptName = data[position].name
                     }
                 })
             }

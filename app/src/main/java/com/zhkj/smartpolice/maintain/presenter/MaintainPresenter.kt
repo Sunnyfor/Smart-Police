@@ -5,6 +5,7 @@ import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
+import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.maintain.bean.*
 import com.zhkj.smartpolice.maintain.view.IMaintainView
@@ -59,8 +60,9 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
 
     fun onMaintainRequestPush(maintainRequestPushBean: MaintainRequestPushBean) {
         view?.showLoading()
-        var gson = Gson()
-        var toJson = gson.toJson(maintainRequestPushBean);
+        val gson = Gson()
+        val toJson = gson.toJson(maintainRequestPushBean);
+        LogUtil.i("提交的json参数===========$toJson")
         val httpResultBean = object : HttpResultBean<SucceedBean>() {}
         launch(Main) {
             ZyHttp.postJson(UrlConstant.APPLY_MAINTAIN, toJson, httpResultBean)

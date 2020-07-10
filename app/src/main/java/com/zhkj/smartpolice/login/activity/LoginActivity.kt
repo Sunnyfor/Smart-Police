@@ -37,7 +37,7 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loadData() {
-        loginPresenter.onUserLogin("demo1", "666666")
+//        loginPresenter.onUserLogin("demo1", "666666")
     }
 
     override fun onClickEvent(view: View) {
@@ -55,6 +55,8 @@ class LoginActivity : BaseActivity(), LoginView {
                 } else {
                     ToastUtil.show("用户名不能为空！")
                 }
+
+                loginPresenter.onUserLogin(userName.text.toString(), userPassword.text.toString())
             }
 
             R.id.passwordType -> {

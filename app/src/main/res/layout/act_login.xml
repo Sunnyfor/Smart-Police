@@ -58,8 +58,7 @@
                 android:layout_marginLeft="@dimen/dp_7"
                 android:layout_toRightOf="@id/iconLoginPassword"
                 android:background="@null"
-                android:hint="请输入用户名"
-                android:text="demo1" />
+                android:hint="请输入用户名" />
 
         </RelativeLayout>
 
@@ -96,8 +95,7 @@
                 android:layout_toRightOf="@id/iconLoginUser"
                 android:background="@null"
                 android:hint="请输入密码"
-                android:inputType="textPassword"
-                android:text="666666" />
+                android:inputType="textPassword" />
 
             <ImageView
                 android:id="@+id/passwordType"

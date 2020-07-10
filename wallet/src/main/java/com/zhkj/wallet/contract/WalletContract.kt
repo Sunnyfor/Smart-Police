@@ -1,10 +1,10 @@
-package com.zhkj.smartpolice.wallet.contract
+package com.zhkj.wallet.contract
 
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
-import com.zhkj.smartpolice.wallet.bean.PurseBean
-import com.zhkj.smartpolice.wallet.bean.RecordBean
+import com.zhkj.wallet.bean.PurseBean
+import com.zhkj.wallet.bean.RecordBean
 import java.io.File
 
 interface WalletContract {

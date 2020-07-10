@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.model
+package com.zhkj.wallet.model
 
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
@@ -6,9 +6,9 @@ import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.sunny.zy.utils.ToastUtil
-import com.zhkj.smartpolice.wallet.bean.PurseBean
-import com.zhkj.smartpolice.wallet.bean.RecordBean
-import com.zhkj.smartpolice.wallet.http.WalletUrlConstant
+import com.zhkj.wallet.bean.PurseBean
+import com.zhkj.wallet.bean.RecordBean
+import com.zhkj.wallet.http.WalletUrlConstant
 import org.json.JSONObject
 import java.io.File
 

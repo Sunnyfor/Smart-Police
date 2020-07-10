@@ -1,11 +1,11 @@
-package com.zhkj.smartpolice.wallet.widget
+package com.zhkj.wallet.widget
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.zhkj.smartpolice.R
+import com.zhkj.wallet.R
 
 class InputPayPasswordItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     private val mPaint: Paint by lazy {

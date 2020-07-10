@@ -1,11 +1,11 @@
-package com.zhkj.smartpolice.wallet.activity
+package com.zhkj.wallet.activity
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterManager
-import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.wallet.utils.MoneyInputFilter
+import com.zhkj.wallet.R
+import com.zhkj.wallet.utils.MoneyInputFilter
 import kotlinx.android.synthetic.main.act_withdrawal.*
 
 @Route(path = RouterManager.WITHDRAWAL_ACTIVITY)

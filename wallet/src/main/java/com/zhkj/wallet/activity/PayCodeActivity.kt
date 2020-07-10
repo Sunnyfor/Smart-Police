@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.activity
+package com.zhkj.wallet.activity
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -6,9 +6,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.GlideApp
 import com.sunny.zy.utils.RouterManager
-import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.wallet.contract.WalletContract
-import com.zhkj.smartpolice.wallet.presenter.WalletPresenter
+import com.zhkj.wallet.R
+import com.zhkj.wallet.contract.WalletContract
+import com.zhkj.wallet.presenter.WalletPresenter
 import kotlinx.android.synthetic.main.act_pay_code.*
 import java.io.File
 

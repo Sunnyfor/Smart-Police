@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.utils
+package com.zhkj.wallet.utils
 
 import android.view.Gravity
 import android.view.View
@@ -6,10 +6,10 @@ import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.ErrorViewType
 import com.sunny.zy.base.IBaseView
 import com.sunny.zy.utils.ToastUtil
-import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.wallet.contract.WalletContract
-import com.zhkj.smartpolice.wallet.presenter.WalletPresenter
-import com.zhkj.smartpolice.wallet.widget.InputPayPasswordPopupWindow
+import com.zhkj.wallet.R
+import com.zhkj.wallet.contract.WalletContract
+import com.zhkj.wallet.presenter.WalletPresenter
+import com.zhkj.wallet.widget.InputPayPasswordPopupWindow
 
 class PayPasswordUtil(
     var view: View,

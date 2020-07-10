@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.widget
+package com.zhkj.wallet.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
-import com.zhkj.smartpolice.R
+import com.zhkj.wallet.R
 import kotlinx.android.synthetic.main.popup_input_pay_password.view.*
 
 @SuppressLint("InflateParams")

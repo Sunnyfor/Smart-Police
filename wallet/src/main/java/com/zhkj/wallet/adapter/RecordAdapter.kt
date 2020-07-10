@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.adapter
+package com.zhkj.wallet.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
-import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.wallet.bean.RecordBean
+import com.zhkj.wallet.R
+import com.zhkj.wallet.bean.RecordBean
 import kotlinx.android.synthetic.main.item_record.view.*
 
 class RecordAdapter : BaseRecycleAdapter<RecordBean>(arrayListOf()) {

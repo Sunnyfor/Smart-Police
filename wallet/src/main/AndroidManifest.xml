@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhkj.smartpolice">
+    package="com.zhkj.wallet">
 
     <application>
-        <activity android:name=".wallet.activity.WalletActivity" />
-        <activity android:name=".wallet.activity.RechargeActivity" />
-        <activity android:name=".wallet.activity.WithdrawalActivity" />
-        <activity android:name=".wallet.activity.PayCodeActivity" />
-        <activity android:name=".wallet.activity.RecordActivity" />
+        <activity android:name=".activity.WalletActivity" />
+        <activity android:name=".activity.RechargeActivity" />
+        <activity android:name=".activity.WithdrawalActivity" />
+        <activity android:name=".activity.PayCodeActivity" />
+        <activity android:name=".activity.RecordActivity" />
     </application>
 </manifest>

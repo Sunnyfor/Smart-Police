@@ -1,9 +1,9 @@
-package com.zhkj.smartpolice.wallet.presenter
+package com.zhkj.wallet.presenter
 
 import com.sunny.zy.base.ErrorViewType
 import com.sunny.zy.base.IBaseView
-import com.zhkj.smartpolice.wallet.contract.WalletContract
-import com.zhkj.smartpolice.wallet.model.WalletModel
+import com.zhkj.wallet.contract.WalletContract
+import com.zhkj.wallet.model.WalletModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch

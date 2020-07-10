@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.http
+package com.zhkj.wallet.http
 
 object WalletUrlConstant {
     /**

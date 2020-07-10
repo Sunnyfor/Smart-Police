@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.bean
+package com.zhkj.wallet.bean
 
 /**
  * 钱包实体类

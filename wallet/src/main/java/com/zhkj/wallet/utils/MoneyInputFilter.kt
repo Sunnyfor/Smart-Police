@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.utils
+package com.zhkj.wallet.utils
 
 import android.text.InputFilter
 import android.text.Spanned

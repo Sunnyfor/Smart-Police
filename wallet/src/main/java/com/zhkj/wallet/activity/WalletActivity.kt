@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.wallet.activity
+package com.zhkj.wallet.activity
 
 
 import android.view.View
@@ -6,11 +6,11 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
-import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.wallet.bean.PurseBean
-import com.zhkj.smartpolice.wallet.contract.WalletContract
-import com.zhkj.smartpolice.wallet.presenter.WalletPresenter
-import com.zhkj.smartpolice.wallet.utils.PayPasswordUtil
+import com.zhkj.wallet.R
+import com.zhkj.wallet.bean.PurseBean
+import com.zhkj.wallet.contract.WalletContract
+import com.zhkj.wallet.presenter.WalletPresenter
+import com.zhkj.wallet.utils.PayPasswordUtil
 import kotlinx.android.synthetic.main.act_wallet.*
 
 /**

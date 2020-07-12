@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_detail"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_90"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/sel_border_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="@dimen/dp_98"
+                android:layout_height="@dimen/dp_72"
+                android:layout_marginStart="@dimen/dp_10"
+                android:contentDescription="@string/placeholder"
+                android:scaleType="fitXY"
+                android:src="@drawable/svg_default_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/style_font_black_big"
+                android:layout_marginStart="@dimen/dp_14"
+                android:text="@string/placeholder"
+                app:layout_constraintStart_toEndOf="@id/iv_photo"
+                app:layout_constraintTop_toTopOf="@id/iv_photo" />
+
+            <View
+                android:id="@+id/view_cut"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/svg_btn_cut"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_count"
+                style="@style/style_font_gray"
+                android:layout_marginStart="@dimen/dp_12"
+                android:text="@string/number_one"
+                app:layout_constraintBottom_toBottomOf="@id/view_cut"
+                app:layout_constraintStart_toEndOf="@id/view_cut"
+                app:layout_constraintTop_toTopOf="@id/view_cut" />
+
+
+            <View
+                android:id="@+id/tv_add"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@drawable/svg_btn_add"
+                app:layout_constraintStart_toEndOf="@id/tv_count"
+                app:layout_constraintTop_toTopOf="@id/view_cut" />
+
+
+            <TextView
+                style="@style/style_font_gray_small"
+                android:layout_marginStart="@dimen/dp_14"
+                android:text="@string/placeholder"
+                app:layout_constraintBottom_toBottomOf="@id/iv_photo"
+                app:layout_constraintStart_toEndOf="@id/iv_photo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_time_hint"
+            style="@style/style_font_black_big"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/select_reserve_time"
+            app:layout_constraintStart_toStartOf="@id/cl_detail"
+            app:layout_constraintTop_toBottomOf="@id/cl_detail" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_168"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@drawable/sel_border_white"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="@id/cl_detail"
+            app:layout_constraintStart_toStartOf="@id/cl_detail"
+            app:layout_constraintTop_toBottomOf="@id/tv_time_hint" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_input"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_96"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/sel_border_white"
+            app:layout_constraintEnd_toEndOf="@id/cl_detail"
+            app:layout_constraintStart_toStartOf="@id/cl_detail"
+            app:layout_constraintTop_toBottomOf="@id/recycler">
+
+
+            <View
+                android:id="@+id/view_line"
+                style="@style/style_line_horizontal"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/style_font_black"
+                android:layout_marginStart="@dimen/dp_16"
+                android:text="@string/name"
+                app:layout_constraintBottom_toBottomOf="@id/view_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_40"
+                android:background="@color/color_transparent"
+                android:hint="@string/please_fill_in_your_real_name"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="@id/view_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_name"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/style_font_black"
+                android:layout_marginStart="@dimen/dp_16"
+                android:text="@string/phone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view_line" />
+
+            <EditText
+                android:id="@+id/edit_phone"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/color_transparent"
+                android:hint="@string/please_fill_in_your_phone"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/edit_name"
+                app:layout_constraintStart_toStartOf="@id/edit_name"
+                app:layout_constraintTop_toTopOf="@id/view_line" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_reserve"
+            style="@style/style_common_btn"
+            android:text="@string/reserve"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_input" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

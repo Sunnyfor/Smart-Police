@@ -86,7 +86,11 @@
         <activity android:name=".maintain.activity.ApplyMaintainListActivity" />
         <activity android:name=".maintain.activity.AuditInfoActivity" />
         <activity android:name=".maintain.activity.PublishTaskActivity" />
-        <activity android:name=".maintain.activity.MaintainContentActivity"/>
+        <activity android:name=".maintain.activity.MaintainContentActivity" />
+
+        <!--运动场-->
+        <activity android:name=".stadium.StadiumDetailActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

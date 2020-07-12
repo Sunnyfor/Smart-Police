@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
+import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.coroutines.cancel
 
 /**
@@ -19,6 +20,11 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantView {
     private val adapter: MerchantAdapter by lazy {
         MerchantAdapter(shopType ?: "").apply {
             setOnItemClickListener { _, _ ->
+
+                if (shopType == TYPE_STADIUM){
+                    startActivity(Intent(this@MerchantListActivity, StadiumDetailActivity::class.java))
+                }
+
 //                startActivity(Intent(this@MerchantListActivity, MealActivity::class.java))
             }
         }

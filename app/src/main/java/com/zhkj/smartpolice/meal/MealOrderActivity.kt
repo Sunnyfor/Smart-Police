@@ -1,5 +1,7 @@
 package com.zhkj.smartpolice.meal
 
+import android.content.Context
+import android.content.Intent
 import android.view.View
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
@@ -10,25 +12,35 @@ import kotlinx.android.synthetic.main.act_meal_order.*
 
 class MealOrderActivity : BaseActivity() {
 
+    private var list = ArrayList<MealGoodsBean>()
+
     private val adapter: MealOrderAdapter by lazy {
         MealOrderAdapter(arrayListOf())
     }
 
-    private val pullRefreshLayoutFragment = PullRefreshFragment<MealGoodsBean>()
+    private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
 
+    companion object {
+        fun intent(context: Context, list: ArrayList<MealGoodsBean>?) {
+            val intent = Intent(context, MealOrderActivity::class.java)
+            intent.putExtra("list", list)
+            context.startActivity(intent)
+        }
+    }
 
     override fun setLayout(): Int = R.layout.act_meal_order
 
     override fun initView() {
 
         defaultTitle("购物车")
-        pullRefreshLayoutFragment.loadData = {
+
+        pullRefreshFragment.adapter = adapter
+        pullRefreshFragment.loadData = {
             loadData()
         }
-        pullRefreshLayoutFragment.adapter = adapter
 
-        supportFragmentManager.beginTransaction()
-            .replace(fl_container.id, pullRefreshLayoutFragment).commit()
+        supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
+
     }
 
     override fun onClickEvent(view: View) {
@@ -36,13 +48,8 @@ class MealOrderActivity : BaseActivity() {
     }
 
     override fun loadData() {
-        val list = ArrayList<MealGoodsBean>()
-        list.add(MealGoodsBean("1", "酸汤肥牛", 0, 1, "好吃", "￥49.90"))
-        list.add(MealGoodsBean("1", "酸菜鱼", 0, 1, "丫米", "￥39.90"))
-        list.add(MealGoodsBean("1", "鱼香肉丝", 0, 1, "", "￥29.90"))
-        list.add(MealGoodsBean("1", "宫保鸡丁", 0, 1, "", "￥29.90"))
-        list.add(MealGoodsBean("1", "手撕包菜", 0, 1, "", "￥9.90"))
-        pullRefreshLayoutFragment.addData(list)
+        list = intent.getStringArrayListExtra("list") as ArrayList<MealGoodsBean>
+        pullRefreshFragment.addData(list)
     }
 
     override fun close() {

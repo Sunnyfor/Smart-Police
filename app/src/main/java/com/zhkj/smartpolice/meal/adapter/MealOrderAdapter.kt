@@ -15,7 +15,7 @@ class MealOrderAdapter(list: ArrayList<MealGoodsBean>) : BaseRecycleAdapter<Meal
         LayoutInflater.from(context).inflate(R.layout.item_meal_order, parent, false)
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
-        holder.itemView.tv_title.text = getData(position).title
+        holder.itemView.tv_title.text = getData(position).goodsName
         holder.itemView.tv_price.text = getData(position).price
         holder.itemView.et_count.setText(getData(position).count.toString())
         holder.itemView.iv_cut.setOnClickListener {

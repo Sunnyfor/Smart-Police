@@ -24,6 +24,11 @@ class MealGoodsBean : Serializable {
     var expiryDate: String? = ""    //null
     var goodsClassifyLabel: String? = ""//null
 
+    /*
+     * 【本地字段】商品数量
+     */
+    var count: Int = 0
+
     override fun toString(): String {
         return "MealGoodsBean(shopId=$shopId, goodsId=$goodsId, goodsName=$goodsName, price=$price, description=$description, subsidyPrice=$subsidyPrice, activeState=$activeState, publishState=$publishState, groupId=$groupId, classifyId=$classifyId, isTop=$isTop, orderNumber=$orderNumber, createTime=$createTime, updateUserId=$updateUserId, isAway=$isAway, imageId=$imageId, isDelete=$isDelete, inventory=$inventory, expiryDate=$expiryDate, goodsClassifyLabel=$goodsClassifyLabel)"
     }

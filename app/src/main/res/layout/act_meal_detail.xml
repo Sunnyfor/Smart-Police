@@ -36,17 +36,9 @@
         tools:text="手撕包菜" />
 
     <TextView
-        android:id="@+id/tv_month_sales"
-        style="@style/style_font_gray"
-        android:layout_below="@id/tv_name"
-        android:layout_alignStart="@id/tv_name"
-        android:layout_marginTop="@dimen/dp_5"
-        tools:text="月售96" />
-
-    <TextView
         android:id="@+id/tv_price"
         style="@style/style_font_orange_bigger"
-        android:layout_below="@id/tv_month_sales"
+        android:layout_below="@id/tv_name"
         android:layout_alignStart="@id/tv_name"
         android:layout_marginTop="@dimen/dp_5"
         tools:text="￥18" />
@@ -54,7 +46,7 @@
     <TextView
         android:id="@+id/tv_shopping_cart"
         style="@style/style_font_white"
-        android:layout_below="@id/tv_month_sales"
+        android:layout_below="@id/tv_name"
         android:layout_alignTop="@id/tv_price"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/dp_15"

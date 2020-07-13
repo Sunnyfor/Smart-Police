@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.act_meal_detail.*
 
@@ -23,13 +25,19 @@ class MealDetailActivity : BaseActivity() {
 
     override fun initView() {
 
-        window.statusBarColor = ContextCompat.getColor(this, com.sunny.zy.R.color.color_black)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.color_black)
 
         val bean = intent.getSerializableExtra("MealGoodsBean") as MealGoodsBean
-        tv_name.text = bean.title
-        tv_month_sales.text = ("月售${bean.count}")
-        tv_price.text = bean.price
-        tv_desc.text = bean.weight
+
+        Glide.with(this)
+            .load(UrlConstant.LOAD_IMAGE_PATH_URL + bean.imageId)
+            .dontAnimate()
+            .placeholder(R.drawable.svg_default_image)
+            .into(iv_bg)
+
+        tv_name.text = bean.goodsName
+        tv_price.text = ("￥${bean.price}")
+        tv_desc.text = bean.description
 
         iv_back.setOnClickListener(this)
 

@@ -90,7 +90,7 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
                     showAtLocation(contentView, Gravity.BOTTOM, 0, 0)
                 }
             }
-            iv_shopping_cart.id -> startActivity(Intent(this, MealOrderActivity::class.java))
+            iv_shopping_cart.id -> MealOrderActivity.intent(this, pullRefreshFragment.adapter?.list)
         }
     }
 

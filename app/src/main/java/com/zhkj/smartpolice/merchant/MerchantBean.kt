@@ -10,7 +10,7 @@ class MerchantBean {
     var imageId: String? = null         //店铺Logo
     var businessTime: String? = null    //营业时间："06:00 - 09:00,11:00 - 14:00,17:00 - 21:00"
     var remark: String? = null          //新店开张，优惠多多
-    var buffetPrice: String? = null     //20
+    var buffetPrice: String? = null     //起送费
     var subsidyPrice: String? = null    //优惠金额
     var shippingFee: String? = null     //配送费
     var scope: String? = null           //经营范围：各种美食

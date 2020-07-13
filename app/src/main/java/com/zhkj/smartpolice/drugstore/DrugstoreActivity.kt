@@ -1,19 +1,49 @@
 package com.zhkj.smartpolice.drugstore
 
+import android.content.Context
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.drugstore.adapter.DrugGoodsAdapter
 import com.zhkj.smartpolice.meal.adapter.MealMenuAdapter
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
-import kotlinx.android.synthetic.main.act_meal.*
+import com.zhkj.smartpolice.meal.model.MealContract
+import com.zhkj.smartpolice.meal.model.MealPresenter
+import kotlinx.android.synthetic.main.act_drugstore.*
+import kotlinx.coroutines.cancel
 
-class DrugstoreActivity : BaseActivity() {
+class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
+
+    private var shopId: String? = null
 
     private val menuList = arrayListOf<MealMenuBean>()
-    private val goodsList = arrayListOf<MealGoodsBean>()
+
+    private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
+
+    private val mealMenuAdapter: MealMenuAdapter by lazy {
+        MealMenuAdapter(menuList).apply {
+            setOnItemClickListener { _, i ->
+                this.index = i
+                notifyDataSetChanged()
+            }
+        }
+    }
+
+    private val presenter: MealPresenter by lazy {
+        MealPresenter(this)
+    }
+
+    companion object {
+        fun intent(context: Context, shopId: String?) {
+            val intent = Intent(context, DrugstoreActivity::class.java)
+            intent.putExtra("shopId", shopId)
+            context.startActivity(intent)
+        }
+    }
 
     override fun setLayout(): Int = R.layout.act_drugstore
 
@@ -21,27 +51,18 @@ class DrugstoreActivity : BaseActivity() {
 
         defaultTitle("药品列表")
 
-        menuList.add(MealMenuBean("1", "营养成分", 1))
-        menuList.add(MealMenuBean("2", "营养健康", 0))
-        menuList.add(MealMenuBean("3", "保健机械", 0))
-        menuList.add(MealMenuBean("4", "护理护具", 0))
-        menuList.add(MealMenuBean("5", "传统滋补", 0))
-        menuList.add(MealMenuBean("6", "隐形眼镜", 0))
+        shopId = intent.getStringExtra("shopId")
 
         recyclerView_menu.layoutManager = LinearLayoutManager(this)
-        recyclerView_menu.adapter = MealMenuAdapter(menuList).apply {
-            setOnItemClickListener { _, i ->
-                this.index = i
-                notifyDataSetChanged()
-            }
+        recyclerView_menu.adapter = mealMenuAdapter
+
+        pullRefreshFragment.layoutManager = LinearLayoutManager(this)
+        pullRefreshFragment.adapter = DrugGoodsAdapter()
+        pullRefreshFragment.loadData = {
+            loadData()
         }
 
-        goodsList.add(MealGoodsBean("1", "莲花清瘟胶囊", 0, 46, "清瘟解毒，宣肺泄热", "￥49.90"))
-        goodsList.add(MealGoodsBean("1", "莲花清瘟胶囊", 0, 46, "清瘟解毒，宣肺泄热", "￥49.90"))
-        goodsList.add(MealGoodsBean("1", "感冒药", 0, 10, "丫米", "￥39.90"))
-
-        recyclerView_goods.layoutManager = LinearLayoutManager(this)
-        recyclerView_goods.adapter = DrugGoodsAdapter(goodsList)
+        supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
 
     }
 
@@ -50,9 +71,21 @@ class DrugstoreActivity : BaseActivity() {
     }
 
     override fun loadData() {
-
+        presenter.loadMealMenu(shopId ?: return)
+        presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: return)
     }
 
     override fun close() {
+        presenter.cancel()
+    }
+
+    override fun loadMealMenu(data: ArrayList<MealMenuBean>) {
+        menuList.clear()
+        menuList.addAll(data)
+        mealMenuAdapter.notifyDataSetChanged()
+    }
+
+    override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {
+        pullRefreshFragment.addData(data)
     }
 }

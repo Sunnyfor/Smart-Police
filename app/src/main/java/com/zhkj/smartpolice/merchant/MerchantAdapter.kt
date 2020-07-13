@@ -17,6 +17,7 @@ class MerchantAdapter(val shopType: String) : BaseRecycleAdapter<MerchantBean>(a
         val layoutId = when (shopType) {
             MerchantListActivity.TYPE_RESTAURANT -> R.layout.item_restaurant
             MerchantListActivity.TYPE_HAIRCUT -> R.layout.item_barber_list
+            MerchantListActivity.TYPE_DRUGSTORE -> R.layout.item_drugstore
             MerchantListActivity.TYPE_STADIUM -> R.layout.item_stadium_list
             else -> R.layout.item_restaurant
         }
@@ -27,6 +28,9 @@ class MerchantAdapter(val shopType: String) : BaseRecycleAdapter<MerchantBean>(a
 
         val shopImgView = holder.itemView.findViewById<ImageView>(R.id.iv_image)
         when (shopType) {
+            /**
+             * 餐厅
+             */
             MerchantListActivity.TYPE_RESTAURANT -> {
                 GlideApp.with(context)
                     .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${getData(position).imageId}")
@@ -38,10 +42,27 @@ class MerchantAdapter(val shopType: String) : BaseRecycleAdapter<MerchantBean>(a
                 holder.itemView.findViewById<TextView>(R.id.tv_desc).text =
                     ("起送￥${getData(position).buffetPrice}，配送￥${getData(position).subsidyPrice}")
             }
+            /**
+             * 理发店
+             */
             MerchantListActivity.TYPE_HAIRCUT -> {
                 holder.itemView.findViewById<TextView>(R.id.tv_name).text = getData(position).shopName
             }
-
+            /**
+             * 药店
+             */
+            MerchantListActivity.TYPE_DRUGSTORE -> {
+                GlideApp.with(context)
+                    .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${getData(position).imageId}")
+                    .placeholder(R.drawable.svg_default_image)
+                    .into(shopImgView)
+                holder.itemView.findViewById<TextView>(R.id.tv_name).text = getData(position).shopName
+                holder.itemView.findViewById<TextView>(R.id.tv_phone).text = ("联系电话：${getData(position).mobilePhone}（${getData(position).userName}）")
+                holder.itemView.findViewById<TextView>(R.id.tv_remark).text = getData(position).scope
+            }
+            /**
+             * 运动场
+             */
             MerchantListActivity.TYPE_STADIUM -> {
                 holder.itemView.findViewById<TextView>(R.id.tv_name).text = getData(position).shopName
                 holder.itemView.findViewById<TextView>(R.id.tv_count).text = "0"

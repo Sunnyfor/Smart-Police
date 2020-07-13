@@ -24,8 +24,8 @@
             android:layout_height="match_parent"
             android:background="@color/color_gray" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_goods"
+        <FrameLayout
+            android:id="@+id/fl_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/color_white" />

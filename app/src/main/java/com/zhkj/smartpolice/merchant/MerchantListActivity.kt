@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
+import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.meal.MealActivity
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.coroutines.cancel
@@ -23,6 +24,7 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
             setOnItemClickListener { _, i ->
                 when (shopType) {
                     TYPE_RESTAURANT -> MealActivity.intent(this@MerchantListActivity, getData(i).shopId)
+                    TYPE_DRUGSTORE -> DrugstoreActivity.intent(this@MerchantListActivity, getData(i).shopId)
                     TYPE_STADIUM -> startActivity(Intent(this@MerchantListActivity, StadiumDetailActivity::class.java))
                 }
 

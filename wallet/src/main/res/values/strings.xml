@@ -12,6 +12,7 @@
     <string name="pay_password_hint">请验证您的支付密码，确认本人操作</string>
     <string name="create_pay_password_hint">请设置您的支付密码</string>
     <string name="create_pay_sure_password_hint">请再次填写以确认支付密码</string>
+    <string name="modify_pay_password_hint">请设置您的新支付密码</string>
     <string name="record">账单记录</string>
     <string name="money">金额</string>
     <string name="input_money">输入金额</string>

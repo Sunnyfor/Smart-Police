@@ -28,7 +28,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
     private val payPasswordUtil: PayPasswordUtil by lazy {
         PayPasswordUtil(view_pay_password_parent, this).apply {
             updatePayPassword = {
-                ToastUtil.show(it.toString())
+                ToastUtil.show(it.msg)
             }
         }
     }
@@ -48,6 +48,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
         )
 
 
+
     }
 
 
@@ -64,7 +65,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
             view_pay_parent.id -> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY)
             view_record_parent.id -> RouterManager.navigation(this, RouterManager.RECORD_ACTIVITY)
             view_pay_password_parent.id -> {
-                if (isSettingPayPassword) {
+                if (!isSettingPayPassword) {
                     payPasswordUtil.showPayPasswordWindow()
                 } else {
                     payPasswordUtil.showPayPasswordWindow(payPasswordUtil.modify)
@@ -79,7 +80,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
 
     override fun showPurseData(purseBean: PurseBean) {
         tv_balance.text = purseBean.balance
-        if (purseBean.payPassword == null || purseBean.payPassword == "") {
+        if (purseBean.payPassword == null || purseBean.payPassword == "0") {
             isSettingPayPassword = false
             tv_pay_password_title.text = getString(R.string.create_pay_password)
         } else {

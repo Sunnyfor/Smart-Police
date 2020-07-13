@@ -11,7 +11,7 @@ import kotlinx.coroutines.cancel
 /**
  * 商家列表
  */
-class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantView {
+class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView {
 
     private var shopType: String? = null
 

@@ -108,7 +108,7 @@ class PayPasswordUtil(
             InputPayPasswordPopupWindow(
                 view.context,
                 view.context.getString(R.string.modify_pay_password),
-                view.context.getString(R.string.create_pay_password_hint)
+                view.context.getString(R.string.pay_password_hint)
             ) { popupWindow: InputPayPasswordPopupWindow, password: String ->
                 popupWindow.dismiss()
                 showNewPayPassword(password)
@@ -128,8 +128,8 @@ class PayPasswordUtil(
         val popupWindow =
             InputPayPasswordPopupWindow(
                 view.context,
-                view.context.getString(R.string.create_pay_password),
-                view.context.getString(R.string.create_pay_sure_password_hint)
+                view.context.getString(R.string.modify_pay_password),
+                view.context.getString(R.string.modify_pay_password_hint)
             ) { popupWindow: InputPayPasswordPopupWindow, password: String ->
                 popupWindow.dismiss()
                 presenter.updatePayPassword(oldPassword, password)

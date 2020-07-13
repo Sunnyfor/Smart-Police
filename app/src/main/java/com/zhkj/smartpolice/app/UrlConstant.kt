@@ -25,6 +25,11 @@ object UrlConstant {
     const val RESTAURANT_LIST_URL = "logistics/shop/list"
 
     /**
+     * 商品详情页
+     */
+    const val RESTAURANT_INFO_URL = "/logistics/shop/info/%s"
+
+    /**
      * 个人中心：用户信息
      */
     const val LOAD_USER_INFO_URL = "sys/user/info"
@@ -78,5 +83,4 @@ object UrlConstant {
      * 维修功能：部门树结构
      */
     const val DEPARTMENT_STRUCTURE = "sys/dept/findListByTree "
-
 }

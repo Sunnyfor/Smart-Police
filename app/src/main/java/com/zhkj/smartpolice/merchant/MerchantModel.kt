@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.merchant
 
+import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
@@ -24,6 +25,21 @@ class MerchantModel {
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {
                 return httpResultBean.bean?.data?.list
+            }
+        }
+        return null
+    }
+
+    /**
+     * 商品详情
+     */
+    suspend fun loadMerchantInfo(shopId: String): BaseModel<MerchantBean>? {
+
+        val httpResultBean = object : HttpResultBean<BaseModel<MerchantBean>>() {}
+        ZyHttp.get(String.format(UrlConstant.RESTAURANT_INFO_URL, shopId), null, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean
             }
         }
         return null

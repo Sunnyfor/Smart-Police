@@ -7,6 +7,9 @@ import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.meal.MealActivity
+import com.zhkj.smartpolice.base.UserManager
+import com.zhkj.smartpolice.haircut.BarberListActivity
+import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.coroutines.cancel
 
@@ -26,11 +29,20 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
                     TYPE_RESTAURANT -> MealActivity.intent(this@MerchantListActivity, getData(i).shopId)
                     TYPE_DRUGSTORE -> DrugstoreActivity.intent(this@MerchantListActivity, getData(i).shopId)
                     TYPE_STADIUM -> startActivity(Intent(this@MerchantListActivity, StadiumDetailActivity::class.java))
-                }
+                    TYPE_HAIRCUT -> {
+                        val intent = when (UserManager.getUserBean().position) {
+                            "1", "2" -> Intent(this@MerchantListActivity, BarberListActivity::class.java)
+                            else -> Intent(this@MerchantListActivity, HaircutOrderDetailActivity::class.java)
+                        }
+                        intent.putExtra("shopId", getData(i).shopId)
+                        startActivity(intent)
 
+                    }
+                }
             }
         }
     }
+
 
     private val presenter: MerchantPresenter by lazy {
         MerchantPresenter(this)
@@ -88,7 +100,10 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
 
     override fun loadData() {
         showLoading()
-        presenter.loadMerchantList(pullRefreshFragment.page.toString(), shopType ?: return)
+        presenter.loadMerchantList(
+            pullRefreshFragment.page.toString(),
+            shopType ?: return
+        )
     }
 
     override fun close() {

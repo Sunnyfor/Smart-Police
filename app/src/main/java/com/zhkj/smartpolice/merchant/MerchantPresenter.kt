@@ -30,6 +30,19 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
                     (view as MerchantContract.IMerchantInfoView).showMerchantInfo(it)
                 }
             }
+            hideLoading()
+        }
+    }
+
+    override fun loadMerchantTime(endDate: String, shopId: String) {
+        launch(Main) {
+            showLoading()
+            merchantModel.loadMerchantTime(endDate, shopId)?.let {
+                if (view is MerchantContract.IMerchantTimeView) {
+                    (view as MerchantContract.IMerchantTimeView).showMerchantTime(it)
+                }
+            }
+            hideLoading()
         }
     }
 }

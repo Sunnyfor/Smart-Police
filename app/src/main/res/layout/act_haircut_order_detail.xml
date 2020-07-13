@@ -6,76 +6,122 @@
     android:layout_height="match_parent"
     android:background="@color/color_line">
 
-    <View
-        android:id="@+id/v_bg"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_input"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_100"
+        android:layout_height="@dimen/dp_96"
         android:layout_margin="@dimen/dp_10"
         android:background="@drawable/sel_border_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <View
+            android:id="@+id/view_line"
+            style="@style/style_line_horizontal"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_font_black"
+            android:layout_marginStart="@dimen/dp_16"
+            android:text="@string/name"
+            app:layout_constraintBottom_toBottomOf="@id/view_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_40"
+            android:background="@color/color_transparent"
+            android:hint="@string/please_fill_in_your_real_name"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="@id/view_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/style_font_black"
+            android:layout_marginStart="@dimen/dp_16"
+            android:text="@string/phone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view_line" />
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/color_transparent"
+            android:hint="@string/please_fill_in_your_phone"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/edit_name"
+            app:layout_constraintStart_toStartOf="@id/edit_name"
+            app:layout_constraintTop_toTopOf="@id/view_line" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/name"
-        style="@style/style_register_item_text"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_20"
-        android:text="姓名"
-        app:layout_constraintStart_toStartOf="@id/v_bg"
-        app:layout_constraintTop_toTopOf="@id/v_bg"
-        tools:ignore="HardcodedText" />
-
-    <com.sunny.zy.widget.edittext.ClearEditText
-        android:id="@+id/et_name"
-        style="@style/style_common_edit"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dp_40"
-        android:background="@color/color_transparent"
-        android:hint="请填写你的真实姓名"
-        app:layout_constraintBottom_toBottomOf="@id/name"
-        app:layout_constraintStart_toEndOf="@id/name"
-        app:layout_constraintTop_toTopOf="@id/name"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/phone"
-        style="@style/style_register_item_text"
-        android:layout_marginTop="@dimen/dp_20"
-        android:text="手机号"
-        app:layout_constraintStart_toStartOf="@id/name"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        tools:ignore="HardcodedText" />
-
-    <com.sunny.zy.widget.edittext.ClearEditText
-        android:id="@+id/et_phone"
-        style="@style/style_common_edit"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dp_40"
-        android:background="@color/color_transparent"
-        android:hint="请填写你的手机号"
-        app:layout_constraintBottom_toBottomOf="@id/phone"
-        app:layout_constraintStart_toEndOf="@id/phone"
-        app:layout_constraintTop_toTopOf="@id/phone"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/order"
+        android:id="@+id/tv_time_hint"
         style="@style/style_font_black_big"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_12"
         android:text="选择预约时间"
-        app:layout_constraintStart_toStartOf="@id/v_bg"
-        app:layout_constraintTop_toBottomOf="@id/v_bg"
+        app:layout_constraintStart_toStartOf="@id/cl_input"
+        app:layout_constraintTop_toBottomOf="@id/cl_input"
         tools:ignore="HardcodedText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_date"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp_55"
         android:layout_marginTop="@dimen/dp_10"
         android:background="@drawable/sel_border_white"
-        app:layout_constraintEnd_toEndOf="@id/v_bg"
-        app:layout_constraintStart_toStartOf="@id/v_bg"
-        app:layout_constraintTop_toBottomOf="@id/order" />
+        app:layout_constraintEnd_toEndOf="@id/cl_input"
+        app:layout_constraintStart_toStartOf="@id/cl_input"
+        app:layout_constraintTop_toBottomOf="@id/tv_time_hint">
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/style_font_black"
+            android:layout_marginStart="@dimen/dp_40"
+            android:text="@string/placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/style_font_black"
+            android:layout_marginEnd="@dimen/dp_35"
+            android:text="@string/placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_reserve"
+        style="@style/style_common_btn"
+        android:text="@string/reserve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

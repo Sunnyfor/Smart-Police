@@ -37,7 +37,12 @@ object UrlConstant {
     /**
      * 商品详情页
      */
-    const val RESTAURANT_INFO_URL = "/logistics/shop/info/%s"
+    const val RESTAURANT_INFO_URL = "logistics/shop/info/%s"
+
+    /**
+     * 预约时间（理发店、运动场）
+     */
+    const val  LIST_RESOURCE_MANAGE_TIME = "logistics/reservemanage/listResourceManageTime"
 
     /**
      * 个人中心：用户信息

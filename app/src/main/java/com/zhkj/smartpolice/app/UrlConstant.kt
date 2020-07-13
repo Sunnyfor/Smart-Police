@@ -15,14 +15,24 @@ object UrlConstant {
     const val UPLOAD_IMAGE_PATH_URL = "sys/attachment/upload"
 
     /**
-     * 餐厅模块：订餐记录
-     */
-    const val MEAL_RECORD_URL = "logistics/shoporders/list"
-
-    /**
      * 餐厅模块：餐厅列表
      */
     const val RESTAURANT_LIST_URL = "logistics/shop/list"
+
+    /**
+     * 餐厅模块：餐厅菜谱分类
+     */
+    const val MEAL_MENU_CLASSIFY_URL = "logistics/shopgoodslabel/list"
+
+    /**
+     * 餐厅模块：餐厅菜品列表
+     */
+    const val MEAL_GOODS_LIST_URL = "logistics/shopgoods/list"
+
+    /**
+     * 餐厅模块：订餐记录
+     */
+    const val MEAL_RECORD_URL = "logistics/shoporders/list"
 
     /**
      * 商品详情页

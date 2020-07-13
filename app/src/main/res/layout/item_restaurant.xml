@@ -28,16 +28,16 @@
         tools:text="CoCo都可（崇文门店）" />
 
     <TextView
-        android:id="@+id/tv_sale"
+        android:id="@+id/tv_remark"
         style="@style/style_font_orange_small"
         android:layout_below="@id/tv_name"
         android:layout_toEndOf="@id/iv_image"
-        tools:text="4.7分 月售1055" />
+        tools:text="经营各种美食" />
 
     <TextView
         android:id="@+id/tv_desc"
         style="@style/style_font_gray_small"
-        android:layout_below="@id/tv_sale"
+        android:layout_below="@id/tv_remark"
         android:layout_marginTop="@dimen/dp_5"
         android:layout_toEndOf="@id/iv_image"
         android:ellipsize="end"
@@ -45,19 +45,13 @@
         tools:text="起送￥20，配送￥5" />
 
     <TextView
-        android:id="@+id/tv_remark"
-        style="@style/style_font_gray_smaller"
+        android:id="@+id/tv_time"
+        style="@style/style_font_gray_small"
         android:layout_below="@id/tv_desc"
         android:layout_marginTop="@dimen/dp_5"
         android:layout_toEndOf="@id/iv_image"
         android:ellipsize="end"
         android:maxLines="1"
-        tools:text="新店开张，优惠多多" />
+        tools:text="营业时间:" />
 
-    <TextView
-        android:id="@+id/tv_distance"
-        style="@style/style_font_gray_small"
-        android:layout_alignBottom="@id/tv_sale"
-        android:layout_alignParentEnd="true"
-        tools:text="30分钟 1.9km" />
 </RelativeLayout>

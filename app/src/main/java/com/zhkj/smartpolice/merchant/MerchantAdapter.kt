@@ -3,10 +3,13 @@ package com.zhkj.smartpolice.merchant
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
+import com.sunny.zy.utils.GlideApp
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.UrlConstant
 
 class MerchantAdapter(val shopType: String) : BaseRecycleAdapter<MerchantBean>(arrayListOf()) {
 
@@ -22,10 +25,16 @@ class MerchantAdapter(val shopType: String) : BaseRecycleAdapter<MerchantBean>(a
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
 
+        val shopImgView = holder.itemView.findViewById<ImageView>(R.id.iv_image)
         when (shopType) {
             MerchantListActivity.TYPE_RESTAURANT -> {
+                GlideApp.with(context)
+                    .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${getData(position).imageId}")
+                    .placeholder(R.drawable.svg_default_image)
+                    .into(shopImgView)
                 holder.itemView.findViewById<TextView>(R.id.tv_name).text = getData(position).shopName
-                holder.itemView.findViewById<TextView>(R.id.tv_remark).text = getData(position).remark
+                holder.itemView.findViewById<TextView>(R.id.tv_remark).text = ("${getData(position).remark}，经营${getData(position).scope}")
+                holder.itemView.findViewById<TextView>(R.id.tv_time).text = ("营业时间：${getData(position).businessTime}")
                 holder.itemView.findViewById<TextView>(R.id.tv_desc).text =
                     ("起送￥${getData(position).buffetPrice}，配送￥${getData(position).subsidyPrice}")
             }

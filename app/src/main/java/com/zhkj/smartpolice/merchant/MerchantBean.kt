@@ -13,6 +13,7 @@ class MerchantBean {
     var buffetPrice: String? = null     //20
     var subsidyPrice: String? = null    //优惠金额
     var shippingFee: String? = null     //配送费
+    var scope: String? = null           //经营范围：各种美食
     var axis: String? = null
     var businessState: String? = null   //1,
     var certifyState: String? = null    //1,
@@ -26,7 +27,6 @@ class MerchantBean {
     var shopType: String? = null        //1,
     var minPrice: String? = null        //null,
     var shopLicense: String? = null     //"",
-    var scope: String? = null           //"各种美食",
     var allowDate: String? = null       //"2021-08-24",
     var deptId: String? = null          //31,
     var treePath: String? = null        //"-1/1/31/",

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
@@ -59,8 +60,9 @@ class LogisticsFragment : BaseFragment() {
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
                     3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
-                    104 -> startActivity(Intent(requireContext(),
+                    117 -> startActivity(Intent(requireContext(),
                         ApplyMaintainListActivity::class.java)) //维修管理员
+                    else -> ToastUtil.show("你当前不是警员")
 //                    166 -> startActivity(Intent(requireContext(),))//维修工人
 
                 }

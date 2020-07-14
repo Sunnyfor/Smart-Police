@@ -9,20 +9,24 @@ import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.PickerViewUtils
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.CameraDialog
+import com.sunny.zy.widget.dialog.PutInSucceedDialog
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.maintain.adapter.GridViewAdapter
 import com.zhkj.smartpolice.maintain.bean.DepartmentStructureBean
 import com.zhkj.smartpolice.maintain.bean.MaintainRequestPushBean
 import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
+import com.zhkj.smartpolice.mine.bean.ImageBean
+import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
 import com.zhkj.smartpolice.utils.CustomSpinner.OnCustomItemCheckedListener
 import kotlinx.android.synthetic.main.act_maintain_apply.*
 import java.io.File
 
-class MaintainApplyActivity : BaseActivity(), IMaintainView {
+class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImageView {
     private var list: ArrayList<String> = ArrayList()
     private var activeState: String? = null
     private var classifyId: String? = null
@@ -32,6 +36,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
     private var info: String? = null
     private var deptId: String? = null
     private var deptName: String? = null
+    private var imageList: ArrayList<ImageBean> = ArrayList()
 
     companion object {
 
@@ -73,6 +78,14 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
         CameraDialog(this, cameraUtil)
     }
 
+    private val putInSucceedDialog: PutInSucceedDialog by lazy {
+        PutInSucceedDialog(this)
+    }
+
+    private val gridviewadapter: GridViewAdapter by lazy {
+        GridViewAdapter(this, imageList)
+    }
+
     override fun setLayout(): Int = R.layout.act_maintain_apply
 
     override fun initView() {
@@ -85,24 +98,29 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
         tv_goods_name.text = goodsName
         cs_section.showTextTv?.text = "选择部门"
         cs_section.setTextImage(R.drawable.svg_left_arrows)
-        rl_uploading.setOnClickListener(this)
         tv_return.setOnClickListener(this)
         rl_date_select.setOnClickListener(this)
         rl_content.setOnClickListener(this)
         tv_maintain_put.setOnClickListener(this)
 
-        cameraUtil.setAspectXY(resources.getDimension(R.dimen.dp_100).toInt(), resources.getDimension(R.dimen.dp_100).toInt())
+        cameraUtil.setAspectXY(
+            resources.getDimension(R.dimen.dp_100).toInt(),
+            resources.getDimension(R.dimen.dp_100).toInt()
+        )
         cameraUtil.onResultListener = object : CameraUtil.OnResultListener {
             override fun onResult(file: File) {
                 presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path)
             }
         }
+        gv_uploading.adapter = gridviewadapter
+
+        gridviewadapter.onClicklistAdd = {
+            cameraDialog.show()
+        }
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            R.id.rl_uploading -> cameraDialog.show()
-
             R.id.tv_return -> {
                 finish()
             }
@@ -128,16 +146,18 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
             R.id.tv_maintain_put -> {
                 if (et_apply_name.text.toString().isNotEmpty()) {
                     if (tv_apply_cellphone.text.toString().isNotEmpty()) {
-                        if (cs_section != null) {
-                            if (!tv_date.text.toString().equals("请选择")) {
+                        if (cs_section.showText != null) {
+                            if (tv_date.text.toString() != "请选择") {
                                 val maintainRequestPushBean = MaintainRequestPushBean()
                                 maintainRequestPushBean.applyState = "1"
                                 maintainRequestPushBean.approvalId = "1"
                                 maintainRequestPushBean.petitioner = et_apply_name.text.toString()
                                 maintainRequestPushBean.petitionerPhone =
                                     tv_apply_cellphone.text.toString()
-                                maintainRequestPushBean.createTime = tv_date.text.toString()
-                                maintainRequestPushBean.applyDate = tv_date.text.toString()
+                                maintainRequestPushBean.createTime =
+                                    tv_date.text.toString() + " 00:00:00"
+                                maintainRequestPushBean.applyDate =
+                                    tv_date.text.toString() + " 00:00:00"
                                 maintainRequestPushBean.deptId = deptId
                                 maintainRequestPushBean.deptName = deptName
                                 maintainRequestPushBean.applyContent = tv_info.text.toString()
@@ -177,7 +197,6 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
                 data.forEach { info ->
                     list.clear()
                     if (info.name?.isNotEmpty() == true) {
-                        LogUtil.i("部门选择树==============${info.name}")
                         list.add(info.name!!)
                     }
                 }
@@ -185,7 +204,6 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
                 cs_section.textList.addAll(list)
                 cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
                     override fun OnCustomItemChecked(position: Int) {
-                        LogUtil.i("我点击了那个===========${data.get(position).id}")
                         deptId = data[position].id
                         deptName = data[position].name
                     }
@@ -206,12 +224,28 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView {
                 }
             }
         }
+        cameraUtil.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onMaintainRequestPush(succeedBean: SucceedBean) {
         super.onMaintainRequestPush(succeedBean)
         succeedBean.let {
             LogUtil.i("提交返回结果==========================$succeedBean")
+            val code = it.code?.toInt()
+            if (code == 0) {
+                putInSucceedDialog.show()
+                putInSucceedDialog.onServiceListener = {
+                    putInSucceedDialog.dismiss()
+                    ToastUtil.show("提交成功")
+                    finish()
+                }
+            }
         }
+    }
+
+    override fun uploadImage(bean: ImageBean) {
+        LogUtil.i("图片显示实体类========$bean")
+        imageList.add(bean)
+        gridviewadapter.notifyDataSetChanged()
     }
 }

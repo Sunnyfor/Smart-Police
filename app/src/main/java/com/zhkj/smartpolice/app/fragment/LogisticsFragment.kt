@@ -34,20 +34,35 @@ class LogisticsFragment : BaseFragment() {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_restaurant.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_RESTAURANT)
-            tv_haircut.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_HAIRCUT)
-            tv_drugstore.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_DRUGSTORE)
-            tv_laundry.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_LAUNDRY)
-            tv_stadium.id -> MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_STADIUM)
+            tv_restaurant.id -> MerchantListActivity.intent(
+                requireContext(),
+                MerchantListActivity.TYPE_RESTAURANT
+            )
+            tv_haircut.id -> MerchantListActivity.intent(
+                requireContext(),
+                MerchantListActivity.TYPE_HAIRCUT
+            )
+            tv_drugstore.id -> MerchantListActivity.intent(
+                requireContext(),
+                MerchantListActivity.TYPE_DRUGSTORE
+            )
+            tv_laundry.id -> MerchantListActivity.intent(
+                requireContext(),
+                MerchantListActivity.TYPE_LAUNDRY
+            )
+            tv_stadium.id -> MerchantListActivity.intent(
+                requireContext(),
+                MerchantListActivity.TYPE_STADIUM
+            )
             tv_maintain.id -> {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
-                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))
-                    115 -> startActivity(Intent(requireContext(),
-                            ApplyMaintainListActivity::class.java
-                        )
-                    )
+                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
+                    104 -> startActivity(Intent(requireContext(),
+                        ApplyMaintainListActivity::class.java)) //维修管理员
+//                    166 -> startActivity(Intent(requireContext(),))//维修工人
+
                 }
             }
         }

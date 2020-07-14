@@ -29,4 +29,10 @@ interface IMaintainView : IBaseView {
      * 部门树结构
      */
     fun onDepartmentStructure(departmentStructureBean: DepartmentStructureBean) { }
+
+    /**
+     * 维修处理列表
+     */
+
+
 }

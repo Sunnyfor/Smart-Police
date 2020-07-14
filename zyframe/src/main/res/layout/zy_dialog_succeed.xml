@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_dialog_layout">
+    
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="@dimen/dp_79"
+        android:layout_height="@dimen/dp_43"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_30"
+        android:background="@mipmap/png_succeed"/>
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交成功"
+        style="@style/style_font_black_big"
+        android:layout_below="@id/iv_right"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_17"/>
+
+    <TextView
+        android:id="@+id/tv_succeed"
+        android:layout_width="@dimen/dp_118"
+        android:layout_height="@dimen/dp_33"
+        android:text="确定"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@id/tv_text"
+        android:layout_marginTop="@dimen/dp_37"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:background="@drawable/sel_confirm_background"
+        android:textColor="@color/font_white"
+        android:textSize="@dimen/sp_14"/>
+
+</RelativeLayout>

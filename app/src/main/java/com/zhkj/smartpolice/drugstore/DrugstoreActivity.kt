@@ -14,6 +14,7 @@ import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
 import kotlinx.android.synthetic.main.act_drugstore.*
+import kotlinx.android.synthetic.main.layout_search.*
 import kotlinx.coroutines.cancel
 
 class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
@@ -28,7 +29,10 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
         MealMenuAdapter(menuList).apply {
             setOnItemClickListener { _, i ->
                 this.index = i
+                presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", getData(i).labelId ?: "")
                 notifyDataSetChanged()
+                et_search.setText("")
+                hideKeyboard()
             }
         }
     }
@@ -64,15 +68,20 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
 
         supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
 
+        setOnClickListener(btn_search)
     }
 
     override fun onClickEvent(view: View) {
-
+        when (view.id) {
+            btn_search.id -> {
+                presenter.searchMealGoodsList(shopId ?: return, et_search.text.toString())
+                hideKeyboard()
+            }
+        }
     }
 
     override fun loadData() {
         presenter.loadMealMenu(shopId ?: return)
-        presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: return)
     }
 
     override fun close() {
@@ -83,6 +92,8 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
         menuList.clear()
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
+
+        presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: return, data[0].labelId ?: "")
     }
 
     override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {

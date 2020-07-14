@@ -19,15 +19,10 @@ class MealMenuAdapter(list: ArrayList<MealMenuBean>) : BaseRecycleAdapter<MealMe
     }
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
-        holder.itemView.tv_title.text = getData(position).title
-        if (getData(position).icon == 0) {
-            holder.itemView.iv_icon.visibility = View.GONE
-        } else {
-            holder.itemView.iv_icon.visibility = View.VISIBLE
-        }
+        holder.itemView.tv_title.text = getData(position).labelName
 
         if (position == index){
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.color_white))
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.color_gray))
         }else{
             holder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.color_transparent))
         }

@@ -56,13 +56,15 @@ class MealModel {
     /**
      * 餐厅菜品列表
      */
-    suspend fun loadMealGoodsList(page: String, shopId: String): ArrayList<MealGoodsBean>? {
-        val httpResultBean = object : HttpResultBean<PageModel<MealGoodsBean>>() {}
+    suspend fun loadMealGoodsList(page: String, shopId: String, labelId: String): ArrayList<MealGoodsBean>? {
 
         val params = HashMap<String, String>()
         params["page"] = page
         params["limit"] = Constant.pageLimit
         params["shopId"] = shopId
+        params["labelId"] = labelId
+
+        val httpResultBean = object : HttpResultBean<PageModel<MealGoodsBean>>() {}
 
         ZyHttp.get(UrlConstant.MEAL_GOODS_LIST_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
@@ -73,6 +75,26 @@ class MealModel {
         return null
     }
 
+    /**
+     * 餐厅菜品列表搜索
+     */
+    suspend fun searchMealGoodsList(shopId: String, searchData: String): ArrayList<MealGoodsBean>? {
+
+        val params = HashMap<String, String>()
+        params["shopId"] = shopId
+        params["goodsName"] = searchData
+        params["limit"] = "-1"
+
+        val httpResultBean = object : HttpResultBean<PageModel<MealGoodsBean>>() {}
+
+        ZyHttp.get(UrlConstant.MEAL_GOODS_LIST_URL, params, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.data?.list
+            }
+        }
+        return null
+    }
 
     /**
      *  订餐记录

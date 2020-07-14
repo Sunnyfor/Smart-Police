@@ -20,7 +20,7 @@ class MealGoodsBean : Serializable {
     var isAway: String? = ""        //null
     var imageId: String? = ""       //2724
     var isDelete: String? = ""      //2
-    var inventory: String? = ""     //null
+    var inventory: String? = ""     //库存
     var expiryDate: String? = ""    //null
     var goodsClassifyLabel: String? = ""//null
 

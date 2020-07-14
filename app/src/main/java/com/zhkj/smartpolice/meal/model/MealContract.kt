@@ -31,7 +31,10 @@ interface MealContract {
         abstract fun loadMealMenu(shopId: String)
 
         //餐厅菜品列表
-        abstract fun loadMealGoodsList(page: String, shopId: String)
+        abstract fun loadMealGoodsList(page: String, shopId: String, labelId: String)
+
+        //餐厅菜品列表搜索
+        abstract fun searchMealGoodsList(shopId: String, searchData: String)
 
         //订餐记录
         abstract fun loadMealRecord(page: String)

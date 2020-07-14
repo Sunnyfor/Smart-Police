@@ -34,10 +34,22 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun loadMealGoodsList(page: String, shopId: String) {
+    override fun loadMealGoodsList(page: String, shopId: String, labelId: String) {
         launch(Dispatchers.Main) {
             showLoading()
-            mealModel.loadMealGoodsList(page, shopId)?.let {
+            mealModel.loadMealGoodsList(page, shopId, labelId)?.let {
+                if (view is MealContract.IMealMenuView) {
+                    (view as MealContract.IMealMenuView).loadMealGoodsList(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
+    override fun searchMealGoodsList(shopId: String, searchData: String) {
+        launch(Dispatchers.Main) {
+            showLoading()
+            mealModel.searchMealGoodsList(shopId, searchData)?.let {
                 if (view is MealContract.IMealMenuView) {
                     (view as MealContract.IMealMenuView).loadMealGoodsList(it)
                 }

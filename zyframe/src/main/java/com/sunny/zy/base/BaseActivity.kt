@@ -1,9 +1,11 @@
 package com.sunny.zy.base
 
+import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -174,5 +176,13 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
         ZyFrameStore.removeActivity(this)
         close()
         super.onDestroy()
+    }
+
+    /**
+     * 隐藏输入法键盘
+     */
+    fun hideKeyboard() {
+        val im = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        im.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }

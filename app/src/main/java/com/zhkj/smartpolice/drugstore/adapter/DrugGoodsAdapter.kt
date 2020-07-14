@@ -24,16 +24,18 @@ class DrugGoodsAdapter : BaseRecycleAdapter<MealGoodsBean>(arrayListOf()) {
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
 
-        GlideApp.with(context)
-            .load(UrlConstant.LOAD_IMAGE_PATH_URL + getData(position).imageId)
-            .placeholder(R.drawable.svg_default_image)
-            .into(holder.itemView.iv_image)
+        getData(position).imageId?.let {
+            GlideApp.with(context)
+                .load(UrlConstant.LOAD_IMAGE_PATH_URL + it)
+                .placeholder(R.drawable.svg_default_image)
+                .into(holder.itemView.iv_image)
+        }
 
         holder.itemView.tv_title.text = getData(position).goodsName
         holder.itemView.tv_price.text = ("￥${getData(position).price}")
         holder.itemView.tv_desc.text = isStrEmpty(getData(position).description, "暂无药品简介")
 
-        val str = "库存${getData(position).count}份"
+        val str = "库存${isStrEmpty(getData(position).inventory, "0")}份"
         val style = SpannableStringBuilder(str)
         style.setSpan(
             ForegroundColorSpan(ContextCompat.getColor(context, R.color.font_orange)),

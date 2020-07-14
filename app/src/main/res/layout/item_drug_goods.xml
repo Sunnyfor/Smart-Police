@@ -14,7 +14,7 @@
         android:layout_height="@dimen/dp_90"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_10"
-        android:src="@drawable/bg_meal_goods"
+        android:src="@drawable/svg_default_image"
         app:riv_corner_radius="@dimen/dp_5"
         tools:ignore="ContentDescription" />
 

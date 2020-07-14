@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center">
+    style="@style/style_title">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_32"
-        android:layout_marginStart="@dimen/dp_36"
-        android:layout_marginEnd="@dimen/dp_36"
-        android:gravity="center_vertical"
-        android:background="@drawable/sel_search_bg">
+    <com.sunny.zy.widget.edittext.ClearEditText
+        android:id="@+id/et_search"
+        style="@style/style_common_edit"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_toStartOf="@id/btn_search"
+        android:background="@drawable/sel_border_search"
+        android:hint="搜索"
+        android:paddingStart="@dimen/dp_40"
+        android:textSize="@dimen/sp_12"
+        tools:ignore="HardcodedText,RtlSymmetry" />
 
-        <ImageView
-            android:id="@+id/iv_search"
-            android:layout_width="@dimen/dp_18"
-            android:layout_height="@dimen/dp_18"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/svg_btn_search" />
+    <ImageView
+        android:id="@+id/iv_search"
+        style="@style/style_common_icon"
+        android:layout_alignStart="@id/et_search"
+        android:contentDescription="@string/placeholder"
+        android:padding="@dimen/dp_12"
+        android:src="@drawable/svg_btn_search" />
 
-        <com.sunny.zy.widget.edittext.ClearEditText
-            android:id="@+id/et_search"
-            style="@style/style_common_edit"
-            android:layout_height="wrap_content"
-            android:background="@color/color_transparent"
-            android:hint="搜索"
-            android:textSize="@dimen/sp_12"
-            tools:ignore="HardcodedText" />
-
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_search"
+        style="@style/style_font_white_small"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_26"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:background="@drawable/sel_btn_able_small"
+        android:text="搜索"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

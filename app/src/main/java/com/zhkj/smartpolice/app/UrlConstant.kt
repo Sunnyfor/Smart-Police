@@ -26,6 +26,7 @@ object UrlConstant {
 
     /**
      * 餐厅模块：餐厅菜品列表
+     * 药店模块：药品列表
      */
     const val MEAL_GOODS_LIST_URL = "logistics/shopgoods/list"
 

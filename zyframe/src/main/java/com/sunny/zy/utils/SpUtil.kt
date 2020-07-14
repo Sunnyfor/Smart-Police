@@ -108,4 +108,9 @@ object SpUtil {
         sharedPreferences.edit().remove(key).apply()
     }
 
+
+    fun clear(){
+        sharedPreferences.edit().clear().apply()
+    }
+
 }

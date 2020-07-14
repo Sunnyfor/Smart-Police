@@ -3,13 +3,14 @@ package com.zhkj.smartpolice.mine.activity
 import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseActivity
-import com.zhkj.smartpolice.widget.CacheDataManager
+import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.ConfirmDialog
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.activity.LoginActivity
 import com.zhkj.smartpolice.widget.CacheClearDialog
+import com.zhkj.smartpolice.widget.CacheDataManager
 import kotlinx.android.synthetic.main.act_setting.*
 
 class SettingActivity : BaseActivity() {
@@ -21,6 +22,7 @@ class SettingActivity : BaseActivity() {
         dialog.prompt = "是否确认退出应用？"
         dialog.onConfirmListener = {
             startActivity(Intent(this, LoginActivity::class.java))
+            SpUtil.clear()
             finish()
         }
         dialog

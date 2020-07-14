@@ -2,11 +2,13 @@ package com.zhkj.smartpolice.merchant
 
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
+import com.sunny.zy.bean.DefaultLinkedMap
 import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
+import org.json.JSONObject
 
 class MerchantModel {
 
@@ -51,15 +53,14 @@ class MerchantModel {
      *LIST_RESOURCE_MANAGE_TIME
      */
     @Suppress("UNCHECKED_CAST")
-    suspend fun loadMerchantTime(endDate: String, shopId: String): ArrayList<MerchantTime>? {
+    suspend fun loadReserveTime(endDate: String, shopId: String): ArrayList<MerchantTime>? {
         val params = HashMap<String, String>()
         params["shopId"] = shopId
         params["endDate"] = endDate
 
 
         val httpResultBean =
-            object : HttpResultBean<BaseModel<LinkedHashMap<String, ArrayList<MerchantTime>>>>() {}
-
+            object : HttpResultBean<BaseModel<DefaultLinkedMap<MerchantTime>>>() {}
         ZyHttp.get(UrlConstant.LIST_RESOURCE_MANAGE_TIME, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {
@@ -67,6 +68,34 @@ class MerchantModel {
             }
         }
 
+        return null
+    }
+
+    suspend fun commitReserve(
+        reserveUserName: String,
+        mobile: String,
+        beginTime: String,
+        endTime: String,
+        manageId: String,
+        reserveType: String,
+        shopId: String
+    ): BaseModel<Any>? {
+        val params = JSONObject()
+        params.put("reserveUserName", reserveUserName)
+        params.put("mobile", mobile)
+        params.put("beginTime", beginTime)
+        params.put("endTime", endTime)
+        params.put("manageId", manageId)
+        params.put("reserveType", reserveType)
+        params.put("shopId", shopId)
+
+        val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
+        ZyHttp.postJson(UrlConstant.SAVE_RECORD, params.toString(), httpResultBean)
+
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true)
+                return httpResultBean.bean
+        }
         return null
     }
 }

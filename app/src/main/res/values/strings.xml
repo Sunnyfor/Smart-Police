@@ -11,6 +11,7 @@
     <string name="select_reserve_time">选择预约时间</string>
     <string name="name">姓名</string>
     <string name="phone">手机号</string>
+    <string name="sure">确定</string>
     <string name="please_fill_in_your_real_name">请填写你的真实姓名</string>
     <string name="please_fill_in_your_phone">请填写你的手机号</string>
 </resources>

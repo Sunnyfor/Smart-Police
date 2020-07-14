@@ -30,18 +30,20 @@ class HaircutTimeAdapter() : BaseRecycleAdapter<MerchantTime>(arrayListOf()) {
                 holder.itemView.tv_status.setTextColor(ContextCompat.getColor(context,R.color.font_orange))
                 holder.itemView.tv_time.setTextColor(ContextCompat.getColor(context,R.color.font_orange))
                 holder.itemView.setBackgroundResource(R.drawable.sel_border_orange)
+                holder.itemView.view_select.visibility = View.VISIBLE
             }else{
                 holder.itemView.tv_status.setTextColor(ContextCompat.getColor(context,R.color.font_black))
                 holder.itemView.tv_time.setTextColor(ContextCompat.getColor(context,R.color.font_black))
                 holder.itemView.setBackgroundResource(R.drawable.sel_border_black)
+                holder.itemView.view_select.visibility = View.GONE
             }
 
         } else {
             holder.itemView.tv_status.text = "已约满"
             holder.itemView.tv_status.setTextColor(ContextCompat.getColor(context,R.color.font_gray))
             holder.itemView.tv_time.setTextColor(ContextCompat.getColor(context,R.color.font_gray))
-
             holder.itemView.setBackgroundResource(R.drawable.sel_border_gray)
+            holder.itemView.view_select.visibility = View.GONE
         }
 
         holder.itemView.tv_time.text = getData(position).manageTime

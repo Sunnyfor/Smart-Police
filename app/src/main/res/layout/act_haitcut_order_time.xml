@@ -18,11 +18,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_time"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp_10"
         android:overScrollMode="never"
         android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/btn_sure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recycler_date" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sure"
+        style="@style/style_common_btn"
+        android:text="@string/sure"
+        app:layout_constraintTop_toBottomOf="@id/recycler_time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

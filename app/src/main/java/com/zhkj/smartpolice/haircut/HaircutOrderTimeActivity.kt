@@ -1,5 +1,7 @@
 package com.zhkj.smartpolice.haircut
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +19,7 @@ import kotlinx.android.synthetic.main.act_haitcut_order_time.*
 import java.util.*
 
 
-class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IMerchantTimeView {
+class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveTimeView {
 
     private val presenter by lazy {
         MerchantPresenter(this)
@@ -70,7 +72,7 @@ class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IMerchantTimeV
             setOnItemClickListener { _: View, position: Int ->
                 this.currentDay = getData(position).day
                 notifyDataSetChanged()
-                presenter.loadMerchantTime(getEndData(this.currentDay), shopId)
+                presenter.loadReserveTime(getEndData(this.currentDay), shopId)
             }
         }
 
@@ -106,14 +108,34 @@ class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IMerchantTimeV
         })
         recycler_time.adapter = adapter
 
+        setOnClickListener(btn_sure)
+
     }
 
     override fun onClickEvent(view: View) {
+        when (view.id) {
+            btn_sure.id -> {
+                val intent = Intent()
+                intent.putExtra("manageTime", adapter.getData(adapter.index).manageTime)
+                (recycler_date.adapter as HaircutWeekAdapter).let {
+                    intent.putExtra("day", it.getData(it.index).day)
+                    intent.putExtra("week", it.getData(it.index).week)
+                }
 
+                adapter.getData(adapter.index).let {
+                    intent.putExtra("beginTime", it.beginTime)
+                    intent.putExtra("endTime", it.endTime)
+                    intent.putExtra("manageId",it.manageId)
+                }
+
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+        }
     }
 
     override fun loadData() {
-        presenter.loadMerchantTime(getEndData(currentDay), shopId)
+        presenter.loadReserveTime(getEndData(currentDay), shopId)
     }
 
     override fun close() {
@@ -127,7 +149,7 @@ class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IMerchantTimeV
     }
 
 
-    override fun showMerchantTime(data: ArrayList<MerchantTime>) {
+    override fun showReserveTime(data: ArrayList<MerchantTime>) {
         adapter.index = data.indexOf(data.find { it.setNumber - it.reserveNumber > 0 })
         adapter.clearData()
         adapter.addData(data)

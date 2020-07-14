@@ -26,23 +26,57 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         launch(Main) {
             showLoading()
             merchantModel.loadMerchantInfo(shopId)?.data?.let {
-                if (view is MerchantContract.IMerchantInfoView) {
-                    (view as MerchantContract.IMerchantInfoView).showMerchantInfo(it)
+                if (view is MerchantContract.IReserveInfoView) {
+                    (view as MerchantContract.IReserveInfoView).showMerchantInfo(it)
                 }
             }
             hideLoading()
         }
     }
 
-    override fun loadMerchantTime(endDate: String, shopId: String) {
+    override fun loadReserveTime(endDate: String, shopId: String) {
         launch(Main) {
             showLoading()
-            merchantModel.loadMerchantTime(endDate, shopId)?.let {
-                if (view is MerchantContract.IMerchantTimeView) {
-                    (view as MerchantContract.IMerchantTimeView).showMerchantTime(it)
+            merchantModel.loadReserveTime(endDate, shopId)?.let {
+                if (view is MerchantContract.IReserveTimeView) {
+                    (view as MerchantContract.IReserveTimeView).showReserveTime(it)
                 }
             }
             hideLoading()
         }
     }
+
+    override fun commitReserve(
+        reserveUserName: String,
+        mobile: String,
+        beginTime: String,
+        endTime: String,
+        manageId: String,
+        reserveType: String,
+        shopId: String
+    ) {
+
+        if (reserveUserName.isEmpty()) {
+            view?.showMessage("请填写姓名！")
+            return
+        }
+
+        if (mobile.isEmpty()) {
+            view?.showMessage("请填写手机号码！")
+            return
+        }
+
+        launch(Main) {
+            showLoading()
+            merchantModel.commitReserve(reserveUserName, mobile, beginTime, endTime, manageId, reserveType, shopId)?.let {
+                if (view is MerchantContract.IReserveView) {
+                    (view as MerchantContract.IReserveView).reserveResult(it)
+                }
+            }
+            hideLoading()
+        }
+
+    }
+
+
 }

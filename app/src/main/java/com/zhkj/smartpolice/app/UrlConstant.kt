@@ -44,6 +44,8 @@ object UrlConstant {
      */
     const val  LIST_RESOURCE_MANAGE_TIME = "logistics/reservemanage/listResourceManageTime"
 
+    const val SAVE_RECORD=  "logistics/reserverecord/saveRecord" //普通警员预约
+
     /**
      * 个人中心：用户信息
      */

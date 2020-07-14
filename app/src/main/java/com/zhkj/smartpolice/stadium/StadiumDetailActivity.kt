@@ -10,7 +10,7 @@ import com.zhkj.smartpolice.merchant.MerchantContract
 import com.zhkj.smartpolice.merchant.MerchantPresenter
 import kotlinx.android.synthetic.main.act_stadium_detail.*
 
-class StadiumDetailActivity : BaseActivity(), MerchantContract.IMerchantInfoView {
+class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveInfoView {
 
     val presenter: MerchantPresenter by lazy {
         MerchantPresenter(this)

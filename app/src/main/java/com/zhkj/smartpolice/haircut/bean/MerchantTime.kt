@@ -7,7 +7,7 @@ package com.zhkj.smartpolice.haircut.bean
  * Date 2020/7/13 18:49
  */
 class MerchantTime {
-    var manageId: String? = null
+    var manageId: Int = 0
     var resourceId: String? = null
     var setNumber: Int = 0
     var beginTime: String? = null

@@ -41,10 +41,6 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
         }
         ZyFrameStore.addActivity(this)
         initView()
-    }
-
-    override fun onStart() {
-        super.onStart()
         loadData()
     }
 

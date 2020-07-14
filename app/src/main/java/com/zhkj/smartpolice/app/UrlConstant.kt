@@ -42,9 +42,23 @@ object UrlConstant {
     /**
      * 预约时间（理发店、运动场）
      */
-    const val  LIST_RESOURCE_MANAGE_TIME = "logistics/reservemanage/listResourceManageTime"
+    const val LIST_RESOURCE_MANAGE_TIME_URL = "logistics/reservemanage/listResourceManageTime"
 
-    const val SAVE_RECORD=  "logistics/reserverecord/saveRecord" //普通警员预约
+    /**
+     * 预约资源
+     */
+    const val RESERVE_RESOURCE_LIST_URL = "logistics/reserveresource/list"
+
+    /**
+     * 普通警员预约
+     */
+    const val SAVE_RECORD_URL = "logistics/reserverecord/saveRecord"
+
+
+    /**
+     * 领导预约
+     */
+    const val RESERVE_RECORD_SAVE_URL = "logistics/reserverecord/save"
 
     /**
      * 个人中心：用户信息

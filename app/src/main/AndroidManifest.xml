@@ -79,6 +79,7 @@
         <activity android:name=".haircut.BarberListActivity" />
         <activity android:name=".haircut.HaircutOrderDetailActivity" />
         <activity android:name=".haircut.HaircutOrderTimeActivity" />
+        <activity android:name=".haircut.LeaderReserveActivity" />
 
         <!--维修模块-->
         <activity android:name=".maintain.activity.MaintainApplyActivity" />
@@ -89,8 +90,9 @@
         <activity android:name=".maintain.activity.MaintainContentActivity" />
 
         <!--运动场-->
-        <activity android:name=".stadium.StadiumDetailActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".stadium.StadiumDetailActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -20,7 +20,7 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
 
     private val calendar = Calendar.getInstance(Locale.CHINA)
 
-    private val presenter by lazy {
+    val presenter by lazy {
         MerchantPresenter(this)
     }
 

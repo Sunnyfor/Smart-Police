@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.merchant
 
+import com.google.gson.Gson
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.bean.DefaultLinkedMap
@@ -7,6 +8,7 @@ import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.haircut.bean.ManageBean
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import org.json.JSONObject
 
@@ -61,7 +63,7 @@ class MerchantModel {
 
         val httpResultBean =
             object : HttpResultBean<BaseModel<DefaultLinkedMap<MerchantTime>>>() {}
-        ZyHttp.get(UrlConstant.LIST_RESOURCE_MANAGE_TIME, params, httpResultBean)
+        ZyHttp.get(UrlConstant.LIST_RESOURCE_MANAGE_TIME_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {
                 return httpResultBean.bean?.data?.get(endDate)
@@ -71,6 +73,30 @@ class MerchantModel {
         return null
     }
 
+
+    /**
+     *  预约资源
+     */
+    suspend fun loadReserveResource(page: String, shopId: String): ArrayList<ManageBean>? {
+        val params = HashMap<String, String>()
+        params["shopId"] = shopId
+        params["page"] = page
+        params["limit"] = Constant.pageLimit
+        val httpResultBean =
+            object : HttpResultBean<PageModel<ManageBean>>() {}
+        ZyHttp.post(UrlConstant.RESERVE_RESOURCE_LIST_URL, params, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.data?.list
+            }
+        }
+        return null
+    }
+
+
+    /**
+     *  普通警员预约
+     */
     suspend fun commitReserve(
         reserveUserName: String,
         mobile: String,
@@ -78,8 +104,12 @@ class MerchantModel {
         endTime: String,
         manageId: String,
         reserveType: String,
-        shopId: String
+        shopId: String,
+        bean: ManageBean? = null
     ): BaseModel<Any>? {
+
+        var url = UrlConstant.SAVE_RECORD_URL
+
         val params = JSONObject()
         params.put("reserveUserName", reserveUserName)
         params.put("mobile", mobile)
@@ -89,8 +119,26 @@ class MerchantModel {
         params.put("reserveType", reserveType)
         params.put("shopId", shopId)
 
+        bean?.let {
+            url = UrlConstant.RESERVE_RECORD_SAVE_URL
+            params.put("resourceId", it.resourceId)
+            params.put("resourceName", it.resourceName)
+            params.put("resourceContext", it.resourceContext)
+            params.put("resourceLevel", it.resourceLevel)
+            params.put("classifyId", it.classifyId)
+            params.put("activeState", it.activeState)
+            params.put("isTop", it.isTop)
+            params.put("orderNumber", it.orderNumber)
+            params.put("createUserId", it.createUserId)
+            params.put("createTime", it.createTime)
+            params.put("isTop", it.isTop)
+            params.put("imageId", it.imageId)
+            params.put("shopName", it.shopName)
+            params.put("manageDate", it.manageDate)
+        }
+
         val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
-        ZyHttp.postJson(UrlConstant.SAVE_RECORD, params.toString(), httpResultBean)
+        ZyHttp.postJson(url, params.toString(), httpResultBean)
 
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true)

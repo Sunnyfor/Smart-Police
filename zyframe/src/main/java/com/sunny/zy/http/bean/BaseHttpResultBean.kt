@@ -24,14 +24,16 @@ abstract class BaseHttpResultBean<T> {
 
 
     fun httpIsSuccess(): Boolean {
-        if (httpCode in 200..299) {
-            return true
-        }
 
         if (url.contains("login.html")) {
             ToastUtil.show("登录失效，请重新登录！")
             //跳转登录页面
             ARouter.getInstance().build(RouterManager.LOGIN_ACTIVITY) .withBoolean("logout", true).navigation()
+            return false
+        }
+
+        if (httpCode in 200..299) {
+            return true
         }
 
         return false

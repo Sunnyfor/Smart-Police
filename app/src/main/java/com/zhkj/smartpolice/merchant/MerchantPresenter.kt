@@ -1,6 +1,7 @@
 package com.zhkj.smartpolice.merchant
 
 import com.sunny.zy.base.IBaseView
+import com.zhkj.smartpolice.haircut.bean.ManageBean
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
@@ -46,6 +47,17 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         }
     }
 
+    override fun loadReserveResource(page:String,shopId: String) {
+        launch(Main) {
+            merchantModel.loadReserveResource(page,shopId)?.let {
+                if (view is MerchantContract.IReserveResourceView) {
+                    (view as MerchantContract.IReserveResourceView).showReserveResource(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
     override fun commitReserve(
         reserveUserName: String,
         mobile: String,
@@ -53,7 +65,8 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         endTime: String,
         manageId: String,
         reserveType: String,
-        shopId: String
+        shopId: String,
+        bean: ManageBean?
     ) {
 
         if (reserveUserName.isEmpty()) {
@@ -68,7 +81,7 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
 
         launch(Main) {
             showLoading()
-            merchantModel.commitReserve(reserveUserName, mobile, beginTime, endTime, manageId, reserveType, shopId)?.let {
+            merchantModel.commitReserve(reserveUserName, mobile, beginTime, endTime, manageId, reserveType, shopId,bean)?.let {
                 if (view is MerchantContract.IReserveView) {
                     (view as MerchantContract.IReserveView).reserveResult(it)
                 }

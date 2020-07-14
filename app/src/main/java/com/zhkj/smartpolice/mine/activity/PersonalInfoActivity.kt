@@ -115,7 +115,7 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
             .into(iv_head)
 
         et_username.setText(data.userName)
-        et_nickname.setText(data.nickName)
+        et_name.setText(data.nickName)
         et_phone.setText(data.mobile)
         et_email.setText(data.email)
 
@@ -136,8 +136,7 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
 
         val editTextList = arrayListOf<View>(
             iv_head,
-            et_username,
-            et_nickname,
+            et_name,
             et_phone,
             et_email
         )
@@ -168,7 +167,7 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
                 return
             }
 
-            val nickname = et_nickname.text.toString()
+            val nickname = et_name.text.toString()
 
             val phone = et_phone.text.toString()
             if (!checkPhoneFormat(phone)) {

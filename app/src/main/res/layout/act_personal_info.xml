@@ -21,7 +21,7 @@
 
         <TextView
             style="@style/style_register_item_text"
-            android:text="姓名 *"
+            android:text="帐号 *"
             tools:ignore="HardcodedText" />
 
         <com.sunny.zy.widget.edittext.ClearEditText
@@ -38,11 +38,11 @@
 
         <TextView
             style="@style/style_register_item_text"
-            android:text="昵称"
+            android:text="姓名"
             tools:ignore="HardcodedText" />
 
         <com.sunny.zy.widget.edittext.ClearEditText
-            android:id="@+id/et_nickname"
+            android:id="@+id/et_name"
             style="@style/style_mine_item_edit"
             tools:ignore="HardcodedText" />
     </LinearLayout>

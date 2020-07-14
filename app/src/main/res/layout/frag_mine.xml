@@ -79,13 +79,23 @@
             app:layout_constraintTop_toBottomOf="@id/tv_name"
             tools:text="签名" />
 
+        <ImageView
+            android:id="@+id/iv_edit"
+            style="@style/style_common_icon"
+            android:src="@drawable/svg_mine_edit"
+            app:layout_constraintEnd_toEndOf="@id/v_login"
+            android:contentDescription="@string/placeholder"
+            app:layout_constraintTop_toTopOf="@id/v_login" />
+
         <TextView
             android:id="@+id/tv1"
             style="@style/style_font_gray"
             android:layout_width="0dp"
             android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_20"
             android:gravity="center_horizontal"
             android:text="浏览历史"
+            app:layout_constraintBottom_toBottomOf="@id/v_login"
             app:layout_constraintEnd_toStartOf="@id/tv2"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="@id/v_login"

@@ -6,18 +6,18 @@ import com.bumptech.glide.Glide
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
+import com.sunny.zy.utils.isStrEmpty
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.meal.MealRecordActivity
+import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
 import com.zhkj.smartpolice.mine.bean.UserBean
 import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
-import com.sunny.zy.utils.isStrEmpty
-import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import kotlinx.android.synthetic.main.frag_mine.*
 import kotlinx.coroutines.cancel
 
@@ -33,6 +33,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
     override fun initView() {
         setOnClickListener(
             iv_head,
+            iv_edit,
             ll_meal, ll_repair, ll_reserve, ll_medicine,
             tv_money, tv_wallet,
             btn_withdrawal, btn_recharge,
@@ -42,7 +43,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            iv_head.id -> startActivity(Intent(requireContext(), PersonalInfoActivity::class.java))
+            iv_head.id, iv_edit.id -> startActivity(Intent(requireContext(), PersonalInfoActivity::class.java))
             ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
             ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
             ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
@@ -77,7 +78,7 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
             .placeholder(R.drawable.svg_default_head)
             .into(iv_head)
 
-        tv_name.text = isStrEmpty("${data.nickName} ( ${data.mobile} )", "登录 / 注册")
+        tv_name.text = isStrEmpty("${data.nickName}", "登录 / 注册")
         tv_sign.text = isStrEmpty(data.sign)
     }
 

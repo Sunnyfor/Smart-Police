@@ -5,6 +5,7 @@ import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
 import com.zhkj.smartpolice.haircut.bean.ManageBean
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
+import com.zhkj.smartpolice.merchant.MerchantBean
 
 interface MerchantContract {
 

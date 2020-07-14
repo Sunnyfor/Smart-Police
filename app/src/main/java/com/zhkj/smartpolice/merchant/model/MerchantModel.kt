@@ -1,6 +1,5 @@
 package com.zhkj.smartpolice.merchant.model
 
-import com.google.gson.Gson
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.bean.DefaultLinkedMap
@@ -10,6 +9,7 @@ import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.haircut.bean.ManageBean
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
+import com.zhkj.smartpolice.merchant.MerchantBean
 import org.json.JSONObject
 
 class MerchantModel {

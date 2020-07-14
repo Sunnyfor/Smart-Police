@@ -6,8 +6,8 @@ import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.haircut.adapter.BarberListAdapter
 import com.zhkj.smartpolice.haircut.bean.ManageBean
-import com.zhkj.smartpolice.merchant.MerchantContract
-import com.zhkj.smartpolice.merchant.MerchantPresenter
+import com.zhkj.smartpolice.merchant.model.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import kotlinx.coroutines.cancel
 
 /**
@@ -25,8 +25,8 @@ class BarberListActivity : BaseActivity(), MerchantContract.IReserveResourceView
         BarberListAdapter().apply {
             setOnItemClickListener { _, position ->
                 val intent = Intent(this@BarberListActivity, LeaderReserveActivity::class.java)
-                intent.putExtra("bean",getData(position))
-                intent.putExtra("shopId",shopId)
+                intent.putExtra("bean", getData(position))
+                intent.putExtra("shopId", shopId)
                 startActivity(intent)
             }
         }

@@ -8,8 +8,8 @@ import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
-import com.zhkj.smartpolice.merchant.MerchantContract
-import com.zhkj.smartpolice.merchant.MerchantPresenter
+import com.zhkj.smartpolice.merchant.model.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import kotlinx.android.synthetic.main.act_haircut_order_detail.*
 import java.util.*
 

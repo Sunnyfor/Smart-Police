@@ -13,11 +13,10 @@ import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveTimeAdapter
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveWeekAdapter
 import com.zhkj.smartpolice.haircut.bean.ManageBean
-import com.zhkj.smartpolice.merchant.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantContract
 import kotlinx.android.synthetic.main.act_leader_reserve.*
 import kotlinx.android.synthetic.main.act_leader_reserve.btn_sure
 import kotlinx.android.synthetic.main.act_leader_reserve.recycler_date
-import kotlinx.android.synthetic.main.act_receive_time.*
 import kotlinx.android.synthetic.main.act_receive_time.recycler_time
 
 /**
@@ -26,7 +25,7 @@ import kotlinx.android.synthetic.main.act_receive_time.recycler_time
  * Mail zhangye98@foxmail.com
  * Date 2020/7/14 17:06
  */
-class LeaderReserveActivity : HaircutOrderTimeActivity(),MerchantContract.IReserveView {
+class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IReserveView {
 
     val bean: ManageBean by lazy {
         (intent.getSerializableExtra("bean") as ManageBean)

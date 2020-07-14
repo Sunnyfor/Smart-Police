@@ -15,8 +15,8 @@ import com.zhkj.smartpolice.haircut.adapter.HaircutWeekAdapter
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveTimeAdapter
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import com.zhkj.smartpolice.haircut.bean.WeekDayBean
-import com.zhkj.smartpolice.merchant.MerchantContract
-import com.zhkj.smartpolice.merchant.MerchantPresenter
+import com.zhkj.smartpolice.merchant.model.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import kotlinx.android.synthetic.main.act_receive_time.*
 import java.util.*
 

@@ -15,6 +15,11 @@ object UrlConstant {
     const val UPLOAD_IMAGE_PATH_URL = "sys/attachment/upload"
 
     /**
+     * 药店模块：意见箱
+     */
+    const val DRUGSTORE_FEEDBACK_URL = "logistics/feedback/save"
+
+    /**
      * 餐厅模块：餐厅列表
      */
     const val RESTAURANT_LIST_URL = "logistics/shop/list"

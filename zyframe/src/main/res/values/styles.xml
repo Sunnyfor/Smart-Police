@@ -52,6 +52,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/color_line</item>
     </style>
+
     <!--通用EditText样式-->
 
     <style name="style_common_edit">
@@ -62,6 +63,17 @@
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:inputType">text</item>
         <item name="android:lines">1</item>
+    </style>
+
+    <style name="style_common_edit_multi">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
+        <item name="android:padding">@dimen/dp_10</item>
+        <item name="android:gravity">top</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:background">@drawable/sel_border_gray</item>
     </style>
 
     <!--通用黑色字体-->

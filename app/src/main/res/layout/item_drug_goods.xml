@@ -53,11 +53,4 @@
         android:text="¥ 0.0"
         tools:ignore="HardcodedText" />
 
-    <ImageView
-        style="@style/style_common_icon"
-        android:layout_alignBottom="@id/tv_price"
-        android:layout_alignParentEnd="true"
-        android:contentDescription="@string/app_name"
-        android:padding="@dimen/dp_5"
-        android:src="@drawable/svg_drug_suggestion_box" />
 </RelativeLayout>

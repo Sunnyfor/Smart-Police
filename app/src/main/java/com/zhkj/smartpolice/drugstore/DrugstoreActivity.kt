@@ -2,7 +2,9 @@ package com.zhkj.smartpolice.drugstore
 
 import android.content.Context
 import android.content.Intent
+import android.view.Menu
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
@@ -18,6 +20,8 @@ import kotlinx.android.synthetic.main.layout_search.*
 import kotlinx.coroutines.cancel
 
 class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
+
+    private lateinit var toolbar: Toolbar
 
     private var shopId: String? = null
 
@@ -53,7 +57,14 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
 
     override fun initView() {
 
-        defaultTitle("药品列表")
+        toolbar = defaultTitle("药品列表")
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_suggestion_box -> FeedbackActivity.intent(this, shopId)
+            }
+            return@setOnMenuItemClickListener true
+        }
 
         shopId = intent.getStringExtra("shopId")
 
@@ -69,6 +80,11 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
         supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
 
         setOnClickListener(btn_search)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        toolbar.inflateMenu(R.menu.menu_drugstore_title)
+        return true
     }
 
     override fun onClickEvent(view: View) {

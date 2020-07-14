@@ -10,6 +10,8 @@ import com.zhkj.smartpolice.meal.MealActivity
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.BarberListActivity
 import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
+import com.zhkj.smartpolice.merchant.model.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.coroutines.cancel
 
@@ -100,10 +102,7 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
 
     override fun loadData() {
         showLoading()
-        presenter.loadMerchantList(
-            pullRefreshFragment.page.toString(),
-            shopType ?: return
-        )
+        presenter.loadMerchantList(pullRefreshFragment.page.toString(), shopType ?: return)
     }
 
     override fun close() {

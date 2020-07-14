@@ -6,8 +6,8 @@ import com.sunny.zy.utils.GlideApp
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.merchant.MerchantBean
-import com.zhkj.smartpolice.merchant.MerchantContract
-import com.zhkj.smartpolice.merchant.MerchantPresenter
+import com.zhkj.smartpolice.merchant.model.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import kotlinx.android.synthetic.main.act_stadium_detail.*
 
 class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveInfoView {

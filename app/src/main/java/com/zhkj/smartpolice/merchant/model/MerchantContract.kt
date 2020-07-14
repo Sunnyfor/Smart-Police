@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.merchant
+package com.zhkj.smartpolice.merchant.model
 
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter

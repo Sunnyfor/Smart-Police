@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    app:cardCornerRadius="@dimen/dp_4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_image"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:src="@drawable/svg_default_head"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_font_black_bigger"
+            android:layout_marginStart="@dimen/dp_20"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toEndOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_scope"
+            style="@style/style_font_gray_small"
+            android:layout_marginTop="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="经营范围:" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/style_font_gray_small"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_image"
+            tools:text="联系电话:" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/style_font_gray_small"
+            android:layout_marginTop="@dimen/dp_3"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone"
+            tools:text="场地地址:" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/style_font_gray_small"
+            android:layout_marginTop="@dimen/dp_3"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_address"
+            tools:text="营业时间:" />
+
+        <TextView
+            android:id="@+id/btn_check"
+            style="@style/style_font_white_small"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_22"
+            android:background="@drawable/sel_btn_see_view"
+            android:gravity="center"
+            android:text="@string/reserve"
+            app:layout_constraintBottom_toBottomOf="@id/tv_scope"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

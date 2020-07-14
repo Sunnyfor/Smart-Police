@@ -65,7 +65,6 @@
         <activity android:name=".mine.activity.SettingActivity" />
 
         <!--餐厅模块-->
-        <activity android:name=".meal.RestaurantListActivity" />
         <activity android:name=".meal.MealActivity" />
         <activity android:name=".meal.MealDetailActivity" />
         <activity android:name=".meal.MealOrderActivity" />

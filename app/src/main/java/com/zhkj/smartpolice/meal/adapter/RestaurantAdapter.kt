@@ -7,12 +7,12 @@ import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.bean.RestaurantBean
-import kotlinx.android.synthetic.main.item_restaurant.view.*
+import kotlinx.android.synthetic.main.item_shop_restaurant.view.*
 
 class RestaurantAdapter : BaseRecycleAdapter<RestaurantBean>(arrayListOf()) {
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View {
-        return LayoutInflater.from(context).inflate(R.layout.item_restaurant, parent, false)
+        return LayoutInflater.from(context).inflate(R.layout.item_shop_restaurant, parent, false)
     }
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {

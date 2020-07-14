@@ -56,10 +56,7 @@ class LoginActivity : BaseActivity(), LoginView {
             R.id.loginButton -> {
                 if (!TextUtils.isEmpty(userName.text.toString())) {
                     if (!TextUtils.isEmpty(userPassword.text.toString())) {
-                        loginPresenter.onUserLogin(
-                            userName.text.toString(),
-                            userPassword.text.toString()
-                        )
+                loginPresenter.onUserLogin(userName.text.toString(), userPassword.text.toString())
                     } else {
                         ToastUtil.show("密码不能为空！")
                     }

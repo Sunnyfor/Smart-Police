@@ -32,6 +32,7 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
         MealMenuAdapter(menuList).apply {
             setOnItemClickListener { _, i ->
                 this.index = i
+                presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", getData(i).labelId ?: "")
                 notifyDataSetChanged()
             }
         }
@@ -96,7 +97,6 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
 
     override fun loadData() {
         presenter.loadMealMenu(shopId ?: return)
-        presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: return)
     }
 
     override fun close() {
@@ -107,6 +107,8 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
         menuList.clear()
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
+
+        presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: return, data[0].labelId ?: "")
     }
 
     override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {

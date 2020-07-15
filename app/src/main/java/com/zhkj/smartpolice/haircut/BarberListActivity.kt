@@ -18,7 +18,7 @@ class BarberListActivity : BaseActivity(), MerchantContract.IReserveResourceView
     private val pullRefreshFragment = PullRefreshFragment<ManageBean>()
 
     private val shopId: String by lazy {
-        intent.getStringExtra("shopId")
+        intent.getStringExtra("shopId") ?: ""
     }
 
     private val adapter: BarberListAdapter by lazy {

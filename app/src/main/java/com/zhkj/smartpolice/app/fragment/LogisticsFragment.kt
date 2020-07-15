@@ -2,10 +2,12 @@ package com.zhkj.smartpolice.app.fragment
 
 import android.content.Intent
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.data.MerchantViewModel
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.haircut.BarberListActivity
@@ -24,7 +26,9 @@ import kotlinx.coroutines.cancel
 
 class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
 
-    private var list = ArrayList<MerchantBean>()
+    private val merchantViewModel: MerchantViewModel by lazy {
+        ViewModelProvider(getBaseActivity()).get(MerchantViewModel::class.java)
+    }
 
     private val presenter: MerchantPresenter by lazy {
         MerchantPresenter(this)
@@ -46,12 +50,12 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
     override fun onClickEvent(view: View) {
         when (view.id) {
             tv_restaurant.id -> {
-                list.find { it.shopType == MerchantListActivity.TYPE_RESTAURANT }.apply {
+                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_RESTAURANT }.apply {
                     MealActivity.intent(requireContext(), this?.shopId)
                 }
             }
             tv_haircut.id -> {
-                list.find { it.shopType == MerchantListActivity.TYPE_HAIRCUT }.apply {
+                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_HAIRCUT }.apply {
                     val intent = when (UserManager.getUserBean().position) {
                         "1", "2" -> Intent(requireContext(), BarberListActivity::class.java)      //领导
                         else -> Intent(requireContext(), HaircutOrderDetailActivity::class.java)  //警员
@@ -61,17 +65,17 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 }
             }
             tv_drugstore.id -> {
-                list.find { it.shopType == MerchantListActivity.TYPE_DRUGSTORE }.apply {
+                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_DRUGSTORE }.apply {
                     DrugstoreActivity.intent(requireContext(), this?.shopId)
                 }
             }
             tv_laundry.id -> {
-                list.find { it.shopType == MerchantListActivity.TYPE_LAUNDRY }.apply {
+                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_LAUNDRY }.apply {
                     MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_LAUNDRY)
                 }
             }
             tv_stadium.id -> {
-                list.find { it.shopType == MerchantListActivity.TYPE_STADIUM }.apply {
+                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_STADIUM }.apply {
                     val intent = Intent(requireContext(), StadiumDetailActivity::class.java)
                     intent.putExtra("shopId", this?.shopId)
                     startActivity(intent)
@@ -91,7 +95,9 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
     }
 
     override fun loadData() {
-        presenter.loadMerchantList("1", "") //默认加载全部商家
+        if (merchantViewModel.list.isEmpty()) {
+            presenter.loadMerchantList("1", "") //默认加载全部商家
+        }
     }
 
     override fun close() {
@@ -99,7 +105,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
     }
 
     override fun showMerchantList(data: ArrayList<MerchantBean>) {
-        list = data
+        merchantViewModel.list = data
     }
 
 }

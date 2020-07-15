@@ -1,8 +1,5 @@
 package com.sunny.zy.base
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModelStoreOwner
-
 
 /**
  *

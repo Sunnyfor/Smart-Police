@@ -13,11 +13,13 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
 
     override fun loadMerchantList(page: String, shopType: String) {
         launch(Main) {
+            showLoading()
             merchantModel.loadMerchantList(page, shopType)?.let {
                 if (view is MerchantContract.IMerchantListView) {
                     (view as MerchantContract.IMerchantListView).showMerchantList(it)
                 }
             }
+            hideLoading()
         }
     }
 

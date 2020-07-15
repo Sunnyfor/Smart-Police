@@ -2,9 +2,9 @@ package com.sunny.zy
 
 import android.app.Application
 import android.content.Context
-import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.bean.UserInfoBean
+import com.sunny.zy.utils.LogUtil
 import java.util.*
 import kotlin.system.exitProcess
 
@@ -89,11 +89,16 @@ object ZyFrameStore {
     /**
      * 关闭所有的Activity
      */
-    fun finishAllActivity() {
+    fun finishAllActivity(activity: BaseActivity? = null) {
         activityStack.forEach {
-            it.finish()
+            if (activity != it) {
+                LogUtil.i("关闭:${activity?.packageName}")
+                it.finish()
+            }
         }
         activityStack.clear()
-        exitProcess(0)
+        activity?.let {
+            activityStack.add(activity)
+        }
     }
 }

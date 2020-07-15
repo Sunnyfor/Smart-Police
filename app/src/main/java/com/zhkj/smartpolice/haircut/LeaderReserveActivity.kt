@@ -24,12 +24,6 @@ import kotlinx.android.synthetic.main.act_leader_reserve.btn_sure
 import kotlinx.android.synthetic.main.act_leader_reserve.recycler_date
 import kotlinx.android.synthetic.main.act_receive_time.recycler_time
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/14 17:06
- */
 class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IReserveView, ReserveContract.IReverseRecordView {
 
     val bean: ManageBean by lazy {

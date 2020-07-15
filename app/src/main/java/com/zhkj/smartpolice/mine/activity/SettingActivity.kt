@@ -1,9 +1,7 @@
 package com.zhkj.smartpolice.mine.activity
 
-import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.ConfirmDialog
 import com.zhkj.smartpolice.R
@@ -21,9 +19,7 @@ class SettingActivity : BaseActivity() {
         val dialog = ConfirmDialog(this)
         dialog.prompt = "是否确认退出应用？"
         dialog.onConfirmListener = {
-            startActivity(Intent(this, LoginActivity::class.java))
-            SpUtil.clear()
-            finish()
+            LoginActivity.intent(this, true)
         }
         dialog
     }
@@ -62,8 +58,8 @@ class SettingActivity : BaseActivity() {
 
     }
 
-    override fun onClickEvent(v: View) {
-        when (v.id) {
+    override fun onClickEvent(view: View) {
+        when (view.id) {
             R.id.item_cache -> cacheClearDialog.show()
             R.id.btn_logout -> exitDialog.show()
             /*

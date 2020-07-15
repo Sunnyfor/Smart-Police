@@ -1,12 +1,13 @@
 package com.zhkj.smartpolice.login.activity
 
+import android.content.Context
 import android.content.Intent
-import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.LogUtil
@@ -24,6 +25,10 @@ import kotlinx.android.synthetic.main.act_login.*
 @Route(path = RouterManager.LOGIN_ACTIVITY)
 class LoginActivity : BaseActivity(), LoginView {
 
+    @JvmField
+    @Autowired
+    var logout: Boolean = false
+
     private var isStatus: Boolean = false
 
     override fun setLayout(): Int = R.layout.act_login
@@ -32,12 +37,29 @@ class LoginActivity : BaseActivity(), LoginView {
         LoginPresenter(this)
     }
 
+    companion object {
+        fun intent(context: Context, isLogout: Boolean = false) {
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.putExtra("logout", isLogout)
+            context.startActivity(intent)
+        }
+    }
+
     override fun initView() {
+
+        logout = intent.getBooleanExtra("logout", false)
+
+        if (logout) {
+            //关闭其他所有页面
+            ZyFrameStore.finishAllActivity(this)
+            SpUtil.clear()
+        }
+
         loginButton.setOnClickListener(this)
         passwordType.setOnClickListener(this)
         tvRevampPassword.setOnClickListener(this)
-        var userName = SpUtil.getString("userName")
-        var userPassword = SpUtil.getString("userPassword")
+        val userName = SpUtil.getString("userName")
+        val userPassword = SpUtil.getString("userPassword")
         LogUtil.i("登录参数是==========userName==$userName========userPassword=====$userPassword")
         if (userName.isNotEmpty() && userPassword.isNotEmpty()) {
             loginPresenter.onUserLogin(
@@ -48,24 +70,22 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun loadData() {
-//        loginPresenter.onUserLogin("demo12", "666666"
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
             R.id.loginButton -> {
-                if (!TextUtils.isEmpty(userName.text.toString())) {
-                    if (!TextUtils.isEmpty(userPassword.text.toString())) {
-                loginPresenter.onUserLogin(userName.text.toString(), userPassword.text.toString())
-                    } else {
-                        ToastUtil.show("密码不能为空！")
-                    }
-                } else {
+                if (userName.text.toString().isEmpty()) {
                     ToastUtil.show("用户名不能为空！")
+                    return
                 }
-
+                if (userPassword.text.toString().isEmpty()) {
+                    ToastUtil.show("密码不能为空！")
+                    return
+                }
+                hideKeyboard()
+                loginPresenter.onUserLogin(userName.text.toString(), userPassword.text.toString())
             }
-
             R.id.passwordType -> {
                 if (isStatus) {
                     passwordType.setBackgroundResource(R.drawable.svg_login_hide_password)
@@ -77,7 +97,6 @@ class LoginActivity : BaseActivity(), LoginView {
                 }
                 isStatus = !isStatus
             }
-
             R.id.tvRevampPassword -> {
                 startActivity(Intent(this, AlterPasswordActivity::class.java))
             }
@@ -95,7 +114,7 @@ class LoginActivity : BaseActivity(), LoginView {
                     UserManager.setInfo(data.get(0))
                 }
             }
-            if (!it.code.equals("0")) {
+            if (it.code != "0") {
                 ToastUtil.show(it.msg)
             } else {
                 if (userName.text.toString().isNotEmpty() && userPassword.text.toString()

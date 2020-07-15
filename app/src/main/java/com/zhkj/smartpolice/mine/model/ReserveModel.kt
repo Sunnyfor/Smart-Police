@@ -13,11 +13,13 @@ class ReserveModel {
     /**
      *  预约记录
      */
-    suspend fun loadReverseRecord(page: String): ArrayList<ReserveRecordBean>? {
+    suspend fun loadReverseRecord(page: String, reserveUserId: String? = null, manageId: String? = null): ArrayList<ReserveRecordBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<ReserveRecordBean>>() {}
         val params = HashMap<String, String>()
         params["page"] = page
         params["limit"] = Constant.pageLimit
+        params["reserveUserId"] = reserveUserId ?: ""
+        params["manageId"] = manageId ?: ""
 
         ZyHttp.get(UrlConstant.RESERVE_RECORD_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {

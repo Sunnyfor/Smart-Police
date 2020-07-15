@@ -11,10 +11,10 @@ class ReservePresenter(iBaseView: IBaseView) : ReserveContract.Presenter(iBaseVi
     }
 
 
-    override fun loadReverseRecord(page: String) {
+    override fun loadReverseRecord(page: String,reserveUserId: String?, manageId: String?,createTime:String?) {
         launch(Dispatchers.Main) {
             showLoading()
-            reverseModel.loadReverseRecord(page)?.let {
+            reverseModel.loadReverseRecord(page,reserveUserId,manageId)?.let {
                 if (view is ReserveContract.IReverseRecordView) {
                     (view as ReserveContract.IReverseRecordView).showReverseRecord(it)
                 }

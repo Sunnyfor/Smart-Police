@@ -60,7 +60,7 @@ class MerchantModel {
         params["shopId"] = shopId
         params["endDate"] = endDate
         resourceId?.let {
-            params["resourceId"] =  it
+            params["resourceId"] = it
         }
 
 
@@ -125,19 +125,6 @@ class MerchantModel {
         bean?.let {
             url = UrlConstant.RESERVE_RECORD_SAVE_URL
             params.put("resourceId", it.resourceId)
-            params.put("resourceName", it.resourceName)
-            params.put("resourceContext", it.resourceContext)
-            params.put("resourceLevel", it.resourceLevel)
-            params.put("classifyId", it.classifyId)
-            params.put("activeState", it.activeState)
-            params.put("isTop", it.isTop)
-            params.put("orderNumber", it.orderNumber)
-            params.put("createUserId", it.createUserId)
-            params.put("createTime", it.createTime)
-            params.put("isTop", it.isTop)
-            params.put("imageId", it.imageId)
-            params.put("shopName", it.shopName)
-            params.put("manageDate", it.manageDate)
         }
 
         val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
@@ -149,4 +136,5 @@ class MerchantModel {
         }
         return null
     }
+
 }

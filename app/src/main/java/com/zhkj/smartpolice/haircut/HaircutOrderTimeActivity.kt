@@ -51,6 +51,8 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
     var weekAdapter: BaseRecycleAdapter<WeekDayBean> = HaircutWeekAdapter(currentDay, arrayListOf()).apply {
         setOnItemClickListener { _: View, position: Int ->
             this.currentDay = getData(position).day
+            timeAdapter.clearData()
+            timeAdapter.notifyDataSetChanged()
             notifyDataSetChanged()
             presenter.loadReserveTime(getEndData(this.currentDay), shopId, resourceId)
         }

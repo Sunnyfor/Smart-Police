@@ -10,12 +10,27 @@ android {
     compileSdkVersion 29
     buildToolsVersion "30.0.0"
 
+    signingConfigs {
+        debug {
+            storeFile file('../SmartPolice.jks.jks')
+            storePassword '123456'
+            keyAlias = 'Police'
+            keyPassword '123456'
+        }
+        release {
+            storeFile file('../SmartPolice.jks.jks')
+            storePassword '123456'
+            keyAlias = 'Police'
+            keyPassword '123456'
+        }
+    }
+
     defaultConfig {
         applicationId "com.zhkj.smartpolice"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

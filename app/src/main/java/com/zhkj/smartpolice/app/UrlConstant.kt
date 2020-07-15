@@ -127,4 +127,14 @@ object UrlConstant {
      * 维修功能：部门树结构
      */
     const val DEPARTMENT_STRUCTURE = "sys/dept/findListByTree "
+
+    /**
+     * 维修功能：审批维修清单
+     */
+    const val MAINTAIN_AUDIT = "logistics/apply/list"
+
+    /**
+     * 维修功能：维修管理审批请求
+     */
+    const val MAINTAIN_AUDIT_FEEDBACK = "logistics/applyopinion/save"
 }

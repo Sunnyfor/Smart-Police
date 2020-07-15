@@ -2,10 +2,7 @@ package com.zhkj.smartpolice.maintain.view
 
 import com.sunny.zy.base.IBaseView
 import com.sunny.zy.base.PageModel
-import com.zhkj.smartpolice.maintain.bean.DepartmentStructureBean
-import com.zhkj.smartpolice.maintain.bean.MaintainClassifyBean
-import com.zhkj.smartpolice.maintain.bean.MaintainListBean
-import com.zhkj.smartpolice.maintain.bean.SucceedBean
+import com.zhkj.smartpolice.maintain.bean.*
 
 
 interface IMaintainView : IBaseView {
@@ -33,6 +30,15 @@ interface IMaintainView : IBaseView {
     /**
      * 维修处理列表
      */
+    fun onMaintainAudit(pagemodel: PageModel<MaintainAuditBean>){ }
 
+    /**
+     * 维修已处理列表
+     */
+    fun onMaintainAccomplish(){ }
 
+    /**
+     * 维修管理审核反馈
+     */
+    fun onMaintainFeedback(succeedBean: SucceedBean) { }
 }

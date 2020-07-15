@@ -21,6 +21,11 @@
         <item name="android:textSize">@dimen/sp_12</item>
     </style>
 
+    <style name="style_font_black_small" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@color/fun_logistics_666666</item>
+    </style>
+
     <style name="style_font_orange_smaller" parent="style_font_orange">
         <item name="android:textSize">@dimen/sp_10</item>
     </style>

@@ -72,7 +72,9 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
             }
             tv_stadium.id -> {
                 list.find { it.shopType == MerchantListActivity.TYPE_STADIUM }.apply {
-                    startActivity(Intent(requireContext(), StadiumDetailActivity::class.java))
+                    val intent = Intent(requireContext(), StadiumDetailActivity::class.java)
+                    intent.putExtra("shopId", this?.shopId)
+                    startActivity(intent)
                 }
             }
             tv_maintain.id -> {

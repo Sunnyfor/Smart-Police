@@ -141,7 +141,7 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
 
     override fun reserveResult(data: BaseModel<Any>) {
         ToastUtil.show("预约成功！")
-//        finish()
+        finish()
     }
 
     override fun showReverseRecord(data: ArrayList<ReserveRecordBean>) {

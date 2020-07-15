@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_scope"
+            android:id="@+id/tv_count"
             style="@style/style_font_gray_small"
             android:layout_marginTop="@dimen/dp_5"
             app:layout_constraintStart_toStartOf="@id/tv_name"
@@ -75,7 +75,7 @@
             android:background="@drawable/sel_btn_see_view"
             android:gravity="center"
             android:text="@string/reserve"
-            app:layout_constraintBottom_toBottomOf="@id/tv_scope"
+            app:layout_constraintBottom_toBottomOf="@id/tv_count"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

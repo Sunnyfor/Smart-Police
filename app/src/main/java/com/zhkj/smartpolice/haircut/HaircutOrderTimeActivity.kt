@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BaseRecycleAdapter
+import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.haircut.adapter.HaircutTimeAdapter
 import com.zhkj.smartpolice.haircut.adapter.HaircutWeekAdapter
@@ -21,7 +23,7 @@ import kotlinx.android.synthetic.main.act_receive_time.*
 import java.util.*
 
 
-open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveTimeView {
+open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveTimeView, MerchantContract.IReserveView {
 
     val presenter by lazy {
         MerchantPresenter(this)
@@ -65,7 +67,6 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
         defaultTitle("预约时间")
 
         val weekDayList = arrayListOf<WeekDayBean>()
-        val currentWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1
 
         val maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
 
@@ -169,6 +170,11 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
         timeAdapter.clearData()
         timeAdapter.addData(data)
         timeAdapter.notifyDataSetChanged()
+    }
+
+    override fun reserveResult(data: BaseModel<Any>) {
+        ToastUtil.show("预约成功！")
+        finish()
     }
 
 }

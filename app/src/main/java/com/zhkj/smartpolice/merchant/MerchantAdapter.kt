@@ -69,7 +69,7 @@ class MerchantAdapter(val shopType: String) : BaseRecycleAdapter<MerchantBean>(a
                     .placeholder(R.drawable.svg_default_head)
                     .into(shopImgView)
                 holder.itemView.findViewById<TextView>(R.id.tv_name).text = getData(position).shopName
-                holder.itemView.findViewById<TextView>(R.id.tv_scope).text = ("经营范围：${getData(position).scope}")
+                holder.itemView.findViewById<TextView>(R.id.tv_count).text = ("经营范围：${getData(position).scope}")
                 holder.itemView.findViewById<TextView>(R.id.tv_phone).text = ("联系电话：${getData(position).mobilePhone}（${getData(position).userName}）")
                 holder.itemView.findViewById<TextView>(R.id.tv_address).text = ("场地地址：${getData(position).shopAddress}")
                 holder.itemView.findViewById<TextView>(R.id.tv_time).text = ("营业时间：${getData(position).businessTime}")

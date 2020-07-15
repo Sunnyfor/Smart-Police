@@ -7,13 +7,28 @@ import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
+import com.zhkj.smartpolice.drugstore.DrugstoreActivity
+import com.zhkj.smartpolice.haircut.BarberListActivity
+import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
+import com.zhkj.smartpolice.meal.MealActivity
+import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
+import com.zhkj.smartpolice.merchant.model.MerchantContract
+import com.zhkj.smartpolice.merchant.model.MerchantPresenter
+import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
+import kotlinx.coroutines.cancel
 
 
-class LogisticsFragment : BaseFragment() {
+class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
+
+    private var list = ArrayList<MerchantBean>()
+
+    private val presenter: MerchantPresenter by lazy {
+        MerchantPresenter(this)
+    }
 
     override fun setLayout(): Int = R.layout.frag_logistics
 
@@ -26,52 +41,63 @@ class LogisticsFragment : BaseFragment() {
             tv_stadium,
             tv_maintain
         )
-
-    }
-
-    override fun loadData() {
-
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_restaurant.id -> MerchantListActivity.intent(
-                requireContext(),
-                MerchantListActivity.TYPE_RESTAURANT
-            )
-            tv_haircut.id -> MerchantListActivity.intent(
-                requireContext(),
-                MerchantListActivity.TYPE_HAIRCUT
-            )
-            tv_drugstore.id -> MerchantListActivity.intent(
-                requireContext(),
-                MerchantListActivity.TYPE_DRUGSTORE
-            )
-            tv_laundry.id -> MerchantListActivity.intent(
-                requireContext(),
-                MerchantListActivity.TYPE_LAUNDRY
-            )
-            tv_stadium.id -> MerchantListActivity.intent(
-                requireContext(),
-                MerchantListActivity.TYPE_STADIUM
-            )
+            tv_restaurant.id -> {
+                list.find { it.shopType == MerchantListActivity.TYPE_RESTAURANT }.apply {
+                    MealActivity.intent(requireContext(), this?.shopId)
+                }
+            }
+            tv_haircut.id -> {
+                list.find { it.shopType == MerchantListActivity.TYPE_HAIRCUT }.apply {
+                    val intent = when (UserManager.getUserBean().position) {
+                        "1", "2" -> Intent(requireContext(), BarberListActivity::class.java)      //领导
+                        else -> Intent(requireContext(), HaircutOrderDetailActivity::class.java)  //警员
+                    }
+                    intent.putExtra("shopId", this?.shopId)
+                    startActivity(intent)
+                }
+            }
+            tv_drugstore.id -> {
+                list.find { it.shopType == MerchantListActivity.TYPE_DRUGSTORE }.apply {
+                    DrugstoreActivity.intent(requireContext(), this?.shopId)
+                }
+            }
+            tv_laundry.id -> {
+                list.find { it.shopType == MerchantListActivity.TYPE_LAUNDRY }.apply {
+                    MerchantListActivity.intent(requireContext(), MerchantListActivity.TYPE_LAUNDRY)
+                }
+            }
+            tv_stadium.id -> {
+                list.find { it.shopType == MerchantListActivity.TYPE_STADIUM }.apply {
+                    startActivity(Intent(requireContext(), StadiumDetailActivity::class.java))
+                }
+            }
             tv_maintain.id -> {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
                     3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
-                    117 -> startActivity(Intent(requireContext(),
-                        ApplyMaintainListActivity::class.java)) //维修管理员
+                    117 -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java)) //维修管理员
                     else -> ToastUtil.show("你当前不是警员")
 //                    166 -> startActivity(Intent(requireContext(),))//维修工人
-
                 }
             }
         }
     }
 
-    override fun close() {
+    override fun loadData() {
+        presenter.loadMerchantList("1", "") //默认加载全部商家
+    }
 
+    override fun close() {
+        presenter.cancel()
+    }
+
+    override fun showMerchantList(data: ArrayList<MerchantBean>) {
+        list = data
     }
 
 }

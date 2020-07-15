@@ -102,7 +102,7 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
 
     override fun loadData() {
         showLoading()
-        presenter.loadMerchantList(pullRefreshFragment.page.toString(), shopType ?: return)
+        presenter.loadMerchantList(pullRefreshFragment.page.toString(), "")
     }
 
     override fun close() {

@@ -55,10 +55,13 @@ class MerchantModel {
      *LIST_RESOURCE_MANAGE_TIME
      */
     @Suppress("UNCHECKED_CAST")
-    suspend fun loadReserveTime(endDate: String, shopId: String): ArrayList<MerchantTime>? {
+    suspend fun loadReserveTime(endDate: String, shopId: String, resourceId: String? = null): ArrayList<MerchantTime>? {
         val params = HashMap<String, String>()
         params["shopId"] = shopId
         params["endDate"] = endDate
+        resourceId?.let {
+            params["resourceId"] =  it
+        }
 
 
         val httpResultBean =

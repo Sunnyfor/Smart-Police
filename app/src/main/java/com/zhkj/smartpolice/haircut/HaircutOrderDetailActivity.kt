@@ -55,7 +55,7 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
 
         presenter.loadReserveTime(
             "${calendar.get(Calendar.YEAR)}-${monthStr}-${calendar.get(Calendar.DAY_OF_MONTH)}", shopId
-        )
+        ,null)
 
 
     }

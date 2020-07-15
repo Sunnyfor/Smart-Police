@@ -16,11 +16,12 @@
             android:layout_width="@dimen/dp_46"
             android:layout_height="@dimen/dp_46"
             android:layout_marginStart="@dimen/dp_30"
+            android:scaleType="centerCrop"
             android:src="@drawable/svg_default_head"
+            app:riv_oval="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:scaleType="fitXY"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -40,6 +41,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_date"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_224"
         android:layout_marginTop="@dimen/dp_10"
@@ -94,6 +96,15 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_record"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_date"
+        android:layout_marginTop="@dimen/dp_10"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_sure"

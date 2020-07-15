@@ -31,6 +31,9 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
         intent.getStringExtra("shopId")
     }
 
+    var resourceId: String? = null
+
+
     private val calendar = Calendar.getInstance(Locale.CHINA)
     private val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
 
@@ -49,7 +52,7 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
         setOnItemClickListener { _: View, position: Int ->
             this.currentDay = getData(position).day
             notifyDataSetChanged()
-            presenter.loadReserveTime(getEndData(this.currentDay), shopId)
+            presenter.loadReserveTime(getEndData(this.currentDay), shopId, resourceId)
         }
     }
 
@@ -135,7 +138,7 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
     }
 
     override fun loadData() {
-        presenter.loadReserveTime(getEndData(currentDay), shopId)
+        presenter.loadReserveTime(getEndData(currentDay), shopId, resourceId)
     }
 
     override fun close() {

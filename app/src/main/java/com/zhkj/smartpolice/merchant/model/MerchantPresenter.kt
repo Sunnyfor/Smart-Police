@@ -35,10 +35,10 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         }
     }
 
-    override fun loadReserveTime(endDate: String, shopId: String) {
+    override fun loadReserveTime(endDate: String, shopId: String,resourceId:String?) {
         launch(Main) {
             showLoading()
-            merchantModel.loadReserveTime(endDate, shopId)?.let {
+            merchantModel.loadReserveTime(endDate, shopId,resourceId)?.let {
                 if (view is MerchantContract.IReserveTimeView) {
                     (view as MerchantContract.IReserveTimeView).showReserveTime(it)
                 }

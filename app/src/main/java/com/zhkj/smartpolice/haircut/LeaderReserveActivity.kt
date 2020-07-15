@@ -34,11 +34,14 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
     override fun setLayout(): Int = R.layout.act_leader_reserve
 
     override fun initView() {
+
+        resourceId = bean.resourceId
+
         weekAdapter = LeaderReserveWeekAdapter().apply {
             setOnItemClickListener { _, position ->
                 index = position
                 notifyDataSetChanged()
-                presenter.loadReserveTime(getEndData(getData(position).day), shopId)
+                presenter.loadReserveTime(getEndData(getData(position).day), shopId,resourceId)
             }
 
         }

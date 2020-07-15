@@ -27,7 +27,7 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
             ZyHttp.post(UrlConstant.USER_LOGIN,params,httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.onUserLogin(httpResultBean.bean?: return@launch)
+                view?.userLogin(httpResultBean.bean?: return@launch)
             }
         }
     }
@@ -46,7 +46,7 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
             ZyHttp.post(UrlConstant.USER_ALTER_PASSWORD, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.onAlterPassword(httpResultBean.bean?.code?:return@launch)
+                view?.modifyPassword(httpResultBean.bean?.code?:return@launch)
             }
         }
     }

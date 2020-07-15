@@ -15,22 +15,25 @@ import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
-import com.zhkj.smartpolice.mine.bean.UserBean
-import com.zhkj.smartpolice.mine.model.UserContract
-import com.zhkj.smartpolice.mine.model.UserPresenter
 import kotlinx.android.synthetic.main.frag_mine.*
-import kotlinx.coroutines.cancel
 
 
-class MineFragment : BaseFragment(), UserContract.IUserInfoView {
-
-    private val presenter: UserPresenter by lazy {
-        UserPresenter(this)
-    }
+class MineFragment : BaseFragment() {
 
     override fun setLayout(): Int = R.layout.frag_mine
 
     override fun initView() {
+
+        val data = UserManager.getUserBean()
+
+        Glide.with(requireContext())
+            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${data.avatar}")
+            .placeholder(R.drawable.svg_default_head)
+            .into(iv_head)
+
+        tv_name.text = isStrEmpty("${data.nickName}", "登录 / 注册")
+        tv_sign.text = isStrEmpty(data.sign)
+
         setOnClickListener(
             iv_head,
             iv_edit,
@@ -57,32 +60,10 @@ class MineFragment : BaseFragment(), UserContract.IUserInfoView {
     }
 
     override fun loadData() {
-        UserManager.getUserBean().let {
-            if (it.userName.isNullOrEmpty()) {
-                presenter.loadUserInfo()
-            } else {
-                loadUserInfo(it)
-            }
-        }
+
     }
 
     override fun close() {
-        presenter.cancel()
-    }
-
-    override fun loadUserInfo(data: UserBean) {
-        UserManager.setUserBean(data)
-
-        Glide.with(requireContext())
-            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${data.avatar}")
-            .placeholder(R.drawable.svg_default_head)
-            .into(iv_head)
-
-        tv_name.text = isStrEmpty("${data.nickName}", "登录 / 注册")
-        tv_sign.text = isStrEmpty(data.sign)
-    }
-
-    override fun updateUserInfo(msg: String) {
 
     }
 }

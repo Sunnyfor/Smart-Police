@@ -7,13 +7,19 @@ import com.alibaba.android.arouter.launcher.ARouter
 
 object RouterManager {
 
+    /**
+     * App模块
+     */
+    const val LOGIN_ACTIVITY = "/app/LoginActivity"        //登录
+
+    /**
+     * 钱包模块
+     */
     const val WALLET_ACTIVITY = "/wallet/WalletActivity"        //我的钱包
     const val RECHARGE_ACTIVITY = "/wallet/RechargeActivity"    //充值
     const val WITHDRAWAL_ACTIVITY = "/wallet/WithdrawalActivity"//提现
     const val PAY_CODE_ACTIVITY = "/wallet/PayCodeActivity"     //支付码
     const val RECORD_ACTIVITY = "/wallet/RecordActivity"        //账单记录
-
-    const val LOGIN_ACTIVITY = "/app/LoginActivity"        //登录
 
     fun navigation(context: Context, path: String) {
         ARouter.getInstance()

@@ -3,6 +3,7 @@ package com.zhkj.smartpolice.meal
 import android.view.View
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.utils.RouterManager
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
@@ -25,8 +26,7 @@ class MealChoiceActivity : BaseActivity() {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_repast.id -> {
-            }
+            tv_repast.id -> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY)
             tv_order.id -> {
                 val list = ZyFrameStore.getData<ArrayList<MerchantBean>>("merchantList")
                 list?.find { it.shopType == MerchantListActivity.TYPE_RESTAURANT }.apply {

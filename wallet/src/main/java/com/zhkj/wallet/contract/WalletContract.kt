@@ -22,7 +22,7 @@ interface WalletContract {
     }
 
     interface IPayPassWordView : IBaseView {
-        fun isSettingPayPassword(hasPayPassword: Boolean)
+        fun isSettingPayPassword(orderId: String,hasPayPassword: Boolean)
         fun verifyPayPassword(isOk: Boolean)
         fun updatePayPassword(baseModel: BaseModel<Any>)
     }
@@ -43,7 +43,7 @@ interface WalletContract {
         //创建或修改支付密码
         abstract fun updatePayPassword(oldPayPassword: String, newPayPassword: String)
 
-        //验证支付密码
-        abstract fun verifyPayPassword(payPassword: String)
+        //支付方法
+        abstract fun pay(orderId: String, payPassword: String)
     }
 }

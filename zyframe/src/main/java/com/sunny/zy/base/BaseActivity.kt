@@ -25,6 +25,8 @@ import kotlinx.android.synthetic.main.zy_activity_base.*
 abstract class BaseActivity : AppCompatActivity(), IBaseView,
     View.OnClickListener {
 
+    private var isLoad = false
+
     private var savedInstanceState: Bundle? = null
 
     private val overlayViewBean = OverlayViewUtils()
@@ -41,7 +43,14 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView,
         }
         ZyFrameStore.addActivity(this)
         initView()
-        loadData()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!isLoad) {
+            isLoad = true
+            loadData()
+        }
     }
 
     /**

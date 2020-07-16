@@ -1,6 +1,7 @@
 package com.zhkj.smartpolice.meal.model
 
 import com.sunny.zy.base.IBaseView
+import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -64,6 +65,29 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
             mealModel.loadMealRecord(page)?.let {
                 if (view is MealContract.IMealRecordView) {
                     (view as MealContract.IMealRecordView).showMealRecord(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
+    override fun commitMealOrder(shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealGoodsBean>) {
+
+        if (createUserName.isEmpty()){
+            view?.showMessage("请填写取餐人姓名")
+            return
+        }
+
+        if (mobile.isEmpty()){
+            view?.showMessage("请填写你的手机号")
+            return
+        }
+
+        launch(Dispatchers.Main) {
+            showLoading()
+            mealModel.commitMealOrder(shopId, createUserName, mobile, totalPrice, goodsList)?.let {
+                if (view is MealContract.IMealPlaceAnOrderView) {
+                    (view as MealContract.IMealPlaceAnOrderView).showPlaceAnOrderResult(it)
                 }
             }
             hideLoading()

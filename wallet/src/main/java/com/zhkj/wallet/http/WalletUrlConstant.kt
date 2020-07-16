@@ -25,4 +25,9 @@ object WalletUrlConstant {
      * 验证支付密码
      */
     const val VERIFY_PAY_PASSWORD = "pay/purse/verifyPayPassword"
+
+    /**
+     * 支付
+     */
+    const val PAY_FOR_USER_URL = "logistics/shoporders/payForUser"
 }

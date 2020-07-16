@@ -87,6 +87,17 @@ object ZyFrameStore {
     }
 
     /**
+     * 关闭指定页面
+     */
+    fun finishActivity(activityName: String) {
+        activityStack.find { it.javaClass.simpleName == activityName }?.let {
+            it.finish()
+            activityStack.remove(it)
+
+        }
+    }
+
+    /**
      * 关闭所有的Activity
      */
     fun finishAllActivity(activity: BaseActivity? = null) {

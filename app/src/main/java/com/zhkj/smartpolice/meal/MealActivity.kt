@@ -2,8 +2,9 @@ package com.zhkj.smartpolice.meal
 
 import android.content.Context
 import android.content.Intent
-import android.view.Gravity
+import android.graphics.Color
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.activity.PullRefreshFragment
@@ -15,7 +16,6 @@ import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
-import com.zhkj.smartpolice.meal.widget.PlaceOrderPopupWindow
 import kotlinx.android.synthetic.main.act_meal.*
 import kotlinx.coroutines.cancel
 
@@ -39,7 +39,17 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
     }
 
     private val mealGoodsAdapter: MealGoodsAdapter by lazy {
-        MealGoodsAdapter().apply {
+        MealGoodsAdapter(View.OnClickListener {
+            val bean = it.tag as MealGoodsBean
+            if (goodsList.contains(bean)) {
+                goodsList[goodsList.indexOf(bean)].count++
+            } else {
+                goodsList.add(bean)
+            }
+
+            updateShoppingHit()
+
+        }).apply {
             setOnItemClickListener { _, i ->
                 MealDetailActivity.intent(this@MealActivity, getData(i))
             }
@@ -84,14 +94,20 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
         )
     }
 
+    override fun onStart() {
+        super.onStart()
+        updateShoppingHit()
+    }
+
+
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_commit.id -> {
-                PlaceOrderPopupWindow(this, goodsList).apply {
-                    showAtLocation(contentView, Gravity.BOTTOM, 0, 0)
+            tv_commit.id, iv_shopping_cart.id -> {
+                if (goodsList.isEmpty()) {
+                    return
                 }
+                MealOrderActivity.intent(this, shopId ?: "", goodsList)
             }
-            iv_shopping_cart.id -> MealOrderActivity.intent(this, pullRefreshFragment.adapter?.list)
         }
     }
 
@@ -113,5 +129,27 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
 
     override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {
         pullRefreshFragment.addData(data)
+    }
+
+    private fun updateShoppingHit() {
+        if (goodsList.isEmpty()) {
+            tv_shopping_hit.setTextColor(ContextCompat.getColor(this, R.color.font_gray))
+            tv_shopping_hit.text = "购物车空的哦"
+            tv_commit.setBackgroundColor(Color.parseColor("#CBCBCB"))
+
+        } else {
+
+            tv_commit.setBackgroundResource(R.color.font_orange)
+
+            var total = 0F
+            goodsList.forEach {
+
+                it.price?.let { price ->
+                    total += price.toFloat() * it.count
+                }
+            }
+            tv_shopping_hit.setTextColor(ContextCompat.getColor(this, R.color.font_red))
+            tv_shopping_hit.text = ("合计：¥${total}")
+        }
     }
 }

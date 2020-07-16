@@ -89,10 +89,10 @@ class PayPasswordUtil(
     /**
      * 日常验证支付密码
      */
-    private fun showVerifyPayPassword() {
+    private fun pay(orderId:String) {
         val popupWindow =
-            InputPayPasswordPopupWindow(view.context) { popupWindow: InputPayPasswordPopupWindow, password: String ->
-                presenter.verifyPayPassword(password)
+            InputPayPasswordPopupWindow(view.context) { _: InputPayPasswordPopupWindow, password: String ->
+                presenter.pay(orderId,password)
             }
         popupWindow.showAtLocation(
             view, Gravity.BOTTOM, 0, 0
@@ -143,13 +143,13 @@ class PayPasswordUtil(
     /**
      * 是否有支付密码
      */
-    override fun isSettingPayPassword(hasPayPassword: Boolean) {
+    override fun isSettingPayPassword(orderId: String,hasPayPassword: Boolean) {
         if (hasPayPassword) {
             //有支付密码
             if (type == modify) {
                 showModifyPayPassword()
             } else {
-                showVerifyPayPassword()
+                pay(orderId)
             }
         } else {
             showCreatePayPassword()

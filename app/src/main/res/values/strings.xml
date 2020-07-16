@@ -17,4 +17,5 @@
     <string name="please_fill_in_your_real_name">请填写你的真实姓名</string>
     <string name="please_fill_in_your_phone">请填写你的手机号</string>
     <string name="suggestion_box">意见箱</string>
+    <string name="select_all">全选</string>
 </resources>

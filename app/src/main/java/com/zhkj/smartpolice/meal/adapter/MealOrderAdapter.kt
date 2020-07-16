@@ -9,7 +9,8 @@ import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.item_meal_order.view.*
 
-class MealOrderAdapter(list: ArrayList<MealGoodsBean>) : BaseRecycleAdapter<MealGoodsBean>(list) {
+class MealOrderAdapter(var onUpdateListener: OnUpdateListener, list: ArrayList<MealGoodsBean>) :
+    BaseRecycleAdapter<MealGoodsBean>(list) {
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View =
         LayoutInflater.from(context).inflate(R.layout.item_meal_order, parent, false)
@@ -19,13 +20,32 @@ class MealOrderAdapter(list: ArrayList<MealGoodsBean>) : BaseRecycleAdapter<Meal
         holder.itemView.tv_price.text = getData(position).price
         holder.itemView.et_count.setText(getData(position).count.toString())
         holder.itemView.iv_cut.setOnClickListener {
-            getData(position).count -= 1
-            notifyItemChanged(position)
+
+            if (getData(position).count == 1) {
+                deleteData(position)
+            } else {
+                getData(position).count -= 1
+            }
+            notifyDataSetChanged()
+            onUpdateListener.onUpdate()
         }
 
         holder.itemView.iv_add.setOnClickListener {
             getData(position).count += 1
-            notifyItemChanged(position)
+            notifyDataSetChanged()
+            onUpdateListener.onUpdate()
         }
+
+        holder.itemView.checkbox.isChecked = getData(position).isChecked
+
+        holder.itemView.checkbox.setOnCheckedChangeListener { _, isChecked ->
+            getData(position).isChecked = isChecked
+            notifyDataSetChanged()
+        }
+
+    }
+
+    interface OnUpdateListener {
+        fun onUpdate()
     }
 }

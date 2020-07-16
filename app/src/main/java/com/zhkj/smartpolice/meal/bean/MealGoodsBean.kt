@@ -1,8 +1,6 @@
 package com.zhkj.smartpolice.meal.bean
 
-import java.io.Serializable
-
-class MealGoodsBean : Serializable {
+class MealGoodsBean {
     var shopId: String? = ""        //2
     var goodsId: String? = ""       //11
     var goodsName: String? = ""     //菜名：鱼香肉丝
@@ -27,7 +25,8 @@ class MealGoodsBean : Serializable {
     /*
      * 【本地字段】商品数量
      */
-    var count: Int = 0
+    var count: Int = 1
+    var isChecked = true
 
     override fun toString(): String {
         return "MealGoodsBean(shopId=$shopId, goodsId=$goodsId, goodsName=$goodsName, price=$price, description=$description, subsidyPrice=$subsidyPrice, activeState=$activeState, publishState=$publishState, groupId=$groupId, classifyId=$classifyId, isTop=$isTop, orderNumber=$orderNumber, createTime=$createTime, updateUserId=$updateUserId, isAway=$isAway, imageId=$imageId, isDelete=$isDelete, inventory=$inventory, expiryDate=$expiryDate, goodsClassifyLabel=$goodsClassifyLabel)"

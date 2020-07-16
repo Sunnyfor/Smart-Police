@@ -94,6 +94,7 @@
         tools:text="￥5.00" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp_10"
@@ -101,7 +102,8 @@
         app:layout_constraintBottom_toTopOf="@id/text3"
         app:layout_constraintEnd_toEndOf="@id/v_bg"
         app:layout_constraintStart_toStartOf="@id/v_bg"
-        app:layout_constraintTop_toBottomOf="@id/tv_total_price" />
+        app:layout_constraintTop_toBottomOf="@id/tv_total_price"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/text3"

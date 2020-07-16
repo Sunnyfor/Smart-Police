@@ -11,7 +11,7 @@ import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.item_meal_goods.view.*
 
-class MealGoodsAdapter : BaseRecycleAdapter<MealGoodsBean>(arrayListOf()) {
+class MealGoodsAdapter(var onClickListener: View.OnClickListener) : BaseRecycleAdapter<MealGoodsBean>(arrayListOf()) {
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View {
         return LayoutInflater.from(context).inflate(R.layout.item_meal_goods, parent, false)
@@ -26,5 +26,9 @@ class MealGoodsAdapter : BaseRecycleAdapter<MealGoodsBean>(arrayListOf()) {
 
         holder.itemView.tv_title.text = getData(position).goodsName
         holder.itemView.tv_price.text = ("￥${getData(position).price}")
+
+        holder.itemView.iv_select.tag = getData(position)
+        holder.itemView.iv_select.setOnClickListener(onClickListener)
+
     }
 }

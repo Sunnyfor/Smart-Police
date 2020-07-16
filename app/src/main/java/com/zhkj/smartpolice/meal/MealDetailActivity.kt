@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
@@ -15,8 +16,8 @@ class MealDetailActivity : BaseActivity() {
 
     companion object {
         fun intent(context: Context, bean: MealGoodsBean) {
+            ZyFrameStore.setData("MealGoodsBean",bean)
             val intent = Intent(context, MealDetailActivity::class.java)
-            intent.putExtra("MealGoodsBean", bean)
             context.startActivity(intent)
         }
     }
@@ -27,17 +28,17 @@ class MealDetailActivity : BaseActivity() {
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.color_black)
 
-        val bean = intent.getSerializableExtra("MealGoodsBean") as MealGoodsBean
+        val bean = ZyFrameStore.getData<MealGoodsBean>("MealGoodsBean")
 
         Glide.with(this)
-            .load(UrlConstant.LOAD_IMAGE_PATH_URL + bean.imageId)
+            .load(UrlConstant.LOAD_IMAGE_PATH_URL + bean?.imageId)
             .dontAnimate()
             .placeholder(R.drawable.svg_default_image)
             .into(iv_bg)
 
-        tv_name.text = bean.goodsName
-        tv_price.text = ("￥${bean.price}")
-        tv_desc.text = bean.description
+        tv_name.text = bean?.goodsName
+        tv_price.text = ("￥${bean?.price}")
+        tv_desc.text = bean?.description
 
         iv_back.setOnClickListener(this)
 

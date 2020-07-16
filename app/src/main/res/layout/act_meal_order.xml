@@ -21,29 +21,28 @@
         android:layout_height="@dimen/dp_50"
         android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:id="@+id/iv_check_all"
-            style="@style/style_common_icon"
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/dp_10"
             android:contentDescription="@string/app_name"
-            android:padding="@dimen/dp_7"
-            android:src="@drawable/svg_meal_btn_unchecked" />
+            android:padding="@dimen/dp_4"
+            android:button="@drawable/sel_meal_checkbox"
+            android:textSize="@dimen/sp_14"
+            android:text="@string/select_all"/>
 
         <TextView
-            style="@style/style_font_black_big"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/iv_check_all"
-            android:text="全选"
-            tools:ignore="HardcodedText" />
-
-        <TextView
+            android:id="@+id/tv_total"
             style="@style/style_font_orange_big"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/dp_20"
             android:layout_toStartOf="@id/tv_commit"
-            android:text="合计：￥ 0.00"
+            android:layout_toEndOf="@id/checkbox_all"
+            android:text="合计：¥ 0.00"
             android:textColor="@color/font_red"
+            android:gravity="end"
             tools:ignore="HardcodedText" />
 
         <TextView

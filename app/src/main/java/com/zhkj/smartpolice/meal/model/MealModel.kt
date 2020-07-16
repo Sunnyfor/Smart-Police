@@ -1,5 +1,7 @@
 package com.zhkj.smartpolice.meal.model
 
+import com.google.gson.Gson
+import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
@@ -9,6 +11,8 @@ import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
 import com.zhkj.smartpolice.meal.bean.RestaurantBean
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MealModel {
 
@@ -114,4 +118,40 @@ class MealModel {
         }
         return null
     }
+
+
+    /**
+     * 下单
+     */
+    suspend fun commitMealOrder(
+        shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealGoodsBean>
+    ): BaseModel<MealRecordBean>? {
+
+        val params = JSONObject()
+        params.put("shopId", shopId)
+        params.put("createUserName", createUserName)
+        params.put("mobile", mobile)
+        params.put("isPayBehalf", 0)
+        params.put("payPrice", totalPrice)
+        params.put("totalPrice", totalPrice)
+        val gson = Gson()
+        val jsonArray = JSONArray()
+        goodsList.forEach {
+            for (i in 0 until it.count) {
+                jsonArray.put(JSONObject(gson.toJson(it)))
+            }
+        }
+        params.put("ordersLinkEntityList", jsonArray)
+
+        val httpResultBean = object : HttpResultBean<BaseModel<MealRecordBean>>() {}
+        ZyHttp.postJson(UrlConstant.PLACE_AN_ORDER, params.toString(), httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean
+            }
+        }
+
+        return null
+    }
+
 }

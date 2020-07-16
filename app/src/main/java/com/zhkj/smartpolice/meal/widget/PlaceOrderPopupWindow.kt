@@ -16,26 +16,26 @@ class PlaceOrderPopupWindow(context: Context, list: ArrayList<MealGoodsBean>) :
     PopupWindow(context) {
 
     init {
-        animationStyle = R.style.popWindow_animation
-        contentView = View.inflate(context, R.layout.popup_place_order, null)
-        setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(context, R.color.color_white)))
-        width = WindowManager.LayoutParams.MATCH_PARENT
-        height = context.resources.getDimension(R.dimen.dp_350).toInt()
-        isOutsideTouchable = true
-        isFocusable = true
-
-        contentView.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = MealOrderAdapter(list)
-            itemAnimator?.changeDuration = 0;
-        }
-
-        contentView.ll_clear.setOnClickListener {
-            contentView.recyclerView.adapter = MealOrderAdapter(arrayListOf())
-        }
-
-        contentView.btn_commit.setOnClickListener {
+//        animationStyle = R.style.popWindow_animation
+//        contentView = View.inflate(context, R.layout.popup_place_order, null)
+//        setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(context, R.color.color_white)))
+//        width = WindowManager.LayoutParams.MATCH_PARENT
+//        height = context.resources.getDimension(R.dimen.dp_350).toInt()
+//        isOutsideTouchable = true
+//        isFocusable = true
+//
+//        contentView.recyclerView.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            adapter = MealOrderAdapter(list)
+//            itemAnimator?.changeDuration = 0;
+//        }
+//
+//        contentView.ll_clear.setOnClickListener {
+//            contentView.recyclerView.adapter = MealOrderAdapter(arrayListOf())
+//        }
+//
+//        contentView.btn_commit.setOnClickListener {
 //            context.startActivity(Intent(context, PaymentActivity::class.java))
         }
-    }
+//    }
 }

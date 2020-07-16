@@ -6,7 +6,7 @@ class MealRecordBean {
     var ordersNumber: String? = null    //订单号：1592986878000155
     var ordersState: String? = null     //订单状态：1待接单、2已接单、3配送中、4已完成、5拒接、6取消
     var ordersType: String? = null      //订单类型：1自取、2配送、3就餐、4到店购买
-    var ordersLinkEntityList: String? = null
+    var ordersLinkEntityList: ArrayList<OrdersLinkEntityList>? = null
 
     var shopId: String? = null          //店铺id
     var shopName: String? = null        //店铺名称
@@ -43,4 +43,18 @@ class MealRecordBean {
         return "MealRecordBean(ordersId=$ordersId, ordersNumber=$ordersNumber, ordersState=$ordersState, ordersType=$ordersType, ordersLinkEntityList=$ordersLinkEntityList, shopId=$shopId, shopName=$shopName, deviceId=$deviceId, remark=$remark, shippingFee=$shippingFee, subsidyPrice=$subsidyPrice, mobile=$mobile, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, shippingAddress=$shippingAddress, payCode=$payCode, payUserId=$payUserId, totalPrice=$totalPrice, payPrice=$payPrice, payType=$payType, payMethod=$payMethod, payState=$payState, payCloseTime=$payCloseTime, payRevokeTime=$payRevokeTime, paySuccessTime=$paySuccessTime, payRefundTime=$payRefundTime, updateTime=$updateTime, finishTime=$finishTime, isPayBehalf=$isPayBehalf, isDelete=$isDelete)"
     }
 
+
+    class OrdersLinkEntityList {
+        var linkId: String? = null
+        var goodsId: String? = null
+        var goodsName: String? = null
+        var ordersId: String? = null
+        var ordersNumber: String? = null
+        var shopId: String? = null
+        var piece: String? = null
+        var price: String? = null
+        var totalPrices: String? = null
+        var sort: String? = null
+        var createTime: String? = null
+    }
 }

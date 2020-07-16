@@ -40,6 +40,12 @@ object UrlConstant {
      */
     const val MEAL_RECORD_URL = "logistics/shoporders/list"
 
+
+    /**
+     * 下单接口
+     */
+    const val PLACE_AN_ORDER = "logistics/shoporders/saveForUser"
+
     /**
      * 商品详情页
      */

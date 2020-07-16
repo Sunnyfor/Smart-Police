@@ -103,9 +103,9 @@ class WalletPresenter(iBaseView: IBaseView) :
     /**
      * /验证支付密码
      */
-    override fun verifyPayPassword(payPassword: String) {
+    override fun pay(orderId: String,payPassword: String) {
         launch(Main) {
-            val isOK = walletModel.verifyPayPassword(payPassword)
+            val isOK = walletModel.pay(payPassword)
             if (view is WalletContract.IPayPassWordView) {
                 (view as WalletContract.IPayPassWordView).verifyPayPassword(isOK)
             }

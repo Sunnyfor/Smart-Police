@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_bg"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_90"
+        android:layout_margin="@dimen/dp_20"
+        android:background="@drawable/sel_border_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_shop_name"
+        style="@style/style_font_black_bigger"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toTopOf="@id/v_bg"
+        tools:text="店名" />
+
+    <TextView
+        android:id="@+id/tv_order_time"
+        style="@style/style_font_gray_smaller"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="@id/tv_shop_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_shop_name"
+        tools:text="2020-06-24 16:37:41" />
+
+    <TextView
+        android:id="@+id/tv_order_creator"
+        style="@style/style_font_gray_small"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="@id/tv_shop_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_time"
+        tools:text="萧十一郎 13124546587" />
+
+    <TextView
+        android:id="@+id/tv_order_number"
+        style="@style/style_font_black"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toBottomOf="@id/v_bg"
+        tools:text="订单号：1592987861000150" />
+
+    <TextView
+        android:id="@+id/tv_shopping_fee"
+        style="@style/style_font_black"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="配送费：￥0.00"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_number"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/style_font_black"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="总金额："
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toBottomOf="@id/tv_shopping_fee"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_total_price"
+        style="@style/style_font_orange"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintBaseline_toBaselineOf="@id/text"
+        app:layout_constraintStart_toEndOf="@id/text"
+        tools:text="￥20.00" />
+
+    <TextView
+        android:id="@+id/text2"
+        style="@style/style_font_gray_smaller"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="优惠："
+        app:layout_constraintBaseline_toBaselineOf="@id/text"
+        app:layout_constraintStart_toEndOf="@id/tv_total_price"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_subsidy_price"
+        style="@style/style_font_orange_big"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintBaseline_toBaselineOf="@id/text"
+        app:layout_constraintStart_toEndOf="@id/text2"
+        tools:text="￥5.00" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        app:layout_constraintBottom_toTopOf="@id/text3"
+        app:layout_constraintEnd_toEndOf="@id/v_bg"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        app:layout_constraintTop_toBottomOf="@id/tv_total_price" />
+
+    <TextView
+        android:id="@+id/text3"
+        style="@style/style_font_gray_small"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="合计："
+        app:layout_constraintBottom_toTopOf="@id/btn_commit"
+        app:layout_constraintStart_toStartOf="@id/v_bg"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_pay_price"
+        style="@style/style_font_orange_bigger"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@color/font_red"
+        app:layout_constraintBaseline_toBaselineOf="@id/text3"
+        app:layout_constraintStart_toEndOf="@id/text3"
+        tools:text="￥15.00" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_commit"
+        style="@style/style_common_btn"
+        android:layout_marginTop="@dimen/dp_80"
+        android:text="支付"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

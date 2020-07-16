@@ -11,12 +11,6 @@ android {
     buildToolsVersion "30.0.0"
 
     signingConfigs {
-        debug {
-            storeFile file('../SmartPolice.jks.jks')
-            storePassword '123456'
-            keyAlias = 'Police'
-            keyPassword '123456'
-        }
         release {
             storeFile file('../SmartPolice.jks.jks')
             storePassword '123456'

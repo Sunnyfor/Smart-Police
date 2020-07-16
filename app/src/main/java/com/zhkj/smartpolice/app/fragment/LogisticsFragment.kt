@@ -3,6 +3,7 @@ package com.zhkj.smartpolice.app.fragment
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
@@ -14,7 +15,7 @@ import com.zhkj.smartpolice.haircut.BarberListActivity
 import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
-import com.zhkj.smartpolice.meal.MealActivity
+import com.zhkj.smartpolice.meal.MealChoiceActivity
 import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
 import com.zhkj.smartpolice.merchant.model.MerchantContract
@@ -49,11 +50,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_restaurant.id -> {
-                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_RESTAURANT }.apply {
-                    MealActivity.intent(requireContext(), this?.shopId)
-                }
-            }
+            tv_restaurant.id -> startActivity(Intent(requireContext(), MealChoiceActivity::class.java))
             tv_haircut.id -> {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_HAIRCUT }.apply {
                     val intent = when (UserManager.getUserBean().position) {
@@ -106,6 +103,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
 
     override fun showMerchantList(data: ArrayList<MerchantBean>) {
         merchantViewModel.list = data
+        ZyFrameStore.setData("merchantList", data)
     }
 
 }

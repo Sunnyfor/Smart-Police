@@ -97,7 +97,6 @@
             android:text="浏览历史"
             app:layout_constraintBottom_toBottomOf="@id/v_login"
             app:layout_constraintEnd_toStartOf="@id/tv2"
-            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="@id/v_login"
             app:layout_constraintTop_toBottomOf="@id/tv_history"
             tools:ignore="HardcodedText" />
@@ -110,7 +109,6 @@
             android:gravity="center_horizontal"
             android:text="收藏"
             app:layout_constraintEnd_toStartOf="@id/tv3"
-            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tv1"
             app:layout_constraintTop_toBottomOf="@id/tv_collect"
             app:layout_constraintTop_toTopOf="@id/tv1"
@@ -123,7 +121,6 @@
             android:gravity="center_horizontal"
             android:text="红包优惠券"
             app:layout_constraintEnd_toEndOf="@id/v_login"
-            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@id/tv2"
             app:layout_constraintTop_toBottomOf="@id/tv_coupons"
             app:layout_constraintTop_toTopOf="@id/tv1"

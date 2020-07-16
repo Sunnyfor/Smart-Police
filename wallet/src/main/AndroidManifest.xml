@@ -6,6 +6,7 @@
         <activity android:name=".activity.RechargeActivity" />
         <activity android:name=".activity.WithdrawalActivity" />
         <activity android:name=".activity.PayCodeActivity" />
+        <activity android:name=".activity.PayResultActivity" />
         <activity android:name=".activity.RecordActivity" />
     </application>
 </manifest>

@@ -20,6 +20,9 @@ import com.zhkj.smartpolice.meal.model.MealPresenter
 import kotlinx.android.synthetic.main.act_meal.*
 import kotlinx.coroutines.cancel
 
+/**
+ * 订餐列表
+ */
 class MealActivity : BaseActivity(), MealContract.IMealMenuView {
 
     private var shopId: String? = null
@@ -137,23 +140,22 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
 
     private fun updateShoppingHit() {
         if (goodsList.isEmpty()) {
-            tv_shopping_hit.setTextColor(ContextCompat.getColor(this, R.color.font_gray))
             tv_shopping_hit.text = "购物车空的哦"
+            tv_shopping_hit.setTextColor(ContextCompat.getColor(this, R.color.font_gray))
+            iv_shopping_cart.setImageResource(R.drawable.svg_meal_shopping_cart_null)
             tv_commit.setBackgroundColor(Color.parseColor("#CBCBCB"))
 
         } else {
-
-            tv_commit.setBackgroundResource(R.color.font_orange)
-
             var total = 0F
             goodsList.filter { it.isChecked }.forEach {
-
                 it.price?.let { price ->
                     total += price.toFloat() * it.count
                 }
             }
             tv_shopping_hit.setTextColor(ContextCompat.getColor(this, R.color.font_red))
             tv_shopping_hit.text = ("合计：¥${total}")
+            iv_shopping_cart.setImageResource(R.drawable.svg_meal_shopping_cart_full)
+            tv_commit.setBackgroundResource(R.color.font_orange)
         }
     }
 }

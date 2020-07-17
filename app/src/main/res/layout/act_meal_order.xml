@@ -53,7 +53,7 @@
             android:layout_alignParentEnd="true"
             android:background="@color/font_orange"
             android:gravity="center"
-            android:text="结算"
+            android:text="提交订单"
             tools:ignore="HardcodedText" />
     </RelativeLayout>
 

@@ -9,6 +9,9 @@ import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
 import kotlinx.android.synthetic.main.act_meal_choice.*
 
+/**
+ * 就餐 or 订餐
+ */
 class MealChoiceActivity : BaseActivity() {
 
     override fun setLayout(): Int = R.layout.act_meal_choice

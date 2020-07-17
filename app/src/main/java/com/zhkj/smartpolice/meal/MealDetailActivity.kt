@@ -13,6 +13,9 @@ import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.act_meal_detail.*
 
+/**
+ * 菜品详情
+ */
 class MealDetailActivity : BaseActivity() {
 
     companion object {

@@ -46,7 +46,7 @@
             android:layout_alignParentEnd="true"
             android:background="#CBCBCB"
             android:gravity="center"
-            android:text="结算"
+            android:text="去结算"
             tools:ignore="HardcodedText" />
     </RelativeLayout>
 
@@ -56,12 +56,11 @@
 
     <ImageView
         android:id="@+id/iv_shopping_cart"
-        android:layout_width="@dimen/dp_70"
-        android:layout_height="@dimen/dp_70"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_margin="@dimen/dp_10"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/svg_meal_shopping_cart" />
+        android:src="@drawable/svg_meal_shopping_cart_null" />
 
 </RelativeLayout>

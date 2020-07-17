@@ -12,6 +12,9 @@ import com.zhkj.smartpolice.meal.adapter.MealOrderAdapter
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.act_meal_order.*
 
+/**
+ * 提交订单
+ */
 class MealOrderActivity : BaseActivity() {
     var total = 0F
 

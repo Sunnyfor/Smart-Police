@@ -10,7 +10,9 @@ import com.zhkj.wallet.activity.PayResultActivity
 import com.zhkj.wallet.utils.PayPasswordUtil
 import kotlinx.android.synthetic.main.act_order_detail.*
 
-
+/**
+ * 订单详情
+ */
 class OrderDetailActivity : BaseActivity() {
 
     private val payUtil: PayPasswordUtil by lazy {

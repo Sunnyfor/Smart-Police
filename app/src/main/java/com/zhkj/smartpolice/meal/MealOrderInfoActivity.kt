@@ -12,6 +12,9 @@ import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
 import kotlinx.android.synthetic.main.act_meal_order_info.*
 
+/**
+ * 订餐信息，填写姓名和手机号
+ */
 class MealOrderInfoActivity : BaseActivity(), MealContract.IMealPlaceAnOrderView {
 
     val presenter: MealPresenter by lazy {

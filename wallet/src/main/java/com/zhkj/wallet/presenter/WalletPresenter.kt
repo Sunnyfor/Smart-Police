@@ -79,7 +79,7 @@ class WalletPresenter(iBaseView: IBaseView) :
             walletModel.loadPurse()?.let {
                 if (view is WalletContract.IPayPassWordView) {
                     val hasPayPassword = !(it.payPassword == null || it.payPassword == "")
-                    (view as WalletContract.IPayPassWordView).isSettingPayPassword(hasPayPassword)
+                    (view as WalletContract.IPayPassWordView).isSettingPayPassword("", hasPayPassword)
                 }
             }
         }
@@ -103,9 +103,9 @@ class WalletPresenter(iBaseView: IBaseView) :
     /**
      * /验证支付密码
      */
-    override fun pay(orderId: String,payPassword: String) {
+    override fun pay(orderId: String, payPassword: String) {
         launch(Main) {
-            val isOK = walletModel.pay(payPassword)
+            val isOK = walletModel.pay(orderId, payPassword)
             if (view is WalletContract.IPayPassWordView) {
                 (view as WalletContract.IPayPassWordView).verifyPayPassword(isOK)
             }

@@ -9,7 +9,7 @@ import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.item_meal_order.view.*
 
-class MealOrderAdapter(var onUpdateListener: OnUpdateListener, list: ArrayList<MealGoodsBean>) :
+class MealOrderAdapter(private var onUpdateListener: OnUpdateListener, list: ArrayList<MealGoodsBean>) :
     BaseRecycleAdapter<MealGoodsBean>(list) {
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View =
@@ -40,7 +40,7 @@ class MealOrderAdapter(var onUpdateListener: OnUpdateListener, list: ArrayList<M
 
         holder.itemView.checkbox.setOnCheckedChangeListener { _, isChecked ->
             getData(position).isChecked = isChecked
-            notifyDataSetChanged()
+            onUpdateListener.onUpdate()
         }
 
     }

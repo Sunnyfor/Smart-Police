@@ -73,7 +73,7 @@
         android:layout_marginTop="@dimen/dp_10"
         app:layout_constraintBaseline_toBaselineOf="@id/text"
         app:layout_constraintStart_toEndOf="@id/text"
-        tools:text="￥20.00" />
+        tools:text="¥ 20.00" />
 
     <TextView
         android:id="@+id/text2"
@@ -91,7 +91,7 @@
         android:layout_marginTop="@dimen/dp_10"
         app:layout_constraintBaseline_toBaselineOf="@id/text"
         app:layout_constraintStart_toEndOf="@id/text2"
-        tools:text="￥5.00" />
+        tools:text="¥ 5.00" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -103,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="@id/v_bg"
         app:layout_constraintStart_toStartOf="@id/v_bg"
         app:layout_constraintTop_toBottomOf="@id/tv_total_price"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/text3"
@@ -121,7 +121,7 @@
         android:textColor="@color/font_red"
         app:layout_constraintBaseline_toBaselineOf="@id/text3"
         app:layout_constraintStart_toEndOf="@id/text3"
-        tools:text="￥15.00" />
+        tools:text="¥ 15.00" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_commit"

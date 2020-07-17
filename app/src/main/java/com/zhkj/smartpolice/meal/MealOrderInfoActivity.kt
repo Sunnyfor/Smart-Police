@@ -47,7 +47,7 @@ class MealOrderInfoActivity : BaseActivity(), MealContract.IMealPlaceAnOrderView
                     et_name.text.toString(),
                     et_phone.text.toString(),
                     total.toString(),
-                    mealGoodsList ?: return
+                    (mealGoodsList?.filter { it.isChecked }?:return) as ArrayList<MealGoodsBean>
                 )
             }
         }

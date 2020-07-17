@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.act_meal_order.*
 class MealOrderActivity : BaseActivity() {
     var total = 0F
 
+    var checkedLock = false
+
     private val shopId: String by lazy {
         intent.getStringExtra("shopId")
     }
@@ -22,8 +24,7 @@ class MealOrderActivity : BaseActivity() {
     private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
 
     companion object {
-        fun intent(context: Context, shopId: String, list: ArrayList<MealGoodsBean>?) {
-            ZyFrameStore.setData("MealGoodsBeanList", list)
+        fun intent(context: Context, shopId: String) {
             val intent = Intent(context, MealOrderActivity::class.java)
             intent.putExtra("shopId", shopId)
             context.startActivity(intent)
@@ -44,15 +45,33 @@ class MealOrderActivity : BaseActivity() {
         ZyFrameStore.getData<ArrayList<MealGoodsBean>>("MealGoodsBeanList")?.let {
             pullRefreshFragment.adapter = MealOrderAdapter(object : MealOrderAdapter.OnUpdateListener {
                 override fun onUpdate() {
+                    checkedLock = true
+                    checkbox_all.isChecked = it.none { bean -> !bean.isChecked }
+                    checkedLock = false
                     updateShoppingPrice()
                 }
             }, it)
+
+            checkbox_all.isChecked = it.none { bean -> !bean.isChecked }
         }
 
         supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
 
 
         setOnClickListener(tv_commit)
+
+        checkbox_all.setOnCheckedChangeListener { _, isChecked ->
+
+            if (checkedLock) {
+                return@setOnCheckedChangeListener
+            }
+
+            pullRefreshFragment.getAllData()?.forEach {
+                it.isChecked = isChecked
+            }
+            pullRefreshFragment.adapter?.notifyDataSetChanged()
+            updateShoppingPrice()
+        }
     }
 
     override fun onClickEvent(view: View) {
@@ -80,7 +99,7 @@ class MealOrderActivity : BaseActivity() {
 
     //更新总价
     private fun updateShoppingPrice() {
-        pullRefreshFragment.getAllData()?.let { goodsList ->
+        pullRefreshFragment.getAllData()?.filter { it.isChecked }?.let { goodsList ->
             total = 0f
             if (goodsList.isEmpty()) {
                 tv_total.text = "合计：¥ 0.0"
@@ -95,7 +114,7 @@ class MealOrderActivity : BaseActivity() {
                 tv_commit.setBackgroundResource(R.color.font_orange)
             }
 
-            ZyFrameStore.setData("MealGoodsBeanList", goodsList)
+            ZyFrameStore.setData("mealgoodsbeanlist", goodsList)
         }
     }
 }

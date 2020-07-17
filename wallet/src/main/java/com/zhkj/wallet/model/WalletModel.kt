@@ -80,19 +80,19 @@ class WalletModel {
     /**
      * 验证支付密码
      */
-    suspend fun pay(orderId: String, payPassword: String): Boolean {
+    suspend fun pay(ordersId: String, payPassword: String): BaseModel<Any>? {
         val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
-        val params = hashMapOf<String, String>()
-        params["ordersId"] = orderId
-        params["payPassword"] = payPassword
-        ZyHttp.post(WalletUrlConstant.PAY_FOR_USER_URL, params, httpResultBean)
+        val params = JSONObject()
+        params.put("ordersId", ordersId)
+        params.put("payPassword", payPassword)
+        ZyHttp.postJson(WalletUrlConstant.PAY_FOR_USER_URL, params.toString(), httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.code == "0") {
-                return true
+                return httpResultBean.bean
             } else {
                 ToastUtil.show(httpResultBean.bean?.msg)
             }
         }
-        return false
+        return null
     }
 }

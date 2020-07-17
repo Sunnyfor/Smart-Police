@@ -22,9 +22,9 @@ interface WalletContract {
     }
 
     interface IPayPassWordView : IBaseView {
-        fun isSettingPayPassword(orderId: String,hasPayPassword: Boolean)
-        fun verifyPayPassword(isOk: Boolean)
-        fun updatePayPassword(baseModel: BaseModel<Any>)
+        fun isSettingPayPassword(hasPayPassword: Boolean)
+        fun paySuccess()
+        fun updatePayPassword()
     }
 
     abstract class Presenter(iBaseView: IBaseView) : BasePresenter<IBaseView>(iBaseView) {

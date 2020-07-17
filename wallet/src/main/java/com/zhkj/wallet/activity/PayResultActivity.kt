@@ -20,6 +20,7 @@ class PayResultActivity : BaseActivity() {
         fun intent(context: Context, payResult: String) {
             val intent = Intent(context, PayResultActivity::class.java)
             intent.putExtra("payResult", payResult)
+            context.startActivity(intent)
         }
     }
 

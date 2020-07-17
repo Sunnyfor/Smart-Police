@@ -19,18 +19,22 @@ class WalletPresenter(iBaseView: IBaseView) :
     private val delay = 1000L
     private var count = defaultCount
 
-    var timer: Timer? = null
-    var timerTask: TimerTask? = null
+    private var timer: Timer? = null
+    private var timerTask: TimerTask? = null
 
     private val walletModel: WalletModel by lazy {
         WalletModel()
     }
+
+    var balance = 0f
+
 
     //加载钱包数据
     override fun loadPurse() {
         launch(Main) {
             showLoading()
             walletModel.loadPurse()?.let {
+                balance = it.balance.toFloat()
                 if (view is WalletContract.IWalletView) {
                     (view as WalletContract.IWalletView).showPurseData(it)
                 }
@@ -76,12 +80,15 @@ class WalletPresenter(iBaseView: IBaseView) :
      */
     override fun isSettingPayPassword() {
         launch(Main) {
+            view?.showLoading()
             walletModel.loadPurse()?.let {
+                balance = it.balance.toFloat()
                 if (view is WalletContract.IPayPassWordView) {
                     val hasPayPassword = !(it.payPassword == null || it.payPassword == "")
-                    (view as WalletContract.IPayPassWordView).isSettingPayPassword("", hasPayPassword)
+                    (view as WalletContract.IPayPassWordView).isSettingPayPassword(hasPayPassword)
                 }
             }
+            view?.hideLoading()
         }
 
     }
@@ -91,12 +98,14 @@ class WalletPresenter(iBaseView: IBaseView) :
      */
     override fun updatePayPassword(oldPayPassword: String, newPayPassword: String) {
         launch(Main) {
+            view?.showLoading()
             val baseModel = walletModel.updatePayPassword(oldPayPassword, newPayPassword)
             if (view is WalletContract.IPayPassWordView) {
                 if (baseModel?.code == "0") {
-                    (view as WalletContract.IPayPassWordView).updatePayPassword(baseModel)
+                    (view as WalletContract.IPayPassWordView).updatePayPassword()
                 }
             }
+            view?.hideLoading()
         }
     }
 
@@ -105,10 +114,13 @@ class WalletPresenter(iBaseView: IBaseView) :
      */
     override fun pay(orderId: String, payPassword: String) {
         launch(Main) {
-            val isOK = walletModel.pay(orderId, payPassword)
-            if (view is WalletContract.IPayPassWordView) {
-                (view as WalletContract.IPayPassWordView).verifyPayPassword(isOK)
+            view?.showLoading()
+            walletModel.pay(orderId, payPassword)?.let {
+                if (view is WalletContract.IPayPassWordView) {
+                    (view as WalletContract.IPayPassWordView).paySuccess()
+                }
             }
+            view?.hideLoading()
         }
     }
 

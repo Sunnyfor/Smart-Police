@@ -27,8 +27,13 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
 
     private val payPasswordUtil: PayPasswordUtil by lazy {
         PayPasswordUtil(view_pay_password_parent, this).apply {
-            updatePayPassword = {
-                ToastUtil.show(it.msg)
+            onUpdatePayPassword = {
+                val msg = if (type == create) {
+                    "成功创建支付密码！"
+                } else {
+                    "成功修改支付密码！"
+                }
+                ToastUtil.show(msg)
             }
         }
     }
@@ -48,7 +53,6 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
         )
 
 
-
     }
 
 
@@ -66,7 +70,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
             view_record_parent.id -> RouterManager.navigation(this, RouterManager.RECORD_ACTIVITY)
             view_pay_password_parent.id -> {
                 if (!isSettingPayPassword) {
-                    payPasswordUtil.showPayPasswordWindow()
+                    payPasswordUtil.showPayPasswordWindow(payPasswordUtil.create)
                 } else {
                     payPasswordUtil.showPayPasswordWindow(payPasswordUtil.modify)
                 }

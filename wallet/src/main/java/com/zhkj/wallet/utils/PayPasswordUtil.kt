@@ -2,11 +2,11 @@ package com.zhkj.wallet.utils
 
 import android.view.Gravity
 import android.view.View
-import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.ErrorViewType
 import com.sunny.zy.base.IBaseView
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.wallet.R
+import com.zhkj.wallet.activity.PayResultActivity
 import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.presenter.WalletPresenter
 import com.zhkj.wallet.widget.InputPayPasswordPopupWindow
@@ -17,29 +17,40 @@ class PayPasswordUtil(
 ) :
     WalletContract.IPayPassWordView {
 
-    var verifyPayPassword: ((isOk: Boolean) -> Unit)? = null
+    var onPaySuccessResult: (() -> Unit)? = null
 
-    var updatePayPassword: ((baseModel: BaseModel<Any>) -> Unit)? = null
+    var onUpdatePayPassword: (() -> Unit)? = null
 
 
-    private val presenter: WalletContract.Presenter by lazy {
+    private val presenter: WalletPresenter by lazy {
         WalletPresenter(this)
     }
 
 
     var pay = 0
-    var modify = 1
+    var create = 1
+    var modify = 2
 
 
     var type = pay
 
+    var ordersId: String? = null
+
+    var goodsPrice = 0f
 
     /**
      * 对外开放的调用入口
      */
-    fun showPayPasswordWindow(type: Int = pay) {
+    fun showPayPasswordWindow(type: Int, ordersId: String? = null, goodsPrice: Float? = 0f) {
+        this.ordersId = ordersId
         this.type = type
-        presenter.isSettingPayPassword() //检测是否设置过支付密码
+        this.goodsPrice = goodsPrice ?: 0f
+        if (type == create) {
+            showCreatePayPassword()
+        } else {
+            presenter.isSettingPayPassword() //检测是否设置过支付密码
+        }
+
     }
 
     /**
@@ -89,10 +100,11 @@ class PayPasswordUtil(
     /**
      * 日常验证支付密码
      */
-    private fun pay(orderId:String) {
+    private fun showPayPassword(orderId: String) {
         val popupWindow =
-            InputPayPasswordPopupWindow(view.context) { _: InputPayPasswordPopupWindow, password: String ->
-                presenter.pay(orderId,password)
+            InputPayPasswordPopupWindow(view.context) { popupWindow: InputPayPasswordPopupWindow, password: String ->
+                popupWindow.dismiss()
+                presenter.pay(orderId, password)
             }
         popupWindow.showAtLocation(
             view, Gravity.BOTTOM, 0, 0
@@ -143,25 +155,33 @@ class PayPasswordUtil(
     /**
      * 是否有支付密码
      */
-    override fun isSettingPayPassword(orderId: String,hasPayPassword: Boolean) {
+    override fun isSettingPayPassword(hasPayPassword: Boolean) {
         if (hasPayPassword) {
-            //有支付密码
-            if (type == modify) {
-                showModifyPayPassword()
-            } else {
-                pay(orderId)
+            when (type) {
+                //修改支付密码
+                modify -> showModifyPayPassword()
+                //去支付
+                pay -> {
+                    if (goodsPrice > presenter.balance) {
+                        PayResultActivity.intent(view.context, "2")
+                        return
+                    }
+                    ordersId?.let {
+                        showPayPassword(it)
+                    }
+                }
             }
         } else {
             showCreatePayPassword()
         }
     }
 
-    override fun verifyPayPassword(isOk: Boolean) {
-        verifyPayPassword?.invoke(isOk)
+    override fun paySuccess() {
+        onPaySuccessResult?.invoke()
     }
 
-    override fun updatePayPassword(baseModel: BaseModel<Any>) {
-        updatePayPassword?.invoke(baseModel)
+    override fun updatePayPassword() {
+        onUpdatePayPassword?.invoke()
     }
 
     override fun showLoading() {

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
@@ -92,6 +93,9 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
             tv_commit,
             iv_shopping_cart
         )
+
+        ZyFrameStore.setData("MealGoodsBeanList", goodsList)
+
     }
 
     override fun onStart() {
@@ -106,7 +110,7 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
                 if (goodsList.isEmpty()) {
                     return
                 }
-                MealOrderActivity.intent(this, shopId ?: "", goodsList)
+                MealOrderActivity.intent(this, shopId ?: "")
             }
         }
     }
@@ -142,7 +146,7 @@ class MealActivity : BaseActivity(), MealContract.IMealMenuView {
             tv_commit.setBackgroundResource(R.color.font_orange)
 
             var total = 0F
-            goodsList.forEach {
+            goodsList.filter { it.isChecked }.forEach {
 
                 it.price?.let { price ->
                     total += price.toFloat() * it.count

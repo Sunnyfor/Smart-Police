@@ -2,6 +2,7 @@ package com.zhkj.smartpolice.app.fragment
 
 import android.content.Intent
 import android.view.View
+import com.sunny.zy.ZyFrameStore
 import androidx.lifecycle.ViewModelProvider
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseFragment
@@ -13,15 +14,24 @@ import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.haircut.BarberListActivity
 import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
+import com.zhkj.smartpolice.drugstore.DrugstoreActivity
+import com.zhkj.smartpolice.haircut.BarberListActivity
+import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
+import com.zhkj.smartpolice.laundry.activity.LaundryApplyActivity
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
+import com.zhkj.smartpolice.maintain.activity.PropertyManageActivity
+import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.meal.MealChoiceActivity
 import com.zhkj.smartpolice.merchant.MerchantBean
+import com.zhkj.smartpolice.maintain.activity.PropertyManageActivity
 import com.zhkj.smartpolice.merchant.MerchantListActivity
+import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancel
 
 
@@ -82,10 +92,28 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
-                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
-                    117 -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java)) //维修管理员
+                    3 -> startActivity(
+                        Intent(
+                            requireContext(),
+                            PoliceMaintainActivity::class.java
+                        )
+                    ) //普通警员
+                    117 -> startActivity(
+                        Intent(
+                            requireContext(),
+                            ApplyMaintainListActivity::class.java
+                        )
+                    ) //维修管理员
+
+                    115 -> startActivity(
+                        Intent(
+                            requireContext(),
+                            PropertyManageActivity::class.java
+                        )
+                    )
                     else -> ToastUtil.show("你当前不是警员")
 //                    166 -> startActivity(Intent(requireContext(),))//维修工人
+
                 }
             }
         }

@@ -137,4 +137,9 @@ object UrlConstant {
      * 维修功能：维修管理审批请求
      */
     const val MAINTAIN_AUDIT_FEEDBACK = "logistics/applyopinion/save"
+
+    /**
+     * 维修功能：审核完成
+     */
+    const val MAINIAIN_AUDIT_FINISH = "logistics/applyopinion/list"
 }

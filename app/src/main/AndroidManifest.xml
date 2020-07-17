@@ -91,6 +91,7 @@
         <activity android:name=".maintain.activity.AuditInfoActivity" />
         <activity android:name=".maintain.activity.PublishTaskActivity" />
         <activity android:name=".maintain.activity.MaintainContentActivity" />
+        <activity android:name=".maintain.activity.PropertyManageActivity" />
 
         <!--运动场-->
         <activity
@@ -106,6 +107,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <!--洗衣店-->
+        <activity android:name=".laundry.activity.LaundryApplyActivity" />
 
     </application>
 

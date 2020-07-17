@@ -1,11 +1,13 @@
 package com.zhkj.smartpolice.maintain.presenter
 
+import android.widget.Toast
 import com.google.gson.Gson
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.maintain.bean.*
 import com.zhkj.smartpolice.maintain.view.IMaintainView
@@ -94,16 +96,21 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
      * 维修中心：审批维修列表
      */
 
-    fun onMaintainAudit(isApply: String) {
+    fun onMaintainAudit(isApply: String,page: String) {
         view?.showLoading()
         val params = HashMap<String, String>()
         params["isApply"] = isApply
+        params["page"] = page
         val httpResultBean = object : HttpResultBean<PageModel<MaintainAuditBean>>() {}
         launch(Main) {
             ZyHttp.post(UrlConstant.MAINTAIN_AUDIT, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.onMaintainAudit(httpResultBean.bean ?: return@launch)
+                if (httpResultBean.bean?.code?.toInt() == 0) {
+                    view?.onMaintainAudit(httpResultBean.bean?.data?.list ?: return@launch)
+                } else {
+                    ToastUtil.show(httpResultBean.bean?.msg)
+                }
             }
         }
     }
@@ -116,8 +123,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         applyId: String,
         createTime: String,
         opinionType: String,
-        optionUserId: String,
-        optionUserName: String
+        optionUserName: String?
     ) {
         view?.showLoading()
         val params = JSONObject()
@@ -125,14 +131,34 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         params.put("applyId", applyId)
         params.put("createTime", createTime)
         params.put("opinionType", opinionType)
-        params.put("optionUserId", optionUserId)
         params.put("optionUserName", optionUserName)
         val httpResultBean = object : HttpResultBean<SucceedBean>() {}
         launch(Main) {
-            ZyHttp.postJson(UrlConstant.MAINTAIN_AUDIT_FEEDBACK,params.toString(),httpResultBean)
+            ZyHttp.postJson(UrlConstant.MAINTAIN_AUDIT_FEEDBACK, params.toString(), httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 view?.onMaintainFeedback(httpResultBean.bean ?: return@launch)
+            }
+        }
+    }
+
+    /**
+     *维修中心：已审核完的数据
+     */
+    fun onMaintainAccomplish(page: String) {
+        view?.showLoading()
+        val params = HashMap<String,String>()
+        params[page] = page
+        val httpResultBean = object : HttpResultBean<PageModel<MaintainAccompListBean>>(){ }
+        launch (Main){
+            ZyHttp.post(UrlConstant.MAINIAIN_AUDIT_FINISH,params,httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                if (httpResultBean.bean?.code?.toInt() == 0){
+                    view?.onMaintainAccomplish(httpResultBean.bean?.data?.list ?: return@launch)
+                } else {
+                    ToastUtil.show(httpResultBean.bean?.msg)
+                }
             }
         }
     }

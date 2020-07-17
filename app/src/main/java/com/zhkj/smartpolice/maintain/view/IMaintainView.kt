@@ -30,12 +30,12 @@ interface IMaintainView : IBaseView {
     /**
      * 维修处理列表
      */
-    fun onMaintainAudit(pagemodel: PageModel<MaintainAuditBean>){ }
+    fun onMaintainAudit(pagemodel: ArrayList<MaintainAuditBean>){ }
 
     /**
      * 维修已处理列表
      */
-    fun onMaintainAccomplish(){ }
+    fun onMaintainAccomplish(info: ArrayList<MaintainAccompListBean>){ }
 
     /**
      * 维修管理审核反馈

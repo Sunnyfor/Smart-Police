@@ -7,6 +7,7 @@ import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
@@ -111,6 +112,7 @@ class MealModel {
         val params = HashMap<String, String>()
         params["page"] = page
         params["limit"] = Constant.pageLimit
+        params["createUserId"] = UserManager.getUserBean().userId?:""
 
         ZyHttp.get(UrlConstant.MEAL_RECORD_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {

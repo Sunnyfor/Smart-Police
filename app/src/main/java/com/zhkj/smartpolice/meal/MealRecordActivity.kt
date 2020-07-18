@@ -1,6 +1,8 @@
 package com.zhkj.smartpolice.meal
 
+import android.content.Intent
 import android.view.View
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.meal.adapter.MealRecordAdapter
@@ -16,7 +18,12 @@ class MealRecordActivity : BaseActivity(), MealContract.IMealRecordView {
 
     private val pullRefreshFragment = PullRefreshFragment<MealRecordBean>()
 
-    private val adapter = MealRecordAdapter()
+    private val adapter = MealRecordAdapter().apply {
+        setOnItemClickListener { _, position ->
+            ZyFrameStore.setData(MealRecordBean::class.java.simpleName, getData(position))
+            startActivity(Intent(this@MealRecordActivity, OrderDetailActivity::class.java))
+        }
+    }
 
     private val presenter: MealPresenter by lazy {
         MealPresenter(this)

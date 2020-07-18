@@ -30,7 +30,7 @@ class MealRecordAdapter : BaseRecycleAdapter<MealRecordBean>(arrayListOf()) {
     private fun getPayState(type: String?): String {
         return when (type?.toInt()) {
             0 -> "待支付"
-            1 -> "成功"
+            1 -> "支付成功"
             2 -> "关闭"
             3 -> "撤销"
             4 -> "待退款"

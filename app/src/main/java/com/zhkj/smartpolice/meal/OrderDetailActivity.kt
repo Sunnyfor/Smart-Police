@@ -61,6 +61,21 @@ class OrderDetailActivity : BaseActivity() {
             tv_subsidy_price.text = ("¥ ${it.subsidyPrice ?: "0"}")
             tv_pay_price.text = ("¥ ${it.payPrice ?: "0"}")
             price = (it.payPrice ?: "0").toFloat()
+
+            val payState = when (it.payState) {
+                "0" -> {
+                    btn_commit.visibility = View.VISIBLE
+                    "待支付"
+                }
+                "1" -> "支付成功"
+                "2" -> "关闭"
+                "3" -> "撤销"
+                "4" -> "待退款"
+                "5" -> "退款成功"
+                "6" -> "交易结束，不可退款"
+                else -> ""
+            }
+            tv_state.text = payState
         }
     }
 

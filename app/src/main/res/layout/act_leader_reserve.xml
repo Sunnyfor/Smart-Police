@@ -18,10 +18,10 @@
             android:layout_marginStart="@dimen/dp_30"
             android:scaleType="centerCrop"
             android:src="@drawable/svg_default_head"
-            app:riv_oval="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_oval="true" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -63,7 +63,9 @@
             android:id="@+id/recycler_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_62"
+            android:paddingStart="@dimen/dp_13"
             android:layout_marginTop="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_13"
             android:overScrollMode="never"
             android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,6 +94,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:paddingStart="@dimen/dp_15"
+            android:paddingEnd="@dimen/dp_15"
             app:layout_constraintTop_toBottomOf="@id/tv_time_hint" />
 
 
@@ -102,9 +106,9 @@
         android:id="@+id/recycler_record"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_144"
+        android:layout_marginTop="@dimen/dp_10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_date"
-        android:layout_marginTop="@dimen/dp_10"/>
+        app:layout_constraintTop_toBottomOf="@id/cl_date" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_sure"

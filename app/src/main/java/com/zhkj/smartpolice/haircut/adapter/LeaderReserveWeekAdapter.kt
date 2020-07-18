@@ -8,7 +8,7 @@ import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.haircut.bean.WeekDayBean
-import kotlinx.android.synthetic.main.item_merchant_time.view.*
+import kotlinx.android.synthetic.main.item_haircut_reserve_time.view.*
 
 /**
  * Desc
@@ -36,6 +36,6 @@ class LeaderReserveWeekAdapter : BaseRecycleAdapter<WeekDayBean>(arrayListOf()) 
     }
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View {
-        return LayoutInflater.from(context).inflate(R.layout.item_merchant_time, parent, false)
+        return LayoutInflater.from(context).inflate(R.layout.item_haircut_leader_reserve_week, parent, false)
     }
 }

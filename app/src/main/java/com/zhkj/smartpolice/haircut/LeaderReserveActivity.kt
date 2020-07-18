@@ -1,6 +1,5 @@
 package com.zhkj.smartpolice.haircut
 
-import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +20,6 @@ import com.zhkj.smartpolice.mine.model.ReserveContract
 import com.zhkj.smartpolice.mine.model.ReservePresenter
 import kotlinx.android.synthetic.main.act_leader_reserve.*
 import kotlinx.android.synthetic.main.act_leader_reserve.btn_sure
-import kotlinx.android.synthetic.main.act_leader_reserve.recycler_date
 import kotlinx.android.synthetic.main.act_receive_time.recycler_time
 
 class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IReserveView, ReserveContract.IReverseRecordView {
@@ -75,9 +73,7 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
             .placeholder(R.drawable.svg_default_head)
             .into(iv_head)
 
-        recycler_date.addItemDecoration(ItemDecoration(true))
         super.initView()
-        recycler_time.addItemDecoration(ItemDecoration(false))
 
         recycler_time.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
@@ -106,32 +102,6 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
         }
     }
 
-
-    inner class ItemDecoration(var boolean: Boolean) : RecyclerView.ItemDecoration() {
-        private var borderMargin = resources.getDimension(R.dimen.dp_18).toInt()
-        private var margin = resources.getDimension(R.dimen.dp_9).toInt()
-
-        override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-            super.getItemOffsets(outRect, view, parent, state)
-            val position = parent.getChildAdapterPosition(view)
-            if (boolean) {
-                view.layoutParams.width = resources.getDimension(R.dimen.dp_44).toInt()
-            }
-
-            if (position == (parent.adapter?.itemCount ?: 0 - 1)) {
-                outRect.right = borderMargin
-            } else {
-                outRect.right = margin
-            }
-
-
-            if (position == 0) {
-                outRect.left = borderMargin
-            } else {
-                outRect.left = margin
-            }
-        }
-    }
 
     override fun showReserveTime(data: ArrayList<MerchantTime>) {
         super.showReserveTime(data)

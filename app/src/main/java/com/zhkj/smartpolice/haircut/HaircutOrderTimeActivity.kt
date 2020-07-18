@@ -84,35 +84,6 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
         recycler_date.adapter = weekAdapter
 
         recycler_time.layoutManager = GridLayoutManager(this, 4)
-        recycler_time.addItemDecoration(object : RecyclerView.ItemDecoration() {
-            private var order_margin = resources.getDimension(R.dimen.dp_8).toInt()
-            private var margin = resources.getDimension(R.dimen.dp_4).toInt()
-
-            override fun getItemOffsets(
-                outRect: Rect,
-                view: View,
-                parent: RecyclerView,
-                state: RecyclerView.State
-            ) {
-                super.getItemOffsets(outRect, view, parent, state)
-
-                val position = (parent.getChildLayoutPosition(view) + 1)
-
-                if (position % 4 == 0) {
-                    outRect.right = order_margin
-                } else {
-                    outRect.right = margin
-                }
-
-
-                if ((position - 1) % 4 == 0) {
-                    outRect.left = order_margin
-                } else {
-                    outRect.left = margin
-                }
-
-            }
-        })
         recycler_time.adapter = timeAdapter
 
         setOnClickListener(btn_sure)
@@ -124,14 +95,16 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
             btn_sure.id -> {
                 val intent = Intent()
                 (recycler_date.adapter as HaircutWeekAdapter).let {
-                    intent.putExtra("manageTime", timeAdapter.getData(it.index).manageTime)
-                    intent.putExtra("day", it.getData(it.index).day)
-                    intent.putExtra("week", it.getData(it.index).week)
+                    if (timeAdapter is HaircutTimeAdapter) {
+                        intent.putExtra("manageTime", timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).manageTime)
+                        intent.putExtra("day", it.getData(it.index).day)
+                        intent.putExtra("week", it.getData(it.index).week)
 
-                    timeAdapter.getData(it.index).let { bean ->
-                        intent.putExtra("beginTime", bean.beginTime)
-                        intent.putExtra("endTime", bean.endTime)
-                        intent.putExtra("manageId", bean.manageId)
+                        timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
+                            intent.putExtra("beginTime", bean.beginTime)
+                            intent.putExtra("endTime", bean.endTime)
+                            intent.putExtra("manageId", bean.manageId)
+                        }
                     }
                 }
                 setResult(Activity.RESULT_OK, intent)

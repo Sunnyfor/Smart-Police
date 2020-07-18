@@ -25,7 +25,9 @@
         app:layout_constraintBottom_toTopOf="@id/btn_sure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler_date" />
+        app:layout_constraintTop_toBottomOf="@id/recycler_date"
+        android:paddingStart="@dimen/dp_7"
+        android:paddingEnd="@dimen/dp_7" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_sure"

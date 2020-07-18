@@ -29,7 +29,7 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView 
 
     private var endDate = ""
 
-    var resourceId: String? = null
+    private var resourceId: String? = null
 
     private var weekAdapter: LeaderReserveWeekAdapter? = null
 
@@ -94,11 +94,11 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView 
 
         recycler_date.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         recycler_date.adapter = weekAdapter
-        recycler_date.addItemDecoration(ItemDecoration(true))
+//        recycler_date.addItemDecoration(ItemDecoration(true))
 
         recycler_time.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         recycler_time.adapter = timeAdapter
-        recycler_time.addItemDecoration(ItemDecoration(false))
+//        recycler_time.addItemDecoration(ItemDecoration(false))
 
         recycler_resource.layoutManager = LinearLayoutManager(this)
         recycler_resource.adapter = resourceAdapter

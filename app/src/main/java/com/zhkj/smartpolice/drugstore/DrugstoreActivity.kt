@@ -30,11 +30,14 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
 
     private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
 
+    private var labelId = ""
+
     private val mealMenuAdapter: MealMenuAdapter by lazy {
         MealMenuAdapter(menuList).apply {
             setOnItemClickListener { _, i ->
                 this.index = i
-                presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", getData(i).labelId ?: "")
+                labelId = getData(i).labelId ?: ""
+                presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", labelId)
                 notifyDataSetChanged()
                 et_search.setText("")
                 hideKeyboard()
@@ -79,7 +82,7 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
             }
         }
         pullRefreshFragment.loadData = {
-            loadData()
+            presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", labelId)
         }
 
         supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
@@ -95,7 +98,7 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
     override fun onClickEvent(view: View) {
         when (view.id) {
             btn_search.id -> {
-                presenter.searchMealGoodsList(shopId ?: return, et_search.text.toString())
+                SearchDrugActivity.intent(this, shopId, et_search.text.toString())
                 hideKeyboard()
             }
         }
@@ -113,8 +116,8 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
         menuList.clear()
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
-
-        presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: return, data[0].labelId ?: "")
+        labelId = data[0].labelId ?: ""
+        presenter.loadMealGoodsList("1", shopId ?: return, labelId)
     }
 
     override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {

@@ -86,6 +86,7 @@ class MealModel {
     suspend fun searchMealGoodsList(shopId: String, searchData: String): ArrayList<MealGoodsBean>? {
 
         val params = HashMap<String, String>()
+        params["publishState"] = "1"
         params["shopId"] = shopId
         params["goodsName"] = searchData
         params["limit"] = "-1"

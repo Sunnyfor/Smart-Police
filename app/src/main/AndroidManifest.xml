@@ -75,6 +75,7 @@
 
         <!--药店模块-->
         <activity android:name=".drugstore.DrugstoreActivity" />
+        <activity android:name=".drugstore.SearchDrugActivity"/>
         <activity android:name=".drugstore.FeedbackActivity" />
 
         <!--理发店模块-->

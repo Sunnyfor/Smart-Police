@@ -1,6 +1,7 @@
 package com.zhkj.smartpolice.app.fragment
 
 import android.content.Intent
+import android.graphics.Paint
 import android.view.View
 import com.bumptech.glide.Glide
 import com.sunny.zy.base.BaseFragment
@@ -33,6 +34,8 @@ class MineFragment : BaseFragment() {
 
         tv_name.text = isStrEmpty("${data.nickName}", "登录 / 注册")
         tv_sign.text = isStrEmpty(data.sign)
+
+        tv_money.paint.flags = Paint.UNDERLINE_TEXT_FLAG; //下划线
 
         setOnClickListener(
             iv_head,

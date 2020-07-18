@@ -5,6 +5,7 @@ import com.sunny.zy.base.PageModel
 import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
+import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.wallet.bean.PurseBean
 import com.zhkj.wallet.bean.RecordBean
@@ -48,6 +49,7 @@ class WalletModel {
         val params = hashMapOf<String, String>()
         params["page"] = page
         params["limit"] = Constant.pageLimit
+        params["createUserId"] = SpUtil.getString(SpUtil.userId)
         ZyHttp.get(WalletUrlConstant.PAY_RECORD_LIST, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {

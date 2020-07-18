@@ -14,7 +14,7 @@ import java.lang.reflect.Type
  * Date 2020/6/8 17:17
  */
 object SpUtil {
-
+    const val userId = "mUserId"
     const val username = "mUsername"
     const val password = "mPassword"
     const val userInfoBean = "mUserInfoBean"

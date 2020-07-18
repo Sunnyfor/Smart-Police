@@ -134,7 +134,9 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     override fun loadUserInfo(data: UserBean) {
         hideLoading()
         UserManager.setUserBean(data)
-
+        data.userId?.let {
+            SpUtil.setString(SpUtil.userId, it)
+        }
         SpUtil.setString(SpUtil.username, et_username.text.toString().trim())
         SpUtil.setString(SpUtil.password, et_password.text.toString().trim())
 

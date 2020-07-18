@@ -265,10 +265,11 @@
 
         <TextView
             android:id="@+id/tv_money"
-            style="@style/style_font_black_bigger"
-            android:text="0.00"
-            app:layout_constraintStart_toStartOf="@id/iv_icon"
+            style="@style/style_font_orange_small"
+            android:text="查看余额"
+            app:layout_constraintStart_toStartOf="@id/tv_wallet"
             app:layout_constraintTop_toBottomOf="@id/iv_icon"
+            app:layout_constraintBottom_toBottomOf="@id/btn_recharge"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.AppCompatButton

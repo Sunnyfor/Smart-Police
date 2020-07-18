@@ -11,11 +11,12 @@
         android:id="@+id/iv_image"
         style="@style/style_image_circle"
         android:layout_width="@dimen/dp_90"
-        android:layout_height="@dimen/dp_90"
+        android:layout_height="@dimen/dp_70"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_10"
         android:src="@drawable/svg_default_image"
         app:riv_corner_radius="@dimen/dp_5"
+        android:scaleType="centerCrop"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -47,10 +48,10 @@
     <TextView
         android:id="@+id/tv_price"
         style="@style/style_font_orange_big"
-        android:layout_below="@id/tv_desc"
-        android:layout_marginTop="@dimen/dp_20"
+
         android:layout_toEndOf="@id/iv_image"
         android:text="¥ 0.0"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:layout_alignBottom="@id/iv_image"/>
 
 </RelativeLayout>

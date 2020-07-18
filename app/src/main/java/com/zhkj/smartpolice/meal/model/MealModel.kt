@@ -63,6 +63,7 @@ class MealModel {
     suspend fun loadMealGoodsList(page: String, shopId: String, labelId: String): ArrayList<MealGoodsBean>? {
 
         val params = HashMap<String, String>()
+        params["publishState"] = "1"
         params["page"] = page
         params["limit"] = Constant.pageLimit
         params["shopId"] = shopId

@@ -19,9 +19,10 @@ import kotlinx.android.synthetic.main.act_meal_detail.*
 class MealDetailActivity : BaseActivity() {
 
     companion object {
-        fun intent(context: Context, bean: MealGoodsBean) {
+        fun intent(context: Context, bean: MealGoodsBean, isCanBuy: Boolean? = true) {
             ZyFrameStore.setData("MealGoodsBean", bean)
             val intent = Intent(context, MealDetailActivity::class.java)
+            intent.putExtra("isCanBuy", isCanBuy)
             context.startActivity(intent)
         }
     }
@@ -30,9 +31,13 @@ class MealDetailActivity : BaseActivity() {
         ZyFrameStore.getData<MealGoodsBean>("MealGoodsBean")
     }
 
+    var isCanBuy = true
+
     override fun setLayout(): Int = R.layout.act_meal_detail
 
     override fun initView() {
+
+        isCanBuy = intent.getBooleanExtra("isCanBuy", true)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.color_black)
 
@@ -49,6 +54,10 @@ class MealDetailActivity : BaseActivity() {
         iv_back.setOnClickListener(this)
         tv_shopping_cart.setOnClickListener(this)
 
+
+        if (!isCanBuy) {
+            tv_shopping_cart.visibility = View.GONE
+        }
     }
 
     override fun onClickEvent(view: View) {

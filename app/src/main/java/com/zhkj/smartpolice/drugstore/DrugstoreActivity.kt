@@ -10,6 +10,7 @@ import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.drugstore.adapter.DrugGoodsAdapter
+import com.zhkj.smartpolice.meal.MealDetailActivity
 import com.zhkj.smartpolice.meal.adapter.MealMenuAdapter
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
@@ -72,7 +73,11 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
         recyclerView_menu.adapter = mealMenuAdapter
 
         pullRefreshFragment.layoutManager = LinearLayoutManager(this)
-        pullRefreshFragment.adapter = DrugGoodsAdapter()
+        pullRefreshFragment.adapter = DrugGoodsAdapter().apply {
+            setOnItemClickListener { _, position ->
+                MealDetailActivity.intent(this@DrugstoreActivity, getData(position), false)
+            }
+        }
         pullRefreshFragment.loadData = {
             loadData()
         }

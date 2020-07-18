@@ -18,7 +18,7 @@ interface ReserveContract {
     abstract class Presenter(iBaseView: IBaseView) : BasePresenter<IBaseView>(iBaseView) {
 
         //加载预约记录
-        abstract fun loadReverseRecord(page: String, reserveUserId: String? = null, manageId: String? = null, createTime: String? = null)
+        abstract fun loadReverseRecord(page: String, reserveUserId: String? = null, manageId: String? = null)
 
         //加载预约记录
         abstract fun loadRepairRecord(page: String)

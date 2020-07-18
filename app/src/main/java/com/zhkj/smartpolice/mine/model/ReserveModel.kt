@@ -5,6 +5,7 @@ import com.sunny.zy.http.Constant
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.mine.bean.RepairRecordBean
 import com.zhkj.smartpolice.mine.bean.ReserveRecordBean
 
@@ -18,7 +19,7 @@ class ReserveModel {
         val params = HashMap<String, String>()
         params["page"] = page
         params["limit"] = Constant.pageLimit
-        params["reserveUserId"] = reserveUserId ?: ""
+        params["createUserId"] = reserveUserId ?: ""
         params["manageId"] = manageId ?: ""
 
         ZyHttp.get(UrlConstant.RESERVE_RECORD_URL, params, httpResultBean)
@@ -38,7 +39,7 @@ class ReserveModel {
         val params = HashMap<String, String>()
         params["page"] = page
         params["limit"] = Constant.pageLimit
-
+        params["createUserId"] = UserManager.getUserBean().userId ?: ""
         ZyHttp.get(UrlConstant.REPAIR_RECORD_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {

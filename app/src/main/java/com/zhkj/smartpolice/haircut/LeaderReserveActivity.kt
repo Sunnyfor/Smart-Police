@@ -106,7 +106,7 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
     override fun showReserveTime(data: ArrayList<MerchantTime>) {
         super.showReserveTime(data)
         val manageId = data[(timeAdapter as LeaderReserveTimeAdapter).index].manageId
-        recordPresenter.loadReverseRecord("1", "", manageId.toString(), endDate)
+        recordPresenter.loadReverseRecord("1", "", manageId.toString())
     }
 
     override fun reserveResult(data: BaseModel<Any>) {

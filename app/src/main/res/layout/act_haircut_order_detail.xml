@@ -48,6 +48,7 @@
             android:hint="@string/please_fill_in_your_real_name"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:textSize="@dimen/sp_14"
             app:layout_constraintBottom_toBottomOf="@id/view_line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_name"
@@ -70,6 +71,7 @@
             android:hint="@string/please_fill_in_your_phone"
             android:importantForAutofill="no"
             android:inputType="phone"
+            android:textSize="@dimen/sp_14"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/edit_name"
             app:layout_constraintStart_toStartOf="@id/edit_name"
@@ -120,8 +122,8 @@
         android:id="@+id/btn_reserve"
         style="@style/style_common_btn"
         android:text="@string/reserve"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

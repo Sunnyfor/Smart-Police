@@ -1,6 +1,7 @@
 package com.zhkj.smartpolice.maintain.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.view.View
 import com.sunny.zy.base.BaseActivity
@@ -15,8 +16,10 @@ import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.android.synthetic.main.act_audit_info.*
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.security.auth.login.LoginException
 
 class AuditInfoActivity : BaseActivity(), IMaintainView {
+    var isType: Boolean = true
 
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
@@ -32,8 +35,20 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
         tv_deptName.text = intent.getStringExtra("deptName")
         tv_apply_date.text = intent.getStringExtra("applyDate")
         tv_apply_content.text = intent.getStringExtra("applyContent")
+        isType = intent.getBooleanExtra("isType", true)
+        LogUtil.i("isType============$isType")
         tv_refuse.setOnClickListener(this)
         tv_confirm.setOnClickListener(this)
+        tv_task_issue.setOnClickListener(this)
+        if (isType) {
+            tv_refuse.visibility = View.VISIBLE
+            tv_confirm.visibility = View.VISIBLE
+            tv_task_issue.visibility = View.INVISIBLE
+        } else {
+            tv_refuse.visibility = View.INVISIBLE
+            tv_confirm.visibility = View.INVISIBLE
+            tv_task_issue.visibility = View.VISIBLE
+        }
     }
 
     override fun onClickEvent(view: View) {
@@ -44,6 +59,10 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
 
             R.id.tv_confirm -> {
                 getRequestConnect("1")
+            }
+
+            R.id.tv_task_issue -> {
+                startActivity(Intent(this, PublishTaskActivity::class.java))
             }
         }
     }
@@ -71,17 +90,17 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
     override fun onMaintainFeedback(succeedBean: SucceedBean) {
         super.onMaintainFeedback(succeedBean)
         succeedBean.code?.let {
-            var code =it.toInt()
+            var code = it.toInt()
             if (code == 0) {
                 ToastUtil.show("审批成功")
                 val intent = intent
-                setResult(RESULT_OK,intent)
+                setResult(RESULT_OK, intent)
                 finish()
             }
         }
     }
 
-    fun getRequestConnect(opinionType: String){
+    fun getRequestConnect(opinionType: String) {
         val date = getData()
         val userInfoBean = UserManager.getInfo()
         val userName = userInfoBean.roleName

@@ -142,4 +142,9 @@ object UrlConstant {
      * 维修功能：审核完成
      */
     const val MAINIAIN_AUDIT_FINISH = "logistics/applyopinion/list"
+
+    /**
+     * 维修工人列表
+     */
+    const val BARBER_LIST = "sys/user/list"
 }

@@ -149,6 +149,7 @@
     
     
     <TextView
+        android:id="@+id/tv_task_issue"
         android:layout_width="@dimen/dp_118"
         android:layout_height="@dimen/dp_33"
         style="@style/style_button_checked_layout"

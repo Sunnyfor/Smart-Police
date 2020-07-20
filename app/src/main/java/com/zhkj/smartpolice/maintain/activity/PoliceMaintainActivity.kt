@@ -70,9 +70,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
     }
 
     override fun onClickEvent(view: View) {
-        when (view.id) {
 
-        }
     }
 
     override fun loadData() {
@@ -87,7 +85,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
         super.onMaintainClassify(pageModel)
         pageModel.let {
             it.data?.let { data ->
-                maintainPresenter.onMaintainList(data.list.get(0).shopId, 1)
+                maintainPresenter.onMaintainList(data.list[0].shopId, 1)
 
             }
         }
@@ -103,7 +101,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
                 adapter.notifyDataSetChanged()
                 data.list.let { list ->
                     goodsList.clear()
-                    goodsList.addAll(list.get(0).goodsList)
+                    goodsList.addAll(list[0].goodsList)
                     partsAdapter.notifyDataSetChanged()
                 }
             }

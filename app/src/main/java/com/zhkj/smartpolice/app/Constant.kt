@@ -11,4 +11,8 @@ object Constant {
      * 维修审核列表默认值
      */
     val MAINTAIN_AUDIT = "2"
+    /**
+     * 物业管理列表默认值
+     */
+    val MAINTAIN_ESTATE = "3"
 }

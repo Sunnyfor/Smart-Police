@@ -42,6 +42,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("deptName", getData(position).deptName)
                 intent.putExtra("applyDate", getData(position).applyDate)
                 intent.putExtra("applyContent", getData(position).applyContent)
+                intent.putExtra("isType",true)
                 startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
             }
         }

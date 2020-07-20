@@ -41,4 +41,9 @@ interface IMaintainView : IBaseView {
      * 维修管理审核反馈
      */
     fun onMaintainFeedback(succeedBean: SucceedBean) { }
+
+    /**
+     * 维修工人列表
+     */
+    fun onBarberList(barberListBean: ArrayList<BarberListBean>){ }
 }

@@ -93,10 +93,11 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
     }
 
     /**
-     * 维修中心：审批维修列表
+     * 维修中心：列表查询
+     * isApply：1.代表查询申请人申请数据、2.审核人的待审核数据、3.完成审核数据
      */
 
-    fun onMaintainAudit(isApply: String,page: String) {
+    fun onMaintainAudit(isApply: String, page: String) {
         view?.showLoading()
         val params = HashMap<String, String>()
         params["isApply"] = isApply
@@ -147,15 +148,39 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
      */
     fun onMaintainAccomplish(page: String) {
         view?.showLoading()
-        val params = HashMap<String,String>()
+        val params = HashMap<String, String>()
         params[page] = page
-        val httpResultBean = object : HttpResultBean<PageModel<MaintainAccompListBean>>(){ }
-        launch (Main){
-            ZyHttp.post(UrlConstant.MAINIAIN_AUDIT_FINISH,params,httpResultBean)
+        val httpResultBean = object : HttpResultBean<PageModel<MaintainAccompListBean>>() {}
+        launch(Main) {
+            ZyHttp.post(UrlConstant.MAINIAIN_AUDIT_FINISH, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                if (httpResultBean.bean?.code?.toInt() == 0){
+                if (httpResultBean.bean?.code?.toInt() == 0) {
                     view?.onMaintainAccomplish(httpResultBean.bean?.data?.list ?: return@launch)
+                } else {
+                    ToastUtil.show(httpResultBean.bean?.msg)
+                }
+            }
+        }
+    }
+
+    /**
+     * 维修中心：维修工人列表
+     */
+    fun onBarberList(deptId: String, isDisables: String, noRole: String, position: String) {
+        view?.showLoading()
+        val params = HashMap<String, String>()
+        params[deptId] = deptId
+        params[isDisables] = isDisables
+        params[noRole] = noRole
+        params[position] = position
+        val httpResultBean = object : HttpResultBean<PageModel<BarberListBean>>() {}
+        launch(Main) {
+            ZyHttp.post(UrlConstant.BARBER_LIST, params, httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                if (httpResultBean.bean?.code?.toInt() == 0) {
+                    view?.onBarberList(httpResultBean.bean?.data?.list ?: return@launch)
                 } else {
                     ToastUtil.show(httpResultBean.bean?.msg)
                 }

@@ -40,7 +40,10 @@
         <item name="android:textColor">@color/fun_333333</item>
     </style>
     
-
+    <style name="style_font_white_larger" parent="style_font_orange">
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:textColor">@color/fun_FFFFFF</item>
+    </style>
 
     <style name="style_font_orange_big" parent="style_font_orange">
         <item name="android:textSize">@dimen/sp_16</item>

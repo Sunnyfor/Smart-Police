@@ -24,7 +24,7 @@ class MaintainAuditListAdapter(info: ArrayList<MaintainAuditBean>, var isType: B
         holder.itemView.tv_goods.text = getData(position).shopGoodsName
         holder.itemView.tv_style_font_black_small.text = getData(position).applyContent
         if (isType){
-
+            holder.itemView.tv_audit_status.text = "待处理"
         } else {
             holder.itemView.tv_audit_status.text = "待审核"
             holder.itemView.tv_audit_status.setBackgroundResource(R.drawable.sel_maintain_audit_type_background)

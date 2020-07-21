@@ -64,7 +64,12 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
     abstract fun loadData()
 
     fun setLayoutView(view: View) {
-        rootView?.addView(view)
+        rootView?.let {
+            if (view.parent != null) {
+                (view.parent as ViewGroup).removeView(view)
+            }
+            it.addView(view)
+        }
     }
 
     override fun showMessage(message: String) {

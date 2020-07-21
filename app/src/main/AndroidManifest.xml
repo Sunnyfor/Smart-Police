@@ -75,7 +75,7 @@
 
         <!--药店模块-->
         <activity android:name=".drugstore.DrugstoreActivity" />
-        <activity android:name=".drugstore.SearchDrugActivity"/>
+        <activity android:name=".drugstore.SearchDrugActivity" />
         <activity android:name=".drugstore.FeedbackActivity" />
 
         <!--理发店模块-->
@@ -111,6 +111,9 @@
         <!--洗衣店-->
         <activity android:name=".laundry.activity.LaundryApplyActivity" />
 
+        <activity android:name=".notice.NoticeActivity" />
+
+        <service android:name=".notice.NoticeService" />
     </application>
 
 </manifest>

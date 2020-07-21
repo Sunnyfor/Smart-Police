@@ -22,5 +22,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_home_bottom" />
+        app:menu="@menu/menu_home_bottom"/>
+
+    <TextView
+        android:id="@+id/tv_point"
+        android:layout_width="@dimen/dp_7"
+        android:layout_height="@dimen/dp_7"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_90"
+        android:background="@drawable/sel_red_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_navigation_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,11 @@
     <fragment
         android:id="@+id/mine_dest"
         android:name="com.zhkj.smartpolice.app.fragment.MineFragment"
-        tools:layout="@layout/frag_mine" />
+        tools:layout="@layout/frag_mine">
+        <argument
+            android:name="hasUnread"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
 
 </navigation>

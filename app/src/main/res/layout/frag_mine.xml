@@ -82,9 +82,9 @@
         <ImageView
             android:id="@+id/iv_edit"
             style="@style/style_common_icon"
+            android:contentDescription="@string/placeholder"
             android:src="@drawable/svg_mine_edit"
             app:layout_constraintEnd_toEndOf="@id/v_login"
-            android:contentDescription="@string/placeholder"
             app:layout_constraintTop_toTopOf="@id/v_login" />
 
         <TextView
@@ -226,20 +226,30 @@
                 tools:ignore="UseCompoundDrawables">
 
                 <ImageView
+
                     style="@style/style_common_icon"
                     android:background="@drawable/sel_mine_yellow"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/icon_mine_medicine" />
+                    android:src="@drawable/svg_mine_message" />
 
                 <TextView
                     style="@style/style_font_black_small"
                     android:layout_marginTop="@dimen/dp_5"
-                    android:text="购药记录"
+                    android:text="消息通知"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
-
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_point"
+            android:layout_width="@dimen/dp_8"
+            android:layout_height="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_18"
+            android:background="@drawable/sel_red_circle"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/ll_function"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ll_function" />
 
         <!--钱包模块-->
 
@@ -267,9 +277,9 @@
             android:id="@+id/tv_money"
             style="@style/style_font_orange_small"
             android:text="查看余额"
+            app:layout_constraintBottom_toBottomOf="@id/btn_recharge"
             app:layout_constraintStart_toStartOf="@id/tv_wallet"
             app:layout_constraintTop_toBottomOf="@id/iv_icon"
-            app:layout_constraintBottom_toBottomOf="@id/btn_recharge"
             tools:ignore="HardcodedText" />
 
         <androidx.appcompat.widget.AppCompatButton

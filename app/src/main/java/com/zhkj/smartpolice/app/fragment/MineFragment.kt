@@ -16,6 +16,7 @@ import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
+import com.zhkj.smartpolice.notice.NoticeActivity
 import kotlinx.android.synthetic.main.frag_mine.*
 
 
@@ -25,8 +26,11 @@ class MineFragment : BaseFragment() {
 
     override fun initView() {
 
-        val data = UserManager.getUserBean()
+        arguments?.let {
+            updatePoint(it.getBoolean("hasUnread"))
+        }
 
+        val data = UserManager.getUserBean()
         Glide.with(requireContext())
             .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${data.avatar}")
             .placeholder(R.drawable.svg_default_head)
@@ -53,7 +57,7 @@ class MineFragment : BaseFragment() {
             ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
             ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
             ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
-            ll_medicine.id -> ToastUtil.show("暂无购物记录")
+            ll_medicine.id -> startActivity(Intent(requireContext(), NoticeActivity::class.java))
             tv_money.id, tv_wallet.id -> RouterManager.navigation(requireContext(), RouterManager.WALLET_ACTIVITY)
             btn_withdrawal.id -> RouterManager.navigation(requireContext(), RouterManager.WITHDRAWAL_ACTIVITY)
             btn_recharge.id -> RouterManager.navigation(requireContext(), RouterManager.RECHARGE_ACTIVITY)
@@ -68,5 +72,10 @@ class MineFragment : BaseFragment() {
 
     override fun close() {
 
+    }
+
+
+    fun updatePoint(hasUnread: Boolean) {
+        tv_point.visibility = if (hasUnread) View.VISIBLE else View.GONE
     }
 }

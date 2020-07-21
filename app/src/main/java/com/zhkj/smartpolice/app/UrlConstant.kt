@@ -152,4 +152,14 @@ object UrlConstant {
      * 下发任务给维修工人
      */
     const val ISSUE_TASK = "logistic/repairrecord/save"
+
+    /**
+     * 通知
+     */
+    const val NOTICE_LIST_URL = "app/appnotice/list"
+
+    /**
+     * 读取通知
+     */
+    const val UPDATE_BY_NOTICE_ID_URL = "app/appnoticeuserlink/updateByNoticeId"
 }

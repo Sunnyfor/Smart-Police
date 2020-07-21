@@ -45,5 +45,10 @@ interface IMaintainView : IBaseView {
     /**
      * 维修工人列表
      */
-    fun onBarberList(barberListBean: ArrayList<BarberListBean>){ }
+    fun onMaintainerList(barberListBean: ArrayList<MaintainerListBean>){ }
+
+    /**
+     * 下发维修任务
+     */
+    fun onIssueTask(succeedBean: SucceedBean){ }
 }

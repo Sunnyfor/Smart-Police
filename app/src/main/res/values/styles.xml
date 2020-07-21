@@ -158,5 +158,4 @@
         <item name="android:layout_marginEnd">@dimen/dp_40</item>
     </style>
 
-
 </resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_68"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sel_audit_border_background">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_portrait"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="@dimen/dp_20"
+            android:src="@drawable/svg_default_head"
+            android:layout_marginTop="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_maintainer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/riv_portrait"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_26"
+            tools:text="张三"
+            style="@style/style_font_black_larger"/>
+
+        <ImageView
+            android:id="@+id/rb_select_button"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:background="@drawable/svg_check_nor"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp_20"/>
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/cb_select_button"-->
+<!--            android:layout_width="@dimen/dp_20"-->
+<!--            android:layout_height="@dimen/dp_20"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginEnd="@dimen/dp_20"-->
+<!--            android:button="@null"-->
+<!--            android:enabled="false"-->
+<!--            android:background="@drawable/sel_item_check"/>-->
+    </RelativeLayout>
+</RelativeLayout>

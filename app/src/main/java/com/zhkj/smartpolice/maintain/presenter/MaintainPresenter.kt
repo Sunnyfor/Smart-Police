@@ -1,6 +1,5 @@
 package com.zhkj.smartpolice.maintain.presenter
 
-import android.widget.Toast
 import com.google.gson.Gson
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
@@ -23,8 +22,8 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         view?.showLoading()
         val params = HashMap<String, String>()
         params["shopType"] = shopType.toString()
-        params["activeState"] = activeState.toString()
-        params["certifyState"] = certifyState.toString()
+//        params["activeState"] = activeState.toString()
+//        params["certifyState"] = certifyState.toString()
 
         val httpResultBean = object : HttpResultBean<PageModel<MaintainClassifyBean>>() {}
         launch(Main) {
@@ -149,7 +148,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
     fun onMaintainAccomplish(page: String) {
         view?.showLoading()
         val params = HashMap<String, String>()
-        params[page] = page
+        params["page"] = page
         val httpResultBean = object : HttpResultBean<PageModel<MaintainAccompListBean>>() {}
         launch(Main) {
             ZyHttp.post(UrlConstant.MAINIAIN_AUDIT_FINISH, params, httpResultBean)
@@ -167,20 +166,56 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
     /**
      * 维修中心：维修工人列表
      */
-    fun onBarberList(deptId: String, isDisables: String, noRole: String, position: String) {
+    fun onMaintainerList(deptId: String, isDisables: String, noRole: String, position: String) {
         view?.showLoading()
         val params = HashMap<String, String>()
-        params[deptId] = deptId
-        params[isDisables] = isDisables
-        params[noRole] = noRole
-        params[position] = position
-        val httpResultBean = object : HttpResultBean<PageModel<BarberListBean>>() {}
+        params["deptId"] = deptId
+        params["isDisables"] = isDisables
+        params["noRole"] = noRole
+        params["position"] = position
+        val httpResultBean = object : HttpResultBean<PageModel<MaintainerListBean>>() {}
         launch(Main) {
-            ZyHttp.post(UrlConstant.BARBER_LIST, params, httpResultBean)
+            ZyHttp.post(UrlConstant.MAINTAINER_LIST, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 if (httpResultBean.bean?.code?.toInt() == 0) {
-                    view?.onBarberList(httpResultBean.bean?.data?.list ?: return@launch)
+                    view?.onMaintainerList(httpResultBean.bean?.data?.list ?: return@launch)
+                } else {
+                    ToastUtil.show(httpResultBean.bean?.msg)
+                }
+            }
+        }
+    }
+
+    /**
+     * 下发维修任务
+     */
+    fun onIssueTask(
+        content: String,
+        groupId: String,
+        operation: String,
+        operationId: String,
+        operationPhone: String,
+        professionId: String,
+        repairDate: String
+    ) {
+        view?.showLoading()
+        val params = JSONObject()
+        params.put("content", content)
+        params.put("groupId", groupId)
+        params.put("operation", operation)
+        params.put("operationId", operationId)
+        params.put("operationPhone", operationPhone)
+        params.put("professionId", professionId)
+        params.put("repairDate", repairDate)
+        LogUtil.i("上传的josn 数据是========$params")
+        val httpResultBean = object : HttpResultBean<SucceedBean>() {}
+        launch(Main) {
+            ZyHttp.postJson(UrlConstant.ISSUE_TASK, params.toString(), httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                if (httpResultBean.bean?.code?.toInt() == 0) {
+                    view?.onIssueTask(httpResultBean.bean ?: return@launch)
                 } else {
                     ToastUtil.show(httpResultBean.bean?.msg)
                 }

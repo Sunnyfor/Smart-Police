@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.maintain.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,4 +67,14 @@ class MaintainUntreatedFragment : BaseFragment(), IMaintainView {
         pullRefreshFragment.addData(pagemodel)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode){
+            Constant.MAINTAIN_CONTENT_ANSWER -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    loadData()
+                }
+            }
+        }
+    }
 }

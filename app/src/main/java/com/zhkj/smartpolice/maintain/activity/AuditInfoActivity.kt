@@ -20,6 +20,9 @@ import javax.security.auth.login.LoginException
 
 class AuditInfoActivity : BaseActivity(), IMaintainView {
     var isType: Boolean = true
+    var applyId: String? = null
+    var applyDate: String? = null
+    var applyContent: String? = null
 
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
@@ -35,6 +38,9 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
         tv_deptName.text = intent.getStringExtra("deptName")
         tv_apply_date.text = intent.getStringExtra("applyDate")
         tv_apply_content.text = intent.getStringExtra("applyContent")
+        applyId = intent.getStringExtra("applyId")
+        applyDate = intent.getStringExtra("applyDate")
+        applyContent = intent.getStringExtra("applyContent")
         isType = intent.getBooleanExtra("isType", true)
         LogUtil.i("isType============$isType")
         tv_refuse.setOnClickListener(this)
@@ -62,7 +68,10 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
             }
 
             R.id.tv_task_issue -> {
-                startActivity(Intent(this, PublishTaskActivity::class.java))
+                PublishTaskActivity.intent(
+                    this@AuditInfoActivity,
+                    applyContent, applyId, applyDate
+                )
             }
         }
     }

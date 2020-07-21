@@ -6,7 +6,7 @@ import com.zhkj.smartpolice.R
 
 
 class InProcessedFragment: BaseFragment() {
-    override fun setLayout(): Int = R.layout.frag_untreated
+    override fun setLayout(): Int = R.layout.frag_processed
 
     override fun initView() {
     }

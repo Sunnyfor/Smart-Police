@@ -74,7 +74,7 @@ class PoliceMaintainActivity : BaseActivity(), IMaintainView {
     }
 
     override fun loadData() {
-        maintainPresenter.onMaintainClassify(6, 1, 1)
+        maintainPresenter.onMaintainClassify(6,1,1)
     }
 
     override fun close() {

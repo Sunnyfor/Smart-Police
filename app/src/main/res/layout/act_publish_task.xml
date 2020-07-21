@@ -25,6 +25,7 @@
         android:textSize="@dimen/sp_16"/>
 
     <TextView
+        android:id="@+id/tv_send"
         android:layout_width="@dimen/dp_180"
         android:layout_height="@dimen/dp_50"
         android:text="发送"

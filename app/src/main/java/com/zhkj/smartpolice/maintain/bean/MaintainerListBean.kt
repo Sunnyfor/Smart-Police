@@ -1,6 +1,6 @@
 package com.zhkj.smartpolice.maintain.bean
 
-class BarberListBean{
+class MaintainerListBean{
     var authorities: String? = null
     var avatar: String? = null
     var createTime: String? = null
@@ -21,6 +21,7 @@ class BarberListBean{
     var status: String? = null
     var userId: String? = null
     var userName: String? = null
+    var isCheck: Boolean = false
     override fun toString(): String {
         return "BarberListBean(authorities=$authorities, avatar=$avatar, createTime=$createTime, deptId=$deptId, deptName=$deptName, email=$email, isDisables=$isDisables, isRegular=$isRegular, loginId=$loginId, mobile=$mobile, nickName=$nickName, policeId=$policeId, policeNumber=$policeNumber, position=$position, roleIdList=$roleIdList, sex=$sex, sign=$sign, status=$status, userId=$userId, userName=$userName)"
     }

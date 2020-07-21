@@ -146,5 +146,10 @@ object UrlConstant {
     /**
      * 维修工人列表
      */
-    const val BARBER_LIST = "sys/user/list"
+    const val MAINTAINER_LIST = "sys/user/list"
+
+    /**
+     * 下发任务给维修工人
+     */
+    const val ISSUE_TASK = "logistic/repairrecord/save"
 }

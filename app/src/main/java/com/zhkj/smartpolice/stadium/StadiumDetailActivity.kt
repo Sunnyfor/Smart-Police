@@ -112,6 +112,12 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView,
                     ToastUtil.show("当前日期没有可预约的场地！")
                     return
                 }
+
+                if (resourceAdapter.index == -1){
+                    ToastUtil.show("请选择预约的场地！")
+                    return
+                }
+
                 resourceAdapter.getData(resourceAdapter.index).let {
                     presenter.commitReserve(
                         edit_name.text.toString(),
@@ -150,6 +156,7 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView,
         data.groupBy { it.manageTime }.let {
             resourceAdapter.addData(it[data[0].manageTime] as ArrayList<MerchantTime>)
         }
+
         resourceAdapter.notifyDataSetChanged()
     }
 

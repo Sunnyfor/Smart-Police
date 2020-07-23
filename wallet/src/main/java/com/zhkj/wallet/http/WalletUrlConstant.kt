@@ -30,4 +30,9 @@ object WalletUrlConstant {
      * 支付
      */
     const val PAY_FOR_USER_URL = "logistics/shoporders/payForUser"
+
+    /**
+     * 支付码长连接地址
+     */
+    const val WEB_SOCKET_HOST = "ws://122.51.69.116:8082/websocket/%s"
 }

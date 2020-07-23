@@ -3,6 +3,7 @@ package com.zhkj.wallet.activity
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterManager
@@ -12,9 +13,9 @@ import kotlinx.android.synthetic.main.act_pay_result.*
 @Route(path = RouterManager.PAY_RESULT_ACTIVITY)
 class PayResultActivity : BaseActivity() {
 
-    private val payResult by lazy {
-        intent.getStringExtra("payResult")
-    }
+    @Autowired
+    @JvmField
+    var payResult: String? = null
 
     companion object {
         fun intent(context: Context, payResult: String) {
@@ -28,6 +29,10 @@ class PayResultActivity : BaseActivity() {
 
     override fun initView() {
         defaultTitle("支付结果")
+
+        if (payResult == null) {
+            payResult = intent.getStringExtra("payResult")
+        }
 
         when (payResult) {
             "0" -> {

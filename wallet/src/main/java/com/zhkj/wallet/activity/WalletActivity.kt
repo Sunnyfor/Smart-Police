@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.act_wallet.*
 @Route(path = RouterManager.WALLET_ACTIVITY)
 class WalletActivity : BaseActivity(), WalletContract.IWalletView {
 
-    var isSettingPayPassword = false
+    private var isSettingPayPassword = false
 
     private val walletPresenter: WalletPresenter by lazy {
         WalletPresenter(this)
@@ -57,6 +57,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
 
 
     override fun loadData() {
+
         //加载钱包数据
         walletPresenter.loadPurse()
 

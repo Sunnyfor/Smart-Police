@@ -3,10 +3,11 @@ package com.sunny.zy.http.bean
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
+import okhttp3.WebSocketListener
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-abstract class BaseHttpResultBean<T> {
+abstract class BaseHttpResultBean<T>: WebSocketListener() {
     var typeToken: Type
 
     init {
@@ -28,7 +29,7 @@ abstract class BaseHttpResultBean<T> {
         if (url.contains("login.html")) {
             ToastUtil.show("登录失效，请重新登录！")
             //跳转登录页面
-            ARouter.getInstance().build(RouterManager.LOGIN_ACTIVITY) .withBoolean("logout", true).navigation()
+            ARouter.getInstance().build(RouterManager.LOGIN_ACTIVITY).withBoolean("logout", true).navigation()
             return false
         }
 

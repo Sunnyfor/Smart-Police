@@ -2,12 +2,17 @@ package com.zhkj.wallet.presenter
 
 import com.sunny.zy.base.ErrorViewType
 import com.sunny.zy.base.IBaseView
+import com.sunny.zy.http.bean.HttpResultBean
+import com.sunny.zy.utils.LogUtil
 import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.model.WalletModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.Response
+import okhttp3.WebSocket
+import okio.ByteString
 import java.util.*
 
 /**
@@ -25,8 +30,38 @@ class WalletPresenter(iBaseView: IBaseView) :
     private val walletModel: WalletModel by lazy {
         WalletModel()
     }
-
     var balance = 0f
+
+    val socketResultBean = object : HttpResultBean<WebSocket>() {
+
+        override fun onOpen(webSocket: WebSocket, response: Response) {
+            super.onOpen(webSocket, response)
+            bean = webSocket
+            LogUtil.i("WebSocket：连接成功！${webSocket}")
+            if (view is WalletContract.IPayCodeView) {
+                (view as WalletContract.IPayCodeView).showSocketResult(true)
+            }
+        }
+
+        override fun onMessage(webSocket: WebSocket, text: String) {
+            LogUtil.i("WebSocket：接收到消息！${text}")
+            if (view is WalletContract.IPayCodeView) {
+                (view as WalletContract.IPayCodeView).showSocketMessage(text)
+            }
+        }
+
+        override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
+            super.onMessage(webSocket, bytes)
+            LogUtil.i("WebSocket：接收到消息！${bytes}")
+        }
+
+        override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+            LogUtil.i("WebSocket：连接失败！URL:${response?.request?.url} ---- 消息：${t.message}")
+            if (view is WalletContract.IPayCodeView) {
+                (view as WalletContract.IPayCodeView).showSocketResult(false)
+            }
+        }
+    }
 
 
     //加载钱包数据
@@ -161,4 +196,14 @@ class WalletPresenter(iBaseView: IBaseView) :
         timerTask?.cancel()
         timerTask = null
     }
+
+    fun setDefaultTime() {
+        count = defaultCount
+    }
+
+
+    fun connectWebSocket() {
+        walletModel.connectWebSocket(socketResultBean)
+    }
+
 }

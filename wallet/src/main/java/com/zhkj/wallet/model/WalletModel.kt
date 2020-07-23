@@ -10,10 +10,15 @@ import com.sunny.zy.utils.ToastUtil
 import com.zhkj.wallet.bean.PurseBean
 import com.zhkj.wallet.bean.RecordBean
 import com.zhkj.wallet.http.WalletUrlConstant
+import okhttp3.WebSocket
 import org.json.JSONObject
 import java.io.File
 
 class WalletModel {
+
+    private val userId: String by lazy {
+        SpUtil.getString(SpUtil.userId)
+    }
 
     /**
      *  get请求加载钱包数据
@@ -96,5 +101,9 @@ class WalletModel {
             }
         }
         return null
+    }
+
+    fun connectWebSocket(bean :HttpResultBean<WebSocket>){
+        ZyHttp.webSocket(String.format(WalletUrlConstant.WEB_SOCKET_HOST, userId), bean)
     }
 }

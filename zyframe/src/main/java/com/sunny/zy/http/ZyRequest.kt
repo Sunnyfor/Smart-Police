@@ -18,7 +18,7 @@ class ZyRequest {
 
 
     private fun getUrlSb(url: String) = StringBuilder().apply {
-        if (!url.contains("http://") && !url.contains("https://")) {
+        if (!url.contains("http://") && !url.contains("https://") && !url.contains("ws://")) {
             append(UrlConstant.host)
             append("/")
         }

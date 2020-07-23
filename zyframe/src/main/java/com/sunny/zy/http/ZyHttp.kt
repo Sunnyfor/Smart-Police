@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.WebSocket
 import okhttp3.internal.platform.Platform
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -31,7 +32,7 @@ object ZyHttp {
     /**
      * 初始化OKHttp
      */
-     fun <T> getOkHttpClient(httpResultBean: HttpResultBean<T>): OkHttpClient {
+    fun <T> getOkHttpClient(httpResultBean: HttpResultBean<T>): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HeaderInterceptor())
             .addNetworkInterceptor(
@@ -125,6 +126,7 @@ object ZyHttp {
         }
     }
 
+
     /**
      * form表单上传图片
      */
@@ -134,6 +136,12 @@ object ZyHttp {
             val request = zyRequest.formUploadRequest(url, filePath)
             execution(request, httpResultBean)
         }
+    }
+
+
+    fun webSocket(url: String, httpResultBean: HttpResultBean<WebSocket>) {
+        val request = zyRequest.getRequest(url, null)
+        getOkHttpClient(httpResultBean).newWebSocket(request, httpResultBean)
     }
 
     /**

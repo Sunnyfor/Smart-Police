@@ -13,7 +13,8 @@ import com.zhkj.wallet.widget.InputPayPasswordPopupWindow
 
 class PayPasswordUtil(
     var view: View,
-    var iBaseView: IBaseView
+    var iBaseView: IBaseView,
+    var passWordResult: ((password:String)->Unit)? = null
 ) :
     WalletContract.IPayPassWordView {
 
@@ -104,7 +105,11 @@ class PayPasswordUtil(
         val popupWindow =
             InputPayPasswordPopupWindow(view.context) { popupWindow: InputPayPasswordPopupWindow, password: String ->
                 popupWindow.dismiss()
-                presenter.pay(orderId, password)
+                if (passWordResult == null) {
+                    presenter.pay(orderId, password)
+                } else {
+                    passWordResult?.invoke(password)
+                }
             }
         popupWindow.showAtLocation(
             view, Gravity.BOTTOM, 0, 0
@@ -129,7 +134,6 @@ class PayPasswordUtil(
             view, Gravity.BOTTOM, 0, 0
         )
     }
-
 
     /**
      * 设置新支付密码
@@ -162,9 +166,11 @@ class PayPasswordUtil(
                 modify -> showModifyPayPassword()
                 //去支付
                 pay -> {
-                    if (goodsPrice > presenter.balance) {
-                        PayResultActivity.intent(view.context, "2")
-                        return
+                    if (passWordResult == null) {
+                        if (goodsPrice > presenter.balance) {
+                            PayResultActivity.intent(view.context, "2")
+                            return
+                        }
                     }
                     ordersId?.let {
                         showPayPassword(it)

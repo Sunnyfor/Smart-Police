@@ -18,7 +18,7 @@ import com.zhkj.smartpolice.stadium.adapter.StadiumResourceAdapter
 import kotlinx.android.synthetic.main.act_stadium_detail.*
 import java.util.*
 
-class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView,MerchantContract.IReserveView {
+class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView, MerchantContract.IReserveView {
 
     val presenter by lazy {
         MerchantPresenter(this)
@@ -108,6 +108,10 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView,
     override fun onClickEvent(view: View) {
         when (view.id) {
             btn_reserve.id -> {
+                if (resourceAdapter.itemCount == 0) {
+                    ToastUtil.show("当前日期没有可预约的场地！")
+                    return
+                }
                 resourceAdapter.getData(resourceAdapter.index).let {
                     presenter.commitReserve(
                         edit_name.text.toString(),

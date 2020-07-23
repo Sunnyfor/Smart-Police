@@ -15,6 +15,8 @@ interface WalletContract {
     interface IPayCodeView : IBaseView {
         fun showPayCodeData(file: File)
         fun showCountdownData(number: String)
+        fun showSocketResult(isSuccess:Boolean)
+        fun showSocketMessage(message:String)
     }
 
     interface IRecordView : IBaseView {

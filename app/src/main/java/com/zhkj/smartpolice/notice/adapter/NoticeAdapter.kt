@@ -9,13 +9,13 @@ import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 import kotlinx.android.synthetic.main.item_notice.view.*
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 17:02
- */
 class NoticeAdapter : BaseRecycleAdapter<NoticeBean>(arrayListOf()) {
+
+    override fun setLayout(parent: ViewGroup, viewType: Int): View {
+
+        return LayoutInflater.from(context).inflate(R.layout.item_notice, parent, false)
+    }
+
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
         holder.itemView.tv_name.text = getData(position).noticeTitle
         holder.itemView.tv_desc.text = getData(position).noticeValue
@@ -32,8 +32,4 @@ class NoticeAdapter : BaseRecycleAdapter<NoticeBean>(arrayListOf()) {
         }
     }
 
-    override fun setLayout(parent: ViewGroup, viewType: Int): View {
-
-        return LayoutInflater.from(context).inflate(R.layout.item_notice, parent, false)
-    }
 }

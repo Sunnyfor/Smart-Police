@@ -9,12 +9,6 @@ import com.zhkj.smartpolice.notice.bean.NoticeBean
 import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 16:58
- */
 class NoticeActivity : BaseActivity(), NoticeContract.INoticeView {
 
     val pullRefreshFragment = PullRefreshFragment<NoticeBean>()

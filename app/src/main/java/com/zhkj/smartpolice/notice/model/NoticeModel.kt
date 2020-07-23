@@ -7,17 +7,11 @@ import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 11:07
- */
 class NoticeModel {
 
     suspend fun loadNoticeList(id: String, page: String, limit: String, isRead: String?): ArrayList<NoticeBean>? {
         val params = HashMap<String, String>()
-        params["userId"] = id
+        params["personal"] = id
         params["page"] = page
         params["limit"] = limit
         isRead?.let {

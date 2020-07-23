@@ -23,6 +23,8 @@ abstract class BaseRecycleAdapter<T>(var list: ArrayList<T>) :
         return BaseRecycleViewHolder(setLayout(parent, viewType), onItemClickListener)
     }
 
+    abstract fun setLayout(parent: ViewGroup, viewType: Int): View
+
     /*
      * 绑定数据
      */
@@ -30,8 +32,6 @@ abstract class BaseRecycleAdapter<T>(var list: ArrayList<T>) :
 
 
     override fun getItemCount(): Int = list.size
-
-    abstract fun setLayout(parent: ViewGroup, viewType: Int): View
 
 
     fun getData(position: Int): T = list[position]

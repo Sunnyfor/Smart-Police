@@ -4,12 +4,6 @@ import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 11:00
- */
 class NoticeContract {
 
     interface IUnReadNoticeView : IBaseView {

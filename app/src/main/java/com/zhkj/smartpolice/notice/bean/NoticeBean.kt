@@ -1,11 +1,5 @@
 package com.zhkj.smartpolice.notice.bean
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 10:58
- */
 class NoticeBean {
     var noticeId: String? = null
     var noticeTitle: String? = null

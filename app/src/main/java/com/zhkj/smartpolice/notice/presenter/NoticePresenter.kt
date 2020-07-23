@@ -6,12 +6,6 @@ import com.zhkj.smartpolice.notice.model.NoticeModel
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 11:12
- */
 class NoticePresenter(view: IBaseView) : NoticeContract.Presenter(view) {
 
     private val noticeModel: NoticeModel by lazy {

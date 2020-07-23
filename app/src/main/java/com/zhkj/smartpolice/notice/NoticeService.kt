@@ -10,12 +10,6 @@ import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
 import java.util.*
 
-/**
- * Desc
- * Author ZhangYe
- * Mail zhangye98@foxmail.com
- * Date 2020/7/21 10:55
- */
 class NoticeService : Service(), NoticeContract.IUnReadNoticeView {
 
     private val presenter: NoticeContract.Presenter by lazy {

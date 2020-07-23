@@ -2,6 +2,8 @@ package com.zhkj.smartpolice.maintain.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.SystemClock
+import android.provider.Settings
 import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.CameraUtil
@@ -37,6 +39,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
     private var deptId: String? = null
     private var deptName: String? = null
     private var imageList: ArrayList<ImageBean> = ArrayList()
+    private var groupId: String? = null
 
     companion object {
 
@@ -109,7 +112,10 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         )
         cameraUtil.onResultListener = object : CameraUtil.OnResultListener {
             override fun onResult(file: File) {
-                presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path)
+                if (groupId.isNullOrEmpty()){
+                    groupId = System.currentTimeMillis().toString()
+                }
+                presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path, groupId.orEmpty())
             }
         }
         gv_uploading.adapter = gridviewadapter
@@ -162,6 +168,8 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
                                 maintainRequestPushBean.deptName = deptName
                                 maintainRequestPushBean.applyContent = tv_info.text.toString()
                                 maintainRequestPushBean.shopGoodsId = goodsId
+                                maintainRequestPushBean.attachmentGroupId = groupId
+                                LogUtil.i(maintainRequestPushBean.attachmentGroupId.orEmpty())
                                 maintainPresenter.onMaintainRequestPush(maintainRequestPushBean)
                             } else {
                                 ToastUtil.show("维修时间不能为空")
@@ -247,5 +255,10 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         LogUtil.i("图片显示实体类========$bean")
         imageList.add(bean)
         gridviewadapter.notifyDataSetChanged()
+//        groupId = if (groupId != null) {
+//            groupId + "," + bean.id
+//        } else {
+//            bean.id
+//        }
     }
 }

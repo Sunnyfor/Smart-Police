@@ -35,6 +35,7 @@ class MaintainUntreatedFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("applyDate", getData(position).applyDate)
                 intent.putExtra("applyContent", getData(position).applyContent)
                 intent.putExtra("isType", false)
+                intent.putExtra("groupId",getData(position).attachmentGroupId)
                 startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
             }
         }

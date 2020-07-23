@@ -3,29 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_background_F0F1F2"
-    tools:context=".maintain.activity.MaintainApplyActivity">
+    android:background="@color/color_background_F2F2F2">
 
     <RelativeLayout
+        android:id="@+id/rl_layout"
         android:layout_width="@dimen/dp_340"
-        android:layout_height="@dimen/dp_96"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="@dimen/dp_11"
+        android:layout_height="@dimen/dp_144"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
         android:background="@drawable/sel_maintain_apply_border">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_48"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:gravity="center_vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修装备名称："
-                android:textColor="@color/fun_3E3E3E"
-                android:textSize="@dimen/sp_14" />
+                android:text="维修装备名称：" />
 
             <TextView
                 android:id="@+id/tv_goods_name"
@@ -47,7 +44,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_48"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_48"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -55,31 +52,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修人姓名："
+                android:text="维修申请人姓名："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <EditText
-                android:id="@+id/et_apply_name"
+            <TextView
+                android:id="@+id/tv_apply_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_150"
                 android:layout_marginEnd="@dimen/dp_10"
-                android:background="@null"
-                android:hint="请填写你的姓名"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_96"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_96"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
+                android:text="维修人手机号"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_apply_cellphone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_130"
+                android:layout_marginEnd="@dimen/dp_10"
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_13" />
         </RelativeLayout>
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:id="@+id/rl_two"
         android:layout_width="@dimen/dp_340"
-        android:layout_height="@dimen/dp_192"
+        android:layout_height="@dimen/dp_241"
+        android:layout_below="@id/rl_layout"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="@dimen/dp_117"
+        android:layout_marginTop="@dimen/dp_10"
         android:background="@drawable/sel_maintain_apply_border">
 
         <RelativeLayout
@@ -92,18 +118,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修人手机号："
+                android:text="维修员姓名："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <EditText
-                android:id="@+id/tv_apply_cellphone"
+            <TextView
+                android:id="@+id/tv_maintainer_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_130"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:background="@null"
-                android:hint="请填写你的手机号"
+                android:inputType="text"
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_13" />
         </RelativeLayout>
@@ -124,23 +150,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
-                android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修地点部门："
+                android:text="维修员手机号："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <com.zhkj.smartpolice.utils.CustomSpinner
-                android:id="@+id/cs_section"
+            <EditText
+                android:id="@+id/tv_maintainer_cellphone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dp_110"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_130"
                 android:layout_marginEnd="@dimen/dp_10"
-                android:paddingStart="@dimen/dp_20"
-                android:paddingTop="@dimen/dp_5"
-                android:paddingBottom="@dimen/dp_5"
-                tools:ignore="RtlSymmetry" />
-
+                android:background="@null"
+                android:hint="请填写你的手机号"
+                android:inputType="number"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
         </RelativeLayout>
 
         <View
@@ -150,10 +175,9 @@
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
-            android:id="@+id/rl_date_select"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_95"
+            android:layout_marginTop="@dimen/dp_96"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -161,7 +185,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修预约时间："
+                android:text="维修地点部门："
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_section"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_130"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_143"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:id="@+id/rl_date_select"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_144"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
+                android:text="维修完成时间："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
@@ -187,7 +244,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_143"
+            android:layout_marginTop="@dimen/dp_193"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
@@ -199,14 +256,20 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
+                android:text="维修原因："
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
                 android:id="@+id/tv_info"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_130"
                 android:layout_marginEnd="@dimen/dp_20"
                 android:ellipsize="end"
-                android:hint="请填写你维修的问题"
                 android:maxEms="7"
                 android:singleLine="true"
                 android:textColor="@color/fun_3E3E3E"
@@ -259,7 +322,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/color_login_button"
         android:gravity="center"
-        android:text="提交申请"
+        android:text="确认维修"
         android:textColor="@color/fun_FFFFFF"
         android:textSize="@dimen/sp_16" />
 

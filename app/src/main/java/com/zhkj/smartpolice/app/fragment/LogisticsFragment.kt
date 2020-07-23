@@ -15,6 +15,7 @@ import com.zhkj.smartpolice.haircut.BarberListActivity
 import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
 import com.zhkj.smartpolice.laundry.activity.LaundryApplyActivity
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
+import com.zhkj.smartpolice.maintain.activity.MaintainTaskActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
 import com.zhkj.smartpolice.maintain.activity.PropertyManageActivity
 import com.zhkj.smartpolice.meal.MealChoiceActivity
@@ -86,10 +87,10 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
-                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java))//普通警员
+                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
                     117 -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java)) //维修管理员
-                    115 -> startActivity(Intent(requireContext(), PropertyManageActivity::class.java))
-//                    166 -> startActivity(Intent(requireContext(),))//维修工人
+                    115 -> startActivity(Intent(requireContext(), PropertyManageActivity::class.java)) //物业管理
+                    116 -> startActivity(Intent(requireContext(), MaintainTaskActivity::class.java)) //维修工人
                     else -> ToastUtil.show("你当前不是警员")
                 }
             }

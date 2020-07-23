@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
+import com.zhkj.smartpolice.maintain.adapter.MaintainPhotographAdapter
 import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.act_audit_info.*
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.security.auth.login.LoginException
+import kotlin.collections.ArrayList
 
 class AuditInfoActivity : BaseActivity(), IMaintainView {
     var isType: Boolean = true
@@ -27,6 +30,10 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
     }
+
+//    private val adapter: MaintainPhotographAdapter by lazy {
+//        MaintainPhotographAdapter(groupId)
+//    }
 
     override fun setLayout(): Int = R.layout.act_audit_info
 
@@ -42,7 +49,14 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
         applyDate = intent.getStringExtra("applyDate")
         applyContent = intent.getStringExtra("applyContent")
         isType = intent.getBooleanExtra("isType", true)
-        LogUtil.i("isType============$isType")
+        var groupId = intent.getStringExtra("groupId")
+        LogUtil.i("isType============$groupId")
+        groupId?.let {
+//            var groupIdList:ArrayList<String> = groupId.split(",") as ArrayList<String>
+//            LogUtil.i("isType============$groupIdList")
+//            rv_maintain_img.layoutManager = GridLayoutManager(this,3)
+//            rv_maintain_img.adapter = MaintainPhotographAdapter(groupIdList)
+        }
         tv_refuse.setOnClickListener(this)
         tv_confirm.setOnClickListener(this)
         tv_task_issue.setOnClickListener(this)
@@ -55,6 +69,7 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
             tv_confirm.visibility = View.INVISIBLE
             tv_task_issue.visibility = View.VISIBLE
         }
+
     }
 
     override fun onClickEvent(view: View) {

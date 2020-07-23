@@ -43,6 +43,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("applyDate", getData(position).applyDate)
                 intent.putExtra("applyContent", getData(position).applyContent)
                 intent.putExtra("isType",true)
+                intent.putExtra("groupId",getData(position).attachmentGroupId)
                 startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
             }
         }
@@ -71,6 +72,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
     }
 
     override fun onMaintainAudit(baseModel: ArrayList<MaintainAuditBean>) {
+        LogUtil.i(baseModel.toString())
         pullRefreshFragment.addData(baseModel)
     }
 

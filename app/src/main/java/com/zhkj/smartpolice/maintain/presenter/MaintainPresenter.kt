@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.maintain.presenter
 
+import android.util.Log
 import com.google.gson.Gson
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
@@ -13,6 +14,8 @@ import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view) {
@@ -101,6 +104,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         val params = HashMap<String, String>()
         params["isApply"] = isApply
         params["page"] = page
+        LogUtil.i("维修管理员下载维修申请列表数据传递参数=========$params")
         val httpResultBean = object : HttpResultBean<PageModel<MaintainAuditBean>>() {}
         launch(Main) {
             ZyHttp.post(UrlConstant.MAINTAIN_AUDIT, params, httpResultBean)
@@ -192,7 +196,6 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
      */
     fun onIssueTask(
         content: String,
-        groupId: String,
         operation: String,
         operationId: String,
         operationPhone: String,
@@ -202,7 +205,6 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         view?.showLoading()
         val params = JSONObject()
         params.put("content", content)
-        params.put("groupId", groupId)
         params.put("operation", operation)
         params.put("operationId", operationId)
         params.put("operationPhone", operationPhone)
@@ -218,6 +220,90 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
                     view?.onIssueTask(httpResultBean.bean ?: return@launch)
                 } else {
                     ToastUtil.show(httpResultBean.bean?.msg)
+                }
+            }
+        }
+    }
+
+    /**
+     * 维修工人
+     */
+    fun onMaintainTask(repairState: String, page: String) {
+        view?.showLoading()
+        val params = HashMap<String, String>()
+        params["repairState"] = repairState
+        params["page"] = page
+        val httpResultBean = object : HttpResultBean<PageModel<MaintainTaskBean>>() {}
+        launch(Main) {
+            ZyHttp.post(UrlConstant.MAINTAIN_TASK, params, httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                if (httpResultBean.bean?.code?.toInt() == 0) {
+                    view?.onMaintainTask(httpResultBean.bean?.data?.list ?: return@launch)
+                } else {
+                    ToastUtil.show(httpResultBean.bean?.msg)
+                }
+            }
+        }
+    }
+
+    /**
+     * 维修员提交完成
+     */
+    fun onMaintainFinish(
+        content: String,
+        finishDate: String,
+        groupId: String,
+        operation: String,
+        operationId: String,
+        operationPhone: String,
+        professionId: String,
+        recordId: String,
+        repairDate: String,
+        repairState: String
+    ) {
+        view?.showLoading()
+        val params = JSONObject()
+        params.put("content", content)
+        params.put("finishDate", finishDate)
+        params.put("groupId", groupId)
+        params.put("operation", operation)
+        params.put("operationId", operationId)
+        params.put("operationPhone", operationPhone)
+        params.put("professionId", professionId)
+        params.put("recordId", recordId)
+        params.put("repairDate", repairDate)
+        params.put("repairState", repairState)
+        val httpResultBean = object : HttpResultBean<SucceedBean>() {}
+        launch(Main) {
+            ZyHttp.putJson(UrlConstant.MAINTAIN_FINISH, params.toString(), httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                view?.hideLoading()
+                if (httpResultBean.bean?.code?.toInt() == 0) {
+                    view?.onMaintainFinish(httpResultBean.bean ?: return@launch)
+                } else {
+                    ToastUtil.show(httpResultBean.bean?.msg)
+                }
+            }
+        }
+    }
+
+    /**
+     * 维修图片列表下载
+     */
+    fun onFindImagePath(groupId: String) {
+        val params = HashMap<String, String>()
+        params["groupId"] = groupId
+        val httpResultBean = object : HttpResultBean<PageModel<FindImagePathBean>>() {}
+        launch(Main) {
+            ZyHttp.post(UrlConstant.FIND_IMAGE_PATH_URL, params, httpResultBean)
+            if (httpResultBean.isSuccess()) {
+                if (httpResultBean.bean?.code?.toInt() == 0) {
+                    view?.onFindImagePath(httpResultBean.bean?.data?.list ?: return@launch)
+                } else {
+                    ToastUtil.show(
+                        httpResultBean.bean?.msg
+                    )
                 }
             }
         }

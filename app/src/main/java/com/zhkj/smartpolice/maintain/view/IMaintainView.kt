@@ -51,4 +51,19 @@ interface IMaintainView : IBaseView {
      * 下发维修任务
      */
     fun onIssueTask(succeedBean: SucceedBean){ }
+
+    /**
+     * 维修工任务列表
+     */
+    fun onMaintainTask(maintainTaskBean: ArrayList<MaintainTaskBean>) { }
+
+    /**
+     * 维修工提交维修成果
+     */
+    fun onMaintainFinish(succeedBean: SucceedBean){ }
+
+    /**
+     * 维修查找图片接口
+     */
+    fun onFindImagePath(findImagePathBean: ArrayList<FindImagePathBean>) { }
 }

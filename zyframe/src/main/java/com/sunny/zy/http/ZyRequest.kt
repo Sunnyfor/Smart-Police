@@ -56,6 +56,15 @@ class ZyRequest {
         return Request.Builder().url(urlSb.toString()).post(body).build()
     }
 
+    /**
+     * PUT-JSON请求生成
+     */
+    fun putJsonRequest(url: String, json: String): Request {
+        val urlsb = getUrlSb(url)
+        val body = json.toRequestBody("application/json; charset=utf-8".toMediaType())
+        return Request.Builder().url(urlsb.toString()).put(body).build()
+    }
+
 
     /**
      * POST-FORM请求生成
@@ -73,7 +82,7 @@ class ZyRequest {
     /**
      * FORM形式上传文件
      */
-    fun formUploadRequest(url: String, filePath: String): Request {
+    fun formUploadRequest(url: String, filePath: String,groupId: String?= null): Request {
         val urlSb = getUrlSb(url)
         val body = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
@@ -82,7 +91,9 @@ class ZyRequest {
                 filePath.split("/").last(),
                 File(filePath).asRequestBody("multipart/form-data".toMediaType())
             )
-
+        groupId?.let {
+            body.addFormDataPart("groupId",groupId)
+        }
         return Request.Builder().url(urlSb.toString()).post(body.build()).build()
     }
 }

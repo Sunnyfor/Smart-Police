@@ -23,6 +23,18 @@ class UserPresenter(iBaseView: IBaseView) : UserContract.Presenter(iBaseView) {
         }
     }
 
+    fun uploadImage(url: String, filePath: String, groupId: String) {
+        launch(Dispatchers.Main) {
+            showLoading()
+            model.uploadImage(url, filePath, groupId)?.let {
+                if (view is UserContract.IImageView) {
+                    (view as UserContract.IImageView).uploadImage(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
     override fun loadUserInfo() {
         launch(Dispatchers.Main) {
             model.loadUserInfo()?.let {

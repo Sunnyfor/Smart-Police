@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
+import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.maintain.adapter.MaintainAccompListAdapter
 import com.zhkj.smartpolice.maintain.bean.MaintainAccompListBean
@@ -49,7 +50,7 @@ class ProcessedFragment : BaseFragment(), IMaintainView {
     }
 
     override fun onMaintainAccomplish(info: ArrayList<MaintainAccompListBean>) {
-        super.onMaintainAccomplish(info)
+        LogUtil.i("已审核完成的数据======$info")
         pullRefreshFragment.addData(info)
     }
 }

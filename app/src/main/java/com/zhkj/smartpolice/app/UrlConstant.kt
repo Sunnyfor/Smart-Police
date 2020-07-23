@@ -15,6 +15,11 @@ object UrlConstant {
     const val UPLOAD_IMAGE_PATH_URL = "sys/attachment/upload"
 
     /**
+     * 图片查询地址
+     */
+    const val FIND_IMAGE_PATH_URL = "sys/attachment/list"
+
+    /**
      * 药店模块：意见箱
      */
     const val DRUGSTORE_FEEDBACK_URL = "logistics/feedback/save"
@@ -152,6 +157,16 @@ object UrlConstant {
      * 下发任务给维修工人
      */
     const val ISSUE_TASK = "logistic/repairrecord/save"
+
+    /**
+     * 查询指派给我的维修（维修工人）
+     */
+    const val MAINTAIN_TASK = "logistic/repairrecord/listMyRepair"
+
+    /**
+     * 维修工人提交维修成果
+     */
+    const val MAINTAIN_FINISH = "logistic/repairrecord/update"
 
     /**
      * 通知

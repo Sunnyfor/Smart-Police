@@ -13,11 +13,11 @@ class UserModel {
     /**
      * 上传图片
      */
-    suspend fun uploadImage(url: String, filePath: String): ImageBean? {
+    suspend fun uploadImage(url: String, filePath: String, groupId: String? = null): ImageBean? {
 
         val httpResultBean = object : HttpResultBean<BaseModel<ImageBean>>() {}
 
-        ZyHttp.formUpload(url, filePath, httpResultBean)
+        ZyHttp.formUpload(url, filePath, httpResultBean, groupId)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {
                 return httpResultBean.bean?.data

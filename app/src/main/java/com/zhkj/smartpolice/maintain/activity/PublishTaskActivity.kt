@@ -90,7 +90,6 @@ class PublishTaskActivity : BaseActivity(), IMaintainView {
                         operationPhone?.let { operationPhone ->
                             maintainPresenter.onIssueTask(
                                 intent.getStringExtra("applyContent"),
-                                "",
                                 nickName,
                                 userId,
                                 operationPhone,

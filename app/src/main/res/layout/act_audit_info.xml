@@ -77,13 +77,6 @@
                 tools:text="冰箱" />
         </LinearLayout>
 
-        <TextView
-            style="@style/style_font_audit_function"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_96"
-            android:text="照片：" />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,6 +117,22 @@
                 android:layout_height="wrap_content"
                 tools:text="06-25-18：00" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_img"
+            style="@style/style_font_audit_function"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_96"
+            android:text="照片：" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_maintain_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_76"
+            android:layout_below="@id/tv_img"
+            android:layout_marginTop="@dimen/sp_15"/>
+
     </RelativeLayout>
 
     <TextView

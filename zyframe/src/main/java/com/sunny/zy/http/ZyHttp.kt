@@ -128,12 +128,26 @@ object ZyHttp {
 
 
     /**
+     * PUT传递JSON请求
+     * @param url URL服务器地址
+     * @param json 传递json字符串
+     * @param clazz 解析类型 列如为String::class.java
+     * @return HttpResultBean<clazz> 网络请求结果
+     */
+    suspend fun <T> putJson(url: String, json: String, httpResultBean: HttpResultBean<T>) {
+        return withContext(Dispatchers.IO) {
+            val request = zyRequest.putJsonRequest(url, json)
+            execution(request, httpResultBean)
+        }
+    }
+
+    /**
      * form表单上传图片
      */
-    suspend fun <T> formUpload(url: String, filePath: String, httpResultBean: HttpResultBean<T>) {
+    suspend fun <T> formUpload(url: String, filePath: String, httpResultBean: HttpResultBean<T>, groupId: String? = null) {
         return withContext(Dispatchers.IO) {
             //创建okHttp请求
-            val request = zyRequest.formUploadRequest(url, filePath)
+            val request = zyRequest.formUploadRequest(url, filePath, groupId)
             execution(request, httpResultBean)
         }
     }

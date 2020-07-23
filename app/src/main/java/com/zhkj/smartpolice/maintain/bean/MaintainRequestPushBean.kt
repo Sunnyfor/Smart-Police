@@ -20,6 +20,10 @@ class MaintainRequestPushBean {
     var repairRecordEntity: RepairRecordEntity? = null
     var shopGoodsId: String? = null
 
+    override fun toString(): String {
+        return "MaintainRequestPushBean(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsId=$shopGoodsId)"
+    }
+
     class RepairRecordEntity{
         var content: String? = null
         var createTime: String? = null
@@ -31,5 +35,11 @@ class MaintainRequestPushBean {
         var professionId: String? = null
         var recordId: String? = null
         var repairDate: String? = null
+        override fun toString(): String {
+            return "RepairRecordEntity(content=$content, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, groupId=$groupId, operation=$operation, operationPhone=$operationPhone, professionId=$professionId, recordId=$recordId, repairDate=$repairDate)"
+        }
     }
+
+
+
 }

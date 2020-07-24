@@ -14,4 +14,8 @@ class FindImagePathBean {
     var updateDate: String? = null
     var userId: String? = null
     var userName: String? = null
+    override fun toString(): String {
+        return "FindImagePathBean(activeState=$activeState, format=$format, fullName=$fullName, groupId=$groupId, id=$id, name=$name, realName=$realName, remark=$remark, size=$size, src=$src, updateDate=$updateDate, userId=$userId, userName=$userName)"
+    }
+
 }

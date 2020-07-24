@@ -20,11 +20,11 @@ class MaintainTaskInfoAdapter(info: ArrayList<MaintainTaskBean>,var isType: Bool
         holder.itemView.tv_dept_name.text = getData(position).deptName
         holder.itemView.tv_goods.text = getData(position).shopGoodsName
         holder.itemView.tv_style_font_black_small.text = getData(position).applyContent
-        Glide.with(context)
-            .load(UrlConstant.LOAD_IMAGE_PATH_URL + getData(position).attachmentGroupId)
-            .dontAnimate()
-            .placeholder(R.drawable.svg_default_image)
-            .into(holder.itemView.iv_maintain_img)
+//        Glide.with(context)
+//            .load(UrlConstant.LOAD_IMAGE_PATH_URL + getData(position).attachmentGroupId)
+//            .dontAnimate()
+//            .placeholder(R.drawable.svg_default_image)
+//            .into(holder.itemView.iv_maintain_img)
 
         if (isType) {
             holder.itemView.tv_audit_status.text = "已维修     "

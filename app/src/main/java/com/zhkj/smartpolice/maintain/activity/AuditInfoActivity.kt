@@ -1,7 +1,6 @@
 package com.zhkj.smartpolice.maintain.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Build
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,13 +11,13 @@ import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.maintain.adapter.MaintainPhotographAdapter
+import com.zhkj.smartpolice.maintain.bean.FindImagePathBean
 import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.android.synthetic.main.act_audit_info.*
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.security.auth.login.LoginException
 import kotlin.collections.ArrayList
 
 class AuditInfoActivity : BaseActivity(), IMaintainView {
@@ -26,14 +25,15 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
     var applyId: String? = null
     var applyDate: String? = null
     var applyContent: String? = null
+    var findImagePathBean: ArrayList<FindImagePathBean> = ArrayList()
 
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
     }
 
-//    private val adapter: MaintainPhotographAdapter by lazy {
-//        MaintainPhotographAdapter(groupId)
-//    }
+    private val adapter: MaintainPhotographAdapter by lazy {
+        MaintainPhotographAdapter(findImagePathBean)
+    }
 
     override fun setLayout(): Int = R.layout.act_audit_info
 
@@ -50,13 +50,12 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
         applyContent = intent.getStringExtra("applyContent")
         isType = intent.getBooleanExtra("isType", true)
         var groupId = intent.getStringExtra("groupId")
-        LogUtil.i("isType============$groupId")
         groupId?.let {
-//            var groupIdList:ArrayList<String> = groupId.split(",") as ArrayList<String>
-//            LogUtil.i("isType============$groupIdList")
-//            rv_maintain_img.layoutManager = GridLayoutManager(this,3)
-//            rv_maintain_img.adapter = MaintainPhotographAdapter(groupIdList)
+            maintainPresenter.onFindImagePath(groupId)
         }
+        rv_maintain_img.layoutManager = GridLayoutManager(this, 4)
+        rv_maintain_img.adapter = adapter
+
         tv_refuse.setOnClickListener(this)
         tv_confirm.setOnClickListener(this)
         tv_task_issue.setOnClickListener(this)
@@ -135,5 +134,12 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
             intent.getStringExtra("applyId"),
             date, opinionType, userName
         )
+    }
+
+    override fun onFindImagePath(info: ArrayList<FindImagePathBean>) {
+        LogUtil.i("图片的下载========$info")
+        findImagePathBean.clear()
+        findImagePathBean.addAll(info)
+        adapter.notifyDataSetChanged()
     }
 }

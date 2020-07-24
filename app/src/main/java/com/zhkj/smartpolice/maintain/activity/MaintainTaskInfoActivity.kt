@@ -85,7 +85,7 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
                 if (groupId.isNullOrEmpty()) {
                     groupId = System.currentTimeMillis().toString()
                 }
-                presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path)
+                presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path, groupId.orEmpty())
             }
         }
 
@@ -116,11 +116,13 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
                     if (tv_maintainer_cellphone.text.toString().isNotEmpty()) {
                         if (tv_date.text.toString() != "请选择") {
                             info?.let {
-                                maintainPresenter.onMaintainFinish(it.applyContent.orEmpty(),
-                                    tv_date.text.toString(),groupId.orEmpty(),it.repairRecordEntity?.operation.orEmpty(),
-                                it.repairRecordEntity?.operationId.orEmpty(),tv_maintainer_cellphone.text.toString(),
-                                it.repairRecordEntity?.professionId.orEmpty(),it.repairRecordEntity?.recordId.orEmpty(),
-                                it.repairRecordEntity?.repairDate.orEmpty(),it.repairRecordEntity?.repairState.orEmpty())
+                                maintainPresenter.onMaintainFinish(
+                                    it.applyContent.orEmpty(),
+                                    tv_date.text.toString(), groupId.orEmpty(), it.repairRecordEntity?.operation.orEmpty(),
+                                    it.repairRecordEntity?.operationId.orEmpty(), tv_maintainer_cellphone.text.toString(),
+                                    it.repairRecordEntity?.professionId.orEmpty(), it.repairRecordEntity?.recordId.orEmpty(),
+                                    it.repairRecordEntity?.repairDate.orEmpty(), it.repairRecordEntity?.repairState.orEmpty()
+                                )
                             }
                         } else {
                             ToastUtil.show("维修时间不能为空")
@@ -149,11 +151,6 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
     override fun uploadImage(bean: ImageBean) {
         imageList.add(bean)
         gridviewadapter.notifyDataSetChanged()
-//        groupId = if (groupId != null){
-//            groupId + "," + bean.id
-//        } else {
-//            bean.id
-//        }
     }
 
     override fun onMaintainFinish(succeedBean: SucceedBean) {
@@ -162,7 +159,7 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
         putInSucceedDialog.onServiceListener = {
             putInSucceedDialog.dismiss()
             val intent = intent
-            setResult(RESULT_OK,intent)
+            setResult(RESULT_OK, intent)
             finish()
         }
     }

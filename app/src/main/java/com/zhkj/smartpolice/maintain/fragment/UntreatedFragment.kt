@@ -33,6 +33,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
 
     private val adapter: MaintainAuditListAdapter by lazy {
         MaintainAuditListAdapter(maintainauditList, false).apply {
+
             setOnItemClickListener { _, position ->
                 LogUtil.i("点击了这条item的数据==========${getData(position)}")
                 val intent = Intent(requireContext(), AuditInfoActivity::class.java)
@@ -72,7 +73,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
     }
 
     override fun onMaintainAudit(baseModel: ArrayList<MaintainAuditBean>) {
-        LogUtil.i(baseModel.toString())
+        LogUtil.i("下载数据为=========${baseModel}")
         pullRefreshFragment.addData(baseModel)
     }
 

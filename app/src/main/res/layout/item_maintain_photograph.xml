@@ -7,6 +7,6 @@
         android:id="@+id/iv_maintain_img"
         android:layout_width="@dimen/dp_76"
         android:layout_height="@dimen/dp_76"
-        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_5"
         android:src="@drawable/svg_default_image"/>
 </RelativeLayout>

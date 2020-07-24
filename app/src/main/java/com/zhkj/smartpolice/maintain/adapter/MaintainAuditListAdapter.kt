@@ -34,12 +34,13 @@ class MaintainAuditListAdapter(info: ArrayList<MaintainAuditBean>, var isType: B
         holder.itemView.tv_goods.text = getData(position).shopGoodsName
         holder.itemView.tv_style_font_black_small.text = getData(position).applyContent
         LogUtil.i("图片id========${findImagePath}")
-
-//            Glide.with(context)
-//                .load(UrlConstant.LOAD_IMAGE_PATH_URL)
-//                .dontAnimate()
-//                .placeholder(R.drawable.svg_default_image)
-//                .into(holder.itemView.iv_maintain_img)
+        getData(position).shopGoodsEntityList?.let {
+            Glide.with(context)
+                .load(UrlConstant.LOAD_IMAGE_PATH_URL + it[0].imageId)
+                .dontAnimate()
+                .placeholder(R.drawable.svg_default_image)
+                .into(holder.itemView.iv_maintain_img)
+        }
 
         if (isType) {
             holder.itemView.tv_audit_status.text = "待处理"

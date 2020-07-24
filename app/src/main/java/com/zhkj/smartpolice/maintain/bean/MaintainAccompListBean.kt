@@ -13,10 +13,6 @@ class MaintainAccompListBean {
     var processId: String? = null
     var processName: String? = null
 
-    override fun toString(): String {
-        return "MaintainAccompListBean(applyEntity=$applyEntity, applyId=$applyId, createTime=$createTime, opinionContent=$opinionContent, opinionId=$opinionId, opinionType=$opinionType, optionUserId=$optionUserId, optionUserName=$optionUserName, processId=$processId, processName=$processName)"
-    }
-
     class ApplyEntity {
         var applyContent: String? = null
         var applyDate: String? = null
@@ -36,12 +32,33 @@ class MaintainAccompListBean {
         var processId: String? = null
         var processName: String? = null
         var publishState: String? = null
-        var repairRecordEntity: String? = null
+        var repairRecordEntity: Any? = null
+        var shopGoodsEntityList: List<ShopGoodsEntity>? = null
         var shopGoodsId: String? = null
         var shopGoodsName: String? = null
-        override fun toString(): String {
-            return "ApplyEntity(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, approvalName=$approvalName, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, processName=$processName, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsId=$shopGoodsId, shopGoodsName=$shopGoodsName)"
+
+        class ShopGoodsEntity {
+            var activeState: String? = null
+            var classifyId: String? = null
+            var createTime: String? = null
+            var description: String? = null
+            var expiryDate: String? = null
+            var goodsClassifyLabel: String? = null
+            var goodsId: String? = null
+            var goodsName: String? = null
+            var groupId: String? = null
+            var imageId: String? = null
+            var inventory: String? = null
+            var isAway: String? = null
+            var isDelete: String? = null
+            var isTop: String? = null
+            var orderNumber: String? = null
+            var price: String? = null
+            var publishState: String? = null
+            var shopGoodsLabelEntityList: Any? = null
+            var shopId: String? = null
+            var subsidyPrice: String? = null
+            var updateUserId: String? = null
         }
     }
-
 }

@@ -8,10 +8,9 @@
     <RelativeLayout
         android:id="@+id/rl_head"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_224"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_14"
-        android:background="@color/font_white"
-        android:paddingBottom="@dimen/dp_17">
+        android:background="@color/font_white">
 
         <TextView
             style="@style/style_font_black_larger"
@@ -25,7 +24,6 @@
             android:id="@+id/rv_date"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_62"
-            android:layout_marginStart="@dimen/dp_17"
             android:layout_marginTop="@dimen/dp_49" />
 
         <View
@@ -48,10 +46,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_time"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_144"
+            android:layout_height="@dimen/dp_45"
             android:layout_below="@id/view"
             android:layout_marginStart="@dimen/dp_17"
-            android:layout_marginTop="@dimen/dp_48" />
+            android:layout_marginTop="@dimen/dp_48"
+            android:layout_marginBottom="@dimen/dp_17"/>
     </RelativeLayout>
 
     <RelativeLayout

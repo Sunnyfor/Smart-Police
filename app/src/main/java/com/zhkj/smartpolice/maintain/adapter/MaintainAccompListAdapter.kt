@@ -22,14 +22,18 @@ class MaintainAccompListAdapter(info: ArrayList<MaintainAccompListBean>,var isTy
         holder.itemView.tv_apply_date.text = getData(position).createTime
         getData(position).applyEntity?.let {
             holder.itemView.tv_dept_name.text = it.deptName
-            holder.itemView.tv_goods.text = it.shopGoodsName
+            it.shopGoodsEntityList?.let {info ->
+                holder.itemView.tv_goods.text = info[0].goodsName
+                Glide.with(context)
+                    .load(UrlConstant.LOAD_IMAGE_PATH_URL + info[0].imageId)
+                    .dontAnimate()
+                    .placeholder(R.drawable.svg_default_image)
+                    .into(holder.itemView.iv_maintain_img)
+            }
+
             holder.itemView.tv_style_font_black_small.text = it.applyContent
 
-            Glide.with(context)
-                .load(UrlConstant.LOAD_IMAGE_PATH_URL + it.attachmentGroupId)
-                .dontAnimate()
-                .placeholder(R.drawable.svg_default_image)
-                .into(holder.itemView.iv_maintain_img)
+
         }
         if (isType){
             holder.itemView.tv_audit_status.text = "已处理"

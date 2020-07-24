@@ -3,6 +3,7 @@ package com.zhkj.smartpolice.maintain.bean
 import java.io.Serializable
 
 class MaintainTaskBean : Serializable {
+
     var applyContent: String? = null
     var applyDate: String? = null
     var applyId: String? = null
@@ -26,11 +27,9 @@ class MaintainTaskBean : Serializable {
     var shopGoodsId: String? = null
     var shopGoodsName: String? = null
 
-    override fun toString(): String {
-        return "MaintainTaskBean(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, approvalName=$approvalName, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, processName=$processName, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsEntityList=$shopGoodsEntityList, shopGoodsId=$shopGoodsId, shopGoodsName=$shopGoodsName)"
-    }
 
-    class RepairRecordEntity : Serializable {
+
+    class RepairRecordEntity: Serializable {
         var content: String? = null
         var createTime: String? = null
         var createUserId: String? = null
@@ -47,9 +46,10 @@ class MaintainTaskBean : Serializable {
         override fun toString(): String {
             return "RepairRecordEntity(content=$content, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, finishDate=$finishDate, groupId=$groupId, operation=$operation, operationId=$operationId, operationPhone=$operationPhone, professionId=$professionId, recordId=$recordId, repairDate=$repairDate, repairState=$repairState)"
         }
+
     }
 
-    class ShopGoodsEntity : Serializable {
+    class ShopGoodsEntity : Serializable{
         var activeState: String? = null
         var classifyId: String? = null
         var createTime: String? = null
@@ -65,7 +65,7 @@ class MaintainTaskBean : Serializable {
         var isDelete: String? = null
         var isTop: String? = null
         var orderNumber: String? = null
-        var price: Double? = null
+        var price: String? = null
         var publishState: String? = null
         var shopGoodsLabelEntityList: Any? = null
         var shopId: String? = null
@@ -75,6 +75,11 @@ class MaintainTaskBean : Serializable {
             return "ShopGoodsEntity(activeState=$activeState, classifyId=$classifyId, createTime=$createTime, description=$description, expiryDate=$expiryDate, goodsClassifyLabel=$goodsClassifyLabel, goodsId=$goodsId, goodsName=$goodsName, groupId=$groupId, imageId=$imageId, inventory=$inventory, isAway=$isAway, isDelete=$isDelete, isTop=$isTop, orderNumber=$orderNumber, price=$price, publishState=$publishState, shopGoodsLabelEntityList=$shopGoodsLabelEntityList, shopId=$shopId, subsidyPrice=$subsidyPrice, updateUserId=$updateUserId)"
         }
     }
+
+    override fun toString(): String {
+        return "MaintainTaskBean(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, approvalName=$approvalName, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, processName=$processName, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsEntityList=$shopGoodsEntityList, shopGoodsId=$shopGoodsId, shopGoodsName=$shopGoodsName)"
+    }
+
 }
 
 

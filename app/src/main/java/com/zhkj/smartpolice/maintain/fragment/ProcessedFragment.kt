@@ -1,11 +1,15 @@
 package com.zhkj.smartpolice.maintain.fragment
 
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.Constant
+import com.zhkj.smartpolice.maintain.activity.AdministratorActivity
+import com.zhkj.smartpolice.maintain.activity.AuditInfoActivity
 import com.zhkj.smartpolice.maintain.adapter.MaintainAccompListAdapter
 import com.zhkj.smartpolice.maintain.bean.MaintainAccompListBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
@@ -21,7 +25,24 @@ class ProcessedFragment : BaseFragment(), IMaintainView {
     }
 
     private val adapter: MaintainAccompListAdapter by lazy {
-        MaintainAccompListAdapter(maintainAccompListBean,true)
+        MaintainAccompListAdapter(maintainAccompListBean, true).apply {
+            setOnItemClickListener { _, position ->
+                LogUtil.i("我点击的是哪个==========${getData(position)}")
+                val intent = Intent(requireContext(), AdministratorActivity::class.java)
+                getData(position).applyEntity?.let {
+                    intent.putExtra("applyContent",it.applyContent)
+                    intent.putExtra("petitioner", it.petitioner)
+                    intent.putExtra("petitionerPhone", it.petitionerPhone)
+                    intent.putExtra("deptName", it.deptName)
+                    intent.putExtra("applyDate", it.applyDate)
+                    it.shopGoodsEntityList?.let {info ->
+                        intent.putExtra("goodsName", info[0].goodsName)
+                    }
+                    intent.putExtra("attachmentGroupId",it.attachmentGroupId)
+                }
+                startActivityForResult(intent,Constant.MAINTAIN_CONTENT_ANSWER)
+            }
+        }
     }
 
     override fun setLayout(): Int = R.layout.frag_processed

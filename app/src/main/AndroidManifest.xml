@@ -85,8 +85,9 @@
         <activity android:name=".haircut.LeaderReserveActivity" />
 
         <!--维修模块-->
-        <activity android:name=".maintain.activity.MaintainApplyActivity"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
+        <activity
+            android:name=".maintain.activity.MaintainApplyActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity android:name=".maintain.activity.PoliceMaintainActivity" />
         <activity android:name=".maintain.activity.ApplyMaintainListActivity" />
         <activity android:name=".maintain.activity.AuditInfoActivity" />
@@ -94,8 +95,10 @@
         <activity android:name=".maintain.activity.MaintainContentActivity" />
         <activity android:name=".maintain.activity.PropertyManageActivity" />
         <activity android:name=".maintain.activity.MaintainTaskActivity" />
-        <activity android:name=".maintain.activity.MaintainTaskInfoActivity"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
+        <activity
+            android:name=".maintain.activity.MaintainTaskInfoActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity android:name=".maintain.activity.AdministratorActivity" />
 
         <!--运动场-->
         <activity

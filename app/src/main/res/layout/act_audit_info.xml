@@ -131,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_76"
             android:layout_below="@id/tv_img"
-            android:layout_marginTop="@dimen/sp_15"/>
+            android:layout_marginTop="17dp" />
 
     </RelativeLayout>
 

@@ -59,6 +59,18 @@ class MaintainAccompListBean {
             var shopId: String? = null
             var subsidyPrice: String? = null
             var updateUserId: String? = null
+
+            override fun toString(): String {
+                return "ShopGoodsEntity(activeState=$activeState, classifyId=$classifyId, createTime=$createTime, description=$description, expiryDate=$expiryDate, goodsClassifyLabel=$goodsClassifyLabel, goodsId=$goodsId, goodsName=$goodsName, groupId=$groupId, imageId=$imageId, inventory=$inventory, isAway=$isAway, isDelete=$isDelete, isTop=$isTop, orderNumber=$orderNumber, price=$price, publishState=$publishState, shopGoodsLabelEntityList=$shopGoodsLabelEntityList, shopId=$shopId, subsidyPrice=$subsidyPrice, updateUserId=$updateUserId)"
+            }
         }
+
+        override fun toString(): String {
+            return "ApplyEntity(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, approvalName=$approvalName, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, processName=$processName, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsEntityList=$shopGoodsEntityList, shopGoodsId=$shopGoodsId, shopGoodsName=$shopGoodsName)"
+        }
+    }
+
+    override fun toString(): String {
+        return "MaintainAccompListBean(applyEntity=$applyEntity, applyId=$applyId, createTime=$createTime, opinionContent=$opinionContent, opinionId=$opinionId, opinionType=$opinionType, optionUserId=$optionUserId, optionUserName=$optionUserName, processId=$processId, processName=$processName)"
     }
 }

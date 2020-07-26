@@ -155,6 +155,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_submit"
         android:layout_width="@dimen/dp_275"
         android:layout_height="@dimen/dp_40"
         android:gravity="center"

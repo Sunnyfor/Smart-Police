@@ -73,6 +73,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_LAUNDRY }.apply {
                     var intent = Intent(requireContext(), LaundryApplyActivity::class.java)
                     intent.putExtra("shopId", this?.shopId)
+                    intent.putExtra("selfQuota",this?.selfQuota)
                     startActivity(intent)
                 }
             }

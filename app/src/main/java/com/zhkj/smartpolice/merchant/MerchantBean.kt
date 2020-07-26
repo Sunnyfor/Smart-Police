@@ -31,6 +31,8 @@ class MerchantBean {
     var deptId: String? = null          //31,
     var treePath: String? = null        //"-1/1/31/",
     var deptName: String? = null        //"北京贞和科技",
+    var selfQuota: String? = null       //洗衣店便服限数
+    var deptQuota: String? = null       //部门限数
     var createNickName: String? = null  //null
 
     override fun toString(): String {

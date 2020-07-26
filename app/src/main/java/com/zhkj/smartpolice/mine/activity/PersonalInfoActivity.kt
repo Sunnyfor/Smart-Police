@@ -167,19 +167,14 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
                 return
             }
 
-            val nickname = et_name.text.toString()
-
             val phone = et_phone.text.toString()
             if (!checkPhoneFormat(phone)) {
-                ToastUtil.show("请输入正确的邮箱")
+                ToastUtil.show("请输入正确的手机号")
                 return
             }
 
+            val nickname = et_name.text.toString()
             val email = et_email.text.toString()
-            if (!checkEmailFormat(email)) {
-                ToastUtil.show("请输入正确的邮箱")
-                return
-            }
 
             userBean.userName = username
             userBean.nickName = nickname

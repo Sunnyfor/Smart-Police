@@ -30,16 +30,7 @@ class MineFragment : BaseFragment() {
             updatePoint(it.getBoolean("hasUnread"))
         }
 
-        val data = UserManager.getUserBean()
-        Glide.with(requireContext())
-            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${data.avatar}")
-            .placeholder(R.drawable.svg_default_head)
-            .into(iv_head)
-
-        tv_name.text = isStrEmpty("${data.nickName}", "登录 / 注册")
-        tv_sign.text = isStrEmpty(data.sign)
-
-        tv_money.paint.flags = Paint.UNDERLINE_TEXT_FLAG; //下划线
+        tv_money.paint.flags = Paint.UNDERLINE_TEXT_FLAG //下划线
 
         setOnClickListener(
             iv_head,
@@ -74,6 +65,18 @@ class MineFragment : BaseFragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val userBean = UserManager.getUserBean()
+        tv_name.text = isStrEmpty("${userBean.nickName}", "登录 / 注册")
+        tv_sign.text = isStrEmpty(userBean.sign)
+
+        Glide.with(requireContext())
+            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${userBean.avatar}")
+            .placeholder(R.drawable.svg_default_head)
+            .into(iv_head)
+    }
 
     fun updatePoint(hasUnread: Boolean) {
         tv_point.visibility = if (hasUnread) View.VISIBLE else View.GONE

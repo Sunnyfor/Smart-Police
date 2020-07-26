@@ -6,11 +6,11 @@ import com.bumptech.glide.Glide
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.CameraUtil
 import com.sunny.zy.utils.ToastUtil
-import com.sunny.zy.utils.checkEmailFormat
 import com.sunny.zy.utils.checkPhoneFormat
 import com.sunny.zy.widget.dialog.CameraDialog
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.mine.bean.ImageBean
 import com.zhkj.smartpolice.mine.bean.UserBean
 import com.zhkj.smartpolice.mine.model.UserContract
@@ -123,6 +123,7 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
 
     override fun updateUserInfo(msg: String) {
         if (msg == "success") {
+            UserManager.setUserBean(userBean)
             ToastUtil.show("修改成功")
         } else {
             ToastUtil.show(msg)

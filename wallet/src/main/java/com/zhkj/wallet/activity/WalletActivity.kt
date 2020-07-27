@@ -28,12 +28,7 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
     private val payPasswordUtil: PayPasswordUtil by lazy {
         PayPasswordUtil(view_pay_password_parent, this).apply {
             onUpdatePayPassword = {
-                val msg = if (type == create) {
-                    "成功创建支付密码！"
-                } else {
-                    "成功修改支付密码！"
-                }
-                ToastUtil.show(msg)
+
             }
         }
     }

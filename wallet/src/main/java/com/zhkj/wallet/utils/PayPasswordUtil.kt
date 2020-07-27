@@ -168,7 +168,7 @@ class PayPasswordUtil(
                 pay -> {
                     if (passWordResult == null) {
                         if (goodsPrice > presenter.balance) {
-                            PayResultActivity.intent(view.context, "2")
+                            PayResultActivity.intent(view.context, "0")
                             return
                         }
                     }
@@ -188,6 +188,7 @@ class PayPasswordUtil(
 
     override fun updatePayPassword() {
         onUpdatePayPassword?.invoke()
+        ToastUtil.show( "支付密码设置成功！")
     }
 
     override fun showLoading() {

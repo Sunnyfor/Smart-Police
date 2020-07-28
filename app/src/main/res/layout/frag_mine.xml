@@ -42,7 +42,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="68dp"
-            app:layout_constraintDimensionRatio="5:2"
+            app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +86,7 @@
             android:src="@drawable/svg_mine_edit"
             app:layout_constraintEnd_toEndOf="@id/v_login"
             app:layout_constraintTop_toTopOf="@id/v_login" />
+<!--
 
         <TextView
             android:id="@+id/tv1"
@@ -154,6 +155,7 @@
             app:layout_constraintStart_toStartOf="@id/tv3"
             app:layout_constraintTop_toTopOf="@id/tv_history"
             tools:ignore="HardcodedText" />
+-->
 
         <!--订单记录-->
 

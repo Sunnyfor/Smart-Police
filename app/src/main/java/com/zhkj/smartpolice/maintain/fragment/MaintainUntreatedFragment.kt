@@ -27,7 +27,7 @@ class MaintainUntreatedFragment : BaseFragment(), IMaintainView {
     private val adapter: MaintainAuditListAdapter by lazy {
         MaintainAuditListAdapter(maintainAuditList, true).apply {
             setOnItemClickListener { _, position ->
-                var intent = Intent(requireContext(), AuditInfoActivity::class.java)
+                val intent = Intent(requireContext(), AuditInfoActivity::class.java)
                 intent.putExtra("applyId", getData(position).applyId)
                 intent.putExtra("petitioner", getData(position).petitioner)
                 intent.putExtra("petitionerPhone", getData(position).petitionerPhone)
@@ -36,7 +36,7 @@ class MaintainUntreatedFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("applyContent", getData(position).applyContent)
                 intent.putExtra("isType", false)
                 intent.putExtra("groupId",getData(position).attachmentGroupId)
-                startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
+                startActivity(intent)
             }
         }
     }
@@ -68,14 +68,5 @@ class MaintainUntreatedFragment : BaseFragment(), IMaintainView {
         pullRefreshFragment.addData(pagemodel)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode){
-            Constant.MAINTAIN_CONTENT_ANSWER -> {
-                if (resultCode == Activity.RESULT_OK) {
-                    loadData()
-                }
-            }
-        }
-    }
+
 }

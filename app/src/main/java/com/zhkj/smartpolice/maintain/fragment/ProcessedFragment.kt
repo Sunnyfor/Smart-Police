@@ -8,9 +8,7 @@ import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.maintain.activity.AdministratorActivity
-import com.zhkj.smartpolice.maintain.activity.AuditInfoActivity
 import com.zhkj.smartpolice.maintain.adapter.MaintainAccompListAdapter
 import com.zhkj.smartpolice.maintain.bean.MaintainAccompListBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
@@ -42,7 +40,7 @@ class ProcessedFragment : BaseFragment(), IMaintainView {
                     }
                     intent.putExtra("attachmentGroupId",it.attachmentGroupId)
                 }
-                startActivityForResult(intent,Constant.MAINTAIN_CONTENT_ANSWER)
+                startActivity(intent)
             }
         }
     }

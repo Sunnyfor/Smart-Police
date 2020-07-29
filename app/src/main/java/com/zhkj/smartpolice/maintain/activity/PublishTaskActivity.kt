@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.SpUtil
@@ -127,6 +128,7 @@ class PublishTaskActivity : BaseActivity(), IMaintainView {
             putInSucceedDialog.onServiceListener = {
                 putInSucceedDialog.dismiss()
                 ToastUtil.show("下发成功")
+                ZyFrameStore.setData("isGoData", true)
                 finish()
             }
         }

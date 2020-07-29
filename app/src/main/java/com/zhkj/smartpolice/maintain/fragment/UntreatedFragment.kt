@@ -1,7 +1,5 @@
 package com.zhkj.smartpolice.maintain.fragment
 
-import android.annotation.SuppressLint
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +14,6 @@ import com.zhkj.smartpolice.maintain.bean.MaintainAuditBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.android.synthetic.main.frag_untreated.*
-import java.text.SimpleDateFormat
 
 class UntreatedFragment : BaseFragment(), IMaintainView {
 
@@ -47,7 +44,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("applyContent", getData(position).applyContent)
                 intent.putExtra("isType",true)
                 intent.putExtra("groupId",getData(position).attachmentGroupId)
-                startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
+                getBaseActivity().startActivityForResult(intent, Constant.MAINTAIN_CONTENT_ANSWER)
             }
         }
     }
@@ -77,16 +74,5 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
     override fun onMaintainAudit(baseModel: ArrayList<MaintainAuditBean>) {
         LogUtil.i("下载数据为=========${baseModel}")
         pullRefreshFragment.addData(baseModel)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            Constant.MAINTAIN_CONTENT_ANSWER -> {
-                if (resultCode == RESULT_OK) {
-                    loadData()
-                }
-            }
-        }
     }
 }

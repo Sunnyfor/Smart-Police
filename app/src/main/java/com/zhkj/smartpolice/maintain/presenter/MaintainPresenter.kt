@@ -234,6 +234,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         val params = HashMap<String, String>()
         params["repairState"] = repairState
         params["page"] = page
+        LogUtil.i("我已处理时候传递的参数=========$params")
         val httpResultBean = object : HttpResultBean<PageModel<MaintainTaskBean>>() {}
         launch(Main) {
             ZyHttp.post(UrlConstant.MAINTAIN_TASK, params, httpResultBean)

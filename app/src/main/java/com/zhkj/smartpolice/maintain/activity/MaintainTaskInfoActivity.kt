@@ -11,6 +11,7 @@ import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.CameraDialog
 import com.sunny.zy.widget.dialog.PutInSucceedDialog
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.maintain.adapter.GridViewAdapter
 import com.zhkj.smartpolice.maintain.bean.MaintainTaskBean
@@ -121,7 +122,7 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
                                     tv_date.text.toString(), groupId.orEmpty(), it.repairRecordEntity?.operation.orEmpty(),
                                     it.repairRecordEntity?.operationId.orEmpty(), tv_maintainer_cellphone.text.toString(),
                                     it.repairRecordEntity?.professionId.orEmpty(), it.repairRecordEntity?.recordId.orEmpty(),
-                                    it.repairRecordEntity?.repairDate.orEmpty(), it.repairRecordEntity?.repairState.orEmpty()
+                                    it.repairRecordEntity?.repairDate.orEmpty(), Constant.MAINTAIN_TASK_FINISH
                                 )
                             }
                         } else {

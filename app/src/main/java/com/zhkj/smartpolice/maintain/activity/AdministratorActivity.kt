@@ -34,7 +34,9 @@ AdministratorActivity : BaseActivity(), IMaintainView {
         tv_apply_date.text = intent.getStringExtra("applyDate")
         tv_apply_content.text = intent.getStringExtra("goodsName")
         var groupId = intent.getStringExtra("attachmentGroupId")
-        maintainPresenter.onFindImagePath(groupId)
+        groupId?.let {
+            maintainPresenter.onFindImagePath(groupId)
+        }
         rv_maintain_img.layoutManager = GridLayoutManager(this, 4)
         rv_maintain_img.adapter = adapter
         tv_refuse.visibility = View.INVISIBLE

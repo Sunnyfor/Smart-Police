@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
+import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.maintain.adapter.MaintainTaskInfoAdapter
@@ -57,6 +58,7 @@ class AccomplishFragment: BaseFragment(), IMaintainView {
 
     override fun onMaintainTask(maintainTaskBean: ArrayList<MaintainTaskBean>) {
         pullRefreshFragment.addData(maintainTaskBean)
+        LogUtil.i("物业管理员返回的参数===========$maintainTaskBean")
     }
 
 }

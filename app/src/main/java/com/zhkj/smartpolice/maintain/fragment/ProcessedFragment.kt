@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.maintain.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.zhkj.smartpolice.maintain.bean.MaintainAccompListBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.android.synthetic.main.frag_processed.*
+import java.text.SimpleDateFormat
 
 class ProcessedFragment : BaseFragment(), IMaintainView {
     private val pullRefreshFragment = PullRefreshFragment<MaintainAccompListBean>()
@@ -34,7 +36,7 @@ class ProcessedFragment : BaseFragment(), IMaintainView {
                     intent.putExtra("petitioner", it.petitioner)
                     intent.putExtra("petitionerPhone", it.petitionerPhone)
                     intent.putExtra("deptName", it.deptName)
-                    intent.putExtra("applyDate", it.applyDate)
+                    intent.putExtra("applyDate", getDate(it.applyDate))
                     it.shopGoodsEntityList?.let {info ->
                         intent.putExtra("goodsName", info[0].goodsName)
                     }
@@ -73,5 +75,11 @@ class ProcessedFragment : BaseFragment(), IMaintainView {
     override fun onMaintainAccomplish(info: ArrayList<MaintainAccompListBean>) {
         LogUtil.i("已审核完成的数据======$info")
         pullRefreshFragment.addData(info)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun getDate(str: String?): String {
+        val formatter: java.text.SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+        return SimpleDateFormat("yyyy-MM-dd").format(formatter.parse(str))
     }
 }

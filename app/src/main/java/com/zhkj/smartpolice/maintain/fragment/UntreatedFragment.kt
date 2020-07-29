@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.maintain.fragment
 
+import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.view.View
@@ -15,6 +16,7 @@ import com.zhkj.smartpolice.maintain.bean.MaintainAuditBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.android.synthetic.main.frag_untreated.*
+import java.text.SimpleDateFormat
 
 class UntreatedFragment : BaseFragment(), IMaintainView {
 
@@ -41,7 +43,7 @@ class UntreatedFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("petitioner", getData(position).petitioner)
                 intent.putExtra("petitionerPhone", getData(position).petitionerPhone)
                 intent.putExtra("deptName", getData(position).deptName)
-                intent.putExtra("applyDate", getData(position).applyDate)
+                intent.putExtra("applyDate", getDate(getData(position).applyDate))
                 intent.putExtra("applyContent", getData(position).applyContent)
                 intent.putExtra("isType",true)
                 intent.putExtra("groupId",getData(position).attachmentGroupId)

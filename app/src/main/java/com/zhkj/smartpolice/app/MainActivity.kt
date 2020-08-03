@@ -5,7 +5,6 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.fragment.MineFragment
@@ -48,8 +47,8 @@ class MainActivity : BaseActivity() {
         intentFilter.addAction("com.zhkj.notice.message")
         registerReceiver(noticeReceiver, intentFilter)
 
-//        val intent = Intent(this, NoticeService::class.java)
-//        startService(intent)
+        val intent = Intent(this, NoticeService::class.java)
+        startService(intent)
 
         bottom_navigation_view.elevation = 0f
     }

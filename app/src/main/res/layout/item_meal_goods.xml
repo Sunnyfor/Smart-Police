@@ -12,7 +12,7 @@
         style="@style/style_image_circle"
         android:layout_width="@dimen/dp_112"
         android:layout_height="@dimen/dp_90"
-        android:src="@drawable/bg_meal_goods"
+        android:src="@drawable/svg_default_image"
         app:riv_corner_radius="@dimen/dp_5"
         tools:ignore="ContentDescription" />
 

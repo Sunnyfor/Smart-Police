@@ -113,7 +113,7 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView,
                     return
                 }
 
-                if (resourceAdapter.index == -1){
+                if (resourceAdapter.index == -1) {
                     ToastUtil.show("请选择预约的场地！")
                     return
                 }
@@ -164,7 +164,7 @@ class StadiumDetailActivity : BaseActivity(), MerchantContract.IReserveTimeView,
     private fun getEndData(day: Int): String {
         val month = calendar.get(Calendar.MONTH) + 1
 
-        return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-$day"
+        return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-${if (day < 10) "0$day" else day}"
     }
 
     override fun reserveResult(data: BaseModel<Any>) {

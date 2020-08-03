@@ -48,8 +48,8 @@ class MainActivity : BaseActivity() {
         intentFilter.addAction("com.zhkj.notice.message")
         registerReceiver(noticeReceiver, intentFilter)
 
-        val intent = Intent(this, NoticeService::class.java)
-        startService(intent)
+//        val intent = Intent(this, NoticeService::class.java)
+//        startService(intent)
 
         bottom_navigation_view.elevation = 0f
     }

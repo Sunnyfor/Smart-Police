@@ -124,7 +124,7 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
     fun getEndData(day: Int): String {
         val month = calendar.get(Calendar.MONTH) + 1
 
-        return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-$day"
+        return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-${if (day < 10) "0$day" else day}"
     }
 
 

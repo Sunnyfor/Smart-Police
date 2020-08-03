@@ -54,7 +54,7 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
 
         setOnClickListener(cl_date, btn_reserve)
 
-        presenter.loadReserveTime("${calendar.get(Calendar.YEAR)}-${monthStr}-${calendar.get(Calendar.DAY_OF_MONTH)}", shopId, null)
+        presenter.loadReserveTime(getEndData(calendar.get(Calendar.DAY_OF_MONTH)), shopId, null)
 
     }
 
@@ -110,4 +110,11 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
         ToastUtil.show("预约成功！")
         finish()
     }
+
+    private fun getEndData(day: Int): String {
+        val month = calendar.get(Calendar.MONTH) + 1
+
+        return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-${if (day < 10) "0$day" else day}"
+    }
+
 }

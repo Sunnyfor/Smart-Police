@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
+import com.sunny.zy.utils.GlideApp
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import kotlinx.android.synthetic.main.item_meal_order.view.*
 
@@ -16,6 +18,12 @@ class MealOrderAdapter(private var onUpdateListener: OnUpdateListener, list: Arr
         LayoutInflater.from(context).inflate(R.layout.item_meal_order, parent, false)
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
+
+        GlideApp.with(context)
+            .load(UrlConstant.LOAD_IMAGE_PATH_URL + getData(position).imageId)
+            .placeholder(R.drawable.svg_default_image)
+            .into(holder.itemView.iv_icon)
+
         holder.itemView.tv_title.text = getData(position).goodsName
         holder.itemView.tv_price.text = getData(position).price
         holder.itemView.et_count.setText(getData(position).count.toString())

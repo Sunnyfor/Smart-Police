@@ -23,7 +23,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:layout_toEndOf="@id/checkbox"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_meal_goods"
+        android:src="@drawable/svg_default_image"
         tools:ignore="ContentDescription" />
 
     <TextView

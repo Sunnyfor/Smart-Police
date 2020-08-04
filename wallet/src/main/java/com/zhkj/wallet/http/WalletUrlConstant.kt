@@ -1,5 +1,7 @@
 package com.zhkj.wallet.http
 
+import com.sunny.zy.http.UrlConstant
+
 object WalletUrlConstant {
     /**
      * 钱包URL
@@ -34,5 +36,5 @@ object WalletUrlConstant {
     /**
      * 支付码长连接地址
      */
-    const val WEB_SOCKET_HOST = "ws://122.51.69.116:8082/websocket/%s"
+    const val WEB_SOCKET_HOST = "ws://" + UrlConstant.IP + "/websocket/%s"
 }

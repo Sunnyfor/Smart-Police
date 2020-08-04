@@ -14,9 +14,11 @@ object UrlConstant {
 
 //    const val host = "https://www.zhenhekj.com:8807" //正式地址
 
-    const val host = "http://122.51.69.116:8082" //测试环境
+    const val IP = "122.51.69.116:8082" //测试环境
 
-//    const val host = "http://192.168.1.106:80" //演示接口
+//    const val IP = "192.168.1.106:80" //演示接口
+
+    const val host = "http://$IP"
 
     val TEMP = ZyFrameStore.getContext().getExternalFilesDir("temp")?.path //内存卡缓存路径
 

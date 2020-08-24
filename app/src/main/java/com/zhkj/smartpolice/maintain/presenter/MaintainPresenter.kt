@@ -1,6 +1,5 @@
 package com.zhkj.smartpolice.maintain.presenter
 
-import android.util.Log
 import com.google.gson.Gson
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.PageModel
@@ -14,8 +13,6 @@ import com.zhkj.smartpolice.maintain.view.IMaintainView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 
@@ -75,6 +72,8 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 view?.onMaintainRequestPush(httpResultBean.bean ?: return@launch)
+            } else {
+                ToastUtil.show(httpResultBean.bean?.msg)
             }
         }
     }
@@ -108,7 +107,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         LogUtil.i("维修管理员下载维修申请列表数据传递参数=========$params")
         val httpResultBean = object : HttpResultBean<PageModel<MaintainAuditBean>>() {}
         launch(Main) {
-            ZyHttp.post(UrlConstant.MAINTAIN_AUDIT, params, httpResultBean)
+            ZyHttp.post(UrlConstant.MAINTAIN_AUDIT , params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 if (httpResultBean.bean?.code?.toInt() == 0) {

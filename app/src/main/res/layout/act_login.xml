@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.activity.LoginActivity">
+    tools:ignore="HardcodedText">
 
     <ImageView
         android:layout_width="match_parent"
@@ -89,16 +89,36 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="@dimen/dp_25"
             android:layout_marginBottom="@dimen/dp_100"
-            android:text="修改密码？"
-            tools:ignore="HardcodedText" />
+            android:text="修改密码？" />
 
         <TextView
             android:id="@+id/btn_login"
             style="@style/style_common_btn"
             android:layout_alignParentBottom="true"
-            android:text="登录"
-            tools:ignore="HardcodedText" />
+            android:text="登录" />
 
     </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_60"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:contentDescription="@string/placeholder"
+            android:src="@drawable/svg_login_fingerprint" />
+
+        <TextView
+            style="@style/style_font_black"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="点击使用指纹登录" />
+
+    </LinearLayout>
 
 </RelativeLayout>

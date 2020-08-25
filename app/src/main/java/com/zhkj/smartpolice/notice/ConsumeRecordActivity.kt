@@ -9,7 +9,7 @@ import com.zhkj.smartpolice.notice.bean.NoticeBean
 import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
 
-class NoticeActivity : BaseActivity(), NoticeContract.INoticeView {
+class ConsumeRecordActivity : BaseActivity(), NoticeContract.INoticeView {
 
     val pullRefreshFragment = PullRefreshFragment<NoticeBean>()
 
@@ -21,7 +21,7 @@ class NoticeActivity : BaseActivity(), NoticeContract.INoticeView {
 
     override fun initView() {
 
-        defaultTitle("消息通知")
+        defaultTitle("消费记录")
 
         pullRefreshFragment.adapter = NoticeAdapter().apply {
             setOnItemClickListener { _, position ->

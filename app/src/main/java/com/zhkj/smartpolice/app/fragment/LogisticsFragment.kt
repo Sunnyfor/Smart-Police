@@ -19,10 +19,14 @@ import com.zhkj.smartpolice.maintain.activity.MaintainTaskActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
 import com.zhkj.smartpolice.maintain.activity.PropertyManageActivity
 import com.zhkj.smartpolice.meal.MealChoiceActivity
+import com.zhkj.smartpolice.meal.MealRecordActivity
 import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
+import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
+import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
+import com.zhkj.smartpolice.notice.ConsumeRecordActivity
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 import kotlinx.coroutines.cancel
@@ -41,13 +45,14 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
     override fun setLayout(): Int = R.layout.frag_logistics
 
     override fun initView() {
+
+        getBaseActivity().simpleTitle("后勤")
+
         setOnClickListener(
-            tv_restaurant,
-            tv_haircut,
-            tv_drugstore,
-            tv_laundry,
-            tv_stadium,
-            tv_maintain
+            tv_restaurant, tv_haircut, tv_drugstore, tv_shuttle_bus,
+            tv_laundry, tv_stadium, tv_maintain, tv_physical_therapy,
+            ll_meal, ll_repair, ll_reserve, ll_consume,
+            tv_office_supplies, tv_vehicle_apply
         )
     }
 
@@ -69,11 +74,14 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                     DrugstoreActivity.intent(requireContext(), this?.shopId)
                 }
             }
+            tv_shuttle_bus.id -> {
+                ToastUtil.show()
+            }
             tv_laundry.id -> {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_LAUNDRY }.apply {
-                    var intent = Intent(requireContext(), LaundryApplyActivity::class.java)
+                    val intent = Intent(requireContext(), LaundryApplyActivity::class.java)
                     intent.putExtra("shopId", this?.shopId)
-                    intent.putExtra("selfQuota",this?.selfQuota)
+                    intent.putExtra("selfQuota", this?.selfQuota)
                     startActivity(intent)
                 }
             }
@@ -95,6 +103,17 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                     else -> ToastUtil.show("你当前不是警员")
                 }
             }
+            tv_physical_therapy.id -> {
+                ToastUtil.show()
+            }
+
+            ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
+            ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
+            ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
+            ll_consume.id -> startActivity(Intent(requireContext(), ConsumeRecordActivity::class.java))
+
+            tv_office_supplies.id -> ToastUtil.show()
+            tv_vehicle_apply.id -> ToastUtil.show()
         }
     }
 

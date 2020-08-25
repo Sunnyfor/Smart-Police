@@ -5,6 +5,9 @@
         android:icon="@drawable/svg_logistics_black"
         android:title="@string/logistics" />
     <item
+        android:id="@+id/mine_code"
+        android:title="@string/code_null" />
+    <item
         android:id="@+id/mine_dest"
         android:icon="@drawable/svg_mine_black"
         android:title="@string/mine" />

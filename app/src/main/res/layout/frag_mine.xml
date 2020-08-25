@@ -11,28 +11,10 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_120"
+            android:layout_height="@dimen/dp_100"
             android:background="@drawable/sel_top_bg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_back"
-            style="@style/style_common_icon"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/svg_btn_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            style="@style/style_font_white_bigger"
-            android:layout_height="@dimen/dp_40"
-            android:layout_marginStart="@dimen/dp_20"
-            android:gravity="center_vertical"
-            android:text="个人中心"
-            app:layout_constraintStart_toEndOf="@id/iv_back"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
 
         <!--登录框-->
 
@@ -40,8 +22,8 @@
             android:id="@+id/v_login"
             style="@style/style_mine_layout_card"
             android:layout_height="0dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_30"
             app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -223,7 +205,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_medicine"
+                android:id="@+id/ll_consume"
                 style="@style/style_mine_layout_weight"
                 tools:ignore="UseCompoundDrawables">
 
@@ -232,12 +214,13 @@
                     style="@style/style_common_icon"
                     android:background="@drawable/sel_mine_yellow"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/svg_mine_message" />
+                    android:padding="@dimen/dp_1"
+                    android:src="@drawable/svg_mine_consume" />
 
                 <TextView
                     style="@style/style_font_black_small"
                     android:layout_marginTop="@dimen/dp_5"
-                    android:text="消息通知"
+                    android:text="消费记录"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
         </LinearLayout>
@@ -351,6 +334,19 @@
             app:startAfterText="设置"
             app:startAfterTextColor="@color/color_black"
             app:startIcon="@drawable/svg_mine_setting" />
+
+        <com.zhkj.smartpolice.widget.ItemLayout
+            android:id="@+id/item_fingerprint"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_56"
+            app:endIcon="@drawable/svg_btn_more"
+            app:layout_constraintEnd_toEndOf="@id/item_help"
+            app:layout_constraintStart_toStartOf="@id/item_help"
+            app:layout_constraintTop_toBottomOf="@id/item_setting"
+            app:lineVisible="true"
+            app:startAfterText="设置指纹"
+            app:startAfterTextColor="@color/color_black"
+            app:startIcon="@drawable/svg_mine_fingerprint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

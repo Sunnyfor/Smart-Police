@@ -119,7 +119,7 @@
         <!--洗衣店-->
         <activity android:name=".laundry.activity.LaundryApplyActivity" />
 
-        <activity android:name=".notice.NoticeActivity" />
+        <activity android:name=".notice.ConsumeRecordActivity" />
 
         <service android:name=".notice.NoticeService" />
     </application>

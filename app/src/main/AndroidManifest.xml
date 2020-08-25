@@ -42,7 +42,7 @@
         tools:replace="android:allowBackup,android:theme"
         tools:targetApi="m">
 
-        <activity android:name=".login.activity.LoginActivity">
+        <activity android:name=".login.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,6 +53,7 @@
         <activity android:name=".app.MainActivity" />
 
         <!--登录模块-->
+        <activity android:name=".login.activity.LoginActivity" />
         <activity android:name=".login.activity.ModifyPasswordActivity" />
 
         <!--商家模块-->

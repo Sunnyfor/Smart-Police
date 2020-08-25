@@ -39,7 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/ZyTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:allowBackup"
+        tools:replace="android:allowBackup,android:theme"
         tools:targetApi="m">
 
         <activity android:name=".login.activity.LoginActivity">

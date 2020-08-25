@@ -141,6 +141,7 @@
         app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_recharge"
         style="@style/style_common_btn"
         android:text="@string/start_recharge"
         app:layout_constraintEnd_toEndOf="parent"

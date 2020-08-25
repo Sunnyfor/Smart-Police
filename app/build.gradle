@@ -35,6 +35,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    
+    repositories {
+        flatDir {
+            dirs 'libs', '../wallet/libs'
+        }
+    }
 
     android.applicationVariants.all {
         variant ->

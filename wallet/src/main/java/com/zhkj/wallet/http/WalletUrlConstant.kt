@@ -37,4 +37,9 @@ object WalletUrlConstant {
      * 支付码长连接地址
      */
     const val WEB_SOCKET_HOST = "ws://" + UrlConstant.IP + "/websocket/%s"
+
+    /**
+     * 获取第三方支付参数
+     */
+    const val PAY_RECORD_SAVE = "pay/record/save"
 }

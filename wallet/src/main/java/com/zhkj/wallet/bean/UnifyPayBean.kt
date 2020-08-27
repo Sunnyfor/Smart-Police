@@ -16,7 +16,7 @@ class UnifyPayBean {
     var wxOpenid: String? = null
     var param: String? = null
     var notifyUrlParam: String? = null
-    var wechatPrePaymentOrderParam: String? = null
+    var wechatPrePaymentOrderParam: Any? = null
     var amount: String? = null
     var orderId: String? = null
     var tradeNo: String? = null

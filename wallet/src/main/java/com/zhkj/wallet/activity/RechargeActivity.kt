@@ -13,6 +13,8 @@ import com.zhkj.wallet.contract.UnifyPayContract
 import com.zhkj.wallet.presenter.UnifyPayPresenter
 import com.zhkj.wallet.utils.MoneyInputFilter
 import kotlinx.android.synthetic.main.act_recharge.*
+import org.json.JSONArray
+import org.json.JSONObject
 
 /**
  * 充值页面
@@ -20,10 +22,10 @@ import kotlinx.android.synthetic.main.act_recharge.*
 @Route(path = RouterManager.RECHARGE_ACTIVITY)
 class RechargeActivity : BaseActivity(), UnifyPayContract.IView {
 
-    var wxPay = 2
-    var aliPay = 1
+    private var wxPay = 2
+    private var aliPay = 1
 
-    var payType = wxPay
+    private var payType = wxPay
 
     val presenter: UnifyPayContract.Presenter by lazy {
         UnifyPayPresenter(this)
@@ -37,9 +39,8 @@ class RechargeActivity : BaseActivity(), UnifyPayContract.IView {
         UnifyPayPlugin.getInstance(this).setListener { resultCode, resultInfo ->
             if ("0000" == resultCode) {
                 //支付成功
-                ToastUtil.show("结果code：$resultCode  结果信息:$resultInfo")
             } else {
-                ToastUtil.show("结果code：$resultCode  结果信息:$resultInfo")
+                ToastUtil.show(resultInfo)
             }
         }
     }
@@ -65,6 +66,10 @@ class RechargeActivity : BaseActivity(), UnifyPayContract.IView {
                 singleSelect()
             }
             btn_recharge.id -> {
+                if (edt_money.text.isEmpty()) {
+                    ToastUtil.show("请输入充值金额！")
+                    return
+                }
                 presenter.unifyPay(payType, edt_money.text.toString().toFloat())
             }
         }
@@ -85,24 +90,34 @@ class RechargeActivity : BaseActivity(), UnifyPayContract.IView {
 
     }
 
-    private fun recharge(params: String) {
+    private fun recharge(json: String) {
+
+        val jsonArray = JSONArray(json)
+        val jsonObj = jsonArray.getJSONObject(0)
+        val payJsonObj = jsonObj.getString("全民付预支付订单响应参数")
+        val paramsObj = JSONObject(payJsonObj)
         val request = UnifyPayRequest()
+        val code = paramsObj.optString("errCode")
 
-        if (payType == wxPay) {
-            request.payChannel = UnifyPayRequest.CHANNEL_WEIXIN
+        if (code == "SUCCESS") {
+            if (payType == wxPay) {
+                request.payChannel = UnifyPayRequest.CHANNEL_WEIXIN
+            }
+            if (payType == aliPay) {
+                request.payChannel = UnifyPayRequest.CHANNEL_ALIPAY
+            }
+
+            request.payData = paramsObj.optString("appPayRequest")
+            UnifyPayPlugin.getInstance(this).sendPayRequest(request)
+        } else {
+            ToastUtil.show(paramsObj.optString("errMsg"))
         }
 
-        if (payType == aliPay) {
-            request.payChannel = UnifyPayRequest.CHANNEL_ALIPAY
-        }
-
-        request.payData = params
-        UnifyPayPlugin.getInstance(this).sendPayRequest(request)
     }
 
     override fun unifyPayResult(unifyPayBean: UnifyPayBean) {
         unifyPayBean.wechatPrePaymentOrderParam?.let {
-            recharge(it)
+            recharge(it.toString())
         }
 
     }

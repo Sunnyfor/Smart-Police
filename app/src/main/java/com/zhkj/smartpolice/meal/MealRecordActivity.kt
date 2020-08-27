@@ -51,7 +51,7 @@ class MealRecordActivity : BaseActivity(), MealContract.IMealRecordView {
 
     override fun loadData() {
         showLoading()
-        presenter.loadMealRecord(pullRefreshFragment.page.toString())
+        presenter.loadMealRecord(pullRefreshFragment.page)
     }
 
     override fun close() {

@@ -30,19 +30,19 @@ interface MealContract {
     abstract class Presenter(iBaseView: IBaseView) : BasePresenter<IBaseView>(iBaseView) {
 
         //餐厅列表
-        abstract fun loadRestaurantList(page: String)
+        abstract fun loadRestaurantList(page: Int)
 
         //餐厅菜单分类
         abstract fun loadMealMenu(shopId: String)
 
         //餐厅菜品列表
-        abstract fun loadMealGoodsList(page: String, shopId: String, labelId: String)
+        abstract fun loadMealGoodsList(page: Int, shopId: String, labelId: String)
 
         //餐厅菜品列表搜索
         abstract fun searchMealGoodsList(shopId: String, searchData: String)
 
         //订餐记录
-        abstract fun loadMealRecord(page: String)
+        abstract fun loadMealRecord(page: Int)
 
         //下单
         abstract fun commitMealOrder(

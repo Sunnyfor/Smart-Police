@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_menu"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="match_parent" />
+
+    <View style="@style/style_line_vertical" />
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10" />
+
+</LinearLayout>

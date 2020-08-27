@@ -3,7 +3,6 @@ package com.zhkj.smartpolice.meal.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
 import com.zhkj.smartpolice.R
@@ -21,10 +20,6 @@ class MealMenuAdapter(list: ArrayList<MealMenuBean>) : BaseRecycleAdapter<MealMe
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
         holder.itemView.tv_title.text = getData(position).labelName
 
-        if (position == index){
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.color_gray))
-        }else{
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(context,R.color.color_transparent))
-        }
+        holder.itemView.v_line.visibility = if (position == index) View.VISIBLE else View.GONE
     }
 }

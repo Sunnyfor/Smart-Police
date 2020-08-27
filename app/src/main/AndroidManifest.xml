@@ -73,6 +73,7 @@
         <activity android:name=".meal.MealOrderInfoActivity" />
         <activity android:name=".meal.MealRecordActivity" />
         <activity android:name=".meal.OrderDetailActivity" />
+        <activity android:name=".meal.DiningRoomActivity" />
 
         <!--药店模块-->
         <activity android:name=".drugstore.DrugstoreActivity" />

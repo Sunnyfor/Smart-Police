@@ -18,7 +18,7 @@ import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.maintain.activity.MaintainTaskActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
 import com.zhkj.smartpolice.maintain.activity.PropertyManageActivity
-import com.zhkj.smartpolice.meal.MealChoiceActivity
+import com.zhkj.smartpolice.meal.DiningRoomActivity
 import com.zhkj.smartpolice.meal.MealRecordActivity
 import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
@@ -59,7 +59,12 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            tv_restaurant.id -> startActivity(Intent(requireContext(), MealChoiceActivity::class.java))
+            tv_restaurant.id -> {
+//            startActivity(Intent(requireContext(), MealChoiceActivity::class.java))
+                merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_RESTAURANT }.apply {
+                    DiningRoomActivity.intent(requireContext(), this?.shopId)
+                }
+            }
             tv_haircut.id -> {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_HAIRCUT }.apply {
                     val intent = when (UserManager.getUserBean().position) {

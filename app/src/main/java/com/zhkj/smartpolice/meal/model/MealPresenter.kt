@@ -11,7 +11,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         MealModel()
     }
 
-    override fun loadRestaurantList(page: String) {
+    override fun loadRestaurantList(page: Int) {
         launch(Dispatchers.Main) {
             showLoading()
             mealModel.loadRestaurantList(page)?.let {
@@ -35,7 +35,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun loadMealGoodsList(page: String, shopId: String, labelId: String) {
+    override fun loadMealGoodsList(page: Int, shopId: String, labelId: String) {
         launch(Dispatchers.Main) {
             showLoading()
             mealModel.loadMealGoodsList(page, shopId, labelId)?.let {
@@ -59,7 +59,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun loadMealRecord(page: String) {
+    override fun loadMealRecord(page: Int) {
         launch(Dispatchers.Main) {
             showLoading()
             mealModel.loadMealRecord(page)?.let {
@@ -73,12 +73,12 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
 
     override fun commitMealOrder(shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealGoodsBean>) {
 
-        if (createUserName.isEmpty()){
+        if (createUserName.isEmpty()) {
             view?.showMessage("请填写取餐人姓名")
             return
         }
 
-        if (mobile.isEmpty()){
+        if (mobile.isEmpty()) {
             view?.showMessage("请填写你的手机号")
             return
         }

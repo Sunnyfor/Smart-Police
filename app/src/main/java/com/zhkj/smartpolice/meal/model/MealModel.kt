@@ -20,14 +20,14 @@ class MealModel {
     /**
      *  餐厅列表
      */
-    suspend fun loadRestaurantList(page: String): ArrayList<RestaurantBean>? {
+    suspend fun loadRestaurantList(page: Int): ArrayList<RestaurantBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<RestaurantBean>>() {}
 
         val params = HashMap<String, String>()
         params["shopType"] = "1"
         params["activeState"] = "1"
         params["certifyState"] = "1"
-        params["page"] = page
+        params["page"] = page.toString()
         params["limit"] = Constant.pageLimit
 
         ZyHttp.get(UrlConstant.RESTAURANT_LIST_URL, params, httpResultBean)
@@ -61,11 +61,11 @@ class MealModel {
     /**
      * 餐厅菜品列表
      */
-    suspend fun loadMealGoodsList(page: String, shopId: String, labelId: String): ArrayList<MealGoodsBean>? {
+    suspend fun loadMealGoodsList(page: Int, shopId: String, labelId: String): ArrayList<MealGoodsBean>? {
 
         val params = HashMap<String, String>()
         params["publishState"] = "1"
-        params["page"] = page
+        params["page"] = page.toString()
         params["limit"] = Constant.pageLimit
         params["shopId"] = shopId
         params["labelId"] = labelId
@@ -106,13 +106,13 @@ class MealModel {
     /**
      *  订餐记录
      */
-    suspend fun loadMealRecord(page: String): ArrayList<MealRecordBean>? {
+    suspend fun loadMealRecord(page: Int): ArrayList<MealRecordBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<MealRecordBean>>() {}
 
         val params = HashMap<String, String>()
-        params["page"] = page
+        params["page"] = page.toString()
         params["limit"] = Constant.pageLimit
-        params["createUserId"] = UserManager.getUserBean().userId?:""
+        params["createUserId"] = UserManager.getUserBean().userId ?: ""
 
         ZyHttp.get(UrlConstant.MEAL_RECORD_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {

@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_60"
-    android:orientation="vertical">
+    android:layout_height="@dimen/dp_60">
 
     <TextView
         android:id="@+id/tv_title"
         style="@style/style_font_gray"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="@dimen/dp_59"
         android:gravity="center"
         android:text="热卖"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
-    <View style="@style/style_line_horizontal" />
+    <View
+        android:id="@+id/v_line"
+        style="@style/style_line_vertical"
+        android:layout_width="@dimen/dp_3"
+        android:background="@color/color_theme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+    <View
+        style="@style/style_line_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

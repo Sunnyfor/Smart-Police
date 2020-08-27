@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,14 +14,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_menu"
             android:layout_width="@dimen/dp_80"
-            android:layout_height="match_parent"
-            android:background="@color/color_gray" />
+            android:layout_height="match_parent" />
+
+        <View style="@style/style_line_vertical" />
 
         <FrameLayout
             android:id="@+id/fl_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_white"
             android:padding="@dimen/dp_10" />
     </LinearLayout>
 

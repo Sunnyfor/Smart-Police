@@ -177,4 +177,10 @@ object UrlConstant {
      * 读取通知
      */
     const val UPDATE_BY_NOTICE_ID_URL = "app/appnoticeuserlink/updateByNoticeId"
+
+    /**
+     * 班车模块：班车信息列表
+     */
+    const val SHUTTLE_BUS_LIST_URL = "logistics/shop/listMyShop?shopType=%s"
+
 }

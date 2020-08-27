@@ -3,9 +3,9 @@ package com.zhkj.smartpolice.merchant
 class MerchantBean {
 
     var shopId: String? = null          //店铺id
-    var shopName: String? = null        //店铺名称
+    var shopName: String? = null        //店铺名称/车牌号
     var shopAddress: String? = null     //店铺地址
-    var userName: String? = null        //店家姓名
+    var userName: String? = null        //店家姓名/司机名
     var mobilePhone: String? = null     //店家联系方式
     var imageId: String? = null         //店铺Logo
     var businessTime: String? = null    //营业时间："06:00 - 09:00,11:00 - 14:00,17:00 - 21:00"

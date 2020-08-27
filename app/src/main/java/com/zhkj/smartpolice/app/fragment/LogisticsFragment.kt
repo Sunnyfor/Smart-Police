@@ -27,6 +27,7 @@ import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.notice.ConsumeRecordActivity
+import com.zhkj.smartpolice.shuttle.ShuttleBusActivity
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 import kotlinx.coroutines.cancel
@@ -75,7 +76,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 }
             }
             tv_shuttle_bus.id -> {
-                ToastUtil.show()
+                ShuttleBusActivity.intent(requireContext(), MerchantListActivity.TYPE_SHUTTLE_BUS)
             }
             tv_laundry.id -> {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_LAUNDRY }.apply {

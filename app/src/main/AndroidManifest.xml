@@ -122,6 +122,10 @@
         <activity android:name=".notice.ConsumeRecordActivity" />
 
         <service android:name=".notice.NoticeService" />
+
+        <!--班车-->
+        <activity android:name=".shuttle.ShuttleBusActivity" />
+
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.sunny.zy.utils.isApkInDebug
 import com.zhkj.smartpolice.R
 import kotlinx.android.synthetic.main.act_splash.*
 import java.lang.Thread.sleep
@@ -16,6 +17,13 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_splash)
+
+        //判断是debug模式直接跳转至登录页
+        if (isApkInDebug(this)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            return
+        }
 
         showAppNameAnim()
     }

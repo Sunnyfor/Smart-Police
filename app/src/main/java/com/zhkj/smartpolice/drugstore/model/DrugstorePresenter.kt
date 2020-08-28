@@ -10,6 +10,30 @@ class DrugstorePresenter(iBaseView: IBaseView) : DrugstoreContract.Presenter(iBa
         DrugstoreModel()
     }
 
+    override fun loadDrugClassify(shopId: String) {
+        launch(Main) {
+            showLoading()
+            model.loadDrugClassify(shopId)?.let {
+                if (view is DrugstoreContract.IDrugView) {
+                    (view as DrugstoreContract.IDrugView).loadDrugClassify(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
+    override fun loadDrugList(page: Int, shopId: String, labelId: String) {
+        launch(Main) {
+            showLoading()
+            model.loadDrugList(page, shopId, labelId)?.let {
+                if (view is DrugstoreContract.IDrugView) {
+                    (view as DrugstoreContract.IDrugView).loadDrugList(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
     override fun commitFeedback(shopId: String, content: String, phone: String) {
         launch(Main) {
             showLoading()

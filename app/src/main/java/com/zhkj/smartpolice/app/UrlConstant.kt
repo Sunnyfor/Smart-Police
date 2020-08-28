@@ -20,11 +20,6 @@ object UrlConstant {
     const val FIND_IMAGE_PATH_URL = "sys/attachment/list"
 
     /**
-     * 药店模块：意见箱
-     */
-    const val DRUGSTORE_FEEDBACK_URL = "logistics/feedback/save"
-
-    /**
      * 餐厅模块：餐厅列表
      */
     const val RESTAURANT_LIST_URL = "logistics/shop/list"
@@ -35,8 +30,12 @@ object UrlConstant {
     const val MEAL_MENU_CLASSIFY_URL = "logistics/shopgoodslabel/list"
 
     /**
-     * 餐厅模块：餐厅菜品列表
-     * 药店模块：药品列表
+     * 餐厅模块：订餐菜单分类标签（二期）
+     */
+    const val MEAL_MENU_LABEL_URL = "logistics/shopgoodseveryday/tomorrowOrderLable"
+
+    /**
+     * 餐厅模块：菜品列表
      */
     const val MEAL_GOODS_LIST_URL = "logistics/shopgoods/list"
 
@@ -178,9 +177,25 @@ object UrlConstant {
      */
     const val UPDATE_BY_NOTICE_ID_URL = "app/appnoticeuserlink/updateByNoticeId"
 
+
     /**
-     * 班车模块：班车信息列表
+     * 药店模块
      */
+
+    // 药品分类
+    const val DRUG_CLASSIFY_URL = "logistics/shopgoodslabel/list"
+
+    // 药品列表
+    const val DRUG_LIST_URL = "logistics/shopgoods/list"
+
+    // 意见箱
+    const val DRUG_FEEDBACK_URL = "logistics/feedback/save"
+
+    /**
+     * 班车模块
+     */
+
+    // 班车信息列表
     const val SHUTTLE_BUS_LIST_URL = "logistics/shop/listMyShop?shopType=%s"
 
 }

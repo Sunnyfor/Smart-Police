@@ -10,21 +10,19 @@ import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.drugstore.adapter.DrugGoodsAdapter
+import com.zhkj.smartpolice.drugstore.model.DrugstoreContract
+import com.zhkj.smartpolice.drugstore.model.DrugstorePresenter
 import com.zhkj.smartpolice.meal.MealDetailActivity
 import com.zhkj.smartpolice.meal.adapter.MealMenuAdapter
 import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
-import com.zhkj.smartpolice.meal.model.MealContract
-import com.zhkj.smartpolice.meal.model.MealPresenter
 import kotlinx.android.synthetic.main.act_drugstore.*
 import kotlinx.android.synthetic.main.layout_search.*
 import kotlinx.coroutines.cancel
 
-class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
+class DrugstoreActivity : BaseActivity(), DrugstoreContract.IDrugView {
 
     private lateinit var toolbar: Toolbar
-
-    private var shopId: String? = null
 
     private val menuList = arrayListOf<MealMenuBean>()
 
@@ -32,21 +30,25 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
 
     private var labelId = ""
 
+    private val shopId: String by lazy {
+        intent.getStringExtra("shopId") ?: ""
+    }
+
+    private val presenter: DrugstorePresenter by lazy {
+        DrugstorePresenter(this)
+    }
+
     private val mealMenuAdapter: MealMenuAdapter by lazy {
         MealMenuAdapter(menuList).apply {
             setOnItemClickListener { _, i ->
                 this.index = i
                 labelId = getData(i).labelId ?: ""
-                presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", labelId)
+                presenter.loadDrugList(pullRefreshFragment.page, shopId, labelId)
                 notifyDataSetChanged()
                 et_search.setText("")
                 hideKeyboard()
             }
         }
-    }
-
-    private val presenter: MealPresenter by lazy {
-        MealPresenter(this)
     }
 
     companion object {
@@ -70,8 +72,6 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
             return@setOnMenuItemClickListener true
         }
 
-        shopId = intent.getStringExtra("shopId")
-
         recyclerView_menu.layoutManager = LinearLayoutManager(this)
         recyclerView_menu.adapter = mealMenuAdapter
 
@@ -82,7 +82,7 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
             }
         }
         pullRefreshFragment.loadData = {
-            presenter.loadMealGoodsList(pullRefreshFragment.page.toString(), shopId ?: "", labelId)
+            presenter.loadDrugList(pullRefreshFragment.page, shopId, labelId)
         }
 
         supportFragmentManager.beginTransaction().replace(fl_container.id, pullRefreshFragment).commit()
@@ -105,22 +105,22 @@ class DrugstoreActivity : BaseActivity(), MealContract.IMealMenuView {
     }
 
     override fun loadData() {
-        presenter.loadMealMenu(shopId ?: return)
+        presenter.loadDrugClassify(shopId)
     }
 
     override fun close() {
         presenter.cancel()
     }
 
-    override fun loadMealMenu(data: ArrayList<MealMenuBean>) {
+    override fun loadDrugClassify(data: ArrayList<MealMenuBean>) {
         menuList.clear()
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
         labelId = data[0].labelId ?: ""
-        presenter.loadMealGoodsList("1", shopId ?: return, labelId)
+        presenter.loadDrugList(1, shopId, labelId)
     }
 
-    override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {
+    override fun loadDrugList(data: ArrayList<MealGoodsBean>) {
         pullRefreshFragment.addData(data)
     }
 }

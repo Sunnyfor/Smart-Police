@@ -7,9 +7,9 @@ import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.Constant
-import com.zhkj.smartpolice.maintain.adapter.MyFragmentAdapter
 import com.zhkj.smartpolice.maintain.fragment.ProcessedFragment
 import com.zhkj.smartpolice.maintain.fragment.UntreatedFragment
+import com.zhkj.smartpolice.utils.MyPagerAdapter
 import kotlinx.android.synthetic.main.act_apply_maintain_list.*
 
 class ApplyMaintainListActivity : BaseActivity() {
@@ -30,7 +30,7 @@ class ApplyMaintainListActivity : BaseActivity() {
         fragmentList.add(ProcessedFragment())
         mTitle.add("未处理")
         mTitle.add("已处理")
-        vp_maintain.adapter = MyFragmentAdapter(supportFragmentManager, fragmentList, mTitle)
+        vp_maintain.adapter = MyPagerAdapter(supportFragmentManager, fragmentList, mTitle)
         tab_layout.setupWithViewPager(vp_maintain)
     }
 

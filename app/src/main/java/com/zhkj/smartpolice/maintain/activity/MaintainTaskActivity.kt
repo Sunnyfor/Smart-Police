@@ -4,9 +4,9 @@ import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.maintain.adapter.MyFragmentAdapter
 import com.zhkj.smartpolice.maintain.fragment.AccomplishFragment
 import com.zhkj.smartpolice.maintain.fragment.InProcessedFragment
+import com.zhkj.smartpolice.utils.MyPagerAdapter
 import kotlinx.android.synthetic.main.act_apply_maintain_list.*
 
 
@@ -28,7 +28,7 @@ class MaintainTaskActivity : BaseActivity() {
         fragmentList.add(AccomplishFragment())
         mTitle.add("未维修")
         mTitle.add("已维修")
-        vp_maintain.adapter = MyFragmentAdapter(supportFragmentManager, fragmentList, mTitle)
+        vp_maintain.adapter = MyPagerAdapter(supportFragmentManager, fragmentList, mTitle)
         tab_layout.setupWithViewPager(vp_maintain)
 
     }

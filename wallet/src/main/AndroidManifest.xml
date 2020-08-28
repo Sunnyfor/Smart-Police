@@ -2,7 +2,9 @@
     package="com.zhkj.wallet">
 
     <application>
-        <activity android:name=".activity.WalletActivity" />
+        <activity
+            android:name=".activity.WalletActivity"
+            android:launchMode="singleInstance" />
         <activity android:name=".activity.RechargeActivity" />
         <activity android:name=".activity.WithdrawalActivity" />
         <activity android:name=".activity.PayCodeActivity" />

@@ -1,11 +1,11 @@
 package com.zhkj.wallet.activity
 
 
+import android.content.Intent
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterManager
-import com.sunny.zy.utils.ToastUtil
 import com.zhkj.wallet.R
 import com.zhkj.wallet.bean.PurseBean
 import com.zhkj.wallet.contract.WalletContract
@@ -57,6 +57,12 @@ class WalletActivity : BaseActivity(), WalletContract.IWalletView {
         walletPresenter.loadPurse()
 
     }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        loadData()
+    }
+
 
     override fun onClickEvent(view: View) {
         when (view.id) {

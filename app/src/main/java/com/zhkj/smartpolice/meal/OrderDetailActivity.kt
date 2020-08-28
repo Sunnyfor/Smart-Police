@@ -18,7 +18,7 @@ class OrderDetailActivity : BaseActivity() {
     private val payUtil: PayPasswordUtil by lazy {
         PayPasswordUtil(btn_commit, this).apply {
             onPaySuccessResult = {
-                PayResultActivity.intent(this@OrderDetailActivity, "1")
+                PayResultActivity.intent("1")
                 finish()
             }
         }

@@ -168,7 +168,7 @@ class PayPasswordUtil(
                 pay -> {
                     if (passWordResult == null) {
                         if (goodsPrice > presenter.balance) {
-                            PayResultActivity.intent(view.context, "0")
+                            PayResultActivity.intent("0")
                             return
                         }
                     }

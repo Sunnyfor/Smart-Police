@@ -104,7 +104,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
             when (msgObj.optInt("status")) {
                 1 -> {
                     finish()
-                    ARouter.getInstance().build(RouterManager.PAY_RESULT_ACTIVITY).withString("payResult", "1").navigation()
+                    PayResultActivity.intent("1")
                 }
                 2 -> {
                     msgObj.optJSONObject("data")?.let {
@@ -120,7 +120,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
                     }
                 }
                 3 -> {
-                    ARouter.getInstance().build(RouterManager.PAY_RESULT_ACTIVITY).withString("payResult", "0").navigation()
+                    PayResultActivity.intent("0")
                 }
 
                 4 -> {

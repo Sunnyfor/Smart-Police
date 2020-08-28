@@ -39,8 +39,9 @@ class RechargeActivity : BaseActivity(), UnifyPayContract.IView {
         UnifyPayPlugin.getInstance(this).setListener { resultCode, resultInfo ->
             if ("0000" == resultCode) {
                 //支付成功
+                PayResultActivity.intent("3")
             } else {
-                ToastUtil.show(resultInfo)
+                PayResultActivity.intent("4", resultInfo)
             }
         }
     }

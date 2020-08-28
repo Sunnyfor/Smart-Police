@@ -9,24 +9,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.drugstore.activity.DrugDetailActivity
+import com.zhkj.smartpolice.drugstore.activity.FeedbackActivity
+import com.zhkj.smartpolice.drugstore.activity.SearchDrugActivity
 import com.zhkj.smartpolice.drugstore.adapter.DrugGoodsAdapter
-import com.zhkj.smartpolice.drugstore.model.DrugstoreContract
-import com.zhkj.smartpolice.drugstore.model.DrugstorePresenter
-import com.zhkj.smartpolice.meal.MealDetailActivity
+import com.zhkj.smartpolice.drugstore.bean.DrugBean
+import com.zhkj.smartpolice.drugstore.model.DrugContract
+import com.zhkj.smartpolice.drugstore.model.DrugPresenter
 import com.zhkj.smartpolice.meal.adapter.MealMenuAdapter
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import kotlinx.android.synthetic.main.act_drugstore.*
 import kotlinx.android.synthetic.main.layout_search.*
 import kotlinx.coroutines.cancel
 
-class DrugstoreActivity : BaseActivity(), DrugstoreContract.IDrugView {
+class DrugstoreActivity : BaseActivity(), DrugContract.IDrugView {
 
     private lateinit var toolbar: Toolbar
 
     private val menuList = arrayListOf<MealMenuBean>()
 
-    private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
+    private val pullRefreshFragment = PullRefreshFragment<DrugBean>()
 
     private var labelId = ""
 
@@ -34,8 +36,8 @@ class DrugstoreActivity : BaseActivity(), DrugstoreContract.IDrugView {
         intent.getStringExtra("shopId") ?: ""
     }
 
-    private val presenter: DrugstorePresenter by lazy {
-        DrugstorePresenter(this)
+    private val presenter: DrugPresenter by lazy {
+        DrugPresenter(this)
     }
 
     private val mealMenuAdapter: MealMenuAdapter by lazy {
@@ -78,7 +80,7 @@ class DrugstoreActivity : BaseActivity(), DrugstoreContract.IDrugView {
         pullRefreshFragment.layoutManager = LinearLayoutManager(this)
         pullRefreshFragment.adapter = DrugGoodsAdapter().apply {
             setOnItemClickListener { _, position ->
-                MealDetailActivity.intent(this@DrugstoreActivity, getData(position), false)
+                DrugDetailActivity.intent(this@DrugstoreActivity, getData(position))
             }
         }
         pullRefreshFragment.loadData = {
@@ -120,7 +122,7 @@ class DrugstoreActivity : BaseActivity(), DrugstoreContract.IDrugView {
         presenter.loadDrugList(1, shopId, labelId)
     }
 
-    override fun loadDrugList(data: ArrayList<MealGoodsBean>) {
+    override fun loadDrugList(data: ArrayList<DrugBean>) {
         pullRefreshFragment.addData(data)
     }
 }

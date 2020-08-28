@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.drugstore
+package com.zhkj.smartpolice.drugstore.activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,17 +6,17 @@ import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.drugstore.model.DrugstoreContract
-import com.zhkj.smartpolice.drugstore.model.DrugstorePresenter
+import com.zhkj.smartpolice.drugstore.model.DrugContract
+import com.zhkj.smartpolice.drugstore.model.DrugPresenter
 import kotlinx.android.synthetic.main.act_feedback.*
 import kotlinx.coroutines.cancel
 
-class FeedbackActivity : BaseActivity(), DrugstoreContract.IFeedbackView {
+class FeedbackActivity : BaseActivity(), DrugContract.IFeedbackView {
 
     private var shopId: String? = null
 
-    private val presenter: DrugstorePresenter by lazy {
-        DrugstorePresenter(this)
+    private val presenter: DrugPresenter by lazy {
+        DrugPresenter(this)
     }
 
     companion object {

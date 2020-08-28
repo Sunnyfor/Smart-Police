@@ -8,11 +8,11 @@ import com.sunny.zy.http.bean.HttpResultBean
 import com.sunny.zy.utils.DateUtil
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.drugstore.bean.DrugBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import org.json.JSONObject
 
-class DrugstoreModel {
+class DrugModel {
 
     /**
      * 药品分类
@@ -35,7 +35,7 @@ class DrugstoreModel {
     /**
      * 药品列表
      */
-    suspend fun loadDrugList(page: Int, shopId: String, labelId: String): ArrayList<MealGoodsBean>? {
+    suspend fun loadDrugList(page: Int, shopId: String, labelId: String): ArrayList<DrugBean>? {
 
         val params = HashMap<String, String>()
         params["publishState"] = "1"
@@ -44,7 +44,30 @@ class DrugstoreModel {
         params["shopId"] = shopId
         params["labelId"] = labelId
 
-        val httpResultBean = object : HttpResultBean<PageModel<MealGoodsBean>>() {}
+        val httpResultBean = object : HttpResultBean<PageModel<DrugBean>>() {}
+
+        ZyHttp.get(UrlConstant.DRUG_LIST_URL, params, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.data?.list
+            }
+        }
+        return null
+    }
+
+
+    /**
+     * 药品列表搜索
+     */
+    suspend fun searchDrugList(shopId: String, searchData: String): ArrayList<DrugBean>? {
+
+        val params = HashMap<String, String>()
+        params["publishState"] = "1"
+        params["shopId"] = shopId
+        params["goodsName"] = searchData
+        params["limit"] = "-1"
+
+        val httpResultBean = object : HttpResultBean<PageModel<DrugBean>>() {}
 
         ZyHttp.get(UrlConstant.DRUG_LIST_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {

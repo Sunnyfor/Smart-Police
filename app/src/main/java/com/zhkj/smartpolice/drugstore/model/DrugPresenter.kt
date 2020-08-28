@@ -4,18 +4,18 @@ import com.sunny.zy.base.IBaseView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-class DrugstorePresenter(iBaseView: IBaseView) : DrugstoreContract.Presenter(iBaseView) {
+class DrugPresenter(iBaseView: IBaseView) : DrugContract.Presenter(iBaseView) {
 
-    private val model: DrugstoreModel by lazy {
-        DrugstoreModel()
+    private val model: DrugModel by lazy {
+        DrugModel()
     }
 
     override fun loadDrugClassify(shopId: String) {
         launch(Main) {
             showLoading()
             model.loadDrugClassify(shopId)?.let {
-                if (view is DrugstoreContract.IDrugView) {
-                    (view as DrugstoreContract.IDrugView).loadDrugClassify(it)
+                if (view is DrugContract.IDrugView) {
+                    (view as DrugContract.IDrugView).loadDrugClassify(it)
                 }
             }
             hideLoading()
@@ -26,8 +26,21 @@ class DrugstorePresenter(iBaseView: IBaseView) : DrugstoreContract.Presenter(iBa
         launch(Main) {
             showLoading()
             model.loadDrugList(page, shopId, labelId)?.let {
-                if (view is DrugstoreContract.IDrugView) {
-                    (view as DrugstoreContract.IDrugView).loadDrugList(it)
+                if (view is DrugContract.IDrugView) {
+                    (view as DrugContract.IDrugView).loadDrugList(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
+
+    override fun searchDrugList(shopId: String, searchData: String) {
+        launch(Main) {
+            showLoading()
+            model.searchDrugList(shopId, searchData)?.let {
+                if (view is DrugContract.IDrugView) {
+                    (view as DrugContract.IDrugView).loadDrugList(it)
                 }
             }
             hideLoading()
@@ -38,8 +51,8 @@ class DrugstorePresenter(iBaseView: IBaseView) : DrugstoreContract.Presenter(iBa
         launch(Main) {
             showLoading()
             model.commitFeedback(shopId, content, phone)?.let {
-                if (view is DrugstoreContract.IFeedbackView) {
-                    (view as DrugstoreContract.IFeedbackView).commitFeedback(it)
+                if (view is DrugContract.IFeedbackView) {
+                    (view as DrugContract.IFeedbackView).commitFeedback(it)
                 }
             }
             hideLoading()

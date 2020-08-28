@@ -13,10 +13,10 @@ import com.sunny.zy.utils.GlideApp
 import com.sunny.zy.utils.isStrEmpty
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.drugstore.bean.DrugBean
 import kotlinx.android.synthetic.main.item_drug_goods.view.*
 
-class DrugGoodsAdapter : BaseRecycleAdapter<MealGoodsBean>(arrayListOf()) {
+class DrugGoodsAdapter : BaseRecycleAdapter<DrugBean>(arrayListOf()) {
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View {
         return LayoutInflater.from(context).inflate(R.layout.item_drug_goods, parent, false)

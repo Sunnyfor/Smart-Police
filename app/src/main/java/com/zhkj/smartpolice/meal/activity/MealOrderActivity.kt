@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.meal
+package com.zhkj.smartpolice.meal.activity
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,7 @@ import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.adapter.MealOrderAdapter
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.meal.bean.MealBean
 import kotlinx.android.synthetic.main.act_meal_order.*
 
 /**
@@ -24,7 +24,7 @@ class MealOrderActivity : BaseActivity() {
         intent.getStringExtra("shopId")
     }
 
-    private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
+    private val pullRefreshFragment = PullRefreshFragment<MealBean>()
 
     companion object {
         fun intent(context: Context, shopId: String) {
@@ -45,7 +45,7 @@ class MealOrderActivity : BaseActivity() {
             loadData()
         }
 
-        ZyFrameStore.getData<ArrayList<MealGoodsBean>>("MealGoodsBeanList")?.let {
+        ZyFrameStore.getData<ArrayList<MealBean>>("MealGoodsBeanList")?.let {
             pullRefreshFragment.adapter = MealOrderAdapter(object : MealOrderAdapter.OnUpdateListener {
                 override fun onUpdate() {
                     checkedLock = true
@@ -109,7 +109,7 @@ class MealOrderActivity : BaseActivity() {
                 tv_commit.setBackgroundColor(Color.parseColor("#CBCBCB"))
             } else {
                 goodsList.forEach {
-                    it.price?.let { price ->
+                    it.shopGoodsEntity?.price?.let { price ->
                         total += price.toFloat() * it.count
                     }
                 }

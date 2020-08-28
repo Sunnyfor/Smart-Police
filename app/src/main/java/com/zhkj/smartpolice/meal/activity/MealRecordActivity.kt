@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.meal
+package com.zhkj.smartpolice.meal.activity
 
 import android.content.Intent
 import android.view.View

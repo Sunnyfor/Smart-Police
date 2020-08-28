@@ -39,5 +39,6 @@
         android:layout_alignParentEnd="true"
         android:contentDescription="@string/app_name"
         android:padding="@dimen/dp_7"
-        android:src="@drawable/svg_meal_add" />
+        android:src="@drawable/svg_meal_add"
+        android:visibility="gone" />
 </RelativeLayout>

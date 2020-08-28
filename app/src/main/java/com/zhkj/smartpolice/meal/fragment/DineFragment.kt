@@ -7,10 +7,10 @@ import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.meal.MealDetailActivity
+import com.zhkj.smartpolice.meal.activity.MealDetailActivity
 import com.zhkj.smartpolice.meal.adapter.MealGoodsAdapter
 import com.zhkj.smartpolice.meal.adapter.MealMenuAdapter
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.meal.bean.MealBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
@@ -23,19 +23,19 @@ import kotlinx.coroutines.cancel
 class DineFragment : BaseFragment(), MealContract.IMealMenuView {
 
     private val menuList = arrayListOf<MealMenuBean>()
-    private val goodsList = arrayListOf<MealGoodsBean>()
+    private val goodsList = arrayListOf<MealBean>()
 
-    private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
+    private val pullRefreshFragment = PullRefreshFragment<MealBean>()
 
-    private val shopId: String by lazy {
-        requireActivity().intent.getStringExtra("shopId") ?: ""
+    private val presenter: MealPresenter by lazy {
+        MealPresenter(this)
     }
 
     private val mealMenuAdapter: MealMenuAdapter by lazy {
         MealMenuAdapter(menuList).apply {
             setOnItemClickListener { _, i ->
                 this.index = i
-                presenter.loadMealGoodsList(pullRefreshFragment.page, shopId, getData(i).labelId ?: "")
+                presenter.loadMealList(pullRefreshFragment.page, true, getData(i).labelId ?: "")
                 notifyDataSetChanged()
             }
         }
@@ -43,7 +43,7 @@ class DineFragment : BaseFragment(), MealContract.IMealMenuView {
 
     private val mealGoodsAdapter: MealGoodsAdapter by lazy {
         MealGoodsAdapter(View.OnClickListener {
-            val bean = it.tag as MealGoodsBean
+            val bean = it.tag as MealBean
             if (goodsList.contains(bean)) {
                 goodsList[goodsList.indexOf(bean)].count++
             } else {
@@ -52,13 +52,9 @@ class DineFragment : BaseFragment(), MealContract.IMealMenuView {
 
         }).apply {
             setOnItemClickListener { _, i ->
-                MealDetailActivity.intent(requireContext(), getData(i))
+                MealDetailActivity.intent(requireContext(), getData(i), false)
             }
         }
-    }
-
-    private val presenter: MealPresenter by lazy {
-        MealPresenter(this)
     }
 
 
@@ -91,7 +87,7 @@ class DineFragment : BaseFragment(), MealContract.IMealMenuView {
     }
 
     override fun loadData() {
-        presenter.loadMealGoodsList(pullRefreshFragment.page, shopId, menuList[0].labelId ?: "")
+        presenter.loadMealList(pullRefreshFragment.page, true, menuList[0].labelId ?: "")
     }
 
     override fun close() {
@@ -102,7 +98,7 @@ class DineFragment : BaseFragment(), MealContract.IMealMenuView {
 
     }
 
-    override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {
+    override fun loadMealList(data: ArrayList<MealBean>) {
         pullRefreshFragment.addData(data)
     }
 

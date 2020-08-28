@@ -66,19 +66,18 @@
         <activity android:name=".mine.activity.SettingActivity" />
 
         <!--餐厅模块-->
-        <activity android:name=".meal.MealChoiceActivity" />
-        <activity android:name=".meal.MealActivity" />
-        <activity android:name=".meal.MealDetailActivity" />
-        <activity android:name=".meal.MealOrderActivity" />
-        <activity android:name=".meal.MealOrderInfoActivity" />
-        <activity android:name=".meal.MealRecordActivity" />
-        <activity android:name=".meal.OrderDetailActivity" />
+        <activity android:name=".meal.activity.MealDetailActivity" />
+        <activity android:name=".meal.activity.MealOrderActivity" />
+        <activity android:name=".meal.activity.MealOrderInfoActivity" />
+        <activity android:name=".meal.activity.MealRecordActivity" />
+        <activity android:name=".meal.activity.OrderDetailActivity" />
         <activity android:name=".meal.DiningRoomActivity" />
 
         <!--药店模块-->
         <activity android:name=".drugstore.DrugstoreActivity" />
-        <activity android:name=".drugstore.SearchDrugActivity" />
-        <activity android:name=".drugstore.FeedbackActivity" />
+        <activity android:name=".drugstore.activity.SearchDrugActivity" />
+        <activity android:name=".drugstore.activity.FeedbackActivity" />
+        <activity android:name=".drugstore.activity.DrugDetailActivity" />
 
         <!--理发店模块-->
         <activity android:name=".haircut.BarberListActivity" />

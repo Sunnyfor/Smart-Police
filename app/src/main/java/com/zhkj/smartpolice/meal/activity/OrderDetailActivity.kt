@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.meal
+package com.zhkj.smartpolice.meal.activity
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager

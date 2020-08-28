@@ -3,10 +3,7 @@ package com.zhkj.smartpolice.meal.model
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
-import com.zhkj.smartpolice.meal.bean.MealMenuBean
-import com.zhkj.smartpolice.meal.bean.MealRecordBean
-import com.zhkj.smartpolice.meal.bean.RestaurantBean
+import com.zhkj.smartpolice.meal.bean.*
 
 interface MealContract {
 
@@ -16,7 +13,7 @@ interface MealContract {
 
     interface IMealMenuView : IBaseView {
         fun loadMealMenu(data: ArrayList<MealMenuBean>)
-        fun loadMealGoodsList(data: ArrayList<MealGoodsBean>)
+        fun loadMealList(data: ArrayList<MealBean>)
     }
 
     interface IMealRecordView : IBaseView {
@@ -33,21 +30,16 @@ interface MealContract {
         abstract fun loadRestaurantList(page: Int)
 
         //餐厅菜单分类
-        abstract fun loadMealMenu(shopId: String)
+        abstract fun loadMealMenu()
 
         //餐厅菜品列表
-        abstract fun loadMealGoodsList(page: Int, shopId: String, labelId: String)
-
-        //餐厅菜品列表搜索
-        abstract fun searchMealGoodsList(shopId: String, searchData: String)
+        abstract fun loadMealList(page: Int, isDine: Boolean, labelId: String)
 
         //订餐记录
         abstract fun loadMealRecord(page: Int)
 
         //下单
-        abstract fun commitMealOrder(
-            shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealGoodsBean>
-        )
+        abstract fun commitMealOrder(shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealBean>)
 
     }
 }

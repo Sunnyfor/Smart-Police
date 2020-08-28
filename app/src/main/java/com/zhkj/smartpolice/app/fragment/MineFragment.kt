@@ -11,7 +11,7 @@ import com.sunny.zy.utils.isStrEmpty
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.meal.MealRecordActivity
+import com.zhkj.smartpolice.meal.activity.MealRecordActivity
 import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity

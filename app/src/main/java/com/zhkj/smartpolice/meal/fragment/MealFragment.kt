@@ -9,11 +9,11 @@ import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.meal.MealDetailActivity
-import com.zhkj.smartpolice.meal.MealOrderActivity
+import com.zhkj.smartpolice.meal.activity.MealDetailActivity
+import com.zhkj.smartpolice.meal.activity.MealOrderActivity
 import com.zhkj.smartpolice.meal.adapter.MealGoodsAdapter
 import com.zhkj.smartpolice.meal.adapter.MealMenuAdapter
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.meal.bean.MealBean
 import com.zhkj.smartpolice.meal.bean.MealMenuBean
 import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
@@ -26,19 +26,23 @@ import kotlinx.coroutines.cancel
 class MealFragment : BaseFragment(), MealContract.IMealMenuView {
 
     private val menuList = arrayListOf<MealMenuBean>()
-    private val goodsList = arrayListOf<MealGoodsBean>()
+    private val goodsList = arrayListOf<MealBean>()
 
-    private val pullRefreshFragment = PullRefreshFragment<MealGoodsBean>()
+    private val pullRefreshFragment = PullRefreshFragment<MealBean>()
 
     private val shopId: String by lazy {
         requireActivity().intent.getStringExtra("shopId") ?: ""
+    }
+
+    private val presenter: MealPresenter by lazy {
+        MealPresenter(this)
     }
 
     private val mealMenuAdapter: MealMenuAdapter by lazy {
         MealMenuAdapter(menuList).apply {
             setOnItemClickListener { _, i ->
                 this.index = i
-                presenter.loadMealGoodsList(pullRefreshFragment.page, shopId, getData(i).labelId ?: "")
+                presenter.loadMealList(pullRefreshFragment.page, false, getData(i).labelId ?: "")
                 notifyDataSetChanged()
             }
         }
@@ -46,7 +50,7 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
 
     private val mealGoodsAdapter: MealGoodsAdapter by lazy {
         MealGoodsAdapter(View.OnClickListener {
-            val bean = it.tag as MealGoodsBean
+            val bean = it.tag as MealBean
             if (goodsList.contains(bean)) {
                 goodsList[goodsList.indexOf(bean)].count++
             } else {
@@ -55,16 +59,11 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
 
             updateShoppingHit()
 
-        }).apply {
+        },true).apply {
             setOnItemClickListener { _, i ->
                 MealDetailActivity.intent(requireContext(), getData(i))
             }
         }
-    }
-
-
-    private val presenter: MealPresenter by lazy {
-        MealPresenter(this)
     }
 
     override fun setLayout(): Int = R.layout.frag_restaurant_meal
@@ -103,13 +102,13 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
                 if (goodsList.isEmpty()) {
                     return
                 }
-                MealOrderActivity.intent(requireContext(), shopId ?: "")
+                MealOrderActivity.intent(requireContext(), shopId)
             }
         }
     }
 
     override fun loadData() {
-        presenter.loadMealMenu(shopId ?: return)
+        presenter.loadMealMenu()
     }
 
     override fun close() {
@@ -121,10 +120,10 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
 
-        presenter.loadMealGoodsList(pullRefreshFragment.page, shopId ?: return, data[0].labelId ?: "")
+        presenter.loadMealList(pullRefreshFragment.page, false, data[0].labelId ?: "")
     }
 
-    override fun loadMealGoodsList(data: ArrayList<MealGoodsBean>) {
+    override fun loadMealList(data: ArrayList<MealBean>) {
         pullRefreshFragment.addData(data)
     }
 
@@ -138,7 +137,7 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
         } else {
             var total = 0F
             goodsList.filter { it.isChecked }.forEach {
-                it.price?.let { price ->
+                it.shopGoodsEntity?.price?.let { price ->
                     total += price.toFloat() * it.count
                 }
             }

@@ -8,10 +8,7 @@ import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
-import com.zhkj.smartpolice.meal.bean.MealMenuBean
-import com.zhkj.smartpolice.meal.bean.MealRecordBean
-import com.zhkj.smartpolice.meal.bean.RestaurantBean
+import com.zhkj.smartpolice.meal.bean.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -43,16 +40,13 @@ class MealModel {
     /**
      * 餐厅菜单分类
      */
-    suspend fun loadMealMenu(shopId: String): ArrayList<MealMenuBean>? {
-        val httpResultBean = object : HttpResultBean<PageModel<MealMenuBean>>() {}
+    suspend fun loadMealMenu(): ArrayList<MealMenuBean>? {
+        val httpResultBean = object : HttpResultBean<BaseModel<ArrayList<MealMenuBean>>>() {}
 
-        val params = HashMap<String, String>()
-        params["shopId"] = shopId
-
-        ZyHttp.get(UrlConstant.MEAL_MENU_CLASSIFY_URL, params, httpResultBean)
+        ZyHttp.get(UrlConstant.MEAL_CLASSIFY_URL, hashMapOf(), httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {
-                return httpResultBean.bean?.data?.list
+                return httpResultBean.bean?.data
             }
         }
         return null
@@ -60,19 +54,26 @@ class MealModel {
 
     /**
      * 餐厅菜品列表
+     * classify(必传) 分类 1就餐菜单 2订餐菜单
+     * type（就餐必传） 类型id: 1早餐，2午餐，3晚餐
+     * labelId (订餐必传) 标签id
      */
-    suspend fun loadMealGoodsList(page: Int, shopId: String, labelId: String): ArrayList<MealGoodsBean>? {
+    suspend fun loadMealList(page: Int, isDine: Boolean, labelId: String): ArrayList<MealBean>? {
 
         val params = HashMap<String, String>()
-        params["publishState"] = "1"
         params["page"] = page.toString()
         params["limit"] = Constant.pageLimit
-        params["shopId"] = shopId
-        params["labelId"] = labelId
+        params["classify"] = if (isDine) "1" else "2"
 
-        val httpResultBean = object : HttpResultBean<PageModel<MealGoodsBean>>() {}
+        if (isDine) {
+            params["type"] = labelId
+        } else {
+            params["labelId"] = labelId
+        }
 
-        ZyHttp.get(UrlConstant.MEAL_GOODS_LIST_URL, params, httpResultBean)
+        val httpResultBean = object : HttpResultBean<PageModel<MealBean>>() {}
+
+        ZyHttp.get(UrlConstant.MEAL_LIST_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {
             if (httpResultBean.bean?.isSuccess() == true) {
                 return httpResultBean.bean?.data?.list
@@ -81,27 +82,6 @@ class MealModel {
         return null
     }
 
-    /**
-     * 餐厅菜品列表搜索
-     */
-    suspend fun searchMealGoodsList(shopId: String, searchData: String): ArrayList<MealGoodsBean>? {
-
-        val params = HashMap<String, String>()
-        params["publishState"] = "1"
-        params["shopId"] = shopId
-        params["goodsName"] = searchData
-        params["limit"] = "-1"
-
-        val httpResultBean = object : HttpResultBean<PageModel<MealGoodsBean>>() {}
-
-        ZyHttp.get(UrlConstant.MEAL_GOODS_LIST_URL, params, httpResultBean)
-        if (httpResultBean.isSuccess()) {
-            if (httpResultBean.bean?.isSuccess() == true) {
-                return httpResultBean.bean?.data?.list
-            }
-        }
-        return null
-    }
 
     /**
      *  订餐记录
@@ -128,7 +108,7 @@ class MealModel {
      * 下单
      */
     suspend fun commitMealOrder(
-        shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealGoodsBean>
+        shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealBean>
     ): BaseModel<MealRecordBean>? {
 
         val params = JSONObject()

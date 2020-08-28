@@ -1,7 +1,7 @@
 package com.zhkj.smartpolice.meal.model
 
 import com.sunny.zy.base.IBaseView
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.meal.bean.MealBean
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -23,10 +23,10 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun loadMealMenu(shopId: String) {
+    override fun loadMealMenu() {
         launch(Dispatchers.Main) {
             showLoading()
-            mealModel.loadMealMenu(shopId)?.let {
+            mealModel.loadMealMenu()?.let {
                 if (view is MealContract.IMealMenuView) {
                     (view as MealContract.IMealMenuView).loadMealMenu(it)
                 }
@@ -35,24 +35,12 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun loadMealGoodsList(page: Int, shopId: String, labelId: String) {
+    override fun loadMealList(page: Int, isDine: Boolean, labelId: String) {
         launch(Dispatchers.Main) {
             showLoading()
-            mealModel.loadMealGoodsList(page, shopId, labelId)?.let {
+            mealModel.loadMealList(page, isDine, labelId)?.let {
                 if (view is MealContract.IMealMenuView) {
-                    (view as MealContract.IMealMenuView).loadMealGoodsList(it)
-                }
-            }
-            hideLoading()
-        }
-    }
-
-    override fun searchMealGoodsList(shopId: String, searchData: String) {
-        launch(Dispatchers.Main) {
-            showLoading()
-            mealModel.searchMealGoodsList(shopId, searchData)?.let {
-                if (view is MealContract.IMealMenuView) {
-                    (view as MealContract.IMealMenuView).loadMealGoodsList(it)
+                    (view as MealContract.IMealMenuView).loadMealList(it)
                 }
             }
             hideLoading()
@@ -71,7 +59,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun commitMealOrder(shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealGoodsBean>) {
+    override fun commitMealOrder(shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealBean>) {
 
         if (createUserName.isEmpty()) {
             view?.showMessage("请填写取餐人姓名")

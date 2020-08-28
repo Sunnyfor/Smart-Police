@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.meal
+package com.zhkj.smartpolice.meal.activity
 
 import android.content.Intent
 import android.view.View
@@ -6,7 +6,7 @@ import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.meal.bean.MealGoodsBean
+import com.zhkj.smartpolice.meal.bean.MealBean
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
 import com.zhkj.smartpolice.meal.model.MealContract
 import com.zhkj.smartpolice.meal.model.MealPresenter
@@ -29,8 +29,8 @@ class MealOrderInfoActivity : BaseActivity(), MealContract.IMealPlaceAnOrderView
         intent.getFloatExtra("total", 0f)
     }
 
-    private val mealGoodsList: ArrayList<MealGoodsBean>? by lazy {
-        ZyFrameStore.getData<ArrayList<MealGoodsBean>>("MealGoodsBeanList")
+    private val mealGoodsList: ArrayList<MealBean>? by lazy {
+        ZyFrameStore.getData<ArrayList<MealBean>>("MealGoodsBeanList")
     }
 
     override fun setLayout(): Int = R.layout.act_meal_order_info
@@ -50,7 +50,7 @@ class MealOrderInfoActivity : BaseActivity(), MealContract.IMealPlaceAnOrderView
                     et_name.text.toString(),
                     et_phone.text.toString(),
                     total.toString(),
-                    (mealGoodsList?.filter { it.isChecked }?:return) as ArrayList<MealGoodsBean>
+                    (mealGoodsList?.filter { it.isChecked }?:return) as ArrayList<MealBean>
                 )
             }
         }

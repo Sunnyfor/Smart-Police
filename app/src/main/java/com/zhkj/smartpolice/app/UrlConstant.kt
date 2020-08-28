@@ -24,20 +24,6 @@ object UrlConstant {
      */
     const val RESTAURANT_LIST_URL = "logistics/shop/list"
 
-    /**
-     * 餐厅模块：餐厅菜谱分类
-     */
-    const val MEAL_MENU_CLASSIFY_URL = "logistics/shopgoodslabel/list"
-
-    /**
-     * 餐厅模块：订餐菜单分类标签（二期）
-     */
-    const val MEAL_MENU_LABEL_URL = "logistics/shopgoodseveryday/tomorrowOrderLable"
-
-    /**
-     * 餐厅模块：菜品列表
-     */
-    const val MEAL_GOODS_LIST_URL = "logistics/shopgoods/list"
 
     /**
      * 餐厅模块：订餐记录
@@ -177,6 +163,15 @@ object UrlConstant {
      */
     const val UPDATE_BY_NOTICE_ID_URL = "app/appnoticeuserlink/updateByNoticeId"
 
+    /**
+     * 餐厅模块
+     */
+
+    // 订餐菜单分类标签
+    const val MEAL_CLASSIFY_URL = "logistics/shopgoodseveryday/tomorrowOrderLable"
+
+    // 订餐、就餐菜品列表
+    const val MEAL_LIST_URL = "logistics/shopgoodseveryday/list"
 
     /**
      * 药店模块

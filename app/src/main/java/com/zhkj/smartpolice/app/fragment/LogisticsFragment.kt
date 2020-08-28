@@ -19,7 +19,7 @@ import com.zhkj.smartpolice.maintain.activity.MaintainTaskActivity
 import com.zhkj.smartpolice.maintain.activity.PoliceMaintainActivity
 import com.zhkj.smartpolice.maintain.activity.PropertyManageActivity
 import com.zhkj.smartpolice.meal.DiningRoomActivity
-import com.zhkj.smartpolice.meal.MealRecordActivity
+import com.zhkj.smartpolice.meal.activity.MealRecordActivity
 import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
 import com.zhkj.smartpolice.merchant.model.MerchantContract

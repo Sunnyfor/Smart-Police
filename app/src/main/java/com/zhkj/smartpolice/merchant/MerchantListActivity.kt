@@ -6,10 +6,10 @@ import android.view.View
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
-import com.zhkj.smartpolice.meal.MealActivity
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.BarberListActivity
 import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
+import com.zhkj.smartpolice.meal.DiningRoomActivity
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.stadium.StadiumDetailActivity
@@ -28,7 +28,7 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
         MerchantAdapter(shopType ?: "").apply {
             setOnItemClickListener { _, i ->
                 when (shopType) {
-                    TYPE_RESTAURANT -> MealActivity.intent(this@MerchantListActivity, getData(i).shopId)
+                    TYPE_RESTAURANT -> DiningRoomActivity.intent(this@MerchantListActivity, getData(i).shopId)
                     TYPE_DRUGSTORE -> DrugstoreActivity.intent(this@MerchantListActivity, getData(i).shopId)
                     TYPE_STADIUM -> startActivity(Intent(this@MerchantListActivity, StadiumDetailActivity::class.java))
                     TYPE_HAIRCUT -> {

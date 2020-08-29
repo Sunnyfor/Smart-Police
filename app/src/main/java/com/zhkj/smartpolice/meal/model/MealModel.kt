@@ -8,7 +8,10 @@ import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.meal.bean.*
+import com.zhkj.smartpolice.meal.bean.MealBean
+import com.zhkj.smartpolice.meal.bean.MealMenuBean
+import com.zhkj.smartpolice.meal.bean.MealRecordBean
+import com.zhkj.smartpolice.meal.bean.RestaurantBean
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -120,10 +123,10 @@ class MealModel {
         params.put("totalPrice", totalPrice)
         val gson = Gson()
         val jsonArray = JSONArray()
+
         goodsList.forEach {
-            for (i in 0 until it.count) {
-                jsonArray.put(JSONObject(gson.toJson(it)))
-            }
+            it.shopGoodsEntity?.piece = it.count
+            jsonArray.put(JSONObject(gson.toJson(it.shopGoodsEntity)))
         }
         params.put("ordersLinkEntityList", jsonArray)
 
@@ -134,7 +137,6 @@ class MealModel {
                 return httpResultBean.bean
             }
         }
-
         return null
     }
 

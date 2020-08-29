@@ -119,8 +119,9 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
         menuList.clear()
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
-
-        presenter.loadMealList(pullRefreshFragment.page, false, data[0].labelId ?: "")
+        if(data.isNotEmpty()){
+            presenter.loadMealList(pullRefreshFragment.page, false, data[0].labelId ?: "")
+        }
     }
 
     override fun loadMealList(data: ArrayList<MealBean>) {

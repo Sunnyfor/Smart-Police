@@ -6,6 +6,7 @@ import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.meal.bean.MealBean
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
 import com.zhkj.smartpolice.meal.model.MealContract
@@ -40,6 +41,8 @@ class MealOrderInfoActivity : BaseActivity(), MealContract.IMealPlaceAnOrderView
         defaultTitle("订餐信息")
 
         setOnClickListener(tv_confirm)
+        et_name.setText(UserManager.getUserBean().userName)
+        et_phone.setText(UserManager.getUserBean().mobile)
     }
 
     override fun onClickEvent(view: View) {

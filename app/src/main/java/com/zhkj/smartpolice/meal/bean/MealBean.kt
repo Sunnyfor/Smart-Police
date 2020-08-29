@@ -41,6 +41,7 @@ class MealBean {
         var expiryDate: String? = null
         var goodsClassifyLabel: String? = null
         var shopGoodsLabelEntityList: String? = null
+        var piece = 1
     }
 
     /*

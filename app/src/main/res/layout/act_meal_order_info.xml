@@ -18,7 +18,8 @@
             android:id="@+id/et_name"
             style="@style/style_common_edit"
             android:hint="请填写取餐人姓名"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:enabled="false"/>
     </LinearLayout>
 
     <LinearLayout style="@style/style_register_item_layout">
@@ -34,7 +35,8 @@
             android:hint="请填写你的手机号"
             android:inputType="phone"
             android:maxLength="13"
-            tools:ignore="HardcodedText" />
+            android:enabled="false"
+            tools:ignore="HardcodedText"/>
     </LinearLayout>
 
     <TextView

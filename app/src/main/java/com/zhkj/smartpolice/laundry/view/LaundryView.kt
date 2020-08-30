@@ -8,5 +8,5 @@ interface LaundryView: IBaseView {
     /**
      * 洗衣店提交预约
      */
-    fun onLaundryPutIn(succeedBean: BaseModel<SucceedBean>){ }
+    fun onLaundryPutIn(succeedBean: BaseModel<Any>){ }
 }

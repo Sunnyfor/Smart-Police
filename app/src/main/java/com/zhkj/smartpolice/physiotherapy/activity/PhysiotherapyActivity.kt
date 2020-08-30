@@ -1,7 +1,6 @@
-package com.zhkj.smartpolice.laundry.activity
+package com.zhkj.smartpolice.physiotherapy.activity
 
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sunny.zy.base.BaseActivity
@@ -10,20 +9,20 @@ import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.PutInSucceedDialog
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveTimeAdapter
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveWeekAdapter
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import com.zhkj.smartpolice.haircut.bean.WeekDayBean
-import com.zhkj.smartpolice.laundry.presenter.LaundryPresenter
 import com.zhkj.smartpolice.laundry.view.LaundryView
-import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
+import com.zhkj.smartpolice.physiotherapy.presenter.PhysiotherapyPresenter
 import com.zhkj.smartpolice.stadium.adapter.StadiumResourceAdapter
-import kotlinx.android.synthetic.main.act_laundry_apply.*
+import kotlinx.android.synthetic.main.act_physiotherapy.*
 import java.util.*
 
-class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, LaundryView {
+class PhysiotherapyActivity : BaseActivity(), MerchantContract.IReserveTimeView, LaundryView {
 
     private val defaultWeeks = arrayListOf("周日", "周一", "周二", "周三", "周四", "周五", "周六")
     private var weekAdapter: LeaderReserveWeekAdapter? = null
@@ -31,7 +30,6 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
     private val calendar = Calendar.getInstance(Locale.CHINA)
     private val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
     private var resourceId: String? = null
-
     private var endDate = ""
     private var num: Int = 0
     private var casualNum: Int = 0
@@ -42,17 +40,8 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
         MerchantPresenter(this)
     }
 
-    val shopId: String by lazy {
+    val shopId by lazy {
         intent.getStringExtra("shopId")
-
-    }
-
-    val selfQuota: String by lazy {
-        intent.getStringExtra("selfQuota")
-    }
-
-    val laundryPresenter: LaundryPresenter by lazy {
-        LaundryPresenter(this)
     }
 
     private val putInSucceedDialog: PutInSucceedDialog by lazy {
@@ -66,25 +55,27 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
         }
     }
 
-    override fun setLayout(): Int = R.layout.act_laundry_apply
+    private val physiotherapyPresenter: PhysiotherapyPresenter by lazy {
+        PhysiotherapyPresenter(this)
+    }
+
+    override fun setLayout(): Int = R.layout.act_physiotherapy
 
     override fun initView() {
-        defaultTitle("预约申请")
-        iv_add.setOnClickListener(this)
-        iv_cut.setOnClickListener(this)
-        iv_casual_cut.setOnClickListener(this)
-        iv_casual_add.setOnClickListener(this)
-        tv_submit.setOnClickListener(this)
-        et_count.setText(num.toString())
-        et_casual_count.setText(casualNum.toString())
+        defaultTitle("理疗")
+        tv_user_name.text = UserManager.getUserBean().userName
+        tv_user_phone.text = UserManager.getUserBean().mobile
 
         weekAdapter = LeaderReserveWeekAdapter().apply {
             setOnItemClickListener { _, position ->
                 index = position
                 timeAdapter?.clearData()
                 timeAdapter?.notifyDataSetChanged()
+                resourceAdapter.clearData()
+                resourceAdapter.notifyDataSetChanged()
                 notifyDataSetChanged()
                 endDate = getEndData(getData(position).day)
+                LogUtil.d("传递的参数是===endDate===$endDate===shopId====$shopId======resourceId======$resourceId")
                 presenter.loadReserveTime(endDate, shopId, resourceId)
             }
         }
@@ -96,14 +87,14 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
                 resourceAdapter.clearData()
 
                 list.groupBy { it.manageTime }[getData(position).manageTime]?.let { list ->
-                    resourceAdapter.addData(list as ArrayList<MerchantTime>)
+                    resourceAdapter.addData(list as java.util.ArrayList<MerchantTime>)
                 }
                 resourceAdapter.notifyDataSetChanged()
-                LogUtil.i("我点击了当前时间段========${getData(position).endTime}")
                 beginTime = getData(position).beginTime
                 endTime = getData(position).endTime
             }
         }
+
         val weekDayList = arrayListOf<WeekDayBean>()
         val maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
 
@@ -114,68 +105,42 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
         }
         weekAdapter?.addData(weekDayList)
 
-        rv_date.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        rv_date.adapter = weekAdapter
+        recycler_date.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        recycler_date.adapter = weekAdapter
 
         recycler_time.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         recycler_time.adapter = timeAdapter
-//        recycler_resource.layoutManager = LinearLayoutManager(this)
-//        recycler_resource.adapter = resourceAdapter
-//        setOnClickListener(btn_reserve)
+
+        recycler_resource.layoutManager = LinearLayoutManager(this)
+        recycler_resource.adapter = resourceAdapter
+
+        setOnClickListener(btn_reserve)
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            R.id.iv_add -> {
-                num += 1
-                et_count.setText(num.toString())
-            }
-
-            R.id.iv_cut -> {
-                if (num > 0) {
-                    num -= 1
-                    et_count.setText(num.toString())
+            btn_reserve.id -> {
+                if (resourceAdapter.itemCount == 0) {
+                    ToastUtil.show("当前日期没有可预约的场地！")
+                    return
                 }
-            }
 
-            R.id.iv_casual_cut -> {
-                if (casualNum > 0) {
-                    casualNum -= 1
-                    et_casual_count.setText(casualNum.toString())
+                if (resourceAdapter.index == -1) {
+                    ToastUtil.show("请选择预约的场地！")
+                    return
                 }
-            }
 
-            R.id.iv_casual_add -> {
-                intent.getStringExtra("selfQuota")?.let {
-                    if (casualNum < selfQuota.toInt()) {
-                        casualNum += 1
-                        et_casual_count.setText(casualNum.toString())
-                    } else {
-                        ToastUtil.show("超过便服的洗衣上限！")
-                    }
-                }
-            }
-
-            R.id.tv_submit -> {
-                var count = et_count.text.toString().toInt()
-                var casualCount = et_casual_count.text.toString().toInt()
-                if (count == 0 && casualCount == 0) {
-                    ToastUtil.show("请选择衣物的数量")
-                } else {
-                    intent.getStringExtra("shopId")?.let {
-                        laundryPresenter.onLaundryPutIn(
-                            beginTime.orEmpty(),
-                            "2",
-                            casualNum.toString(),
-                            num.toString(),
-                            endTime.orEmpty(),
-                            shopId
-                        )
-                    }
+                resourceAdapter.getData(resourceAdapter.index).let {
+                    physiotherapyPresenter.onPhysiotherapy(
+                        it.beginTime ?: "",
+                        it.endTime ?: "",
+                        "6",
+                        it.manageId.toString(),
+                        shopId
+                    )
                 }
             }
         }
-
     }
 
     override fun loadData() {
@@ -189,7 +154,6 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
 
     private fun getEndData(day: Int): String {
         val month = calendar.get(Calendar.MONTH) + 1
-
         return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-${if (day < 10) "0$day" else day}"
     }
 
@@ -210,11 +174,7 @@ class LaundryApplyActivity : BaseActivity(), MerchantContract.IReserveTimeView, 
     }
 
     override fun onLaundryPutIn(succeedBean: BaseModel<Any>) {
-        putInSucceedDialog.show()
-        putInSucceedDialog.onServiceListener = {
-            putInSucceedDialog.dismiss()
-            ToastUtil.show("预约成功！")
-            finish()
-        }
+        super.onLaundryPutIn(succeedBean)
+        LogUtil.i("预约成功")
     }
 }

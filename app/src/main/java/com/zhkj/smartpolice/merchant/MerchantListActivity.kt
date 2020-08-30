@@ -59,6 +59,7 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
         const val TYPE_STADIUM = "5"      //运动场馆
         const val TYPE_POLICE = "6"       //警营
         const val TYPE_SHUTTLE_BUS = "7"  //班车
+        const val TYPE_PHYSIOTHERAPY = "8" //理疗
 
         fun intent(context: Context, shopType: String) {
             val intent = Intent(context, MerchantListActivity::class.java)
@@ -82,6 +83,7 @@ class MerchantListActivity : BaseActivity(), MerchantContract.IMerchantListView 
             TYPE_STADIUM -> "运动场馆"
             TYPE_POLICE -> "警营"
             TYPE_SHUTTLE_BUS -> "班车"
+            TYPE_PHYSIOTHERAPY -> "理疗"
             else -> "商家"
         }
 

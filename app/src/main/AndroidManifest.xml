@@ -126,6 +126,9 @@
         <!--班车-->
         <activity android:name=".shuttle.ShuttleBusActivity" />
 
+        <!--理疗-->
+        <activity android:name=".physiotherapy.activity.PhysiotherapyActivity"/>
+
     </application>
 
 </manifest>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_68"
+    tools:ignore="HardcodedText"
+    android:layout_margin="@dimen/dp_10"
+    android:background="@drawable/corners_dp5_white"
+    android:elevation="@dimen/dp_1">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_20"
+        android:src="@drawable/svg_default_head"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/style_font_black_bigger"
+        android:layout_marginStart="@dimen/dp_20"
+        android:text="篮球场"
+        app:layout_constraintBottom_toTopOf="@id/tv_hint"
+        app:layout_constraintStart_toEndOf="@id/iv_image"
+        app:layout_constraintTop_toTopOf="@id/iv_image" />
+
+
+    <TextView
+        android:id="@+id/tv_hint"
+        style="@style/style_font_gray_small"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:text="篮球比赛场地是一个长方形的坚实平面，篮球场地长28米，宽l5米，无障碍物。"
+        app:layout_constraintBottom_toBottomOf="@id/iv_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

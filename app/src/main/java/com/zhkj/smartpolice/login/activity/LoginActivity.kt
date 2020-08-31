@@ -137,6 +137,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         data.userId?.let {
             SpUtil.setString(SpUtil.userId, it)
         }
+        SpUtil.setObject(UserBean::class.java.simpleName, data)
         SpUtil.setString(SpUtil.username, et_username.text.toString().trim())
         SpUtil.setString(SpUtil.password, et_password.text.toString().trim())
 

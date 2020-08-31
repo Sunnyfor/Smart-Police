@@ -15,7 +15,7 @@ import com.sunny.zy.widget.PullRefreshRecyclerLayout
  * Mail zhangye98@foxmail.com
  * Date 2020/6/4 16:05
  */
-class PullRefreshFragment<T> : BaseFragment() {
+open class PullRefreshFragment<T> : BaseFragment() {
     var layoutManager: RecyclerView.LayoutManager? = null
     var adapter: BaseRecycleAdapter<T>? = null
     var page = 1

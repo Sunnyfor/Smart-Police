@@ -7,8 +7,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.sunny.zy.utils.isApkInDebug
+import com.sunny.zy.utils.SpUtil
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.MainActivity
+import com.zhkj.smartpolice.mine.bean.UserBean
 import kotlinx.android.synthetic.main.act_splash.*
 import java.lang.Thread.sleep
 
@@ -19,12 +21,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.act_splash)
 
         //判断是debug模式直接跳转至登录页
-        if (isApkInDebug(this)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-            return
-        }
-
+//        if (isApkInDebug(this)) {
+//            startActivity(Intent(this, LoginActivity::class.java))
+//            finish()
+//            return
+//        }
         showAppNameAnim()
     }
 
@@ -69,7 +70,11 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationEnd(animator: Animator) {
                 sleep(500)
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                if (SpUtil.getObject(UserBean::class.java.simpleName, UserBean::class.java) != null) {
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                } else {
+                    startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                }
                 finish()
             }
 

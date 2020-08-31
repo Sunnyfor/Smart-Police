@@ -6,16 +6,17 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.sunny.zy.base.BaseFragment
 import com.sunny.zy.utils.RouterManager
+import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.utils.isStrEmpty
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
-import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.meal.activity.MealRecordActivity
 import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
+import com.zhkj.smartpolice.mine.bean.UserBean
 import com.zhkj.smartpolice.notice.ConsumeRecordActivity
 import kotlinx.android.synthetic.main.frag_mine.*
 
@@ -71,12 +72,12 @@ class MineFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
 
-        val userBean = UserManager.getUserBean()
-        tv_name.text = isStrEmpty("${userBean.nickName}", "登录 / 注册")
-        tv_sign.text = isStrEmpty(userBean.sign)
+        val userBean = SpUtil.getObject(UserBean::class.java.simpleName, UserBean::class.java)
+        tv_name.text = isStrEmpty("${userBean?.nickName}", "登录 / 注册")
+        tv_sign.text = isStrEmpty(userBean?.sign)
 
         Glide.with(requireContext())
-            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${userBean.avatar}")
+            .load("${UrlConstant.LOAD_IMAGE_PATH_URL}${userBean?.avatar}")
             .placeholder(R.drawable.svg_default_head)
             .into(iv_head)
     }

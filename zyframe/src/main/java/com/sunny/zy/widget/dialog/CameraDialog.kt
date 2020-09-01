@@ -11,9 +11,6 @@ import kotlinx.android.synthetic.main.zy_dialog_camera.*
 
 /**
  * Desc 相机相册对话框
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020年3月7日 21:32:59
  */
 class CameraDialog(activity: Activity, var cameraUtil: CameraUtil) : BaseDialog(activity, R.layout.zy_dialog_camera) {
 

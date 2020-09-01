@@ -35,10 +35,10 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         }
     }
 
-    override fun loadReserveTime(endDate: String, shopId: String,resourceId:String?) {
+    override fun loadReserveTime(endDate: String, shopId: String, resourceId: String?) {
         launch(Main) {
             showLoading()
-            merchantModel.loadReserveTime(endDate, shopId,resourceId)?.let {
+            merchantModel.loadReserveTime(endDate, shopId, resourceId)?.let {
                 if (view is MerchantContract.IReserveTimeView) {
                     (view as MerchantContract.IReserveTimeView).showReserveTime(it)
                 }
@@ -47,9 +47,9 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         }
     }
 
-    override fun loadReserveResource(page:String,shopId: String) {
+    override fun loadReserveResource(page: String, shopId: String, classifyId: String?) {
         launch(Main) {
-            merchantModel.loadReserveResource(page,shopId)?.let {
+            merchantModel.loadReserveResource(page, shopId)?.let {
                 if (view is MerchantContract.IReserveResourceView) {
                     (view as MerchantContract.IReserveResourceView).showReserveResource(it)
                 }
@@ -81,7 +81,7 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
 
         launch(Main) {
             showLoading()
-            merchantModel.commitReserve(reserveUserName, mobile, beginTime, endTime, manageId, reserveType, shopId,bean)?.let {
+            merchantModel.commitReserve(reserveUserName, mobile, beginTime, endTime, manageId, reserveType, shopId, bean)?.let {
                 if (view is MerchantContract.IReserveView) {
                     (view as MerchantContract.IReserveView).reserveResult(it)
                 }

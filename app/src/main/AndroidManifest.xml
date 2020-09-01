@@ -105,6 +105,7 @@
         <activity
             android:name=".stadium.StadiumDetailActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".stadium.StadiumActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -127,7 +128,7 @@
         <activity android:name=".shuttle.ShuttleBusActivity" />
 
         <!--理疗-->
-        <activity android:name=".physiotherapy.activity.PhysiotherapyActivity"/>
+        <activity android:name=".physiotherapy.activity.PhysiotherapyActivity" />
 
     </application>
 

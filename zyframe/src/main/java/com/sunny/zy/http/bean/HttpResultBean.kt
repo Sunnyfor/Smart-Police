@@ -5,12 +5,6 @@ import okhttp3.Response
 import okhttp3.WebSocket
 import okio.ByteString
 
-/**
- * Desc
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020/4/29 12:37
- */
 abstract class HttpResultBean<T>(
     var serializedName: String = "data"
 ) : BaseHttpResultBean<T>() {

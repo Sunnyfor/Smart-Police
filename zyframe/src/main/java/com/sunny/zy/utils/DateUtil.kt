@@ -8,9 +8,6 @@ import kotlin.math.abs
 
 /**
  * Desc 日期工具类
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020年5月27日 19:11:54
  */
 object DateUtil {
 

@@ -19,9 +19,6 @@ import java.io.File
 
 /**
  * Desc 相机相册工具类
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020年3月4日 11:56:34
  */
 class CameraUtil(var activity: BaseActivity) {
 

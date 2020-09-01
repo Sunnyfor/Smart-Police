@@ -1,45 +1,34 @@
 package com.zhkj.smartpolice.stadium
 
+import android.content.Context
+import android.content.Intent
 import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentPagerAdapter
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.stadium.fragment.StadiumFragment
+import com.zhkj.smartpolice.utils.MyPagerAdapter
 import kotlinx.android.synthetic.main.act_stadium.*
 
-/**
- * Desc
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020/8/31 22:45
- */
 class StadiumActivity : BaseActivity() {
 
-    private val titleList = arrayListOf(
-        "室内运动场", "室外运动场", "澡堂"
-    )
+    private val titleList = arrayListOf("室内运动场", "室外运动场", "澡堂")
 
-    private val fragmentList = arrayListOf(
-        StadiumFragment(),
-        StadiumFragment(),
-        StadiumFragment()
-    )
+    private val fragmentList = arrayListOf(StadiumFragment(), StadiumFragment(), StadiumFragment())
+
+    companion object {
+        fun intent(context: Context, shopType: String) {
+            val intent = Intent(context, StadiumActivity::class.java)
+            intent.putExtra("shopType", shopType)
+            context.startActivity(intent)
+        }
+    }
 
     override fun setLayout(): Int = R.layout.act_stadium
 
     override fun initView() {
         defaultTitle("运动场")
 
-        viewPager.adapter = object : FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-            override fun getItem(position: Int): Fragment = fragmentList[position]
-
-            override fun getCount(): Int = fragmentList.size
-
-            override fun getPageTitle(position: Int): CharSequence? {
-                return titleList[position]
-            }
-        }
+        viewPager.adapter = MyPagerAdapter(supportFragmentManager, fragmentList, titleList)
 
         tabLayout.setupWithViewPager(viewPager)
 

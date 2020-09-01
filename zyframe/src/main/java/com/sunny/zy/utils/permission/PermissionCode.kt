@@ -2,9 +2,6 @@ package com.sunny.zy.utils.permission
 
 /**
  * Desc 权限回调Code
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020年3月3日 22:23:31
  */
 enum class PermissionCode(val type: Int) {
     ALL(0),

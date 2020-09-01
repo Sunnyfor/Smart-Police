@@ -9,9 +9,6 @@ import kotlinx.android.synthetic.main.zy_dialog_confirm.*
 
 /**
  * Desc 确认对话框
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2019/10/31 0031 14:53
  */
 class ConfirmDialog(activity: Activity) : BaseDialog(activity) {
 

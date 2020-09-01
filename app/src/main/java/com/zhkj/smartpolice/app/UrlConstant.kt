@@ -48,6 +48,7 @@ object UrlConstant {
 
     /**
      * 预约资源
+     * 运动场
      */
     const val RESERVE_RESOURCE_LIST_URL = "logistics/reserveresource/list"
 

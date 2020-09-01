@@ -37,10 +37,10 @@ interface MerchantContract {
         abstract fun loadMerchantInfo(shopId: String)
 
         //加载预约时间
-        abstract fun loadReserveTime(endDate: String, shopId: String,resourceId:String?)
+        abstract fun loadReserveTime(endDate: String, shopId: String, resourceId: String?)
 
         //加载预约资源
-        abstract fun loadReserveResource(page:String,shopId: String)
+        abstract fun loadReserveResource(page: String, shopId: String, classifyId: String? = null)
 
         //警员预约请求
         abstract fun commitReserve(

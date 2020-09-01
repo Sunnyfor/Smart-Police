@@ -9,9 +9,6 @@ import com.sunny.zy.base.BaseActivity
 
 /**
  * Desc 权限工具类
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020年3月3日 22:25:15
  */
 class PermissionUtil(var activity: BaseActivity) {
 

@@ -29,7 +29,7 @@ import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.notice.ConsumeRecordActivity
 import com.zhkj.smartpolice.physiotherapy.activity.PhysiotherapyActivity
 import com.zhkj.smartpolice.shuttle.ShuttleBusActivity
-import com.zhkj.smartpolice.stadium.StadiumDetailActivity
+import com.zhkj.smartpolice.stadium.StadiumActivity
 import kotlinx.android.synthetic.main.frag_logistics.*
 import kotlinx.coroutines.cancel
 
@@ -105,7 +105,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
             tv_stadium.id -> {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_STADIUM }
                     .apply {
-                        val intent = Intent(requireContext(), StadiumDetailActivity::class.java)
+                        val intent = Intent(requireContext(), StadiumActivity::class.java)
                         intent.putExtra("shopId", this?.shopId)
                         startActivity(intent)
                     }
@@ -146,7 +146,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_PHYSIOTHERAPY }
                     .apply {
                         val intent = Intent(requireContext(), PhysiotherapyActivity::class.java)
-                        intent.putExtra("shopId",this?.shopId)
+                        intent.putExtra("shopId", this?.shopId)
                         startActivity(intent)
                     }
 //                ToastUtil.show()

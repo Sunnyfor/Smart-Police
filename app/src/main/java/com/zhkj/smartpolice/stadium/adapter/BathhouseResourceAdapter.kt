@@ -10,9 +10,6 @@ import kotlinx.android.synthetic.main.item_bathhouse_resource.view.*
 
 /**
  * Desc 澡堂adapter
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020/8/31 22:36
  */
 class BathhouseResourceAdapter : BaseRecycleAdapter<Any>(arrayListOf()) {
     override fun setLayout(parent: ViewGroup, viewType: Int): View {

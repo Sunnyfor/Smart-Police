@@ -4,12 +4,6 @@ import android.content.Context
 import android.os.Environment
 import java.io.File
 
-/**
- * Desc 缓存清理管理类
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020/7/2 15:47
- */
 object CacheDataManager {
 
     /**

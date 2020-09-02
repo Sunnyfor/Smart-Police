@@ -2,10 +2,12 @@ package com.zhkj.wallet.activity
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.sunny.zy.base.BaseActivity
-import com.sunny.zy.utils.*
+import com.sunny.zy.utils.GlideApp
+import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.RouterManager
+import com.sunny.zy.utils.SpUtil
 import com.zhkj.wallet.R
 import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.presenter.WalletPresenter
@@ -95,7 +97,6 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     override fun showSocketMessage(message: String) {
-
         runOnUiThread {
             val msgObj = JSONObject(message)
 
@@ -130,9 +131,10 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
                         totalPrice.toFloat()
                     )
                 }
+                else -> {
+                    PayResultActivity.intent("4", msgObj.optString("message"))
+                }
             }
-
-            ToastUtil.show(msgObj.optString("message"))
         }
     }
 

@@ -15,7 +15,7 @@ abstract class HttpResultBean<T>(
 
     @Suppress("UNCHECKED_CAST")
     fun isSuccess(): Boolean {
-        if (httpIsSuccess() && exception == null) {
+        if (httpIsSuccess()) {
             return if (ZyFrameStore.onSuccessCallback != null) {
                 ZyFrameStore.onSuccessCallback?.invoke(this as BaseHttpResultBean<Any>) == true
             } else {

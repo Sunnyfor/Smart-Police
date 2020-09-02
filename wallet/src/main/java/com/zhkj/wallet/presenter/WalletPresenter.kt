@@ -37,14 +37,14 @@ class WalletPresenter(iBaseView: IBaseView) :
         override fun onOpen(webSocket: WebSocket, response: Response) {
             super.onOpen(webSocket, response)
             bean = webSocket
-            LogUtil.i("WebSocket：连接成功！${webSocket}")
+            LogUtil.i("webSocket：连接成功！${webSocket}")
             if (view is WalletContract.IPayCodeView) {
                 (view as WalletContract.IPayCodeView).showSocketResult(true)
             }
         }
 
         override fun onMessage(webSocket: WebSocket, text: String) {
-            LogUtil.i("WebSocket：接收到消息！${text}")
+            LogUtil.i("webSocket：接收到消息！${text}")
             if (view is WalletContract.IPayCodeView) {
                 (view as WalletContract.IPayCodeView).showSocketMessage(text)
             }
@@ -52,11 +52,11 @@ class WalletPresenter(iBaseView: IBaseView) :
 
         override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
             super.onMessage(webSocket, bytes)
-            LogUtil.i("WebSocket：接收到消息！${bytes}")
+            LogUtil.i("webSocket：接收到消息！${bytes}")
         }
 
         override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-            LogUtil.i("WebSocket：连接失败！URL:${response?.request?.url} ---- 消息：${t.message}")
+            LogUtil.i("webSocket：连接失败！URL:${response?.request?.url} ---- 消息：${t.message}")
             if (view is WalletContract.IPayCodeView) {
                 (view as WalletContract.IPayCodeView).showSocketResult(false)
             }

@@ -5,11 +5,9 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
-import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
-import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
 import com.umeng.message.PushAgent
 import com.umeng.message.tag.TagManager
@@ -42,12 +40,13 @@ class MainActivity : BaseActivity() {
 
         ZyFrameStore.onSuccessCallback = {
             if (it.url.contains("login.html")) {
-                LoginActivity.intent(this,true)
+                LoginActivity.intent(this, true)
                 ToastUtil.show("登录失效！，请重新登录！")
                 false
             } else {
-                true
+                it.exception == null
             }
+
         }
 
 
@@ -69,8 +68,8 @@ class MainActivity : BaseActivity() {
         intentFilter.addAction("com.zhkj.notice.message")
         registerReceiver(noticeReceiver, intentFilter)
 
-        val intent = Intent(this, NoticeService::class.java)
-        startService(intent)
+//        val intent = Intent(this, NoticeService::class.java)
+//        startService(intent)
 
         bottom_navigation_view.elevation = 0f
     }

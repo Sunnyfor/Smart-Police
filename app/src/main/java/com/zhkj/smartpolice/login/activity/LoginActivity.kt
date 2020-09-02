@@ -10,9 +10,11 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
+import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
+import com.umeng.message.PushAgent
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.MainActivity
 import com.zhkj.smartpolice.base.UserManager
@@ -100,6 +102,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     override fun loadData() {
         logout = intent.getBooleanExtra("logout", false)
         if (logout) {
+            disable()
             ZyFrameStore.finishAllActivity(this)
             SpUtil.clear()
         } else {
@@ -149,4 +152,11 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     override fun updateUserInfo(msg: String) {
 
     }
+
+    private fun disable() {
+        PushAgent.getInstance(this).deleteAlias(UserManager.getUserBean().userId, "ytzhjb") { isSuccess: Boolean, message: String ->
+            LogUtil.i("友盟推送删除别名: isSuccess = $isSuccess ||| message = $message")
+        }
+    }
+
 }

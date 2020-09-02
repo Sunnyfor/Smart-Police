@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.utils.LogUtil
+import com.umeng.message.PushAgent
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.fragment.MineFragment
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.notice.NoticeReceiver
 import com.zhkj.smartpolice.notice.NoticeService
 import kotlinx.android.synthetic.main.act_main.*
@@ -30,6 +33,8 @@ class MainActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.act_main
 
     override fun initView() {
+
+        enable()
 
         bottom_navigation_view.setOnNavigationItemSelectedListener {
             nav_host_fragment.findNavController().let { controller ->
@@ -63,5 +68,12 @@ class MainActivity : BaseActivity() {
 
     override fun close() {
         unregisterReceiver(noticeReceiver)
+    }
+
+
+    private fun enable() {
+        PushAgent.getInstance(this).addAlias(UserManager.getUserBean().userId, "ytzhjb") { isSuccess, message ->
+            LogUtil.i("友盟推送绑定别名: isSuccess = $isSuccess ||| message = $message")
+        }
     }
 }

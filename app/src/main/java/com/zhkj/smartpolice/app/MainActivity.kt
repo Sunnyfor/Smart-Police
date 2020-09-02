@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
 import com.umeng.message.PushAgent
+import com.umeng.message.tag.TagManager
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.fragment.MineFragment
 import com.zhkj.smartpolice.base.UserManager
@@ -75,5 +76,8 @@ class MainActivity : BaseActivity() {
         PushAgent.getInstance(this).addAlias(UserManager.getUserBean().userId, "ytzhjb") { isSuccess, message ->
             LogUtil.i("友盟推送绑定别名: isSuccess = $isSuccess ||| message = $message")
         }
+        PushAgent.getInstance(this).tagManager.addTags(TagManager.TCallBack { isSuccess, message ->
+            LogUtil.i("友盟推送绑定Tag: isSuccess = $isSuccess ||| message = $message")
+        }, UserManager.getUserBean().deptId)
     }
 }

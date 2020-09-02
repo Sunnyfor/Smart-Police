@@ -15,6 +15,7 @@ import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.umeng.message.PushAgent
+import com.umeng.message.tag.TagManager
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.MainActivity
 import com.zhkj.smartpolice.base.UserManager
@@ -157,6 +158,10 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         PushAgent.getInstance(this).deleteAlias(UserManager.getUserBean().userId, "ytzhjb") { isSuccess: Boolean, message: String ->
             LogUtil.i("友盟推送删除别名: isSuccess = $isSuccess ||| message = $message")
         }
+
+        PushAgent.getInstance(this).tagManager.deleteTags(TagManager.TCallBack { isSuccess, message ->
+            LogUtil.i("友盟推送删除Tag: isSuccess = $isSuccess ||| message = $message")
+        }, UserManager.getUserBean().deptId)
     }
 
 }

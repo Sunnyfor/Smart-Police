@@ -40,7 +40,7 @@ interface MerchantContract {
         abstract fun loadReserveTime(endDate: String, shopId: String, resourceId: String?)
 
         //加载预约资源
-        abstract fun loadReserveResource(page: String, shopId: String, classifyId: String? = null)
+        abstract fun loadReserveResource(page: String, shopId: String? = null, shopType: String? = null, classifyId: String? = null)
 
         //警员预约请求
         abstract fun commitReserve(

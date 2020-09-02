@@ -80,15 +80,28 @@ class MerchantModel {
     /**
      *  预约资源
      */
-    suspend fun loadReserveResource(page: String, shopId: String, classifyId: String? = null): ArrayList<ManageBean>? {
+    suspend fun loadReserveResource(
+        page: String,
+        shopId: String? = null,
+        shopType: String? = null,
+        classifyId: String? = null
+    ): ArrayList<ManageBean>? {
         val params = HashMap<String, String>()
-        params["shopId"] = shopId
         params["page"] = page
         params["limit"] = Constant.pageLimit
 
-        if (!classifyId.isNullOrEmpty()) {
+        shopId?.let {
+            params["shopId"] = shopId
+        }
+
+        shopType?.let {
+            params["shopType"] = shopType
+        }
+
+        classifyId?.let {
             params["classifyId"] = classifyId
         }
+
         val httpResultBean =
             object : HttpResultBean<PageModel<ManageBean>>() {}
         ZyHttp.post(UrlConstant.RESERVE_RESOURCE_LIST_URL, params, httpResultBean)

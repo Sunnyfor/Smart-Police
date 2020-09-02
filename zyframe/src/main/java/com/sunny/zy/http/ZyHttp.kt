@@ -44,6 +44,7 @@ object ZyHttp {
                     level = HttpLoggingInterceptor.Level.BODY
                 })
             .addNetworkInterceptor {
+                httpResultBean.url = it.request().url.toString()
                 val originalResponse = it.proceed(it.request())
                 originalResponse.newBuilder().body(
                     ProgressResponseBody(

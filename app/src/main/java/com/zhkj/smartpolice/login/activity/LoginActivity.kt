@@ -7,6 +7,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel

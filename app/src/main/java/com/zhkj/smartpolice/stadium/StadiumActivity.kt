@@ -13,7 +13,10 @@ class StadiumActivity : BaseActivity() {
 
     private val titleList = arrayListOf("室内运动场", "室外运动场", "澡堂")
 
-    private val fragmentList = arrayListOf(StadiumFragment(), StadiumFragment(), StadiumFragment())
+    private val fragmentList = arrayListOf(
+        StadiumFragment().apply { classifyId = "1" },
+        StadiumFragment().apply { classifyId = "2" },
+        StadiumFragment().apply { classifyId = "3" })
 
     companion object {
         fun intent(context: Context, shopType: String) {
@@ -28,6 +31,7 @@ class StadiumActivity : BaseActivity() {
     override fun initView() {
         defaultTitle("运动场")
 
+        viewPager.offscreenPageLimit = fragmentList.size
         viewPager.adapter = MyPagerAdapter(supportFragmentManager, fragmentList, titleList)
 
         tabLayout.setupWithViewPager(viewPager)

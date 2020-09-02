@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.bean.UserInfoBean
+import com.sunny.zy.http.bean.BaseHttpResultBean
 import com.sunny.zy.utils.LogUtil
 import java.util.*
 import kotlin.system.exitProcess
@@ -34,6 +35,9 @@ object ZyFrameStore {
         userInfoBean.deptId = mUserInfoBean.deptId
         userInfoBean.name = mUserInfoBean.name
     }
+
+    var onSuccessCallback: ((bean: BaseHttpResultBean<Any>) -> Boolean)? = null
+
 
     fun getUserInfoBean() = userInfoBean
 

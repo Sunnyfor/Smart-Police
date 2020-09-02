@@ -1,5 +1,6 @@
 package com.sunny.zy.http.bean
 
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.utils.ToastUtil
 import okhttp3.Response
 import okhttp3.WebSocket
@@ -12,9 +13,14 @@ abstract class HttpResultBean<T>(
     var msg: String? = "OK"  //请求结果
     var bean: T? = null //数据结果
 
+    @Suppress("UNCHECKED_CAST")
     fun isSuccess(): Boolean {
         if (httpIsSuccess() && exception == null) {
-            return true
+            return if (ZyFrameStore.onSuccessCallback != null) {
+                ZyFrameStore.onSuccessCallback?.invoke(this as BaseHttpResultBean<Any>) == true
+            } else {
+                true
+            }
         }
         ToastUtil.show(msg)
         return false

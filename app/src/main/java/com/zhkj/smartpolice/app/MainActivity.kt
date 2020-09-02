@@ -5,13 +5,18 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import com.alibaba.android.arouter.launcher.ARouter
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.RouterManager
+import com.sunny.zy.utils.ToastUtil
 import com.umeng.message.PushAgent
 import com.umeng.message.tag.TagManager
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.fragment.MineFragment
 import com.zhkj.smartpolice.base.UserManager
+import com.zhkj.smartpolice.login.activity.LoginActivity
 import com.zhkj.smartpolice.notice.NoticeReceiver
 import com.zhkj.smartpolice.notice.NoticeService
 import kotlinx.android.synthetic.main.act_main.*
@@ -34,6 +39,17 @@ class MainActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.act_main
 
     override fun initView() {
+
+        ZyFrameStore.onSuccessCallback = {
+            if (it.url.contains("login.html")) {
+                LoginActivity.intent(this,true)
+                ToastUtil.show("登录失效！，请重新登录！")
+                false
+            } else {
+                true
+            }
+        }
+
 
         enable()
 

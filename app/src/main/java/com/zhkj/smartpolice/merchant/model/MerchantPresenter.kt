@@ -47,9 +47,9 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         }
     }
 
-    override fun loadReserveResource(page: String, shopId: String, classifyId: String?) {
+    override fun loadReserveResource(page: String, shopId: String?, shopType: String?, classifyId: String?) {
         launch(Main) {
-            merchantModel.loadReserveResource(page, shopId)?.let {
+            merchantModel.loadReserveResource(page, shopId, shopType, classifyId)?.let {
                 if (view is MerchantContract.IReserveResourceView) {
                     (view as MerchantContract.IReserveResourceView).showReserveResource(it)
                 }

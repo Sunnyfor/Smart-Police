@@ -14,6 +14,7 @@ import com.zhkj.smartpolice.haircut.adapter.LeaderReserveTimeAdapter
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveWeekAdapter
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import com.zhkj.smartpolice.haircut.bean.WeekDayBean
+import com.zhkj.smartpolice.laundry.bean.LaundryLabelBean
 import com.zhkj.smartpolice.laundry.view.LaundryView
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
@@ -21,6 +22,7 @@ import com.zhkj.smartpolice.physiotherapy.presenter.PhysiotherapyPresenter
 import com.zhkj.smartpolice.stadium.adapter.StadiumResourceAdapter
 import kotlinx.android.synthetic.main.act_physiotherapy.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class PhysiotherapyActivity : BaseActivity(), MerchantContract.IReserveTimeView, LaundryView {
 
@@ -172,6 +174,8 @@ class PhysiotherapyActivity : BaseActivity(), MerchantContract.IReserveTimeView,
         endTime = data[0].endTime
         resourceAdapter.notifyDataSetChanged()
     }
+
+    override fun showLaundryLabel(data: ArrayList<LaundryLabelBean>) {}
 
     override fun onLaundryPutIn(succeedBean: BaseModel<Any>) {
         super.onLaundryPutIn(succeedBean)

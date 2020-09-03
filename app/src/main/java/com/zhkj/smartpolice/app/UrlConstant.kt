@@ -59,6 +59,17 @@ object UrlConstant {
 
 
     /**
+     * 洗衣分类标签
+     */
+    const val SHOP_GOODS_LABEL_URL = "/logistics/shopgoodslabel/list"
+
+
+    /**
+     * 洗衣预约
+     */
+    const val SAVE_WASH_RECORD_URL = "/logistics/reserverecord/saveWashRecord"
+
+    /**
      * 领导预约
      */
     const val RESERVE_RECORD_SAVE_URL = "logistics/reserverecord/save"

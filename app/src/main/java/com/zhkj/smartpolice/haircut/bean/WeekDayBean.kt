@@ -1,5 +1,7 @@
 package com.zhkj.smartpolice.haircut.bean
 
+import java.util.*
+
 /**
  * Desc
  * Author ZhangYe
@@ -9,4 +11,6 @@ package com.zhkj.smartpolice.haircut.bean
 data class WeekDayBean(
     var week: String = "",
     var day: Int = 0
-)
+) {
+    var date: Date? = null
+}

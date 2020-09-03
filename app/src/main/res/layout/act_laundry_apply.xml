@@ -15,7 +15,8 @@
             android:id="@+id/cl_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="@dimen/dp_339"
@@ -102,136 +103,68 @@
                 android:layout_below="@id/rv_date"
                 android:layout_marginTop="@dimen/dp_17"
                 android:background="@color/bg_DCDCDC" />
-
-            <TextView
-                style="@style/style_font_black_larger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view"
-                android:layout_marginStart="@dimen/dp_18"
-                android:layout_marginTop="@dimen/dp_17"
-                android:text="选择时间段"
-                android:visibility="gone" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_time"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_45"
-                android:layout_below="@id/view"
-                android:layout_marginStart="@dimen/dp_17"
-                android:layout_marginTop="@dimen/dp_48"
-                android:layout_marginBottom="@dimen/dp_17"
-                android:visibility="gone" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="@dimen/dp_339"
-            android:layout_height="@dimen/dp_67"
+
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_220"
+            android:layout_below="@+id/rl_head"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_26"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/shape_bg_white_radius_17dp"
+            android:paddingTop="@dimen/dp_24" />
+
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_34"
             android:layout_below="@id/rl_head"
-            android:layout_marginStart="@dimen/dp_11"
-            android:layout_marginTop="@dimen/dp_12"
-            android:background="@drawable/sel_audit_border_background"
-            android:gravity="center_vertical">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
 
-            <TextView
-                style="@style/style_font_black_larger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_10"
-                android:text="警服" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_one"
+                android:layout_width="@dimen/dp_126"
+                android:layout_height="match_parent"
+                android:background="@drawable/sel_appointment_menu_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="便服"
+                android:textColor="@color/sel_color_black_white" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:gravity="center_vertical">
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radio_two"
+                android:layout_width="@dimen/dp_126"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_34"
+                android:background="@drawable/sel_appointment_menu_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="警服"
+                android:textColor="@color/sel_color_black_white" />
+        </RadioGroup>
 
-                <ImageView
-                    android:id="@+id/iv_cut"
-                    style="@style/style_common_icon"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/svg_meal_order_cut" />
-
-                <EditText
-                    android:id="@+id/et_count"
-                    style="@style/style_font_black"
-                    android:layout_width="@dimen/dp_30"
-                    android:layout_height="wrap_content"
-                    android:background="@color/color_transparent"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:text="1"
-                    tools:ignore="HardcodedText,LabelFor" />
-
-                <ImageView
-                    android:id="@+id/iv_add"
-                    style="@style/style_common_icon"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/svg_meal_order_add" />
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_two"
-            android:layout_width="@dimen/dp_339"
-            android:layout_height="@dimen/dp_67"
-            android:layout_below="@id/rl_head"
-            android:layout_marginStart="@dimen/dp_11"
-            android:layout_marginTop="@dimen/dp_91"
-            android:background="@drawable/sel_audit_border_background"
-            android:gravity="center_vertical">
-
-            <TextView
-                style="@style/style_font_black_larger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_10"
-                android:text="便衣" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:id="@+id/iv_casual_cut"
-                    style="@style/style_common_icon"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/svg_meal_order_cut" />
-
-                <EditText
-                    android:id="@+id/et_casual_count"
-                    style="@style/style_font_black"
-                    android:layout_width="@dimen/dp_30"
-                    android:layout_height="wrap_content"
-                    android:background="@color/color_transparent"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:text="1"
-                    tools:ignore="HardcodedText,LabelFor" />
-
-                <ImageView
-                    android:id="@+id/iv_casual_add"
-                    style="@style/style_common_icon"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/svg_meal_order_add" />
-            </LinearLayout>
-        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fl_container"
+            android:layout_marginTop="@dimen/dp_20"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
 
         <TextView
             android:id="@+id/tv_submit"
             style="@style/style_font_white_larger"
             android:layout_width="@dimen/dp_275"
             android:layout_height="@dimen/dp_40"
-            android:layout_below="@id/rl_two"
+            android:layout_below="@id/recycler_label"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_60"
             android:layout_marginBottom="@dimen/dp_37"

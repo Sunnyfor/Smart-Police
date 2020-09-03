@@ -1,8 +1,11 @@
 package com.zhkj.smartpolice.app
 
+import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.http.UrlConstant
 
 object UrlConstant {
+
+    val TEMP = ZyFrameStore.getContext().getExternalFilesDir("temp")?.path //内存卡缓存路径
 
     /**
      * 图片下载地址
@@ -195,5 +198,27 @@ object UrlConstant {
 
     // 班车信息列表
     const val SHUTTLE_BUS_LIST_URL = "logistics/shop/listMyShop?shopType=%s"
+
+    /**
+     * 自动更新
+     */
+    const val VERSION_UPDATE_URL = "app/appandroidversion/open/findNewOne"
+
+
+    /**
+     * 用户管理
+     */
+
+    // 用户登录
+    const val USER_LOGIN_URL = "sys/login"
+
+    // 修改密码
+    const val MODIFY_PASSWORD_URL = "sys/user/password"
+
+    // 忘记密码
+    const val FORGET_PASSWORD_URL = "sys/user/open/forgetPassword"
+
+    // 发送验证码
+    const val SEND_VERIFICATION_CODE_URL = "sys/user/open/sendVerificationCode"
 
 }

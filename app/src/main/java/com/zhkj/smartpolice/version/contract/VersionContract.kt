@@ -1,16 +1,10 @@
-package com.sunny.zy.contract
+package com.zhkj.smartpolice.version.contract
 
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
-import com.sunny.zy.bean.VersionBean
+import com.zhkj.smartpolice.version.bean.VersionBean
 
-/**
- * Desc
- * Author 张野
- * Mail zhangye98@foxmail.com
- * Date 2020/6/15 12:07
- */
-interface VersionUpdateContract {
+interface VersionContract {
 
     interface View : IBaseView {
         fun showVersionUpdate(versionBean: VersionBean)

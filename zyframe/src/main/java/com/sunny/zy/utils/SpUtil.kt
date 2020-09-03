@@ -15,9 +15,6 @@ import java.lang.reflect.Type
  */
 object SpUtil {
     const val userId = "mUserId"
-    const val username = "mUsername"
-    const val password = "mPassword"
-    const val userInfoBean = "mUserInfoBean"
 
     /**
      * 文件名

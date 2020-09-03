@@ -20,14 +20,16 @@
 
     <RelativeLayout
         android:id="@+id/rl_border"
-        android:layout_width="@dimen/dp_317"
-        android:layout_height="@dimen/dp_262"
-        android:layout_marginStart="@dimen/dp_22"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_260"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_154"
-        android:background="@drawable/sel_border_white">
+        android:background="@drawable/sel_border_white"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingEnd="@dimen/dp_20">
 
         <RelativeLayout
-            android:layout_width="@dimen/dp_275"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
             android:layout_marginStart="@dimen/dp_21"
             android:layout_marginTop="@dimen/dp_28"
@@ -52,7 +54,7 @@
 
         <RelativeLayout
             android:id="@+id/rl_pwd"
-            android:layout_width="@dimen/dp_275"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
             android:layout_marginStart="@dimen/dp_21"
             android:layout_marginTop="@dimen/dp_100"
@@ -83,7 +85,6 @@
                 android:src="@drawable/svg_login_hide_password" />
 
         </RelativeLayout>
-
 
         <CheckBox
             android:id="@+id/cb_remember_pwd"

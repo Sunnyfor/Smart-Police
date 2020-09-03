@@ -25,21 +25,22 @@ import com.zhkj.smartpolice.login.view.LoginView
 import com.zhkj.smartpolice.mine.bean.UserBean
 import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
+import com.zhkj.smartpolice.utils.SpKey
 import kotlinx.android.synthetic.main.act_login.*
 import kotlinx.coroutines.cancel
 
 @Route(path = RouterManager.LOGIN_ACTIVITY)
 class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
+    private var mUsername = SpUtil.getString(SpKey.username)
+    private var mPassword = SpUtil.getString(SpKey.password)
+    private var isRememberPassword = SpUtil.getBoolean(SpKey.isRememberPassword, false)
+
     @JvmField
     @Autowired
     var logout: Boolean = false
 
     private var isStatus: Boolean = false
-
-    private var mUsername = SpUtil.getString(SpUtil.username)
-    private var mPassword = SpUtil.getString(SpUtil.password)
-
 
     private val loginPresenter: LoginPresenter by lazy {
         LoginPresenter(this)
@@ -62,6 +63,18 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
 
     override fun initView() {
+
+        // 记住密码
+        if (isRememberPassword) {
+            et_username.setText(mUsername)
+            et_password.setText(mPassword)
+            cb_remember_pwd.isChecked = true
+        }
+
+        cb_remember_pwd.setOnCheckedChangeListener { _, isChecked ->
+            isRememberPassword = isChecked
+        }
+
         setOnClickListener(
             btn_login,
             iv_eye,
@@ -135,13 +148,17 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
     override fun loadUserInfo(data: UserBean) {
         hideLoading()
-        UserManager.setUserBean(data)
         data.userId?.let {
             SpUtil.setString(SpUtil.userId, it)
         }
-        SpUtil.setObject(UserBean::class.java.simpleName, data)
-        SpUtil.setString(SpUtil.username, et_username.text.toString().trim())
-        SpUtil.setString(SpUtil.password, et_password.text.toString().trim())
+
+        UserManager.setUserBean(data)
+
+        if (isRememberPassword) {
+            SpUtil.setObject(UserBean::class.java.simpleName, data)
+            SpUtil.setString(SpKey.username, et_username.text.toString().trim())
+            SpUtil.setString(SpKey.password, et_password.text.toString().trim())
+        }
 
         ToastUtil.show("登录成功")
         startActivity(Intent(this, MainActivity::class.java))

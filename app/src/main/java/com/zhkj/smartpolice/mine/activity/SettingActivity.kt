@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.mine.activity
 
+import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.ToastUtil
@@ -44,9 +45,6 @@ class SettingActivity : BaseActivity() {
 
         item_name.endTextView.text = UserManager.getUserBean().userName
 
-        item_cache.setOnClickListener(this)
-        btn_logout.setOnClickListener(this)
-
         /*
          v_point.visibility = if (Constant.isVersionUpdate) View.VISIBLE else View.GONE
          item_version.endTextView.text = ("V " + BuildConfig.VERSION_NAME)
@@ -55,15 +53,21 @@ class SettingActivity : BaseActivity() {
          tv_privacy.setOnClickListener(this)
          */
 
+        setOnClickListener(
+            item_cache,
+            item_modify_pwd,
+            btn_logout
+        )
+
 
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            R.id.item_cache -> cacheClearDialog.show()
-            R.id.btn_logout -> exitDialog.show()
+            item_cache.id -> cacheClearDialog.show()
+            item_modify_pwd.id -> startActivity(Intent(this, ModifyPasswordActivity::class.java))
+            btn_logout.id -> exitDialog.show()
             /*
-            R.id.item_password -> startActivity(Intent(this, ModifyPasswordActivity::class.java))
             R.id.item_feedback -> startActivity(Intent(this, UserFeedbackActivity::class.java))
             R.id.item_about_us -> startActivity(Intent(this, UserFeedbackActivity::class.java))
             R.id.item_version -> presenter.checkVersionUpdate(BuildConfig.VERSION_CODE)

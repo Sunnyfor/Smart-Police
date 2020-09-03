@@ -14,6 +14,13 @@
         app:startAfterText="登录账号" />
 
     <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_modify_pwd"
+        style="@style/style_register_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="修改密码" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
         android:id="@+id/item_cache"
         style="@style/style_register_item_layout"
         app:endIcon="@drawable/svg_btn_more"

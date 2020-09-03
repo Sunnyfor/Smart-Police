@@ -65,7 +65,7 @@
         <!--登录模块-->
         <activity android:name=".login.activity.LoginActivity" />
         <activity android:name=".login.activity.ForgetPasswordActivity" />
-        <activity android:name=".login.activity.ModifyPasswordActivity" />
+        <activity android:name=".mine.activity.ModifyPasswordActivity" />
 
         <!--商家模块-->
         <activity android:name=".merchant.MerchantListActivity" />

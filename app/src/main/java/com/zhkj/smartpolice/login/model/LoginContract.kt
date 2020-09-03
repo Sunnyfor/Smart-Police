@@ -4,14 +4,10 @@ import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
 import com.zhkj.smartpolice.login.bean.UserInfoBean
 
-interface UserContract {
+interface LoginContract {
 
     interface ILoginView : IBaseView {
         fun doLogin(data: ArrayList<UserInfoBean>)
-    }
-
-    interface IPasswordView : IBaseView {
-        fun modifyPassword(data: String)
     }
 
     interface IForgetPwdView : IBaseView {

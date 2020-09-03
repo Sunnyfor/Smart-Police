@@ -4,18 +4,18 @@ import com.sunny.zy.base.IBaseView
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-class UserPresenter(iBaseView: IBaseView) : UserContract.Presenter(iBaseView) {
+class LoginPresenter(iBaseView: IBaseView) : LoginContract.Presenter(iBaseView) {
 
-    private val model: UserModel by lazy {
-        UserModel()
+    private val model: LoginModel by lazy {
+        LoginModel()
     }
 
     override fun doLogin(username: String, password: String) {
         launch(Main) {
             showLoading()
             model.doLogin(username, password)?.let {
-                if (view is UserContract.ILoginView) {
-                    (view as UserContract.ILoginView).doLogin(it)
+                if (view is LoginContract.ILoginView) {
+                    (view as LoginContract.ILoginView).doLogin(it)
                 }
             }
             hideLoading()
@@ -26,8 +26,8 @@ class UserPresenter(iBaseView: IBaseView) : UserContract.Presenter(iBaseView) {
         launch(Main) {
             showLoading()
             model.sendVerificationCode(phone)?.let {
-                if (view is UserContract.IForgetPwdView) {
-                    (view as UserContract.IForgetPwdView).sendVerificationCode(it)
+                if (view is LoginContract.IForgetPwdView) {
+                    (view as LoginContract.IForgetPwdView).sendVerificationCode(it)
                 }
             }
             hideLoading()
@@ -38,8 +38,8 @@ class UserPresenter(iBaseView: IBaseView) : UserContract.Presenter(iBaseView) {
         launch(Main) {
             showLoading()
             model.forgetPassword(phone, newPwd, verificationCode)?.let {
-                if (view is UserContract.IForgetPwdView) {
-                    (view as UserContract.IForgetPwdView).forgetPassword(it)
+                if (view is LoginContract.IForgetPwdView) {
+                    (view as LoginContract.IForgetPwdView).forgetPassword(it)
                 }
             }
             hideLoading()

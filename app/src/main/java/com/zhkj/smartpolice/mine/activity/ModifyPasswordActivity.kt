@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.login.activity
+package com.zhkj.smartpolice.mine.activity
 
 import android.view.View
 import com.sunny.zy.base.BaseActivity
@@ -17,16 +17,16 @@ class ModifyPasswordActivity : BaseActivity(), LoginView {
     }
 
     override fun initView() {
+
+        defaultTitle("修改密码")
+
         setOnClickListener(
-            iv_back,
-            tv_back,
             btn_modify
         )
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
-            iv_back.id, tv_back.id -> finish()
             btn_modify.id -> {
                 val oldPwd = et_old_pwd.text.toString()
                 val newPwd = et_new_pwd.text.toString()
@@ -52,9 +52,9 @@ class ModifyPasswordActivity : BaseActivity(), LoginView {
     }
 
     override fun modifyPassword(code: String) {
-        super.modifyPassword(code)
         if (code == "0") {
             ToastUtil.show("修改成功")
+            hideKeyboard()
         }
     }
 }

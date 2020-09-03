@@ -7,17 +7,17 @@ import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.utils.isPhoneValid
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.login.model.UserContract
-import com.zhkj.smartpolice.login.model.UserPresenter
+import com.zhkj.smartpolice.login.model.LoginContract
+import com.zhkj.smartpolice.login.model.LoginPresenter
 import kotlinx.android.synthetic.main.act_forget_password.*
 
 /**
  * 忘记密码
  */
-class ForgetPasswordActivity : BaseActivity(), UserContract.IForgetPwdView {
+class ForgetPasswordActivity : BaseActivity(), LoginContract.IForgetPwdView {
 
-    private val presenter: UserPresenter by lazy {
-        UserPresenter(this)
+    private val presenter: LoginPresenter by lazy {
+        LoginPresenter(this)
     }
 
     override fun setLayout(): Int = R.layout.act_forget_password

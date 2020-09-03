@@ -7,7 +7,7 @@ import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.login.bean.UserInfoBean
 import org.json.JSONObject
 
-class UserModel {
+class LoginModel {
 
     suspend fun doLogin(username: String, password: String): ArrayList<UserInfoBean>? {
         val params = HashMap<String, String>()

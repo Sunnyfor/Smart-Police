@@ -7,7 +7,6 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
@@ -66,7 +65,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         setOnClickListener(
             btn_login,
             iv_eye,
-            tv_modify_pwd
+            tv_forget_pwd
         )
     }
 
@@ -95,9 +94,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
                 et_password.setSelection(et_password.text.toString().length)
                 isStatus = !isStatus
             }
-            tv_modify_pwd.id -> {
-                startActivity(Intent(this, ModifyPasswordActivity::class.java))
-            }
+            tv_forget_pwd.id -> startActivity(Intent(this, ForgetPasswordActivity::class.java))
         }
     }
 

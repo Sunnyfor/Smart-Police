@@ -24,7 +24,7 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
 
         val httpResultBean = object : HttpResultBean<BaseModel<ArrayList<UserInfoBean>>>(){ }
         launch (Main){
-            ZyHttp.post(UrlConstant.USER_LOGIN,params,httpResultBean)
+            ZyHttp.post(UrlConstant.USER_LOGIN_URL,params,httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 view?.userLogin(httpResultBean.bean?: return@launch)
@@ -43,7 +43,7 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
         params["newPassword"] = newPassword
         var httpResultBean = object : HttpResultBean<BaseModel<String>>() {}
         launch(Main) {
-            ZyHttp.post(UrlConstant.USER_ALTER_PASSWORD, params, httpResultBean)
+            ZyHttp.post(UrlConstant.MODIFY_PASSWORD_URL, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 view?.modifyPassword(httpResultBean.bean?.code?:return@launch)

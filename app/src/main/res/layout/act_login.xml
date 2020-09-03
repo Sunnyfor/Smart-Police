@@ -19,6 +19,7 @@
         android:textSize="@dimen/sp_30" />
 
     <RelativeLayout
+        android:id="@+id/rl_border"
         android:layout_width="@dimen/dp_317"
         android:layout_height="@dimen/dp_262"
         android:layout_marginStart="@dimen/dp_22"
@@ -50,6 +51,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_pwd"
             android:layout_width="@dimen/dp_275"
             android:layout_height="@dimen/dp_40"
             android:layout_marginStart="@dimen/dp_21"
@@ -82,14 +84,14 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_modify_pwd"
-            style="@style/style_font_gray"
+
+        <CheckBox
+            android:id="@+id/cb_remember_pwd"
+            style="@style/style_font_black_small"
+            android:layout_below="@id/rl_pwd"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="@dimen/dp_25"
-            android:layout_marginBottom="@dimen/dp_100"
-            android:text="修改密码？" />
+            android:text="记住密码"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/btn_login"
@@ -99,6 +101,13 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/tv_forget_pwd"
+        style="@style/style_font_gray"
+        android:layout_below="@id/rl_border"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="忘记密码？" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,7 +115,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dp_60"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="@dimen/dp_50"

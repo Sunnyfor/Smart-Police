@@ -95,15 +95,6 @@ object UrlConstant {
      */
     const val REPAIR_RECORD_URL = "logistics/apply/listMyApply"
 
-    /**
-     * 用户登录
-     */
-    const val USER_LOGIN = "sys/login"
-
-    /**
-     * 修改密码
-     */
-    const val USER_ALTER_PASSWORD = "sys/user/password"
 
     /**
      * 维修功能：维修部件分类

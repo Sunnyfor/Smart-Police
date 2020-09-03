@@ -1,6 +1,5 @@
 package com.zhkj.smartpolice.app
 
-import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
@@ -8,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
+import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
 import com.umeng.message.PushAgent
 import com.umeng.message.tag.TagManager
@@ -72,14 +72,15 @@ class MainActivity : BaseActivity() {
 //        startService(intent)
 
         bottom_navigation_view.elevation = 0f
-    }
 
-    override fun loadData() {
+        setOnClickListener(rl_one_code)
 
     }
 
     override fun onClickEvent(view: View) {
-
+        when(view.id){
+            rl_one_code.id-> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY)
+        }
     }
 
     override fun close() {

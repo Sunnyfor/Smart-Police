@@ -11,6 +11,11 @@
         tools:layout="@layout/frag_logistics" />
 
     <fragment
+        android:id="@+id/mine_code"
+        android:name="com.zhkj.smartpolice.app.fragment.LogisticsFragment"
+        tools:layout="@layout/frag_logistics" />
+
+    <fragment
         android:id="@+id/mine_dest"
         android:name="com.zhkj.smartpolice.app.fragment.MineFragment"
         tools:layout="@layout/frag_mine">

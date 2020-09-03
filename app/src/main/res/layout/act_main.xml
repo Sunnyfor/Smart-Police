@@ -25,16 +25,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_home_bottom" />
 
-    <ImageView
-        android:id="@+id/iv_one_code"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginBottom="@dimen/dp_20"
-        android:contentDescription="@string/placeholder"
-        android:src="@drawable/svg_main_one_code"
+    <RelativeLayout
+        android:id="@+id/rl_one_code"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:contentDescription="@string/placeholder"
+            android:src="@drawable/svg_main_one_code" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_point"

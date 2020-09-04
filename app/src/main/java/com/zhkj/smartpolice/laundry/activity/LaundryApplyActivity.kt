@@ -42,8 +42,8 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
         LaundryPresenter(this)
     }
 
-
-    var labelType = "2"
+    //2警服 3便服
+    var labelType = "3"
 
     private var labFragmentList = arrayListOf(
         LaundrySelectLabelFragment(),
@@ -85,7 +85,7 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
         recycler_label.layoutManager = GridLayoutManager(this, 3)
         recycler_label.adapter = LaundryBtnLabelAdapter().apply {
             setOnItemClickListener { _, position ->
-                val index = if (labelType == "2") {
+                val index = if (labelType == "3") {
                     0
                 } else {
                     1
@@ -99,11 +99,11 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
         radio_group.setOnCheckedChangeListener { _, checkedId ->
 
             if (checkedId == R.id.radio_one) {
-                labelType = "2"
+                labelType = "3"
             }
 
             if (checkedId == R.id.radio_two) {
-                labelType = "3"
+                labelType = "2"
             }
             loadData()
         }
@@ -135,7 +135,7 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
                         null,
                         clothesPoliceLabel,
                         clothesCasualLabel,
-                        format.format(it)
+                        format.format(it) + " 00:00:00"
                     )
                 }
             }
@@ -162,7 +162,7 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
             }
         }
 
-        val fragment = if (labelType == "2") {
+        val fragment = if (labelType == "3") {
             labFragmentList[0]
         } else {
             labFragmentList[1]

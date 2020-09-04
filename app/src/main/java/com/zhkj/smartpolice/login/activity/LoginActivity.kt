@@ -136,6 +136,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
                 it.data?.let { data ->
                     if (data.size > 0) {
                         UserManager.setInfo(data[0])
+                        SpUtil.setObject(UserInfoBean::class.java.simpleName, data[0])
                     }
                 }
                 showLoading()

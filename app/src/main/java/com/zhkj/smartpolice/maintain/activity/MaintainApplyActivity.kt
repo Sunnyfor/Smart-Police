@@ -2,8 +2,6 @@ package com.zhkj.smartpolice.maintain.activity
 
 import android.content.Context
 import android.content.Intent
-import android.os.SystemClock
-import android.provider.Settings
 import android.view.View
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.CameraUtil
@@ -15,6 +13,7 @@ import com.sunny.zy.widget.dialog.PutInSucceedDialog
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.app.UrlConstant
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.maintain.adapter.GridViewAdapter
 import com.zhkj.smartpolice.maintain.bean.DepartmentStructureBean
 import com.zhkj.smartpolice.maintain.bean.MaintainRequestPushBean
@@ -101,6 +100,9 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         tv_goods_name.text = goodsName
         cs_section.showTextTv?.text = "选择部门"
         cs_section.setTextImage(R.drawable.svg_left_arrows)
+        tv_apply_name.text = UserManager.getUserBean().nickName
+        tv_apply_cellphone.text =
+            UserManager.getUserBean().mobile
         tv_return.setOnClickListener(this)
         rl_date_select.setOnClickListener(this)
         rl_content.setOnClickListener(this)
@@ -112,7 +114,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         )
         cameraUtil.onResultListener = object : CameraUtil.OnResultListener {
             override fun onResult(file: File) {
-                if (groupId.isNullOrEmpty()){
+                if (groupId.isNullOrEmpty()) {
                     groupId = System.currentTimeMillis().toString()
                 }
                 presenter.uploadImage(UrlConstant.UPLOAD_IMAGE_PATH_URL, file.path, groupId.orEmpty())
@@ -150,14 +152,14 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
             }
 
             R.id.tv_maintain_put -> {
-                if (et_apply_name.text.toString().isNotEmpty()) {
+                if (tv_apply_name.text.toString().isNotEmpty()) {
                     if (tv_apply_cellphone.text.toString().isNotEmpty()) {
                         if (cs_section.showText != null) {
                             if (tv_date.text.toString() != "请选择") {
                                 val maintainRequestPushBean = MaintainRequestPushBean()
                                 maintainRequestPushBean.applyState = "1"
                                 maintainRequestPushBean.approvalId = "1"
-                                maintainRequestPushBean.petitioner = et_apply_name.text.toString()
+                                maintainRequestPushBean.petitioner = tv_apply_name.text.toString()
                                 maintainRequestPushBean.petitionerPhone =
                                     tv_apply_cellphone.text.toString()
                                 maintainRequestPushBean.createTime =
@@ -202,22 +204,24 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         super.onDepartmentStructure(departmentStructureBean)
         departmentStructureBean.let {
             it.data?.let { data ->
-                data.forEach { info ->
+                data[0].children?.let { info ->
+                    LogUtil.i("部门数据结构=========$info")
                     list.clear()
-                    if (info.name?.isNotEmpty() == true) {
-                        list.add(info.name!!)
+                    info.forEach { stg ->
+                        if (stg.name?.isNotEmpty() == true) {
+                            list.add(stg.name!!)
+                        }
                     }
+                    cs_section.textList.clear()
+                    cs_section.textList.addAll(list)
+                    cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
+                        override fun OnCustomItemChecked(position: Int) {
+                            deptId = info[position].id
+                            deptName = info[position].name
+                        }
+                    })
                 }
-                cs_section.textList.clear()
-                cs_section.textList.addAll(list)
-                cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
-                    override fun OnCustomItemChecked(position: Int) {
-                        deptId = data[position].id
-                        deptName = data[position].name
-                    }
-                })
             }
-
         }
     }
 

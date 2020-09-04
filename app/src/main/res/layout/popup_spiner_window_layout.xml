@@ -8,8 +8,7 @@
     <ListView
         android:id="@+id/popup_listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        />
+        android:layout_height="@dimen/dp_260"
+        android:scrollbars="none" />
 
 </LinearLayout>

@@ -87,7 +87,7 @@ class CustomSpinner : RelativeLayout {
         OnClickListener { v ->
             when (v.id) {
                 R.id.rl_button -> {
-                    mpopWindow = SpinnerPopWindow(getContext(), textList, itemClickListener)
+                    mpopWindow = SpinnerPopWindow(context, textList, itemClickListener)
                     mpopWindow!!.setOnDismissListener(dismissListener)
                     mpopWindow!!.width = showTextTv!!.width
                     mpopWindow!!.showAsDropDown(showTextTv)

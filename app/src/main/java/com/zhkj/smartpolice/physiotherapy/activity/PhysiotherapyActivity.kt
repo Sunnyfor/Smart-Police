@@ -61,11 +61,13 @@ class PhysiotherapyActivity : BaseActivity(), MerchantContract.IReserveTimeView,
         PhysiotherapyPresenter(this)
     }
 
+
     override fun setLayout(): Int = R.layout.act_physiotherapy
 
     override fun initView() {
         defaultTitle("理疗")
-        tv_user_name.text = UserManager.getUserBean().userName
+        LogUtil.i("获取用用户名密码${UserManager.getUserBean().nickName} ------- ${UserManager.getUserBean().mobile}")
+        tv_user_name.text = UserManager.getUserBean().nickName
         tv_user_phone.text = UserManager.getUserBean().mobile
 
         weekAdapter = LeaderReserveWeekAdapter().apply {
@@ -179,6 +181,11 @@ class PhysiotherapyActivity : BaseActivity(), MerchantContract.IReserveTimeView,
 
     override fun onLaundryPutIn(succeedBean: BaseModel<Any>) {
         super.onLaundryPutIn(succeedBean)
-        LogUtil.i("预约成功")
+        putInSucceedDialog.show()
+        putInSucceedDialog.onServiceListener = {
+            putInSucceedDialog.dismiss()
+            ToastUtil.show("预约成功")
+            finish()
+        }
     }
 }

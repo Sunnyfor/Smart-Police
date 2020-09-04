@@ -10,13 +10,14 @@
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="@dimen/dp_340"
-        android:layout_height="@dimen/dp_258"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_12"
         android:background="@drawable/sel_audit_border_background"
         android:paddingLeft="@dimen/sp_20"
         android:paddingTop="@dimen/dp_32"
-        android:paddingRight="@dimen/sp_20">
+        android:paddingRight="@dimen/sp_20"
+        android:paddingBottom="@dimen/dp_32">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -98,6 +99,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_150"
@@ -118,13 +120,52 @@
                 tools:text="06-25-18：00" />
         </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/rl_maintain_type"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_below="@id/ll_date"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/dp_35">
+
+            <TextView
+                android:id="@+id/tv_type_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/style_font_audit_function"
+                android:layout_marginTop="@dimen/dp_1"
+                android:text="维修类型："/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/tv_type_name">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:text="维修"
+                    android:checked="true"/>
+
+                <RadioButton
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:text="换件"/>
+            </RadioGroup>
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/tv_img"
             style="@style/style_font_audit_function"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_96"
-            android:text="照片：" />
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="照片："
+            android:layout_below="@id/rl_maintain_type"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_maintain_img"

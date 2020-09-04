@@ -59,8 +59,8 @@
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <EditText
-                android:id="@+id/et_apply_name"
+            <TextView
+                android:id="@+id/tv_apply_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_150"
@@ -96,7 +96,7 @@
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_apply_cellphone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"

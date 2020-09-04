@@ -122,7 +122,7 @@ object UrlConstant {
     /**
      * 维修功能：部门树结构
      */
-    const val DEPARTMENT_STRUCTURE = "sys/dept/findListByTree "
+    const val DEPARTMENT_STRUCTURE = "sys/dept/findListByTree"
 
     /**
      * 维修功能：审批维修清单

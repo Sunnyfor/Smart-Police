@@ -10,11 +10,37 @@ class DepartmentStructureBean {
         var id: String? = null
         var name: String? = null
         var path: String? = null
-        var children: String? = null
+        var children: ArrayList<ChildrenInfo>? = null
         var pid: String? = null
 
         override fun toString(): String {
             return "DepartmentStructureBean(id=$id, name=$name, path=$path, children=$children, pid=$pid)"
+        }
+
+        class ChildrenInfo {
+            var id: String? = null
+            var name: String? = null
+            var path: String? = null
+            var children: ArrayList<ChildrenInfo>? = null
+            var pid: String? = null
+
+            override fun toString(): String {
+                return "ChildrenInfo(id=$id, name=$name, path=$path, children=$children, pid=$pid)"
+            }
+
+            class ChildrenInfo {
+                var id: String? = null
+                var name: String? = null
+                var path: String? = null
+                var children: Any? = null
+                var pid: String? = null
+
+                override fun toString(): String {
+                    return "ChildrenInfo(id=$id, name=$name, path=$path, children=$children, pid=$pid)"
+                }
+
+            }
+
         }
     }
 

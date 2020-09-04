@@ -3,6 +3,8 @@ package com.zhkj.smartpolice.maintain.activity
 import android.annotation.SuppressLint
 import android.os.Build
 import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.LogUtil
@@ -26,6 +28,7 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
     var applyDate: String? = null
     var applyContent: String? = null
     var findImagePathBean: ArrayList<FindImagePathBean> = ArrayList()
+    var repairType: Int = 0
 
     private val maintainPresenter: MaintainPresenter by lazy {
         MaintainPresenter(this)
@@ -49,6 +52,12 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
         applyDate = intent.getStringExtra("applyDate")
         applyContent = intent.getStringExtra("applyContent")
         isType = intent.getBooleanExtra("isType", true)
+        intent.getStringExtra("repairType")?.let {
+            when(it) {
+                "1" -> tv_repair_type.text = "维修"
+                "2" -> tv_repair_type.text = "换件"
+            }
+        }
         var groupId = intent.getStringExtra("groupId")
         groupId?.let {
             maintainPresenter.onFindImagePath(groupId)
@@ -63,11 +72,31 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
             tv_refuse.visibility = View.VISIBLE
             tv_confirm.visibility = View.VISIBLE
             tv_task_issue.visibility = View.INVISIBLE
+            rg_maintain_form.visibility = View.VISIBLE
+            tv_repair_type.visibility = View.INVISIBLE
         } else {
             tv_refuse.visibility = View.INVISIBLE
             tv_confirm.visibility = View.INVISIBLE
             tv_task_issue.visibility = View.VISIBLE
+            rg_maintain_form.visibility = View.INVISIBLE
+            tv_repair_type.visibility = View.VISIBLE
         }
+
+        rg_maintain_form.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
+            override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
+                var radbtn: RadioButton = findViewById(checkedId)
+                when (radbtn.text) {
+                    "维修" -> {
+                        repairType = 1
+                    }
+                    "换件" -> {
+                        repairType = 2
+                    }
+                }
+                LogUtil.i("你选择了==================${radbtn.text}======$repairType")
+            }
+
+        })
 
     }
 
@@ -78,7 +107,11 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
             }
 
             R.id.tv_confirm -> {
-                getRequestConnect("1")
+                if (repairType == 0) {
+                    return
+                } else {
+                    getRequestConnect("1")
+                }
             }
 
             R.id.tv_task_issue -> {
@@ -132,7 +165,7 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
         maintainPresenter.onMaintainFeedback(
             intent.getStringExtra("applyContent"),
             intent.getStringExtra("applyId"),
-            date, opinionType, userName
+            date, opinionType, repairType.toString(), userName
         )
     }
 

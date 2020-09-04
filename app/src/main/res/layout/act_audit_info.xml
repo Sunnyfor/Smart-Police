@@ -136,21 +136,31 @@
                 android:layout_marginTop="@dimen/dp_1"
                 android:text="维修类型："/>
 
+            <TextView
+                android:id="@+id/tv_repair_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/style_font_audit_text_latyou"
+                android:layout_marginTop="@dimen/dp_1"
+                android:text="维修类型："
+                android:layout_toEndOf="@id/tv_type_name"
+                android:visibility="invisible"/>
+
             <RadioGroup
+                android:id="@+id/rg_maintain_form"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toEndOf="@id/tv_type_name">
-
                 <RadioButton
+                    android:id="@+id/rb_maintain"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp_20"
                     android:layout_marginStart="@dimen/dp_10"
-                    android:text="维修"
-                    android:checked="true"/>
+                    android:text="维修" />
 
                 <RadioButton
-
+                    android:id="@+id/rb_change"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp_20"
                     android:layout_marginStart="@dimen/dp_10"

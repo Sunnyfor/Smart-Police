@@ -23,38 +23,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修装备名称："
-                android:textColor="@color/fun_3E3E3E"
-                android:textSize="@dimen/sp_14" />
-
-            <TextView
-                android:id="@+id/tv_goods_name"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_20"
-                android:layout_marginStart="@dimen/dp_150"
-                android:layout_marginEnd="@dimen/dp_10"
-                android:background="@null"
-                android:textColor="@color/fun_3E3E3E"
-                android:textSize="@dimen/sp_13" />
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_48"
-            android:background="@color/bg_DCDCDC" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
-            android:layout_alignParentBottom="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_20"
-                android:layout_marginStart="@dimen/dp_20"
                 android:text="维修人姓名："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
@@ -71,8 +39,41 @@
                 android:textSize="@dimen/sp_13" />
         </RelativeLayout>
 
-    </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_48"
+            android:background="@color/bg_DCDCDC" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
+                android:text="维修人手机号："
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_apply_cellphone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_150"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@null"
+                android:hint="请填写你的手机号"
+                android:inputType="number"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_two"
@@ -92,19 +93,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修人手机号："
+                android:text="维修装备名称："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
             <TextView
-                android:id="@+id/tv_apply_cellphone"
+                android:id="@+id/tv_goods_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_130"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:background="@null"
-                android:hint="请填写你的手机号"
-                android:inputType="number"
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_13" />
         </RelativeLayout>
@@ -131,16 +130,27 @@
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <com.zhkj.smartpolice.utils.CustomSpinner
-                android:id="@+id/cs_section"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dp_110"
-                android:layout_marginEnd="@dimen/dp_10"
-                android:paddingStart="@dimen/dp_20"
-                android:paddingTop="@dimen/dp_5"
-                android:paddingBottom="@dimen/dp_5"
-                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/tv_section"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_130"
+                tools:text="研发部"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+<!--            <com.zhkj.smartpolice.utils.CustomSpinner-->
+<!--                android:id="@+id/cs_section"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="@dimen/dp_110"-->
+<!--                android:layout_marginEnd="@dimen/dp_10"-->
+<!--                android:paddingStart="@dimen/dp_20"-->
+<!--                android:paddingTop="@dimen/dp_5"-->
+<!--                android:paddingBottom="@dimen/dp_5"-->
+<!--                tools:ignore="RtlSymmetry" />-->
 
         </RelativeLayout>
 
@@ -263,5 +273,6 @@
         android:text="提交申请"
         android:textColor="@color/fun_FFFFFF"
         android:textSize="@dimen/sp_16" />
+
 
 </RelativeLayout>

@@ -21,14 +21,14 @@ class DepartmentStructureBean {
             var id: String? = null
             var name: String? = null
             var path: String? = null
-            var children: ArrayList<ChildrenInfo>? = null
+            var children: ArrayList<ChildrenBean>? = null
             var pid: String? = null
 
             override fun toString(): String {
                 return "ChildrenInfo(id=$id, name=$name, path=$path, children=$children, pid=$pid)"
             }
 
-            class ChildrenInfo {
+            class ChildrenBean {
                 var id: String? = null
                 var name: String? = null
                 var path: String? = null
@@ -38,10 +38,7 @@ class DepartmentStructureBean {
                 override fun toString(): String {
                     return "ChildrenInfo(id=$id, name=$name, path=$path, children=$children, pid=$pid)"
                 }
-
             }
-
         }
     }
-
 }

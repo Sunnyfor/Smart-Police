@@ -107,7 +107,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         LogUtil.i("维修管理员下载维修申请列表数据传递参数=========$params")
         val httpResultBean = object : HttpResultBean<PageModel<MaintainAuditBean>>() {}
         launch(Main) {
-            ZyHttp.post(UrlConstant.MAINTAIN_AUDIT , params, httpResultBean)
+            ZyHttp.post(UrlConstant.MAINTAIN_AUDIT, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
                 if (httpResultBean.bean?.code?.toInt() == 0) {
@@ -127,6 +127,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         applyId: String,
         createTime: String,
         opinionType: String,
+        repairType: String,
         optionUserName: String?
     ) {
         view?.showLoading()
@@ -135,6 +136,7 @@ class MaintainPresenter(view: IMaintainView) : BasePresenter<IMaintainView>(view
         params.put("applyId", applyId)
         params.put("createTime", createTime)
         params.put("opinionType", opinionType)
+        params.put("repairType", repairType)
         params.put("optionUserName", optionUserName)
         val httpResultBean = object : HttpResultBean<SucceedBean>() {}
         launch(Main) {

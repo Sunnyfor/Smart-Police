@@ -8,14 +8,14 @@
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="@dimen/dp_340"
-        android:layout_height="@dimen/dp_144"
+        android:layout_height="@dimen/dp_160"
         android:layout_marginStart="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_10"
         android:background="@drawable/sel_maintain_apply_border">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_48"
+            android:layout_height="@dimen/dp_40"
             android:gravity="center_vertical">
 
             <TextView
@@ -38,13 +38,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_40"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_48"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_40"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -69,13 +69,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_96"
+            android:layout_marginTop="@dimen/dp_80"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_96"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_80"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_20"
-                android:text="维修人手机号"
+                android:text="维修人手机号："
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
@@ -91,7 +91,39 @@
                 android:id="@+id/tv_apply_cellphone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
-                android:layout_marginStart="@dimen/dp_130"
+                android:layout_marginStart="@dimen/dp_150"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:background="@color/bg_DCDCDC" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
+                android:text="维修类型："
+                android:textColor="@color/fun_3E3E3E"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_repair_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_150"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_13" />
@@ -102,15 +134,15 @@
     <RelativeLayout
         android:id="@+id/rl_two"
         android:layout_width="@dimen/dp_340"
-        android:layout_height="@dimen/dp_241"
+        android:layout_height="@dimen/dp_200"
         android:layout_below="@id/rl_layout"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_6"
         android:background="@drawable/sel_maintain_apply_border">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
+            android:layout_height="@dimen/dp_40"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -137,13 +169,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_40"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_48"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_40"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -155,14 +187,13 @@
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_14" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tv_maintainer_cellphone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginStart="@dimen/dp_130"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:background="@null"
-                android:hint="请填写你的手机号"
                 android:inputType="number"
                 android:textColor="@color/fun_3E3E3E"
                 android:textSize="@dimen/sp_13" />
@@ -171,13 +202,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_95"
+            android:layout_marginTop="@dimen/dp_80"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_96"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_80"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -203,14 +234,14 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_143"
+            android:layout_marginTop="@dimen/dp_120"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
             android:id="@+id/rl_date_select"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
-            android:layout_marginTop="@dimen/dp_144"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_120"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -244,13 +275,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_193"
+            android:layout_marginTop="@dimen/dp_160"
             android:background="@color/bg_DCDCDC" />
 
         <RelativeLayout
             android:id="@+id/rl_content"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_48"
+            android:layout_height="@dimen/dp_40"
             android:layout_alignParentBottom="true"
             android:gravity="center_vertical"
             android:orientation="horizontal">
@@ -284,7 +315,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_two"
         android:layout_marginStart="@dimen/dp_26"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_6"
         android:text="上传图片"
         android:textColor="@color/fun_3E3E3E"
         android:textSize="@dimen/sp_14" />
@@ -296,7 +327,7 @@
         android:layout_above="@id/tv_return"
         android:layout_below="@id/rl_two"
         android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_35"
+        android:layout_marginTop="@dimen/dp_28"
         android:layout_marginEnd="@dimen/dp_20"
         android:layout_marginBottom="@dimen/dp_10"
         android:horizontalSpacing="@dimen/dp_20"
@@ -325,5 +356,4 @@
         android:text="确认维修"
         android:textColor="@color/fun_FFFFFF"
         android:textSize="@dimen/sp_16" />
-
 </RelativeLayout>

@@ -25,6 +25,7 @@ class MaintainAuditBean {
     var shopGoodsEntityList: List<ShopGoodsEntity>? = null
     var shopGoodsId: String? = null
     var shopGoodsName: String? = null
+    var repairType: String? = null
 
     class ShopGoodsEntity {
         var activeState: String? = null
@@ -55,7 +56,8 @@ class MaintainAuditBean {
     }
 
     override fun toString(): String {
-        return "MaintainAuditBean(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, approvalName=$approvalName, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, processName=$processName, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsEntityList=$shopGoodsEntityList, shopGoodsId=$shopGoodsId, shopGoodsName=$shopGoodsName)"
+        return "MaintainAuditBean(applyContent=$applyContent, applyDate=$applyDate, applyId=$applyId, applyState=$applyState, approvalId=$approvalId, approvalName=$approvalName, attachmentGroupId=$attachmentGroupId, createTime=$createTime, createUserId=$createUserId, createUserName=$createUserName, deptId=$deptId, deptName=$deptName, money=$money, petitioner=$petitioner, petitionerPhone=$petitionerPhone, processId=$processId, processName=$processName, publishState=$publishState, repairRecordEntity=$repairRecordEntity, shopGoodsEntityList=$shopGoodsEntityList, shopGoodsId=$shopGoodsId, shopGoodsName=$shopGoodsName, repairType=$repairType)"
     }
+
 
 }

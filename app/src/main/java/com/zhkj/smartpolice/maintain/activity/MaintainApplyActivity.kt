@@ -84,6 +84,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         PutInSucceedDialog(this)
     }
 
+
     private val gridviewadapter: GridViewAdapter by lazy {
         GridViewAdapter(this, imageList)
     }
@@ -98,8 +99,9 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         goodsId = intent.getStringExtra("goodsId")
         goodsName = intent.getStringExtra("goodsName")
         tv_goods_name.text = goodsName
-        cs_section.showTextTv?.text = "选择部门"
-        cs_section.setTextImage(R.drawable.svg_left_arrows)
+//        cs_section.showTextTv?.text = "选择部门"
+//        cs_section.setTextImage(R.drawable.svg_left_arrows)
+        tv_section.text = UserManager.getUserBean().deptName
         tv_apply_name.text = UserManager.getUserBean().nickName
         tv_apply_cellphone.text =
             UserManager.getUserBean().mobile
@@ -154,7 +156,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
             R.id.tv_maintain_put -> {
                 if (tv_apply_name.text.toString().isNotEmpty()) {
                     if (tv_apply_cellphone.text.toString().isNotEmpty()) {
-                        if (cs_section.showText != null) {
+                        if (tv_section.text != null) {
                             if (tv_date.text.toString() != "请选择") {
                                 val maintainRequestPushBean = MaintainRequestPushBean()
                                 maintainRequestPushBean.applyState = "1"
@@ -190,7 +192,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
     }
 
     override fun loadData() {
-        maintainPresenter.onDepartmentStructure()
+//        maintainPresenter.onDepartmentStructure()
     }
 
     override fun close() {
@@ -202,27 +204,28 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
      */
     override fun onDepartmentStructure(departmentStructureBean: DepartmentStructureBean) {
         super.onDepartmentStructure(departmentStructureBean)
-        departmentStructureBean.let {
-            it.data?.let { data ->
-                data[0].children?.let { info ->
-                    LogUtil.i("部门数据结构=========$info")
-                    list.clear()
-                    info.forEach { stg ->
-                        if (stg.name?.isNotEmpty() == true) {
-                            list.add(stg.name!!)
-                        }
-                    }
-                    cs_section.textList.clear()
-                    cs_section.textList.addAll(list)
-                    cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
-                        override fun OnCustomItemChecked(position: Int) {
-                            deptId = info[position].id
-                            deptName = info[position].name
-                        }
-                    })
-                }
-            }
-        }
+//        departmentStructureBean.let {
+//            it.data?.let { data ->
+//                data[0].children?.let { info ->
+//                    LogUtil.i("部门数据结构=========$info")
+//                    list.clear()
+//                    info.forEach { stg ->
+//                        if (stg.name?.isNotEmpty() == true) {
+//
+//                            list.add(stg.name!!)
+//                        }
+//                    }
+//                    cs_section.textList.clear()
+//                    cs_section.textList.addAll(list)
+//                    cs_section.setOnCustomItemCheckedListener(object : OnCustomItemCheckedListener {
+//                        override fun OnCustomItemChecked(position: Int) {
+//                            deptId = info[position].id
+//                            deptName = info[position].name
+//                        }
+//                    })
+//                }
+//            }
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -71,6 +71,13 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
                 tv_section.text = info.deptName
                 tv_info.text = info.applyContent
                 tv_maintainer_name.text = info.repairRecordEntity?.operation
+                tv_maintainer_cellphone.text = info.repairRecordEntity?.operationPhone
+                info.repairType?.let {
+                    when (it) {
+                        "1" -> tv_repair_type.text = "维修"
+                        "2" -> tv_repair_type.text = "换件"
+                    }
+                }
             }
         }
         tv_return.setOnClickListener(this)
@@ -134,6 +141,10 @@ class MaintainTaskInfoActivity : BaseActivity(), IMaintainView, UserContract.IIm
                 } else {
                     ToastUtil.show("维修员姓名不能为空")
                 }
+            }
+
+            R.id.tv_return -> {
+                finish()
             }
         }
     }

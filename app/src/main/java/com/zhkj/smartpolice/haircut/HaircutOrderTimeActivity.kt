@@ -21,6 +21,7 @@ import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import kotlinx.android.synthetic.main.act_receive_time.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveTimeView, MerchantContract.IReserveView {
@@ -38,6 +39,7 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
 
     private val calendar = Calendar.getInstance(Locale.CHINA)
     private val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
+    private var dataInfo: ArrayList<MerchantTime> = ArrayList();
 
     private val defaultWeeks = arrayListOf("周日", "周一", "周二", "周三", "周四", "周五", "周六")
 
@@ -95,17 +97,26 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
             btn_sure.id -> {
                 val intent = Intent()
                 (recycler_date.adapter as HaircutWeekAdapter).let {
-//                    if (timeAdapter is HaircutTimeAdapter) {
-//                        intent.putExtra("manageTime", timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).manageTime)
-//                        intent.putExtra("day", it.getData(it.index).day)
-//                        intent.putExtra("week", it.getData(it.index).week)
-//
-//                        timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
-//                            intent.putExtra("beginTime", bean.beginTime)
-//                            intent.putExtra("endTime", bean.endTime)
-//                            intent.putExtra("manageId", bean.manageId)
-//                        }
-//                    }
+                    if (timeAdapter is HaircutTimeAdapter) {
+                        if (dataInfo != null && dataInfo.size > 0) {
+                            intent.putExtra("manageTime", timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).manageTime)
+                        } else {
+                            ToastUtil.show("无当前时间段")
+                        }
+                        if (dataInfo != null && dataInfo.size > 0) {
+                            intent.putExtra("day", it.getData(it.index).day)
+                            intent.putExtra("week", it.getData(it.index).week)
+                        } else {
+                            ToastUtil.show("无当前时间段")
+                        }
+                        if (dataInfo != null && dataInfo.size > 0) {
+                            timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
+                                intent.putExtra("beginTime", bean.beginTime)
+                                intent.putExtra("endTime", bean.endTime)
+                                intent.putExtra("manageId", bean.manageId)
+                            }
+                        }
+                    }
                 }
                 setResult(Activity.RESULT_OK, intent)
                 finish()
@@ -139,9 +150,10 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
         if (timeAdapter is LeaderReserveTimeAdapter) {
             (timeAdapter as LeaderReserveTimeAdapter).index = index
         }
-
+        dataInfo.clear()
+        dataInfo.addAll(data)
         timeAdapter.clearData()
-        timeAdapter.addData(data)
+        timeAdapter.addData(dataInfo)
         timeAdapter.notifyDataSetChanged()
     }
 

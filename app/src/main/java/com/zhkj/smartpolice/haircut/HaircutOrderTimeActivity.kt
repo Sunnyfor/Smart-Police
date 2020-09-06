@@ -95,17 +95,17 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
             btn_sure.id -> {
                 val intent = Intent()
                 (recycler_date.adapter as HaircutWeekAdapter).let {
-                    if (timeAdapter is HaircutTimeAdapter) {
-                        intent.putExtra("manageTime", timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).manageTime)
-                        intent.putExtra("day", it.getData(it.index).day)
-                        intent.putExtra("week", it.getData(it.index).week)
-
-                        timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
-                            intent.putExtra("beginTime", bean.beginTime)
-                            intent.putExtra("endTime", bean.endTime)
-                            intent.putExtra("manageId", bean.manageId)
-                        }
-                    }
+//                    if (timeAdapter is HaircutTimeAdapter) {
+//                        intent.putExtra("manageTime", timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).manageTime)
+//                        intent.putExtra("day", it.getData(it.index).day)
+//                        intent.putExtra("week", it.getData(it.index).week)
+//
+//                        timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
+//                            intent.putExtra("beginTime", bean.beginTime)
+//                            intent.putExtra("endTime", bean.endTime)
+//                            intent.putExtra("manageId", bean.manageId)
+//                        }
+//                    }
                 }
                 setResult(Activity.RESULT_OK, intent)
                 finish()

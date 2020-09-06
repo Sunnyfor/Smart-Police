@@ -8,6 +8,7 @@ import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.utils.isPhoneValid
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
@@ -55,7 +56,8 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
         setOnClickListener(cl_date, btn_reserve)
 
         presenter.loadReserveTime(getEndData(calendar.get(Calendar.DAY_OF_MONTH)), shopId, null)
-
+        tv_user_name.text = UserManager.getUserBean().nickName
+        tv_user_phone.text = UserManager.getUserBean().mobile
     }
 
     override fun onClickEvent(view: View) {
@@ -68,9 +70,9 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
             }
 
             btn_reserve.id -> {
-                val phone = edit_phone.text.toString()
+                val phone = tv_user_phone.text.toString()
                 if (isPhoneValid(phone)) {
-                    presenter.commitReserve(edit_name.text.toString(), phone, beginTime, endTime, manageId.toString(), "1", shopId)
+                    presenter.commitReserve(tv_user_name.text.toString(), phone, beginTime, endTime, manageId.toString(), "1", shopId)
                 }
             }
         }

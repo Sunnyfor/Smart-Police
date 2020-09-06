@@ -38,17 +38,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/edit_name"
+        <TextView
+            android:id="@+id/tv_user_name"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_40"
             android:layout_marginEnd="@dimen/dp_40"
             android:background="@color/color_transparent"
-            android:hint="@string/please_fill_in_your_real_name"
             android:importantForAutofill="no"
-            android:inputType="text"
             android:textSize="@dimen/sp_14"
+            tools:text="张三"
             app:layout_constraintBottom_toBottomOf="@id/view_line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_name"
@@ -63,18 +62,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/view_line" />
 
-        <EditText
-            android:id="@+id/edit_phone"
+        <TextView
+            android:id="@+id/tv_user_phone"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/color_transparent"
-            android:hint="@string/please_fill_in_your_phone"
             android:importantForAutofill="no"
-            android:inputType="phone"
             android:textSize="@dimen/sp_14"
+            tools:text="13277168867"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/edit_name"
-            app:layout_constraintStart_toStartOf="@id/edit_name"
+            app:layout_constraintEnd_toEndOf="@id/tv_user_name"
+            app:layout_constraintStart_toStartOf="@id/tv_user_name"
             app:layout_constraintTop_toTopOf="@id/view_line" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

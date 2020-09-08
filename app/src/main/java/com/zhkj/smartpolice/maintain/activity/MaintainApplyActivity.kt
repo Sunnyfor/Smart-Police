@@ -23,7 +23,7 @@ import com.zhkj.smartpolice.maintain.view.IMaintainView
 import com.zhkj.smartpolice.mine.bean.ImageBean
 import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
-import com.zhkj.smartpolice.utils.CustomSpinner.OnCustomItemCheckedListener
+import com.zhkj.smartpolice.widget.dialog.ImageDialog
 import kotlinx.android.synthetic.main.act_maintain_apply.*
 import java.io.File
 
@@ -127,6 +127,14 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         gridviewadapter.onClicklistAdd = {
             cameraDialog.show()
         }
+
+        gridviewadapter.onClickImageMagnify = { id ->
+            var imageDialog: ImageDialog = ImageDialog(this, id)
+            imageDialog.show()
+            imageDialog.onImageClickList = {
+                imageDialog.dismiss()
+            }
+        }
     }
 
     override fun onClickEvent(view: View) {
@@ -168,7 +176,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
                                     tv_date.text.toString() + " 00:00:00"
                                 maintainRequestPushBean.applyDate =
                                     tv_date.text.toString() + " 00:00:00"
-                                maintainRequestPushBean.deptId = deptId
+                                maintainRequestPushBean.deptId = UserManager.getUserBean().deptId
                                 maintainRequestPushBean.deptName = deptName
                                 maintainRequestPushBean.applyContent = tv_info.text.toString()
                                 maintainRequestPushBean.shopGoodsId = goodsId

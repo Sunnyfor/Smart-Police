@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 style="@style/style_font_audit_text_latyou"
                 android:layout_marginTop="@dimen/dp_1"
-                android:text="维修类型："
+                tools:text="维修类型"
                 android:layout_toEndOf="@id/tv_type_name"
                 android:visibility="invisible"/>
 

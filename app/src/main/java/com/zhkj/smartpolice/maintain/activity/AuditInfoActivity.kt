@@ -17,6 +17,7 @@ import com.zhkj.smartpolice.maintain.bean.FindImagePathBean
 import com.zhkj.smartpolice.maintain.bean.SucceedBean
 import com.zhkj.smartpolice.maintain.presenter.MaintainPresenter
 import com.zhkj.smartpolice.maintain.view.IMaintainView
+import com.zhkj.smartpolice.widget.dialog.ImageDialog
 import kotlinx.android.synthetic.main.act_audit_info.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,7 +36,15 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
     }
 
     private val adapter: MaintainPhotographAdapter by lazy {
-        MaintainPhotographAdapter(findImagePathBean)
+        MaintainPhotographAdapter(findImagePathBean).apply {
+            setOnItemClickListener { _, position ->
+                var imageDialog: ImageDialog = ImageDialog(this@AuditInfoActivity,getData(position).id)
+                imageDialog.show()
+                imageDialog.onImageClickList = {
+                    imageDialog.dismiss()
+                }
+            }
+        }
     }
 
     override fun setLayout(): Int = R.layout.act_audit_info

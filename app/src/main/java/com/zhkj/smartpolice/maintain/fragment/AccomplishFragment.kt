@@ -35,6 +35,8 @@ class AccomplishFragment : BaseFragment(), IMaintainView {
                 intent.putExtra("petitionerPhone", getData(position).petitionerPhone)
                 intent.putExtra("deptName", getData(position).deptName)
                 intent.putExtra("applyDate", getDate(getData(position).applyDate))
+                intent.putExtra("repairType",getData(position).repairType)
+                intent.putExtra("isType", false)
                 getData(position).shopGoodsEntityList?.let {
                     intent.putExtra("goodsName", it[0].goodsName)
                 }

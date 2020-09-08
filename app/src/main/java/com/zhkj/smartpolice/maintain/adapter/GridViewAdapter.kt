@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.sunny.zy.utils.LogUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.mine.bean.ImageBean
@@ -20,6 +21,8 @@ internal class GridViewAdapter(
     private var mImagerView: ImageView? = null
 
     var onClicklistAdd: (() -> Unit)? = null
+
+    var onClickImageMagnify: ((image: String?) -> Unit)? = null
 
     override fun getCount(): Int {
         return list.size + 1
@@ -56,9 +59,11 @@ internal class GridViewAdapter(
 
             it.setOnClickListener {
                 if (position< list.size) {
-
+                    LogUtil.i("我点击了，照片")
+                    onClickImageMagnify?.invoke(list[position].id)
                 } else {
                     onClicklistAdd?.invoke()
+                    LogUtil.i("我点击了，添加照片")
                 }
             }
         }

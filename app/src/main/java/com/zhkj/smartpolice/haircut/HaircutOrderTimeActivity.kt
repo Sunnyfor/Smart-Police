@@ -70,7 +70,7 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
 
         val weekDayList = arrayListOf<WeekDayBean>()
 
-        val maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        val maxDay = calendar.getActualMaximum(Calendar.MONTH)
 
         for (i in currentDay..maxDay) {
             calendar.set(Calendar.DAY_OF_MONTH, i)
@@ -113,7 +113,7 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
                             timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
                                 intent.putExtra("beginTime", bean.beginTime)
                                 intent.putExtra("endTime", bean.endTime)
-                                intent.putExtra("manageId", bean.manageId)
+
                             }
                         }
                     }

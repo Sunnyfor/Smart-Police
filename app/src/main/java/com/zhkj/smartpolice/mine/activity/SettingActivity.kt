@@ -53,6 +53,12 @@ class SettingActivity : BaseActivity() {
          tv_privacy.setOnClickListener(this)
          */
 
+        swcBtn_finger.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+
+            }
+        }
+
         setOnClickListener(
             item_cache,
             item_modify_pwd,

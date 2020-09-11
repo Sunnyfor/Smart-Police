@@ -11,7 +11,7 @@ import java.util.*
 object FingerprintUtil {
 
     /**
-     * 设置应用角标通知条数
+     * 跳转至指纹设置页
      */
     fun intentSetting(context: Context) {
         Log.d("BRAND", Build.BRAND)

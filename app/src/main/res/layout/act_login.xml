@@ -120,6 +120,7 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
+            android:id="@+id/iv_fingerprint"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
             android:contentDescription="@string/placeholder"

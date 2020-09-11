@@ -2,6 +2,7 @@ package com.zhkj.smartpolice.login.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
@@ -26,6 +27,7 @@ import com.zhkj.smartpolice.mine.bean.UserBean
 import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
 import com.zhkj.smartpolice.utils.SpKey
+import com.zhkj.smartpolice.utils.fingerprint.BiometricPromptManager
 import kotlinx.android.synthetic.main.act_login.*
 import kotlinx.coroutines.cancel
 
@@ -41,6 +43,10 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     var logout: Boolean = false
 
     private var isStatus: Boolean = false
+
+    private val biometricPromptManager: BiometricPromptManager by lazy {
+        BiometricPromptManager.from(this)
+    }
 
     private val loginPresenter: LoginPresenter by lazy {
         LoginPresenter(this)
@@ -75,10 +81,25 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
             isRememberPassword = isChecked
         }
 
+
+        // 指纹信息
+        val stringBuilder = StringBuilder()
+        stringBuilder.append("SDK version is " + Build.VERSION.SDK_INT)
+            .append("\n")
+            .append("isHardwareDetected : " + biometricPromptManager.isHardwareDetected)
+            .append("\n")
+            .append("hasEnrolledFingerprints : " + biometricPromptManager.hasEnrolledFingerprints())
+            .append("\n")
+            .append("isKeyguardSecure : " + biometricPromptManager.isKeyguardSecure)
+            .append("\n")
+
+        LogUtil.e("指纹信息：\n$stringBuilder")
+
         setOnClickListener(
             btn_login,
             iv_eye,
-            tv_forget_pwd
+            tv_forget_pwd,
+            iv_fingerprint
         )
     }
 
@@ -108,6 +129,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
                 isStatus = !isStatus
             }
             tv_forget_pwd.id -> startActivity(Intent(this, ForgetPasswordActivity::class.java))
+            iv_fingerprint.id -> doFingerprint()
         }
     }
 
@@ -180,4 +202,41 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         }, UserManager.getUserBean().deptId)
     }
 
+    /**
+     * 指纹验证
+     */
+    private fun doFingerprint() {
+
+        if (!biometricPromptManager.isHardwareDetected) {
+            ToastUtil.show("您的系统版本过低，不支持指纹功能")
+        } else if (biometricPromptManager.isKeyguardSecure) {
+            ToastUtil.show("您的手机不支持指纹功能")
+        } else if (!biometricPromptManager.hasEnrolledFingerprints()) {
+            ToastUtil.show("您至少需要在系统设置中添加一个指纹")
+        } else {
+            if (biometricPromptManager.isBiometricPromptEnable) {
+                biometricPromptManager.authenticate(object : BiometricPromptManager.OnBiometricIdentifyCallback {
+                    override fun onUsePassword() {
+                        ToastUtil.show("onUsePassword")
+                    }
+
+                    override fun onSucceeded() {
+                        ToastUtil.show("指纹验证成功")
+                    }
+
+                    override fun onFailed() {
+                        ToastUtil.show("指纹验证失败")
+                    }
+
+                    override fun onError(code: Int, reason: String?) {
+                        ToastUtil.show("指纹有误")
+                    }
+
+                    override fun onCancel() {
+                        ToastUtil.show("指纹验证取消")
+                    }
+                })
+            }
+        }
+    }
 }

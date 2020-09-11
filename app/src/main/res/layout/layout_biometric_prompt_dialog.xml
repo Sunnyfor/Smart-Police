@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/style_font_black_bigger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="请验证指纹" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/state_tv"
+                style="@style/style_font_gray_big"
+                android:layout_gravity="center"
+                android:text="Fingerprint sensor"
+                android:typeface="normal" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_54"
+                android:layout_height="@dimen/dp_54"
+                android:layout_marginTop="@dimen/dp_5"
+                android:contentDescription="@string/placeholder"
+                android:src="@drawable/svg_login_fingerprint" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/use_password_btn"
+                style="@style/style_common_btn_small"
+                android:layout_width="@dimen/dp_80"
+                android:gravity="center"
+                android:text="使用密码" />
+
+            <TextView
+                android:id="@+id/cancel_btn"
+                style="@style/style_common_btn_small"
+                android:layout_width="@dimen/dp_70"
+                android:layout_marginStart="@dimen/dp_40"
+                android:gravity="center"
+                android:text="取消" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

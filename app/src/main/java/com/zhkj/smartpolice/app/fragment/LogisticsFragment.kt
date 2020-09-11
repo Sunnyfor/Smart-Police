@@ -13,6 +13,7 @@ import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.drugstore.DrugstoreActivity
 import com.zhkj.smartpolice.haircut.BarberListActivity
 import com.zhkj.smartpolice.haircut.HaircutOrderDetailActivity
+import com.zhkj.smartpolice.haircut.activity.AgencyHaircutSelectActivity
 import com.zhkj.smartpolice.laundry.activity.LaundryApplyActivity
 import com.zhkj.smartpolice.maintain.activity.ApplyMaintainListActivity
 import com.zhkj.smartpolice.maintain.activity.MaintainTaskActivity
@@ -70,18 +71,24 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
             tv_haircut.id -> {
                 merchantViewModel.list.find { it.shopType == MerchantListActivity.TYPE_HAIRCUT }
                     .apply {
-                        val intent = when (UserManager.getUserBean().position) {
-                            "1", "2" -> Intent(
-                                requireContext(),
-                                BarberListActivity::class.java
-                            )      //领导
-                            else -> Intent(
-                                requireContext(),
-                                HaircutOrderDetailActivity::class.java
-                            )  //警员
+                        if (UserManager.getUserBean().leaderId != null) {
+                            val intent = Intent(requireContext(), AgencyHaircutSelectActivity::class.java)
+                            intent.putExtra("shopId", this?.shopId)
+                            startActivity(intent)
+                        } else {
+                            val intent = when (UserManager.getUserBean().position) {
+                                "1", "2" -> Intent(
+                                    requireContext(),
+                                    BarberListActivity::class.java
+                                )      //领导
+                                else -> Intent(
+                                    requireContext(),
+                                    HaircutOrderDetailActivity::class.java
+                                )  //警员
+                            }
+                            intent.putExtra("shopId", this?.shopId)
+                            startActivity(intent)
                         }
-                        intent.putExtra("shopId", this?.shopId)
-                        startActivity(intent)
                     }
             }
             tv_drugstore.id -> {
@@ -114,12 +121,12 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
-                    3 -> startActivity(
-                        Intent(
-                            requireContext(),
-                            PoliceMaintainActivity::class.java
-                        )
-                    ) //普通警员
+//                    3 -> startActivity(
+//                        Intent(
+//                            requireContext(),
+//                            PoliceMaintainActivity::class.java
+//                        )
+//                    ) //普通警员
                     117 -> startActivity(
                         Intent(
                             requireContext(),
@@ -138,7 +145,13 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                             MaintainTaskActivity::class.java
                         )
                     ) //维修工人
-                    else -> ToastUtil.show("你当前不是警员")
+                    else -> {
+                        Intent(
+                            requireContext(),
+                            PoliceMaintainActivity::class.java
+                        )
+                    }
+//                    else -> ToastUtil.show("你当前不是警员")
                 }
             }
             //理疗

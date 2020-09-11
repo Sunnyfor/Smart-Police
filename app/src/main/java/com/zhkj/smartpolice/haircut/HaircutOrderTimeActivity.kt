@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BaseRecycleAdapter
+import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.haircut.adapter.HaircutTimeAdapter
@@ -36,10 +37,10 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
 
     var resourceId: String? = null
 
-
     private val calendar = Calendar.getInstance(Locale.CHINA)
     private val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
     private var dataInfo: ArrayList<MerchantTime> = ArrayList();
+    var isNumber: Int = 2
 
     private val defaultWeeks = arrayListOf("周日", "周一", "周二", "周三", "周四", "周五", "周六")
 
@@ -70,12 +71,16 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
 
         val weekDayList = arrayListOf<WeekDayBean>()
 
-        val maxDay = calendar.getActualMaximum(Calendar.MONTH)
+        LogUtil.i("=====isVerdict=======$isNumber")
+        val maxDay = calendar.getActualMaximum(Calendar.DATE)
 
-        for (i in currentDay..maxDay) {
-            calendar.set(Calendar.DAY_OF_MONTH, i)
+        for (i in 0 until isNumber) {
+            LogUtil.i("i的参数是=======$i")
             val week = defaultWeeks[calendar.get(Calendar.DAY_OF_WEEK) - 1]
-            weekDayList.add(WeekDayBean(week, i))
+            weekDayList.add(WeekDayBean(week, calendar.get(Calendar.DAY_OF_MONTH)).apply {
+                date = calendar.time
+            })
+            calendar.set(Calendar.DAY_OF_YEAR,calendar.get(Calendar.DAY_OF_YEAR) + 1)
         }
 
         weekAdapter.addData(weekDayList)

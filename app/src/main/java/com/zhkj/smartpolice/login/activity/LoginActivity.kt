@@ -174,7 +174,6 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         data.userId?.let {
             SpUtil.setString(SpUtil.userId, it)
         }
-
         UserManager.setUserBean(data)
 
         if (isRememberPassword) {

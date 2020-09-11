@@ -98,6 +98,7 @@
         <activity android:name=".haircut.HaircutOrderDetailActivity" />
         <activity android:name=".haircut.HaircutOrderTimeActivity" />
         <activity android:name=".haircut.LeaderReserveActivity" />
+        <activity android:name=".haircut.activity.AgencyHaircutSelectActivity" />
 
         <!--维修模块-->
         <activity

@@ -13,6 +13,7 @@
     <color name="color_login_button">#2963E0</color>
     <color name="color_login_button_press">#1F48A1</color>
     <color name="color_background_F2F2F2">#F2F2F2</color>
+    <color name="color_DBDBDB">#DBDBDB</color>
 
 <!--    后勤页面-->
     <color name="bg_logistics_2963E0">#2963E0</color>

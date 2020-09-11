@@ -171,4 +171,20 @@
         <item name="android:layout_marginEnd">@dimen/dp_40</item>
     </style>
 
+    <!--   理发代理预约布局-->
+    <style name="haircut_agency_haircut_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_66</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+        <item name="android:layout_marginEnd">@dimen/dp_10</item>
+        <item name="cardBackgroundColor">@color/color_white</item>
+        <item name="cardElevation">@dimen/dp_10</item>
+        <item name="cardCornerRadius">@dimen/dp_4</item>
+    </style>
+
+    <style name="style_font_agency_medium_black" parent="@style/style_font_white_larger">
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:layout_marginStart">@dimen/dp_21</item>
+        <item name="android:layout_marginTop">@dimen/dp_26</item>
+    </style>
 </resources>

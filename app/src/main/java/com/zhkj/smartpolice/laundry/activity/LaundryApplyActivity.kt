@@ -43,7 +43,7 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
     }
 
     //2警服 3便服
-    var labelType = "3"
+    private var labelType = "3"
 
     private var labFragmentList = arrayListOf(
         LaundrySelectLabelFragment(),

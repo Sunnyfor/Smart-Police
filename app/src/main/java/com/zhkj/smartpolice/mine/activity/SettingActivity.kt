@@ -3,11 +3,13 @@ package com.zhkj.smartpolice.mine.activity
 import android.content.Intent
 import android.view.View
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.ConfirmDialog
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.activity.LoginActivity
+import com.zhkj.smartpolice.utils.SpKey
 import com.zhkj.smartpolice.widget.CacheClearDialog
 import com.zhkj.smartpolice.widget.CacheDataManager
 import kotlinx.android.synthetic.main.act_setting.*
@@ -53,9 +55,12 @@ class SettingActivity : BaseActivity() {
          tv_privacy.setOnClickListener(this)
          */
 
+        val isFingerprintLogin = SpUtil.getBoolean(SpKey.isFingerprintLogin)
+        swcBtn_finger.isChecked = isFingerprintLogin
+
         swcBtn_finger.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-
+                SpUtil.setBoolean(SpKey.isFingerprintLogin, isChecked)
             }
         }
 

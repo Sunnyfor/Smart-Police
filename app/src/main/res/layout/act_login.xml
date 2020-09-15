@@ -15,7 +15,7 @@
         style="@style/style_font_white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_60"
-        android:text="@string/login_title"
+        android:text="@string/app_name"
         android:textSize="@dimen/sp_30" />
 
     <RelativeLayout
@@ -23,8 +23,8 @@
         android:layout_width="@dimen/dp_320"
         android:layout_height="@dimen/dp_260"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dp_154"
-        android:background="@drawable/sel_border_white"
+        android:layout_marginTop="@dimen/dp_160"
+        android:background="@drawable/shape_bg_white_radius_17dp"
         android:paddingStart="@dimen/dp_20"
         android:paddingEnd="@dimen/dp_20">
 
@@ -86,14 +86,6 @@
 
         </RelativeLayout>
 
-        <CheckBox
-            android:id="@+id/cb_remember_pwd"
-            style="@style/style_font_black_small"
-            android:layout_below="@id/rl_pwd"
-            android:layout_alignParentEnd="true"
-            android:text="记住密码"
-            tools:ignore="HardcodedText" />
-
         <TextView
             android:id="@+id/btn_login"
             style="@style/style_common_btn"
@@ -111,12 +103,14 @@
         android:text="忘记密码？" />
 
     <LinearLayout
+        android:id="@+id/ll_fingerprint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dp_60"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:visibility="gone"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView

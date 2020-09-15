@@ -4,6 +4,6 @@ object SpKey {
 
     const val username = "username"
     const val password = "password"
-    const val isRememberPassword = "isRememberPassword"
+    const val isFingerprintLogin = "isFingerprintLogin" //指纹登录
 
 }

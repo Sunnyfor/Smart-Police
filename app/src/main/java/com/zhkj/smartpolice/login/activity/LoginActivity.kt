@@ -8,7 +8,6 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.LogUtil
@@ -28,6 +27,7 @@ import com.zhkj.smartpolice.mine.model.UserContract
 import com.zhkj.smartpolice.mine.model.UserPresenter
 import com.zhkj.smartpolice.utils.SpKey
 import com.zhkj.smartpolice.utils.fingerprint.BiometricPromptManager
+import com.zhkj.smartpolice.utils.fingerprint.FingerprintUtil
 import kotlinx.android.synthetic.main.act_login.*
 import kotlinx.coroutines.cancel
 
@@ -36,7 +36,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
     private var mUsername = SpUtil.getString(SpKey.username)
     private var mPassword = SpUtil.getString(SpKey.password)
-    private var isRememberPassword = SpUtil.getBoolean(SpKey.isRememberPassword, false)
+    private var mIsFingerprintLogin = SpUtil.getBoolean(SpKey.isFingerprintLogin)
 
     @JvmField
     @Autowired
@@ -70,18 +70,6 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
     override fun initView() {
 
-        // 记住密码
-        if (isRememberPassword) {
-            et_username.setText(mUsername)
-            et_password.setText(mPassword)
-            cb_remember_pwd.isChecked = true
-        }
-
-        cb_remember_pwd.setOnCheckedChangeListener { _, isChecked ->
-            isRememberPassword = isChecked
-        }
-
-
         // 指纹信息
         val stringBuilder = StringBuilder()
         stringBuilder.append("SDK version is " + Build.VERSION.SDK_INT)
@@ -94,6 +82,8 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
             .append("\n")
 
         LogUtil.e("指纹信息：\n$stringBuilder")
+
+        ll_fingerprint.visibility = if (mIsFingerprintLogin) View.VISIBLE else View.GONE
 
         setOnClickListener(
             btn_login,
@@ -134,18 +124,18 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     }
 
     override fun loadData() {
-        logout = intent.getBooleanExtra("logout", false)
-        if (logout) {
-            disable()
-            ZyFrameStore.finishAllActivity(this)
-            SpUtil.clear()
-        } else {
-            if (mUsername.isNotEmpty() && mPassword.isNotEmpty()) {
-                et_username.setText(mUsername)
-                et_password.setText(mPassword)
-                loginPresenter.onUserLogin(mUsername, mPassword)
-            }
-        }
+        /* logout = intent.getBooleanExtra("logout", false)
+         if (logout) {
+             disable()
+             ZyFrameStore.finishAllActivity(this)
+             SpUtil.clear()
+         } else {
+             if (mUsername.isNotEmpty() && mPassword.isNotEmpty()) {
+                 et_username.setText(mUsername)
+                 et_password.setText(mPassword)
+                 loginPresenter.onUserLogin(mUsername, mPassword)
+             }
+         }*/
     }
 
     override fun close() {
@@ -176,10 +166,11 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         }
         UserManager.setUserBean(data)
 
-        if (isRememberPassword) {
-            SpUtil.setObject(UserBean::class.java.simpleName, data)
-            SpUtil.setString(SpKey.username, et_username.text.toString().trim())
-            SpUtil.setString(SpKey.password, et_password.text.toString().trim())
+        val username = et_username.text.toString().trim()
+        val password = et_password.text.toString().trim()
+        if (username.isNotEmpty() || password.isNotEmpty()) {
+            SpUtil.setString(SpKey.username, username)
+            SpUtil.setString(SpKey.password, password)
         }
 
         ToastUtil.show("登录成功")
@@ -206,36 +197,29 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
      */
     private fun doFingerprint() {
 
-        if (!biometricPromptManager.isHardwareDetected) {
-            ToastUtil.show("您的系统版本过低，不支持指纹功能")
-        } else if (biometricPromptManager.isKeyguardSecure) {
-            ToastUtil.show("您的手机不支持指纹功能")
-        } else if (!biometricPromptManager.hasEnrolledFingerprints()) {
-            ToastUtil.show("您至少需要在系统设置中添加一个指纹")
-        } else {
-            if (biometricPromptManager.isBiometricPromptEnable) {
-                biometricPromptManager.authenticate(object : BiometricPromptManager.OnBiometricIdentifyCallback {
-                    override fun onUsePassword() {
-                        ToastUtil.show("onUsePassword")
-                    }
+        if (FingerprintUtil.isSupportFingerprint(this)) {
+            biometricPromptManager.authenticate(object : BiometricPromptManager.OnBiometricIdentifyCallback {
+                override fun onUsePassword() {
+                    ToastUtil.show("使用帐号密码登录")
+                }
 
-                    override fun onSucceeded() {
-                        ToastUtil.show("指纹验证成功")
-                    }
+                override fun onSucceeded() {
+                    ToastUtil.show("指纹验证成功")
+                    loginPresenter.onUserLogin(mUsername, mPassword)
+                }
 
-                    override fun onFailed() {
-                        ToastUtil.show("指纹验证失败")
-                    }
+                override fun onFailed() {
+                    ToastUtil.show("指纹验证失败")
+                }
 
-                    override fun onError(code: Int, reason: String?) {
-                        ToastUtil.show("指纹有误")
-                    }
+                override fun onError(code: Int, reason: String?) {
+                    ToastUtil.show("指纹有误")
+                }
 
-                    override fun onCancel() {
-                        ToastUtil.show("指纹验证取消")
-                    }
-                })
-            }
+                override fun onCancel() {
+                    ToastUtil.show("指纹验证取消")
+                }
+            })
         }
     }
 }

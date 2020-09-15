@@ -7,12 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.sunny.zy.utils.SpUtil
 import com.zhkj.smartpolice.R
-import com.zhkj.smartpolice.app.MainActivity
-import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.login.bean.UserInfoBean
-import com.zhkj.smartpolice.mine.bean.UserBean
 import kotlinx.android.synthetic.main.act_splash.*
 import java.lang.Thread.sleep
 
@@ -72,18 +67,7 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationEnd(animator: Animator) {
                 sleep(500)
-
-                val userBean = SpUtil.getObject(UserBean::class.java.simpleName, UserBean::class.java)
-                val userInfoBean = SpUtil.getObject(UserInfoBean::class.java.simpleName, UserInfoBean::class.java)
-                if (userBean != null) {
-                    if (userInfoBean != null) {
-                        UserManager.setUserBean(userBean)
-                        UserManager.setInfo(userInfoBean)
-                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                    }
-                } else {
-                    startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-                }
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish()
             }
 

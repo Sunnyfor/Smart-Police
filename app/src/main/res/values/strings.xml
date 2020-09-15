@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">智慧警务保障系统</string>
+    <string name="app_name">烟台公安智慧警保</string>
     <string name="logistics">后勤</string>
     <string name="mine">我的</string>
     <string name="code">一码通</string>
     <string name="code_null"> </string>
-    <string name="login_title">智慧警务保障系统</string>
     <string name="reserve_details">预约详情</string>
     <string name="residue">剩余：</string>
     <string name="number_zero">0</string>

@@ -17,7 +17,7 @@ import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
 import com.zhkj.smartpolice.notice.ConsumeRecordActivity
-import com.zhkj.smartpolice.utils.FingerprintUtil
+import com.zhkj.smartpolice.utils.fingerprint.FingerprintUtil
 import kotlinx.android.synthetic.main.frag_mine.*
 
 

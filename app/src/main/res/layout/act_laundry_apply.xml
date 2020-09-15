@@ -19,6 +19,7 @@
             android:visibility="gone">
 
             <RelativeLayout
+                android:id="@+id/rl_self"
                 android:layout_width="@dimen/dp_339"
                 android:layout_height="@dimen/dp_67"
                 android:layout_marginStart="@dimen/dp_11"
@@ -40,12 +41,14 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:button="@drawable/sel_meal_checkbox"
+                    android:clickable="false"
                     android:checked="true"
                     android:gravity="center_vertical" />
             </RelativeLayout>
 
 
             <RelativeLayout
+                android:id="@+id/rl_leader"
                 android:layout_width="@dimen/dp_339"
                 android:layout_height="@dimen/dp_67"
                 android:layout_marginStart="@dimen/dp_11"
@@ -67,8 +70,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:button="@drawable/sel_meal_checkbox"
-                    android:checked="true"
-                    android:gravity="center_vertical" />
+                    android:gravity="center_vertical"
+                    android:clickable="false"/>
             </RelativeLayout>
 
         </LinearLayout>

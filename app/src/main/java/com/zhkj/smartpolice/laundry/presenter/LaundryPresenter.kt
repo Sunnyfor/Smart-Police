@@ -70,7 +70,6 @@ class LaundryPresenter(view: LaundryView) : BasePresenter<LaundryView>(view) {
      */
     fun saveWashRecord(
         shopId: String,
-        isAgent: String? = null,
         thePrincipalId: String? = null,
         clothesPoliceLabel: String? = null,
         clothesCasualLabel: String? = null,
@@ -80,11 +79,9 @@ class LaundryPresenter(view: LaundryView) : BasePresenter<LaundryView>(view) {
             val params = JSONObject()
             params.put("shopId", shopId)
 
-            isAgent?.let {
-                params.put("isAgent", it)
-            }
             thePrincipalId?.let {
                 params.put("thePrincipalId", it)
+                params.put("isAgent", "1")
             }
 
             clothesPoliceLabel?.let {

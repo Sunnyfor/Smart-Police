@@ -9,6 +9,7 @@ import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.ToastUtil
 import com.sunny.zy.widget.dialog.PutInSucceedDialog
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveWeekAdapter
 import com.zhkj.smartpolice.haircut.bean.WeekDayBean
 import com.zhkj.smartpolice.laundry.adapter.LaundryBtnLabelAdapter
@@ -33,10 +34,7 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
     }
 
 
-    val selfQuota: String by lazy {
-        intent.getStringExtra("selfQuota")
-    }
-
+    var leaderId: String? = null
 
     private val laundryPresenter: LaundryPresenter by lazy {
         LaundryPresenter(this)
@@ -111,10 +109,29 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
             supportFragmentManager.beginTransaction().add(fl_container.id, it).commit()
         }
 
+        UserManager.getUserBean().leaderId?.let {
+            if (it.isNotEmpty()) {
+                cl_select.visibility = View.VISIBLE
+                setOnClickListener(rl_self, rl_leader)
+            }
+        }
+
     }
 
     override fun onClickEvent(view: View) {
         when (view.id) {
+            rl_self.id -> {
+                checkbox_me.isChecked = true
+                checkbox_leader.isChecked = false
+                leaderId = null
+            }
+
+            rl_leader.id -> {
+                checkbox_leader.isChecked = true
+                checkbox_me.isChecked = false
+                leaderId = UserManager.getUserBean().leaderId
+            }
+
             R.id.tv_submit -> {
                 val clothesCasualLabel = labFragmentList[0].getLabel()
                 val clothesPoliceLabel = labFragmentList[1].getLabel()
@@ -131,8 +148,7 @@ class LaundryApplyActivity : BaseActivity(), LaundryView {
 
                     laundryPresenter.saveWashRecord(
                         shopId,
-                        null,
-                        null,
+                        leaderId,
                         clothesPoliceLabel,
                         clothesCasualLabel,
                         format.format(it) + " 00:00:00"

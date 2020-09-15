@@ -101,7 +101,6 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         shopId: String,
         isAgent: String,
         thePrincipalId: String,
-        haircutType: String,
         bean: ManageBean?
     ) {
         if (reserveUserName.isEmpty()) {
@@ -126,13 +125,13 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
                 shopId,
                 isAgent,
                 thePrincipalId,
-                haircutType,
                 bean
             )?.let {
                 if (view is MerchantContract.IReserveView) {
                     (view as MerchantContract.IReserveView).reserveResult(it)
                 }
             }
+            hideLoading()
         }
     }
 

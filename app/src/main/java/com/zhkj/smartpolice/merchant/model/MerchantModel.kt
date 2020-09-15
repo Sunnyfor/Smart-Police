@@ -165,7 +165,6 @@ class MerchantModel {
         shopId: String,
         isAgent: String,
         thePrincipalId: String,
-        haircutType: String,
         bean: ManageBean?
     ): BaseModel<Any>? {
         var url = UrlConstant.SAVE_RECORD_URL
@@ -180,7 +179,6 @@ class MerchantModel {
         params.put("shopId", shopId)
         params.put("isAgent", isAgent)
         params.put("thePrincipalId", thePrincipalId)
-        params.put("haircutType", haircutType)
 
         bean?.let {
             url = UrlConstant.RESERVE_RECORD_SAVE_URL

@@ -30,7 +30,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTimeView {
+class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTimeView, MerchantContract.IReserveView {
 
     val presenter by lazy {
         MerchantPresenter(this)
@@ -107,10 +107,11 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
                         }
                         if (dataInfo != null && dataInfo.size > 0) {
                             timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
-//                                presenter.commitReserve(
-//                                    tv_name.text.toString(), tv_mobile.text.toString(), bean.beginTime ?: "",
-//                                    bean.endTime ?: "", "0", "1", shopId, "1",UserManager.getUserBean().leaderId,"1"
-//                                )
+                                presenter.commitReserve(
+                                    tv_name.text.toString(), tv_mobile.text.toString(), bean.beginTime ?: "",
+                                    bean.endTime ?: "", "0", "1", shopId, "1",
+                                    UserManager.getUserBean().leaderId ?: ""
+                                )
                             }
                         }
                     }
@@ -178,5 +179,10 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
         timeAdapter.addData(dataInfo)
         timeAdapter.notifyDataSetChanged()
     }
+
+    override fun reserveResult(data: BaseModel<Any>) {
+        LogUtil.i("返回的参数是========$data")
+    }
+
 
 }

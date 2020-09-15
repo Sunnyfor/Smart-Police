@@ -53,5 +53,19 @@ interface MerchantContract {
             shopId: String,
             bean: ManageBean? = null
         )
+
+        //警员司机待预约
+        abstract fun commitReserve(
+            reserveUserName: String,
+            mobile: String,
+            beginTime: String,
+            endTime: String,
+            manageId: String,
+            reserveType: String,
+            shopId: String,
+            isAgent: String,
+            thePrincipalId: String,
+            bean: ManageBean? = null
+        )
     }
 }

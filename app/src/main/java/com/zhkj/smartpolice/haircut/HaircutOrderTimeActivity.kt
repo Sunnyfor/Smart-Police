@@ -2,7 +2,6 @@ package com.zhkj.smartpolice.haircut
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,13 +67,16 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
     override fun initView() {
 
         defaultTitle("预约时间")
+        dateSelect(isNumber)
+        setOnClickListener(btn_sure)
+    }
 
+    fun dateSelect(number: Int) {
         val weekDayList = arrayListOf<WeekDayBean>()
 
-        LogUtil.i("=====isVerdict=======$isNumber")
         val maxDay = calendar.getActualMaximum(Calendar.DATE)
 
-        for (i in 0 until isNumber) {
+        for (i in 0 until number) {
             LogUtil.i("i的参数是=======$i")
             val week = defaultWeeks[calendar.get(Calendar.DAY_OF_WEEK) - 1]
             weekDayList.add(WeekDayBean(week, calendar.get(Calendar.DAY_OF_MONTH)).apply {
@@ -92,9 +94,6 @@ open class HaircutOrderTimeActivity : BaseActivity(), MerchantContract.IReserveT
 
         recycler_time.layoutManager = GridLayoutManager(this, 4)
         recycler_time.adapter = timeAdapter
-
-        setOnClickListener(btn_sure)
-
     }
 
     override fun onClickEvent(view: View) {

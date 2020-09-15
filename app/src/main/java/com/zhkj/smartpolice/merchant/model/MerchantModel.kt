@@ -154,4 +154,47 @@ class MerchantModel {
         return null
     }
 
+
+    suspend fun commitReserve(
+        reserveUserName: String,
+        mobile: String,
+        beginTime: String,
+        endTime: String,
+        manageId: String,
+        reserveType: String,
+        shopId: String,
+        isAgent: String,
+        thePrincipalId: String,
+        haircutType: String,
+        bean: ManageBean?
+    ): BaseModel<Any>? {
+        var url = UrlConstant.SAVE_RECORD_URL
+
+        val params = JSONObject()
+        params.put("reserveUserName", reserveUserName)
+        params.put("mobile", mobile)
+        params.put("beginTime", beginTime)
+        params.put("endTime", endTime)
+        params.put("manageId", manageId)
+        params.put("reserveType", reserveType)
+        params.put("shopId", shopId)
+        params.put("isAgent", isAgent)
+        params.put("thePrincipalId", thePrincipalId)
+        params.put("haircutType", haircutType)
+
+        bean?.let {
+            url = UrlConstant.RESERVE_RECORD_SAVE_URL
+            params.put("resourceId", it.resourceId)
+        }
+
+        val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
+        ZyHttp.postJson(url, params.toString(), httpResultBean)
+
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true)
+                return httpResultBean.bean
+        }
+        return null
+    }
+
 }

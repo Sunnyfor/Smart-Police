@@ -60,6 +60,7 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
         timeAdapter = LeaderReserveTimeAdapter().apply {
             setOnItemClickListener { _, position ->
                 index = position
+
                 notifyDataSetChanged()
 
             }

@@ -96,8 +96,8 @@ class MainActivity : BaseActivity(), VersionContract.View {
     }
 
     override fun onClickEvent(view: View) {
-        when(view.id){
-            rl_one_code.id-> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY)
+        when (view.id) {
+            rl_one_code.id -> RouterManager.navigation(this, RouterManager.PAY_CODE_ACTIVITY, "isFromMainActivity", true)
         }
     }
 

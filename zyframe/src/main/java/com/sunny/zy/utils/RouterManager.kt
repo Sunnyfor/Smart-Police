@@ -35,6 +35,13 @@ object RouterManager {
             .navigation(context)
     }
 
+    fun navigation(context: Context, path: String, key: String, value: Boolean) {
+        ARouter.getInstance()
+            .build(path)
+            .withBoolean(key, value)
+            .navigation(context)
+    }
+
     fun navigation(context: Context, path: String, bundle: Bundle) {
         ARouter.getInstance()
             .build(path)

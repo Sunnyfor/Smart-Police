@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText">
 
     <TextView
         android:id="@+id/tv_hint"
@@ -12,12 +13,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/placeholder" />
+        tools:text="30s" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        style="@style/style_font_black"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:gravity="center_horizontal"
+        android:text="用于就餐支付时，\n\n每个就餐时间只可支付一次"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/iv_qr_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/iv_qr_code"
-        android:layout_width="@dimen/dp_200"
-        android:layout_height="@dimen/dp_200"
+        android:layout_width="@dimen/dp_260"
+        android:layout_height="@dimen/dp_260"
         android:contentDescription="@string/placeholder"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"

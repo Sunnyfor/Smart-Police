@@ -68,76 +68,76 @@
             android:src="@drawable/svg_mine_edit"
             app:layout_constraintEnd_toEndOf="@id/v_login"
             app:layout_constraintTop_toTopOf="@id/v_login" />
-<!--
+        <!--
 
-        <TextView
-            android:id="@+id/tv1"
-            style="@style/style_font_gray"
-            android:layout_width="0dp"
-            android:layout_marginTop="@dimen/dp_5"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:gravity="center_horizontal"
-            android:text="浏览历史"
-            app:layout_constraintBottom_toBottomOf="@id/v_login"
-            app:layout_constraintEnd_toStartOf="@id/tv2"
-            app:layout_constraintStart_toStartOf="@id/v_login"
-            app:layout_constraintTop_toBottomOf="@id/tv_history"
-            tools:ignore="HardcodedText" />
-
-
-        <TextView
-            android:id="@+id/tv2"
-            style="@style/style_font_gray"
-            android:layout_width="0dp"
-            android:gravity="center_horizontal"
-            android:text="收藏"
-            app:layout_constraintEnd_toStartOf="@id/tv3"
-            app:layout_constraintStart_toEndOf="@id/tv1"
-            app:layout_constraintTop_toBottomOf="@id/tv_collect"
-            app:layout_constraintTop_toTopOf="@id/tv1"
-            tools:ignore="HardcodedText" />
-
-        <TextView
-            android:id="@+id/tv3"
-            style="@style/style_font_gray"
-            android:layout_width="0dp"
-            android:gravity="center_horizontal"
-            android:text="红包优惠券"
-            app:layout_constraintEnd_toEndOf="@id/v_login"
-            app:layout_constraintStart_toEndOf="@id/tv2"
-            app:layout_constraintTop_toBottomOf="@id/tv_coupons"
-            app:layout_constraintTop_toTopOf="@id/tv1"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/tv1"
+                    style="@style/style_font_gray"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:gravity="center_horizontal"
+                    android:text="浏览历史"
+                    app:layout_constraintBottom_toBottomOf="@id/v_login"
+                    app:layout_constraintEnd_toStartOf="@id/tv2"
+                    app:layout_constraintStart_toStartOf="@id/v_login"
+                    app:layout_constraintTop_toBottomOf="@id/tv_history"
+                    tools:ignore="HardcodedText" />
 
 
-        <TextView
-            android:id="@+id/tv_history"
-            style="@style/style_font_black_big"
-            android:layout_marginTop="@dimen/dp_10"
-            android:text="0"
-            app:layout_constraintEnd_toEndOf="@id/tv1"
-            app:layout_constraintStart_toStartOf="@id/tv1"
-            app:layout_constraintTop_toBottomOf="@id/iv_head"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/tv2"
+                    style="@style/style_font_gray"
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:text="收藏"
+                    app:layout_constraintEnd_toStartOf="@id/tv3"
+                    app:layout_constraintStart_toEndOf="@id/tv1"
+                    app:layout_constraintTop_toBottomOf="@id/tv_collect"
+                    app:layout_constraintTop_toTopOf="@id/tv1"
+                    tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/tv_collect"
-            style="@style/style_font_black_big"
-            android:text="0"
-            app:layout_constraintEnd_toEndOf="@id/tv2"
-            app:layout_constraintStart_toStartOf="@id/tv2"
-            app:layout_constraintTop_toTopOf="@id/tv_history"
-            tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/tv3"
+                    style="@style/style_font_gray"
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:text="红包优惠券"
+                    app:layout_constraintEnd_toEndOf="@id/v_login"
+                    app:layout_constraintStart_toEndOf="@id/tv2"
+                    app:layout_constraintTop_toBottomOf="@id/tv_coupons"
+                    app:layout_constraintTop_toTopOf="@id/tv1"
+                    tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/tv_coupons"
-            style="@style/style_font_black_big"
-            android:text="0"
-            app:layout_constraintEnd_toEndOf="@id/tv3"
-            app:layout_constraintStart_toStartOf="@id/tv3"
-            app:layout_constraintTop_toTopOf="@id/tv_history"
-            tools:ignore="HardcodedText" />
--->
+
+                <TextView
+                    android:id="@+id/tv_history"
+                    style="@style/style_font_black_big"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="0"
+                    app:layout_constraintEnd_toEndOf="@id/tv1"
+                    app:layout_constraintStart_toStartOf="@id/tv1"
+                    app:layout_constraintTop_toBottomOf="@id/iv_head"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_collect"
+                    style="@style/style_font_black_big"
+                    android:text="0"
+                    app:layout_constraintEnd_toEndOf="@id/tv2"
+                    app:layout_constraintStart_toStartOf="@id/tv2"
+                    app:layout_constraintTop_toTopOf="@id/tv_history"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_coupons"
+                    style="@style/style_font_black_big"
+                    android:text="0"
+                    app:layout_constraintEnd_toEndOf="@id/tv3"
+                    app:layout_constraintStart_toStartOf="@id/tv3"
+                    app:layout_constraintTop_toTopOf="@id/tv_history"
+                    tools:ignore="HardcodedText" />
+        -->
 
         <!--订单记录-->
 
@@ -334,19 +334,6 @@
             app:startAfterText="设置"
             app:startAfterTextColor="@color/color_black"
             app:startIcon="@drawable/svg_mine_setting" />
-
-        <com.zhkj.smartpolice.widget.ItemLayout
-            android:id="@+id/item_fingerprint"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_56"
-            app:endIcon="@drawable/svg_btn_more"
-            app:layout_constraintEnd_toEndOf="@id/item_help"
-            app:layout_constraintStart_toStartOf="@id/item_help"
-            app:layout_constraintTop_toBottomOf="@id/item_setting"
-            app:lineVisible="true"
-            app:startAfterText="设置指纹"
-            app:startAfterTextColor="@color/color_black"
-            app:startIcon="@drawable/svg_mine_fingerprint" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

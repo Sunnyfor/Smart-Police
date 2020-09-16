@@ -10,6 +10,7 @@ import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.activity.LoginActivity
 import com.zhkj.smartpolice.utils.SpKey
+import com.zhkj.smartpolice.utils.fingerprint.FingerprintUtil
 import com.zhkj.smartpolice.widget.CacheClearDialog
 import com.zhkj.smartpolice.widget.CacheDataManager
 import kotlinx.android.synthetic.main.act_setting.*
@@ -67,6 +68,7 @@ class SettingActivity : BaseActivity() {
         setOnClickListener(
             item_cache,
             item_modify_pwd,
+            item_fingerprint,
             btn_logout
         )
 
@@ -77,6 +79,7 @@ class SettingActivity : BaseActivity() {
         when (view.id) {
             item_cache.id -> cacheClearDialog.show()
             item_modify_pwd.id -> startActivity(Intent(this, ModifyPasswordActivity::class.java))
+            item_fingerprint.id -> FingerprintUtil.intentSetting(this)
             btn_logout.id -> exitDialog.show()
             /*
             R.id.item_feedback -> startActivity(Intent(this, UserFeedbackActivity::class.java))

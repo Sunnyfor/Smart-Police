@@ -84,6 +84,15 @@
         android:layout_marginStart="@dimen/dp_20"
         android:layout_marginEnd="@dimen/dp_20" />
 
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_fingerprint"
+        style="@style/style_register_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="设置指纹" />
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_logout"
         style="@style/style_common_btn"

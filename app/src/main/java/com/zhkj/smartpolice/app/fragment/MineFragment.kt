@@ -17,7 +17,6 @@ import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
 import com.zhkj.smartpolice.notice.ConsumeRecordActivity
-import com.zhkj.smartpolice.utils.fingerprint.FingerprintUtil
 import kotlinx.android.synthetic.main.frag_mine.*
 
 
@@ -41,7 +40,7 @@ class MineFragment : BaseFragment() {
             ll_meal, ll_repair, ll_reserve, ll_consume,
             tv_money, tv_wallet,
             btn_withdrawal, btn_recharge,
-            item_help, item_about, item_setting, item_fingerprint
+            item_help, item_about, item_setting
         )
     }
 
@@ -57,7 +56,6 @@ class MineFragment : BaseFragment() {
             btn_recharge.id -> RouterManager.navigation(requireContext(), RouterManager.RECHARGE_ACTIVITY)
             item_help.id, item_about.id -> ToastUtil.show()
             item_setting.id -> startActivity(Intent(requireContext(), SettingActivity::class.java))
-            item_fingerprint.id -> FingerprintUtil.intentSetting(requireContext())
         }
     }
 

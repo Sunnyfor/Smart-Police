@@ -7,11 +7,12 @@ import com.sunny.zy.http.bean.HttpResultBean
 import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.login.bean.UserInfoBean
 import com.zhkj.smartpolice.login.view.LoginView
+import com.zhkj.smartpolice.utils.Base64Util
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
 
-class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
+class LoginPresenter(view: LoginView) : BasePresenter<LoginView>(view) {
 
     /**
      * 登录用户信息接口请求
@@ -20,14 +21,14 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
         view?.showLoading()
         val params = HashMap<String, String>()
         params["userName"] = userName
-        params["password"] = password
+        params["password"] = Base64Util.encode(password)
 
-        val httpResultBean = object : HttpResultBean<BaseModel<ArrayList<UserInfoBean>>>(){ }
-        launch (Main){
-            ZyHttp.post(UrlConstant.USER_LOGIN_URL,params,httpResultBean)
+        val httpResultBean = object : HttpResultBean<BaseModel<ArrayList<UserInfoBean>>>() {}
+        launch(Main) {
+            ZyHttp.post(UrlConstant.USER_LOGIN_URL, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.userLogin(httpResultBean.bean?: return@launch)
+                view?.userLogin(httpResultBean.bean ?: return@launch)
             }
         }
     }
@@ -46,7 +47,7 @@ class LoginPresenter(view: LoginView): BasePresenter<LoginView>(view) {
             ZyHttp.post(UrlConstant.MODIFY_PASSWORD_URL, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
                 view?.hideLoading()
-                view?.modifyPassword(httpResultBean.bean?.code?:return@launch)
+                view?.modifyPassword(httpResultBean.bean?.code ?: return@launch)
             }
         }
     }

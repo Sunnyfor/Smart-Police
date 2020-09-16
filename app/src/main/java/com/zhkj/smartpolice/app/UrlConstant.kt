@@ -165,6 +165,11 @@ object UrlConstant {
     const val NOTICE_LIST_URL = "app/appnotice/list"
 
     /**
+     * 消息通知详情
+     */
+    const val NOTICE_DETAIL_URL = "app/appnotice/info/%s"
+
+    /**
      * 读取通知
      */
     const val UPDATE_BY_NOTICE_ID_URL = "app/appnoticeuserlink/updateByNoticeId"

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_20">
+
+    <TextView
+        android:id="@+id/tv_notice_title"
+        style="@style/style_font_black_big"
+        tools:text="邀请推荐好友" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/style_font_gray"
+        android:layout_below="@id/tv_notice_title"
+        android:layout_marginTop="@dimen/dp_5"
+        tools:text="2020年6月5日 15:34:25" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/style_font_black"
+        android:layout_below="@id/tv_time"
+        android:layout_marginTop="@dimen/dp_20"
+        tools:text="欢迎大家邀请推荐好友入驻平台。平台会根据您邀请的用户人数进行相应的奖励。" />
+
+</RelativeLayout>

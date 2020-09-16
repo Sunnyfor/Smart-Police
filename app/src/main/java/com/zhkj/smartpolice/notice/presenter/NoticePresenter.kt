@@ -43,4 +43,15 @@ class NoticePresenter(view: IBaseView) : NoticeContract.Presenter(view) {
         }
     }
 
+
+    override fun loadNoticeDetail(id: String) {
+        launch(Main) {
+            showLoading()
+            noticeModel.loadNoticeDetail(id)?.let {
+                if (view is NoticeContract.INoticeDetailView)
+                    (view as NoticeContract.INoticeDetailView).showNoticeDetail(it)
+            }
+            hideLoading()
+        }
+    }
 }

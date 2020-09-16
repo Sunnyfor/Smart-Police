@@ -80,6 +80,7 @@
         <activity android:name=".mine.activity.ModifyPasswordActivity" />
         <activity android:name=".mine.activity.ConsumeRecordActivity" />
         <activity android:name=".notice.NoticeActivity"/>
+        <activity android:name=".notice.NoticeDetailActivity"/>
 
         <!--餐厅模块-->
         <activity android:name=".meal.activity.MealDetailActivity" />

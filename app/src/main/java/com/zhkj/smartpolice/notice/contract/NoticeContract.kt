@@ -15,10 +15,18 @@ class NoticeContract {
         fun showReadNoticeResult(id: String)
     }
 
+    interface INoticeDetailView : IBaseView {
+        fun showNoticeDetail(data: NoticeBean)
+    }
+
     abstract class Presenter(iView: IBaseView) : BasePresenter<IBaseView>(iView) {
+
         abstract fun loadUnreadNoticeList(id: String)
+
         abstract fun loadNoticeList(id: String, page: String, limit: String, isRead: String?)
         abstract fun readNotice(id: String)
+
+        abstract fun loadNoticeDetail(id: String)
     }
 
 }

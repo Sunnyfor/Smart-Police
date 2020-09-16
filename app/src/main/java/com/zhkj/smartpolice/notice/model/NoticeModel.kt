@@ -43,4 +43,13 @@ class NoticeModel {
         }
         return null
     }
+
+    /**
+     * 通知详情
+     */
+    suspend fun loadNoticeDetail(id: String): NoticeBean? {
+        val httpResultBean = object : HttpResultBean<BaseModel<NoticeBean>>("appNotice") {}
+        ZyHttp.post(String.format(UrlConstant.NOTICE_DETAIL_URL, id), hashMapOf(), httpResultBean)
+        return httpResultBean.bean?.data
+    }
 }

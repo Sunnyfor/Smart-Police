@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -210,17 +211,15 @@
                 tools:ignore="UseCompoundDrawables">
 
                 <ImageView
-
                     style="@style/style_common_icon"
                     android:background="@drawable/sel_mine_yellow"
                     android:contentDescription="@string/app_name"
-                    android:padding="@dimen/dp_1"
-                    android:src="@drawable/svg_mine_consume" />
+                    android:src="@drawable/svg_mine_message" />
 
                 <TextView
                     style="@style/style_font_black_small"
                     android:layout_marginTop="@dimen/dp_5"
-                    android:text="消费记录"
+                    android:text="消息通知"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
         </LinearLayout>

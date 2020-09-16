@@ -146,7 +146,7 @@
                         android:src="@drawable/icon_mine_meal" />
 
                     <TextView
-                        style="@style/style_font_black"
+                        style="@style/style_font_black_small"
                         android:layout_marginTop="@dimen/dp_5"
                         android:text="订餐记录"
                         tools:ignore="HardcodedText" />
@@ -164,7 +164,7 @@
                         android:src="@drawable/icon_mine_fixup" />
 
                     <TextView
-                        style="@style/style_font_black"
+                        style="@style/style_font_black_small"
                         android:layout_marginTop="@dimen/dp_5"
                         android:text="维修记录"
                         tools:ignore="HardcodedText" />
@@ -182,7 +182,7 @@
                         android:src="@drawable/icon_mine_order" />
 
                     <TextView
-                        style="@style/style_font_black"
+                        style="@style/style_font_black_small"
                         android:layout_marginTop="@dimen/dp_5"
                         android:text="预约记录"
                         tools:ignore="HardcodedText" />
@@ -201,7 +201,7 @@
                         android:src="@drawable/svg_mine_consume" />
 
                     <TextView
-                        style="@style/style_font_black"
+                        style="@style/style_font_black_small"
                         android:layout_marginTop="@dimen/dp_5"
                         android:text="消费记录"
                         tools:ignore="HardcodedText" />

@@ -16,7 +16,7 @@ import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
 import com.zhkj.smartpolice.mine.activity.SettingActivity
-import com.zhkj.smartpolice.notice.ConsumeRecordActivity
+import com.zhkj.smartpolice.notice.NoticeActivity
 import kotlinx.android.synthetic.main.frag_mine.*
 
 
@@ -50,7 +50,7 @@ class MineFragment : BaseFragment() {
             ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
             ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
             ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
-            ll_consume.id -> startActivity(Intent(requireContext(), ConsumeRecordActivity::class.java))
+            ll_consume.id -> startActivity(Intent(requireContext(), NoticeActivity::class.java))
             tv_money.id, tv_wallet.id -> RouterManager.navigation(requireContext(), RouterManager.WALLET_ACTIVITY)
             btn_withdrawal.id -> RouterManager.navigation(requireContext(), RouterManager.WITHDRAWAL_ACTIVITY)
             btn_recharge.id -> RouterManager.navigation(requireContext(), RouterManager.RECHARGE_ACTIVITY)

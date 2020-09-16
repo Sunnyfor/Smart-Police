@@ -25,9 +25,9 @@ import com.zhkj.smartpolice.merchant.MerchantBean
 import com.zhkj.smartpolice.merchant.MerchantListActivity
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
+import com.zhkj.smartpolice.mine.activity.ConsumeRecordActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
-import com.zhkj.smartpolice.notice.ConsumeRecordActivity
 import com.zhkj.smartpolice.physiotherapy.activity.PhysiotherapyActivity
 import com.zhkj.smartpolice.shuttle.ShuttleBusActivity
 import com.zhkj.smartpolice.stadium.StadiumActivity
@@ -77,14 +77,8 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                             startActivity(intent)
                         } else {
                             val intent = when (UserManager.getUserBean().position) {
-                                "1", "2" -> Intent(
-                                    requireContext(),
-                                    BarberListActivity::class.java
-                                )      //领导
-                                else -> Intent(
-                                    requireContext(),
-                                    HaircutOrderDetailActivity::class.java
-                                )  //警员
+                                "1", "2" -> Intent(requireContext(), BarberListActivity::class.java)      //领导
+                                else -> Intent(requireContext(), HaircutOrderDetailActivity::class.java)  //警员
                             }
                             intent.putExtra("shopId", this?.shopId)
                             startActivity(intent)
@@ -121,37 +115,11 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
-//                    3 -> startActivity(
-//                        Intent(
-//                            requireContext(),
-//                            PoliceMaintainActivity::class.java
-//                        )
-//                    ) //普通警员
-                    117 -> startActivity(
-                        Intent(
-                            requireContext(),
-                            ApplyMaintainListActivity::class.java
-                        )
-                    ) //维修管理员
-                    115 -> startActivity(
-                        Intent(
-                            requireContext(),
-                            PropertyManageActivity::class.java
-                        )
-                    ) //物业管理
-                    116 -> startActivity(
-                        Intent(
-                            requireContext(),
-                            MaintainTaskActivity::class.java
-                        )
-                    ) //维修工人
-                    else -> {
-                        Intent(
-                            requireContext(),
-                            PoliceMaintainActivity::class.java
-                        )
-                    }
-//                    else -> ToastUtil.show("你当前不是警员")
+//                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
+                    117 -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java)) //维修管理员
+                    115 -> startActivity(Intent(requireContext(), PropertyManageActivity::class.java)) //物业管理
+                    116 -> startActivity(Intent(requireContext(), MaintainTaskActivity::class.java)) //维修工人
+                    else -> Intent(requireContext(), PoliceMaintainActivity::class.java)
                 }
             }
             //理疗
@@ -162,28 +130,12 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                         intent.putExtra("shopId", this?.shopId)
                         startActivity(intent)
                     }
-//                ToastUtil.show()
             }
 
             ll_meal.id -> startActivity(Intent(requireContext(), MealRecordActivity::class.java))
-            ll_repair.id -> startActivity(
-                Intent(
-                    requireContext(),
-                    RepairRecordActivity::class.java
-                )
-            )
-            ll_reserve.id -> startActivity(
-                Intent(
-                    requireContext(),
-                    ReserveRecordActivity::class.java
-                )
-            )
-            ll_consume.id -> startActivity(
-                Intent(
-                    requireContext(),
-                    ConsumeRecordActivity::class.java
-                )
-            )
+            ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
+            ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
+            ll_consume.id -> startActivity(Intent(requireContext(), ConsumeRecordActivity::class.java))
 
             tv_office_supplies.id -> ToastUtil.show()
             tv_vehicle_apply.id -> ToastUtil.show()

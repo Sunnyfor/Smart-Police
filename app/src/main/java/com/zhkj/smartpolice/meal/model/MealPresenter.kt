@@ -47,10 +47,10 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
-    override fun loadMealRecord(page: Int) {
+    override fun loadMealRecord(page: Int, isConsumeRecord: Boolean?) {
         launch(Dispatchers.Main) {
             showLoading()
-            mealModel.loadMealRecord(page)?.let {
+            mealModel.loadMealRecord(page, isConsumeRecord)?.let {
                 if (view is MealContract.IMealRecordView) {
                     (view as MealContract.IMealRecordView).showMealRecord(it)
                 }

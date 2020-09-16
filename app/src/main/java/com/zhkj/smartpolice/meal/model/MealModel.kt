@@ -89,13 +89,19 @@ class MealModel {
     /**
      *  订餐记录
      */
-    suspend fun loadMealRecord(page: Int): ArrayList<MealRecordBean>? {
+    suspend fun loadMealRecord(page: Int, isConsumeRecord: Boolean?): ArrayList<MealRecordBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<MealRecordBean>>() {}
 
         val params = HashMap<String, String>()
         params["page"] = page.toString()
         params["limit"] = Constant.pageLimit
-        params["createUserId"] = UserManager.getUserBean().userId ?: ""
+
+        if (isConsumeRecord == true) {
+            params["payState"] = "1"
+        } else {
+            params["shopType"] = "1"
+            params["createUserId"] = UserManager.getUserBean().userId ?: ""
+        }
 
         ZyHttp.get(UrlConstant.MEAL_RECORD_URL, params, httpResultBean)
         if (httpResultBean.isSuccess()) {

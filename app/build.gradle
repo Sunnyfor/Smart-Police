@@ -13,7 +13,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('../SmartPolice.jks.jks')
+            storeFile file('../SmartPolice.jks')
             storePassword '123456'
             keyAlias = 'Police'
             keyPassword '123456'

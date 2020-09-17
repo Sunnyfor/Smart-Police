@@ -115,11 +115,11 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
                 val userInfoBean = UserManager.getInfo()
                 LogUtil.i("进来人的身份=======${userInfoBean.roleId} ${userInfoBean.roleName}")
                 when (userInfoBean.roleId) {
-//                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
+                    3 -> startActivity(Intent(requireContext(), PoliceMaintainActivity::class.java)) //普通警员
                     117 -> startActivity(Intent(requireContext(), ApplyMaintainListActivity::class.java)) //维修管理员
                     115 -> startActivity(Intent(requireContext(), PropertyManageActivity::class.java)) //物业管理
                     116 -> startActivity(Intent(requireContext(), MaintainTaskActivity::class.java)) //维修工人
-                    else -> Intent(requireContext(), PoliceMaintainActivity::class.java)
+//                    else -> Intent(requireContext(), PoliceMaintainActivity::class.java)
                 }
             }
             //理疗

@@ -19,10 +19,10 @@ class ReverseRecordAdapter : BaseRecycleAdapter<ReserveRecordBean>(arrayListOf()
     }
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
-        holder.itemView.tv_shop_name.text = getData(position).resourceEntity?.shopName
-        holder.itemView.tv_merchant.text = ("&& ${getData(position).resourceEntity?.resourceName}")
-        holder.itemView.tv_order_name.text = ("预约人：${getData(position).reserveUserName}（${getData(position).mobile}）")
-        holder.itemView.tv_order_time.text = ("预约时间：${getData(position).manageEntity?.manageDate}（${getData(position).manageEntity?.manageTime}）")
+        holder.itemView.tv_shop_name.text = getData(position).shopName
+        holder.itemView.tv_merchant.text = (getData(position).resourceEntity?.resourceName?:"")
+        holder.itemView.tv_order_name.text = ("预约人：${getData(position).reserveUserName}")
+        holder.itemView.tv_order_time.text = ("预约时间：${getData(position).reserveTime}")
         holder.itemView.tv_order_number.text = ("订单号：${getData(position).reserveNumber ?: ""}")
         holder.itemView.tv_create_time.text = ("创建时间：${getData(position).createTime}")
         holder.itemView.tv_remark.text = ("备注：${getData(position).remark ?: ""}")

@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.app
 
+import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
@@ -20,6 +21,7 @@ import com.zhkj.smartpolice.app.fragment.MineFragment
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.activity.LoginActivity
 import com.zhkj.smartpolice.notice.NoticeReceiver
+import com.zhkj.smartpolice.notice.NoticeService
 import com.zhkj.smartpolice.version.VersionUpdateDialog
 import com.zhkj.smartpolice.version.bean.VersionBean
 import com.zhkj.smartpolice.version.contract.VersionContract
@@ -86,8 +88,8 @@ class MainActivity : BaseActivity(), VersionContract.View {
         intentFilter.addAction("com.zhkj.notice.message")
         registerReceiver(noticeReceiver, intentFilter)
 
-//        val intent = Intent(this, NoticeService::class.java)
-//        startService(intent)
+        val intent = Intent(this, NoticeService::class.java)
+        startService(intent)
 
         bottom_navigation_view.elevation = 0f
 

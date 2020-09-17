@@ -31,8 +31,8 @@ class MealRecordAdapter : BaseRecycleAdapter<MealRecordBean>(arrayListOf()) {
         return when (type?.toInt()) {
             0 -> "待支付"
             1 -> "支付成功"
-            2 -> "关闭"
-            3 -> "撤销"
+            2 -> "已关闭"
+            3 -> "已撤销"
             4 -> "待退款"
             5 -> "退款成功"
             6 -> "交易结束，不可退款"

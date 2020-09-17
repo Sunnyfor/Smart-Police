@@ -23,6 +23,7 @@ class ReserveRecordBean {
     val reserveUserName: String? = null
     val manageEntity: ManageEntity? = null
     val resourceEntity: ResourceEntity? = null
+    var shopName: String? = null
 
     class ManageEntity {
         val shopId: String? = null

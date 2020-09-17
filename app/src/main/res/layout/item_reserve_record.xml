@@ -20,7 +20,7 @@
         android:layout_alignBaseline="@id/tv_shop_name"
         android:layout_marginStart="@dimen/dp_20"
         android:layout_toEndOf="@id/tv_shop_name"
-        tools:text="&amp;&amp; 理发师1" />
+        tools:text="理发师" />
 
     <TextView
         android:id="@+id/tv_state"

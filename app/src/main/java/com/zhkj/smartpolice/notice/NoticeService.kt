@@ -2,12 +2,14 @@ package com.zhkj.smartpolice.notice
 
 import android.app.Service
 import android.content.Intent
+import android.os.Build
 import android.os.IBinder
 import com.sunny.zy.base.ErrorViewType
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
+import com.zhkj.smartpolice.utils.BadgeUtils
 import java.util.*
 
 class NoticeService : Service(), NoticeContract.IUnReadNoticeView {
@@ -51,6 +53,10 @@ class NoticeService : Service(), NoticeContract.IUnReadNoticeView {
         val intent = Intent()
         intent.action = "com.zhkj.notice.message"
         intent.putExtra("hasUnread", hasUnread)
+        val brand = Build.BRAND.toLowerCase(Locale.ROOT)
+        if (brand == "huawei" || brand == "honor") {
+            BadgeUtils.setHuaweiBadge(data.size, this)
+        }
         sendBroadcast(intent)
     }
 

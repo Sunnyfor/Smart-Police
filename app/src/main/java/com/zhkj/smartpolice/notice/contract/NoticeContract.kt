@@ -19,6 +19,13 @@ class NoticeContract {
         fun showNoticeDetail(data: NoticeBean)
     }
 
+    /**
+     * 首页公告列表
+     */
+    interface IAnnouncementView : IBaseView {
+        fun loadAnnouncementList(data: ArrayList<NoticeBean>)
+    }
+
     abstract class Presenter(iView: IBaseView) : BasePresenter<IBaseView>(iView) {
 
         abstract fun loadUnreadNoticeList(id: String)
@@ -27,6 +34,8 @@ class NoticeContract {
         abstract fun readNotice(id: String)
 
         abstract fun loadNoticeDetail(id: String)
+
+        abstract fun loadAnnouncementList()
     }
 
 }

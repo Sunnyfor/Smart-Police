@@ -54,4 +54,15 @@ class NoticePresenter(view: IBaseView) : NoticeContract.Presenter(view) {
             hideLoading()
         }
     }
+
+    override fun loadAnnouncementList() {
+        launch(Main) {
+            showLoading()
+            noticeModel.loadAnnouncementList()?.let {
+                if (view is NoticeContract.IAnnouncementView)
+                    (view as NoticeContract.IAnnouncementView).loadAnnouncementList(it)
+            }
+            hideLoading()
+        }
+    }
 }

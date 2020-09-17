@@ -1,7 +1,9 @@
 package com.zhkj.smartpolice.app.fragment
 
 import android.content.Intent
+import android.util.TypedValue
 import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseFragment
@@ -28,21 +30,31 @@ import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.mine.activity.ConsumeRecordActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
+import com.zhkj.smartpolice.notice.bean.NoticeBean
+import com.zhkj.smartpolice.notice.contract.NoticeContract
+import com.zhkj.smartpolice.notice.presenter.NoticePresenter
 import com.zhkj.smartpolice.physiotherapy.activity.PhysiotherapyActivity
 import com.zhkj.smartpolice.shuttle.ShuttleBusActivity
 import com.zhkj.smartpolice.stadium.StadiumActivity
+import com.zhkj.smartpolice.widget.TextSwitcherAnimation
 import kotlinx.android.synthetic.main.frag_logistics.*
 import kotlinx.coroutines.cancel
 
 
-class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
+class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, NoticeContract.IAnnouncementView {
+
+    private var textList = ArrayList<String>()
 
     private val merchantViewModel: MerchantViewModel by lazy {
         ViewModelProvider(getBaseActivity()).get(MerchantViewModel::class.java)
     }
 
-    private val presenter: MerchantPresenter by lazy {
+    private val merchantPresenter: MerchantPresenter by lazy {
         MerchantPresenter(this)
+    }
+
+    private val noticePresenter: NoticePresenter by lazy {
+        NoticePresenter(this)
     }
 
     override fun setLayout(): Int = R.layout.frag_logistics
@@ -50,6 +62,13 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
     override fun initView() {
 
         getBaseActivity().simpleTitle("后勤")
+
+        // 跑马灯效果
+        textSwitcher.setFactory {
+            val tv = TextView(requireContext())
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimensionPixelSize(R.dimen.sp_12).toFloat())
+            tv
+        }
 
         setOnClickListener(
             tv_restaurant, tv_haircut, tv_drugstore, tv_shuttle_bus,
@@ -144,17 +163,33 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView {
 
     override fun loadData() {
         if (merchantViewModel.list.isEmpty()) {
-            presenter.loadMerchantList("1", "") //默认加载全部商家
+            merchantPresenter.loadMerchantList("1", "") //默认加载全部商家
         }
+
+        noticePresenter.loadAnnouncementList()
     }
 
     override fun close() {
-        presenter.cancel()
+        merchantPresenter.cancel()
+        noticePresenter.cancel()
     }
 
     override fun showMerchantList(data: ArrayList<MerchantBean>) {
         merchantViewModel.list = data
         ZyFrameStore.setData("merchantList", data)
+    }
+
+    override fun loadAnnouncementList(data: ArrayList<NoticeBean>) {
+        if (data.size > 0) {
+            textList.clear()
+            data.forEachIndexed { index, noticeHornInfo ->
+                textList.add("${index + 1}. ${noticeHornInfo.noticeValue}")
+            }
+            TextSwitcherAnimation(textSwitcher, textList, false).create()
+            textSwitcher.setOnClickListener(this)
+        } else {
+            ll_announcement.visibility = View.GONE
+        }
     }
 
 }

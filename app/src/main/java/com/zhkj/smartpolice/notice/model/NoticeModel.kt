@@ -28,6 +28,19 @@ class NoticeModel {
     }
 
 
+    suspend fun loadAnnouncementList(): ArrayList<NoticeBean>? {
+        val params = HashMap<String, String>()
+        params["page"] = "1"
+        params["limit"] = "2"
+        params["noticeType"] = "1"
+        params["activeState"] = "1"
+
+        val httpResultBean = object : HttpResultBean<PageModel<NoticeBean>>() {}
+        ZyHttp.post(UrlConstant.NOTICE_LIST_URL, params, httpResultBean)
+        return httpResultBean.bean?.data?.list
+    }
+
+
     /**
      * 读取通知
      */

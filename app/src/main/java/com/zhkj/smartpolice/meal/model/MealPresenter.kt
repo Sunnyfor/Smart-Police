@@ -81,4 +81,18 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
             hideLoading()
         }
     }
+
+
+
+    fun loadMealRecordDetail(id: String) {
+        launch(Dispatchers.Main) {
+            showLoading()
+            mealModel.loadMealRecordDetail(id)?.let {
+                if (view is MealContract.IMealRecordDetailView) {
+                    (view as MealContract.IMealRecordDetailView).showMealRecordDetail(it)
+                }
+            }
+            hideLoading()
+        }
+    }
 }

@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.meal.adapter.MealOrderDetailAdapter
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
+import com.zhkj.smartpolice.meal.model.MealContract
+import com.zhkj.smartpolice.meal.model.MealPresenter
 import com.zhkj.wallet.activity.PayResultActivity
 import com.zhkj.wallet.utils.PayPasswordUtil
 import kotlinx.android.synthetic.main.act_order_detail.*
@@ -13,7 +16,7 @@ import kotlinx.android.synthetic.main.act_order_detail.*
 /**
  * 订单详情
  */
-class OrderDetailActivity : BaseActivity() {
+class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView {
 
     private val payUtil: PayPasswordUtil by lazy {
         PayPasswordUtil(btn_commit, this).apply {
@@ -23,6 +26,12 @@ class OrderDetailActivity : BaseActivity() {
             }
         }
     }
+
+    private val presenter: MealPresenter by lazy {
+        MealPresenter(this)
+    }
+
+    private val adapter = MealOrderDetailAdapter()
 
     private var ordersId = ""
     private var price = 0f
@@ -34,7 +43,7 @@ class OrderDetailActivity : BaseActivity() {
         defaultTitle("订单详情")
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-
+        recyclerView.adapter = adapter
 
         setOnClickListener(btn_commit)
     }
@@ -76,10 +85,18 @@ class OrderDetailActivity : BaseActivity() {
                 else -> ""
             }
             tv_state.text = payState
+
+            presenter.loadMealRecordDetail(ordersId)
         }
     }
 
     override fun close() {
 
+    }
+
+    override fun showMealRecordDetail(data: MealRecordBean) {
+        adapter.clearData()
+        adapter.addData(data.ordersLinkEntityList ?: arrayListOf())
+        adapter.notifyDataSetChanged()
     }
 }

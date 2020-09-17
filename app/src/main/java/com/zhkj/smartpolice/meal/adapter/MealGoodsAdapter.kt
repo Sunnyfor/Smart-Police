@@ -11,7 +11,7 @@ import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.meal.bean.MealBean
 import kotlinx.android.synthetic.main.item_meal_goods.view.*
 
-class MealGoodsAdapter(var onClickListener: View.OnClickListener, var isMeal: Boolean = false) : BaseRecycleAdapter<MealBean>(arrayListOf()) {
+class MealGoodsAdapter(var onClickListener: View.OnClickListener? = null, var isMeal: Boolean = false) : BaseRecycleAdapter<MealBean>(arrayListOf()) {
 
     override fun setLayout(parent: ViewGroup, viewType: Int): View {
         return LayoutInflater.from(context).inflate(R.layout.item_meal_goods, parent, false)

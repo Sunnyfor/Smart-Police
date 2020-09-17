@@ -35,6 +35,11 @@ object UrlConstant {
 
 
     /**
+     * 订餐记录详情
+     */
+    const val MEAL_RECORD_DETAIL_URL = "http://122.51.69.116:8082/logistics/shoporders/info/%s"
+
+    /**
      * 下单接口
      */
     const val PLACE_AN_ORDER = "logistics/shoporders/saveForUser"

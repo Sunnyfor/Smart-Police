@@ -114,6 +114,21 @@ class MealModel {
 
 
     /**
+     * 加载订餐记录详情
+     */
+    suspend fun loadMealRecordDetail(id: String): MealRecordBean? {
+        val httpResultBean = object : HttpResultBean<BaseModel<MealRecordBean>>() {}
+        ZyHttp.get(String.format(UrlConstant.MEAL_RECORD_DETAIL_URL, id), null, httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.data
+            }
+        }
+        return null
+    }
+
+
+    /**
      * 下单
      */
     suspend fun commitMealOrder(

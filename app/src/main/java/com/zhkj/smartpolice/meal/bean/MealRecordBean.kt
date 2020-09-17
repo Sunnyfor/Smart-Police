@@ -56,5 +56,6 @@ class MealRecordBean {
         var totalPrices: String? = null
         var sort: String? = null
         var createTime: String? = null
+        var goodsImgId:String? = null
     }
 }

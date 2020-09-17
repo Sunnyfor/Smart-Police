@@ -26,7 +26,7 @@ class MealOrderAdapter(private var onUpdateListener: OnUpdateListener, list: Arr
                 .into(holder.itemView.iv_icon)
 
             holder.itemView.tv_title.text = it.goodsName
-            holder.itemView.tv_price.text = it.price
+            holder.itemView.tv_price.text = ("¥ " + it.price)
         }
 
         holder.itemView.et_count.setText(getData(position).count.toString())

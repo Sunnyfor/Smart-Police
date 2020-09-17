@@ -23,6 +23,10 @@ interface MealContract {
         fun showMealRecord(data: ArrayList<MealRecordBean>)
     }
 
+    interface IMealRecordDetailView : IBaseView {
+        fun showMealRecordDetail(data: MealRecordBean)
+    }
+
     interface IMealPlaceAnOrderView : IBaseView {
         fun showPlaceAnOrderResult(data: BaseModel<MealRecordBean>)
     }

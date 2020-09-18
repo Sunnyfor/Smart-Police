@@ -3,6 +3,7 @@ package com.zhkj.smartpolice.haircut
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.base.BaseModel
 import com.sunny.zy.utils.ToastUtil
@@ -12,7 +13,10 @@ import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.merchant.model.MerchantPresenter
+import kotlinx.android.synthetic.main.act_agency_haircut_select.*
 import kotlinx.android.synthetic.main.act_haircut_order_detail.*
+import kotlinx.android.synthetic.main.act_haircut_order_detail.tv_hair_color
+import kotlinx.android.synthetic.main.act_haircut_order_detail.tv_haircut
 import java.util.*
 
 /**
@@ -45,6 +49,7 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
     private var manageId = 0
     private var beginTime = ""
     private var endTime = ""
+    var haircutType: Int = 1
 
     override fun setLayout(): Int = R.layout.act_haircut_order_detail
 
@@ -53,7 +58,7 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
         defaultTitle("预约详情")
         tv_date.text = ("${monthStr}月${dayStr}日 ${defaultWeeks[calendar.get(Calendar.DAY_OF_WEEK) - 1]}")
 
-        setOnClickListener(cl_date, btn_reserve)
+        setOnClickListener(cl_date, btn_reserve, tv_haircut, tv_hair_color)
 
         presenter.loadReserveTime(getEndData(calendar.get(Calendar.DAY_OF_MONTH)), shopId, null)
         tv_user_name.text = UserManager.getUserBean().nickName
@@ -72,9 +77,28 @@ class HaircutOrderDetailActivity : BaseActivity(), MerchantContract.IReserveTime
             btn_reserve.id -> {
                 val phone = tv_user_phone.text.toString()
                 if (isPhoneValid(phone)) {
-                    presenter.commitReserve(tv_user_name.text.toString(), phone, beginTime, endTime, manageId.toString(), "1", shopId)
+                    presenter.commitReserve(tv_user_name.text.toString(), phone, beginTime, endTime, manageId.toString(), "1", shopId,
+                        haircutType.toString())
                 }
             }
+
+            tv_haircut.id -> {
+                tv_haircut.setTextColor(ContextCompat.getColor(this, R.color.font_white))
+                tv_haircut.setBackgroundResource(R.drawable.sel_audit_button_border_checked)
+                tv_hair_color.setTextColor(ContextCompat.getColor(this, R.color.font_black))
+                tv_hair_color.setBackgroundResource(R.drawable.sel_audit_button_border)
+                haircutType = 1
+            }
+
+            tv_hair_color.id -> {
+                tv_hair_color.setTextColor(ContextCompat.getColor(this, R.color.font_white))
+                tv_hair_color.setBackgroundResource(R.drawable.sel_audit_button_border_checked)
+                tv_haircut.setTextColor(ContextCompat.getColor(this, R.color.font_black))
+                tv_haircut.setBackgroundResource(R.drawable.sel_audit_button_border)
+                haircutType = 2
+            }
+
+
         }
     }
 

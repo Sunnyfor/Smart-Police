@@ -66,6 +66,40 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         manageId: String,
         reserveType: String,
         shopId: String,
+        haircutType: String,
+        bean: ManageBean?
+    ) {
+
+        if (reserveUserName.isEmpty()) {
+            view?.showMessage("请填写姓名！")
+            return
+        }
+
+        if (mobile.isEmpty()) {
+            view?.showMessage("请填写手机号码！")
+            return
+        }
+
+        launch(Main) {
+            showLoading()
+            merchantModel.commitReserve(reserveUserName, mobile, beginTime, endTime, manageId, reserveType, shopId, haircutType, bean)?.let {
+                if (view is MerchantContract.IReserveView) {
+                    (view as MerchantContract.IReserveView).reserveResult(it)
+                }
+            }
+            hideLoading()
+        }
+
+    }
+
+    override fun commitReserve(
+        reserveUserName: String,
+        mobile: String,
+        beginTime: String,
+        endTime: String,
+        manageId: String,
+        reserveType: String,
+        shopId: String,
         bean: ManageBean?
     ) {
 
@@ -101,6 +135,7 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
         shopId: String,
         isAgent: String,
         thePrincipalId: String,
+        haircutType: String,
         bean: ManageBean?
     ) {
         if (reserveUserName.isEmpty()) {
@@ -125,6 +160,7 @@ class MerchantPresenter(iBaseView: IBaseView) : MerchantContract.Presenter(iBase
                 shopId,
                 isAgent,
                 thePrincipalId,
+                haircutType,
                 bean
             )?.let {
                 if (view is MerchantContract.IReserveView) {

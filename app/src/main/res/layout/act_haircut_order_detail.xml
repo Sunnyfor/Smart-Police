@@ -116,6 +116,43 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.cardview.widget.CardView
+        style="@style/haircut_agency_haircut_layout"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/cl_date"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            style="@style/style_font_agency_medium_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择项目" />
+
+        <TextView
+            android:id="@+id/tv_haircut"
+            style="@style/style_font_black"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginStart="@dimen/dp_120"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/sel_audit_button_border_checked"
+            android:textColor="@color/fun_FFFFFF"
+            android:gravity="center"
+            android:text="理发" />
+
+        <TextView
+            android:id="@+id/tv_hair_color"
+            style="@style/style_font_black"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_35"
+            android:background="@drawable/sel_audit_button_border"
+            android:gravity="center"
+            android:text="染发"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_200"/>
+
+    </androidx.cardview.widget.CardView>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_reserve"
         style="@style/style_common_btn"

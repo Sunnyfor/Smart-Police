@@ -42,6 +42,19 @@ interface MerchantContract {
         //加载预约资源
         abstract fun loadReserveResource(page: String, shopId: String? = null, shopType: String? = null, classifyId: String? = null)
 
+        //警员理发店预约请求
+        abstract fun commitReserve(
+            reserveUserName: String,
+            mobile: String,
+            beginTime: String,
+            endTime: String,
+            manageId: String,
+            reserveType: String,
+            shopId: String,
+            haircutType: String,
+            bean: ManageBean? = null
+        )
+
         //警员预约请求
         abstract fun commitReserve(
             reserveUserName: String,
@@ -65,6 +78,7 @@ interface MerchantContract {
             shopId: String,
             isAgent: String,
             thePrincipalId: String,
+            haircutType: String,
             bean: ManageBean? = null
         )
     }

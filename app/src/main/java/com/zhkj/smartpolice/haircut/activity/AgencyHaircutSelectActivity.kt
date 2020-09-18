@@ -1,6 +1,8 @@
 package com.zhkj.smartpolice.haircut.activity
 
+import android.annotation.SuppressLint
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +13,9 @@ import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.base.UserManager
-import com.zhkj.smartpolice.haircut.HaircutOrderTimeActivity
 import com.zhkj.smartpolice.haircut.adapter.HaircutTimeAdapter
 import com.zhkj.smartpolice.haircut.adapter.HaircutWeekAdapter
 import com.zhkj.smartpolice.haircut.adapter.LeaderReserveTimeAdapter
-import com.zhkj.smartpolice.haircut.adapter.LeaderReserveWeekAdapter
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import com.zhkj.smartpolice.haircut.bean.WeekDayBean
 import com.zhkj.smartpolice.merchant.model.MerchantContract
@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.act_agency_haircut_select.recycler_date
 import kotlinx.android.synthetic.main.act_agency_haircut_select.recycler_time
 import kotlinx.android.synthetic.main.act_leader_reserve.btn_sure
 import kotlinx.android.synthetic.main.act_leader_reserve.tv_name
-import kotlinx.android.synthetic.main.act_receive_time.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -44,11 +43,12 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
     var resourceId: String? = null
     private var calendar = Calendar.getInstance(Locale.CHINA)
     private val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
-    private var dataInfo: ArrayList<MerchantTime> = ArrayList();
+    private var dataInfo: ArrayList<MerchantTime> = ArrayList()
     var isNumber: Int = 2
     private val defaultWeeks = arrayListOf("周日", "周一", "周二", "周三", "周四", "周五", "周六")
+    var haircutType: Int = 1
 
-    var timeAdapter: BaseRecycleAdapter<MerchantTime> = HaircutTimeAdapter().apply {
+    private var timeAdapter: BaseRecycleAdapter<MerchantTime> = HaircutTimeAdapter().apply {
         setOnItemClickListener { _, position ->
             if (getData(position).setNumber - getData(position).reserveNumber > 0) {
                 index = position
@@ -57,7 +57,7 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
         }
     }
 
-    var weekAdapter: BaseRecycleAdapter<WeekDayBean> = HaircutWeekAdapter(currentDay, arrayListOf()).apply {
+    private var weekAdapter: BaseRecycleAdapter<WeekDayBean> = HaircutWeekAdapter(currentDay, arrayListOf()).apply {
         setOnItemClickListener { _: View, position: Int ->
             this.currentDay = getData(position).day
             timeAdapter.clearData()
@@ -72,11 +72,12 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
 
     override fun initView() {
         dateSelect(isNumber)
-        setOnClickListener(cv_oneself, cv_lead, btn_sure, rb_oneself, rb_lead)
+        setOnClickListener(cv_oneself, cv_lead, btn_sure, rb_oneself, rb_lead, tv_haircut, tv_hair_color)
         tv_name.text = UserManager.getUserBean().deptName
         tv_mobile.text = UserManager.getUserBean().mobile
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onClickEvent(view: View) {
         when (view.id) {
             cv_oneself.id, rb_oneself.id -> {
@@ -97,26 +98,41 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
             btn_sure.id -> {
                 (recycler_date.adapter as HaircutWeekAdapter).let {
                     if (timeAdapter is HaircutTimeAdapter) {
-                        if (dataInfo != null && dataInfo.size > 0) {
+                        if (dataInfo.size > 0) {
                             intent.putExtra("manageTime", timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).manageTime)
                         } else {
                             ToastUtil.show("无当前时间段")
                         }
-                        if (dataInfo != null && dataInfo.size < 0) {
+                        if (dataInfo.size < 0) {
                             ToastUtil.show("无当前时间段")
                         }
-                        if (dataInfo != null && dataInfo.size > 0) {
+                        if (dataInfo.size > 0) {
                             timeAdapter.getData((timeAdapter as HaircutTimeAdapter).index).let { bean ->
                                 presenter.commitReserve(
                                     tv_name.text.toString(), tv_mobile.text.toString(), bean.beginTime ?: "",
                                     bean.endTime ?: "", "0", "1", shopId, "1",
-                                    UserManager.getUserBean().leaderId ?: ""
+                                    UserManager.getUserBean().leaderId ?: "",haircutType.toString()
                                 )
                             }
                         }
                     }
                 }
+            }
 
+            tv_haircut.id -> {
+                tv_haircut.setTextColor(ContextCompat.getColor(this,R.color.font_white))
+                tv_haircut.setBackgroundResource(R.drawable.sel_audit_button_border_checked)
+                tv_hair_color.setTextColor(ContextCompat.getColor(this,R.color.font_black))
+                tv_hair_color.setBackgroundResource(R.drawable.sel_audit_button_border)
+                haircutType = 1
+            }
+
+            tv_hair_color.id -> {
+                tv_hair_color.setTextColor(ContextCompat.getColor(this,R.color.font_white))
+                tv_hair_color.setBackgroundResource(R.drawable.sel_audit_button_border_checked)
+                tv_haircut.setTextColor(ContextCompat.getColor(this,R.color.font_black))
+                tv_haircut.setBackgroundResource(R.drawable.sel_audit_button_border)
+                haircutType = 2
             }
         }
 
@@ -130,8 +146,7 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
 
     }
 
-    fun dateSelect(isNumber: Int) {
-
+    private fun dateSelect(isNumber: Int) {
         calendar = Calendar.getInstance(Locale.CHINA)
         val weekDayList = arrayListOf<WeekDayBean>()
 
@@ -156,7 +171,7 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
     }
 
 
-    fun getEndData(day: Int): String {
+    private fun getEndData(day: Int): String {
         val month = calendar.get(Calendar.MONTH) + 1
 
         return "${calendar.get(Calendar.YEAR)}-${if (month < 10) "0$month" else month}-${if (day < 10) "0$day" else day}"
@@ -182,6 +197,8 @@ class AgencyHaircutSelectActivity : BaseActivity(), MerchantContract.IReserveTim
 
     override fun reserveResult(data: BaseModel<Any>) {
         LogUtil.i("返回的参数是========$data")
+        ToastUtil.show("预约成功")
+        finish()
     }
 
 

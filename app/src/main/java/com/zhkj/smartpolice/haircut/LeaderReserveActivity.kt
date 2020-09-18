@@ -1,6 +1,7 @@
 package com.zhkj.smartpolice.haircut
 
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sunny.zy.base.BaseModel
@@ -18,8 +19,12 @@ import com.zhkj.smartpolice.merchant.model.MerchantContract
 import com.zhkj.smartpolice.mine.bean.ReserveRecordBean
 import com.zhkj.smartpolice.mine.model.ReserveContract
 import com.zhkj.smartpolice.mine.model.ReservePresenter
+import kotlinx.android.synthetic.main.act_haircut_order_detail.*
 import kotlinx.android.synthetic.main.act_leader_reserve.*
 import kotlinx.android.synthetic.main.act_leader_reserve.btn_sure
+import kotlinx.android.synthetic.main.act_leader_reserve.tv_hair_color
+import kotlinx.android.synthetic.main.act_leader_reserve.tv_haircut
+import kotlinx.android.synthetic.main.act_leader_reserve.tv_name
 import kotlinx.android.synthetic.main.act_receive_time.recycler_time
 
 class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IReserveView, ReserveContract.IReverseRecordView {
@@ -29,6 +34,7 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
     }
 
     private var endDate = ""
+    var haircutType: Int = 1
 
     private val recordPresenter: ReservePresenter by lazy {
         ReservePresenter(this)
@@ -79,6 +85,7 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
 
         recycler_record.layoutManager = LinearLayoutManager(this)
         recycler_record.adapter = leaderReserveRecordAdapter
+        setOnClickListener(btn_sure, tv_haircut, tv_hair_color)
 
     }
 
@@ -95,9 +102,26 @@ class LeaderReserveActivity : HaircutOrderTimeActivity(), MerchantContract.IRese
                         it.getData(it.index).manageId.toString(),
                         "1",
                         shopId,
+                        haircutType.toString(),
                         bean
                     )
                 }
+            }
+
+            tv_haircut.id -> {
+                tv_haircut.setTextColor(ContextCompat.getColor(this, R.color.font_white))
+                tv_haircut.setBackgroundResource(R.drawable.sel_audit_button_border_checked)
+                tv_hair_color.setTextColor(ContextCompat.getColor(this, R.color.font_black))
+                tv_hair_color.setBackgroundResource(R.drawable.sel_audit_button_border)
+                haircutType = 1
+            }
+
+            tv_hair_color.id -> {
+                tv_hair_color.setTextColor(ContextCompat.getColor(this, R.color.font_white))
+                tv_hair_color.setBackgroundResource(R.drawable.sel_audit_button_border_checked)
+                tv_haircut.setTextColor(ContextCompat.getColor(this, R.color.font_black))
+                tv_haircut.setBackgroundResource(R.drawable.sel_audit_button_border)
+                haircutType = 2
             }
         }
     }

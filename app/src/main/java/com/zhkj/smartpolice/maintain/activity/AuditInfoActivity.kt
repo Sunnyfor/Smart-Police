@@ -128,6 +128,7 @@ class AuditInfoActivity : BaseActivity(), IMaintainView {
                     this@AuditInfoActivity,
                     applyContent, applyId, applyDate
                 )
+                finish()
             }
         }
     }

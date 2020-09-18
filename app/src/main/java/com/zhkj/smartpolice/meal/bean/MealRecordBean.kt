@@ -9,6 +9,7 @@ class MealRecordBean {
     var ordersLinkEntityList: ArrayList<OrdersLinkEntityList>? = null
 
     var shopId: String? = null          //店铺id
+    var imageId: String? = null         //店铺logo id
     var shopName: String? = null        //店铺名称
     var deviceId: String? = null        //商家收款设备id
     var remark: String? = null          //新店开张，优惠多多

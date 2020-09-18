@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
+import com.sunny.zy.utils.GlideApp
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
 import kotlinx.android.synthetic.main.item_meal_record.view.*
 
@@ -25,6 +27,13 @@ class MealRecordAdapter : BaseRecycleAdapter<MealRecordBean>(arrayListOf()) {
         holder.itemView.tv_order_number.text = ("订单号：${getData(position).ordersNumber}")
         holder.itemView.tv_order_time.text = ("下单时间：${getData(position).createTime}")
         holder.itemView.tv_pay_type.text = ("付款方式：${getPayWay(getData(position).payMethod)}")
+
+        getData(position).imageId?.let {
+            GlideApp.with(context)
+                .load(UrlConstant.LOAD_IMAGE_PATH_URL + it)
+                .placeholder(R.drawable.svg_default_image)
+                .into(holder.itemView.iv_image)
+        }
     }
 
     private fun getPayState(type: String?): String {

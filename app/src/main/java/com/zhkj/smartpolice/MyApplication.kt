@@ -30,5 +30,12 @@ class MyApplication : Application() {
                 LogUtil.i("友盟注册失败:s:$s - s1:$s1")
             }
         })
+/*
+        val notificationClickHandler: UmengNotificationClickHandler = object : UmengNotificationClickHandler() {
+            override fun dealWithCustomAction(context: Context?, msg: UMessage) {
+                LogUtil.i("友盟:${msg.custom}")
+            }
+        }
+        PushAgent.getInstance(this).notificationClickHandler = notificationClickHandler*/
     }
 }

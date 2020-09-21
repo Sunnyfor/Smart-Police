@@ -6,12 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 
-/**
- * Desc
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020/9/17 21:51
- */
 object BadgeUtils {
 
     fun setHuaweiBadge(count: Int, context: Context): Boolean {

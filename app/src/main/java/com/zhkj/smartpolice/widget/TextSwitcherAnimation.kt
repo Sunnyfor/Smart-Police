@@ -8,12 +8,6 @@ import android.view.animation.TranslateAnimation
 import android.widget.TextSwitcher
 import com.sunny.zy.utils.LogUtil
 
-/**
- * Desc TextSwitcher 上下动画 / 左右动画
- * Author JoannChen
- * Mail yongzuo.chen@foxmail.com
- * Date 2020/2/19 16:51
- */
 class TextSwitcherAnimation(private val textSwitcher: TextSwitcher?, private var textList: List<String>, val isLeftToRight: Boolean = true) {
 
     private val duration = 1000

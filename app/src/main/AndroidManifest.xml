@@ -42,7 +42,7 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <!--华为角标-->
-    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
 
     <application
         android:name=".MyApplication"
@@ -71,6 +71,7 @@
         <!--登录模块-->
         <activity android:name=".login.activity.LoginActivity" />
         <activity android:name=".login.activity.ForgetPasswordActivity" />
+        <activity android:name=".login.activity.VerifyPhoneActivity" />
 
         <!--商家模块-->
         <activity android:name=".merchant.MerchantListActivity" />
@@ -82,8 +83,8 @@
         <activity android:name=".mine.activity.SettingActivity" />
         <activity android:name=".mine.activity.ModifyPasswordActivity" />
         <activity android:name=".mine.activity.ConsumeRecordActivity" />
-        <activity android:name=".notice.NoticeActivity"/>
-        <activity android:name=".notice.NoticeDetailActivity"/>
+        <activity android:name=".notice.NoticeActivity" />
+        <activity android:name=".notice.NoticeDetailActivity" />
 
         <!--餐厅模块-->
         <activity android:name=".meal.activity.MealDetailActivity" />

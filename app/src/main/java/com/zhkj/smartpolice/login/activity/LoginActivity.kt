@@ -159,6 +159,11 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
         }
     }
 
+    override fun doVerifyPhone(msg: String) {
+        ToastUtil.show("该账户已绑定其他手机,需要进行手机号验证")
+        VerifyPhoneActivity.intent(this, et_username.text.toString(), et_password.text.toString())
+    }
+
     override fun loadUserInfo(data: UserBean) {
         hideLoading()
         data.userId?.let {

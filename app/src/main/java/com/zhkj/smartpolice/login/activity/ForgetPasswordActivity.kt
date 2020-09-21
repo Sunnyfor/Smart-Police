@@ -10,6 +10,7 @@ import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.login.model.LoginContract
 import com.zhkj.smartpolice.login.model.LoginPresenter
 import kotlinx.android.synthetic.main.act_forget_password.*
+import kotlinx.coroutines.cancel
 
 /**
  * 忘记密码
@@ -48,7 +49,7 @@ class ForgetPasswordActivity : BaseActivity(), LoginContract.IForgetPwdView {
     }
 
     override fun close() {
-
+        presenter.cancel()
     }
 
     override fun forgetPassword(data: String) {

@@ -88,6 +88,7 @@ class MealModel {
 
     /**
      *  订餐记录
+     *  消费记录
      */
     suspend fun loadMealRecord(page: Int, isConsumeRecord: Boolean?): ArrayList<MealRecordBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<MealRecordBean>>() {}
@@ -98,6 +99,7 @@ class MealModel {
 
         if (isConsumeRecord == true) {
             params["payState"] = "1"
+            params["isMyShop"] = "1"
         } else {
             params["shopType"] = "1"
             params["createUserId"] = UserManager.getUserBean().userId ?: ""

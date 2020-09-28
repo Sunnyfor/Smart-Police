@@ -120,7 +120,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
             when (msgObj.optInt("status")) {
                 1 -> {
                     finish()
-                    PayResultActivity.intent("1")
+                    PayResultActivity.intent("1", msgObj.optString("message"))
                 }
                 2 -> {
                     msgObj.optJSONObject("data")?.let {

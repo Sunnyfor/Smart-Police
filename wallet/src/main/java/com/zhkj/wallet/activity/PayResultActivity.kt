@@ -49,7 +49,7 @@ class PayResultActivity : BaseActivity() {
             }
             "1" -> {
                 iv_icon.setImageResource(R.drawable.svg_pay_success)
-                tv_desc.text = ("支付成功")
+                tv_desc.text = errMsg ?: "支付成功"
                 btn_finish.text = "完成"
                 btn_finish.setOnClickListener {
                     finish()

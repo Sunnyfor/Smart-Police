@@ -30,6 +30,7 @@ import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.mine.activity.ConsumeRecordActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
+import com.zhkj.smartpolice.notice.NoticeActivity
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
@@ -73,7 +74,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
         setOnClickListener(
             tv_restaurant, tv_haircut, tv_drugstore, tv_shuttle_bus,
             tv_laundry, tv_stadium, tv_maintain, tv_physical_therapy,
-            ll_meal, ll_repair, ll_reserve, ll_consume,
+            ll_meal, ll_repair, ll_reserve, ll_consume, ll_notice,
             tv_office_supplies, tv_vehicle_apply
         )
     }
@@ -155,6 +156,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
             ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
             ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
             ll_consume.id -> startActivity(Intent(requireContext(), ConsumeRecordActivity::class.java))
+            ll_notice.id -> startActivity(Intent(requireContext(), NoticeActivity::class.java))
 
             tv_office_supplies.id -> ToastUtil.show()
             tv_vehicle_apply.id -> ToastUtil.show()

@@ -208,6 +208,24 @@
                         android:text="消费记录"
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_notice"
+                    style="@style/style_mine_layout_weight"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        style="@style/style_common_icon"
+                        android:background="@drawable/sel_mine_yellow"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/svg_mine_message" />
+
+                    <TextView
+                        style="@style/style_font_black_small"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="消息通知"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

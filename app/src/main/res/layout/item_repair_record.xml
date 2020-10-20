@@ -15,14 +15,6 @@
         tools:text="俊俏理发" />
 
     <TextView
-        android:id="@+id/tv_money"
-        style="@style/style_font_orange"
-        android:layout_alignBaseline="@id/tv_apply_title"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_toEndOf="@id/tv_apply_title"
-        tools:text="$10.00" />
-
-    <TextView
         android:id="@+id/tv_state"
         style="@style/style_font_orange_small"
         android:layout_alignBaseline="@id/tv_apply_title"
@@ -33,7 +25,7 @@
     <TextView
         android:id="@+id/tv_apply_name"
         style="@style/style_font_gray_small"
-        android:layout_below="@id/tv_money"
+        android:layout_below="@id/tv_apply_title"
         android:layout_marginTop="@dimen/dp_10"
         tools:text="申请人：admin（13148877284）" />
 

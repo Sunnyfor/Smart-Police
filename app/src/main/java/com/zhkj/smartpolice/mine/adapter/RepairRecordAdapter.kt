@@ -18,7 +18,6 @@ class RepairRecordAdapter : BaseRecycleAdapter<RepairRecordBean>(arrayListOf()) 
 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
         holder.itemView.tv_apply_title.text = getData(position).applyContent
-        holder.itemView.tv_money.text = ("￥ ${isStrEmpty(getData(position).money, "0")}")
         holder.itemView.tv_apply_name.text = ("申请人：${getData(position).petitioner}（${getData(position).petitionerPhone}）")
         holder.itemView.tv_apply_time.text = ("申请时间：${isStrEmpty(getData(position).createTime, "暂无")}")
         holder.itemView.tv_order_number.text = ("订单号：${getData(position).attachmentGroupId ?: ""}")

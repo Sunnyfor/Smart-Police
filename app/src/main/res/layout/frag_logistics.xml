@@ -107,7 +107,7 @@
             <LinearLayout
                 android:id="@+id/ll_announcement"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
+                android:layout_height="@dimen/dp_60"
                 android:background="@color/color_white"
                 android:gravity="center_vertical">
 

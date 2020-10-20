@@ -187,7 +187,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
             data.forEachIndexed { index, noticeHornInfo ->
                 textList.add("${index + 1}. ${noticeHornInfo.noticeValue}")
             }
-            TextSwitcherAnimation(textSwitcher, textList, false).create()
+            TextSwitcherAnimation(textSwitcher, textList, true).create()
             textSwitcher.setOnClickListener(this)
         } else {
             ll_announcement.visibility = View.GONE

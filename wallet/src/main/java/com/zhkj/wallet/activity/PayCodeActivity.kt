@@ -58,7 +58,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         ARouter.getInstance().inject(this)
 
         if (isFromMainActivity) {
-            defaultTitle("警用一码通")
+            defaultTitle("警营一码通")
             tv_desc.visibility = View.VISIBLE
         } else {
             defaultTitle("支付码")

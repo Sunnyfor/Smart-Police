@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="@dimen/dp_10">
 
@@ -209,23 +210,40 @@
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/ll_notice"
                     style="@style/style_mine_layout_weight"
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
+                        android:id="@+id/icon"
                         style="@style/style_common_icon"
                         android:background="@drawable/sel_mine_yellow"
                         android:contentDescription="@string/app_name"
-                        android:src="@drawable/svg_mine_message" />
+                        android:src="@drawable/svg_mine_message"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         style="@style/style_font_black_small"
+                        android:layout_below="@id/icon"
                         android:layout_marginTop="@dimen/dp_5"
                         android:text="消息通知"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/icon"
                         tools:ignore="HardcodedText" />
-                </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_point"
+                        android:layout_width="@dimen/dp_8"
+                        android:layout_height="@dimen/dp_8"
+                        android:background="@drawable/sel_red_circle"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toEndOf="@id/icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
             <LinearLayout

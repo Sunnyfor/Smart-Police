@@ -17,6 +17,7 @@ import com.umeng.message.PushAgent
 import com.umeng.message.tag.TagManager
 import com.zhkj.smartpolice.BuildConfig
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.fragment.LogisticsFragment
 import com.zhkj.smartpolice.app.fragment.MineFragment
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.activity.LoginActivity
@@ -47,6 +48,9 @@ class MainActivity : BaseActivity(), VersionContract.View {
         NoticeReceiver {
             tv_point.visibility = if (it) View.VISIBLE else View.GONE
             nav_host_fragment.childFragmentManager.fragments[0].let { fragment ->
+                if (fragment is LogisticsFragment) {
+                    fragment.updatePoint(it)
+                }
                 if (fragment is MineFragment) {
                     fragment.updatePoint(it)
                 }

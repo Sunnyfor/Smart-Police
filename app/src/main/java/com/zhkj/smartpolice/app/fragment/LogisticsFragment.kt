@@ -64,6 +64,10 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
 
         getBaseActivity().simpleTitle("后勤")
 
+        arguments?.let {
+            updatePoint(it.getBoolean("hasUnread"))
+        }
+
         // 跑马灯效果
         textSwitcher.setFactory {
             val tv = TextView(requireContext())
@@ -194,4 +198,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
         }
     }
 
+    fun updatePoint(hasUnread: Boolean) {
+        tv_point.visibility = if (hasUnread) View.VISIBLE else View.GONE
+    }
 }

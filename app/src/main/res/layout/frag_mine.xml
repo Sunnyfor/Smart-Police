@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_white">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -146,7 +145,10 @@
             android:id="@+id/ll_function"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/color_white"
+            android:paddingTop="@dimen/dp_5"
+            android:paddingBottom="@dimen/dp_5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_login">
@@ -228,81 +230,87 @@
             android:id="@+id/tv_point"
             android:layout_width="@dimen/dp_8"
             android:layout_height="@dimen/dp_8"
-            android:layout_marginEnd="@dimen/dp_18"
+            android:layout_marginTop="@dimen/dp_2"
+            android:layout_marginEnd="@dimen/dp_20"
             android:background="@drawable/sel_red_circle"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/ll_function"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/ll_function" />
 
-        <!--钱包模块-->
-
-        <ImageView
-            android:id="@+id/iv_icon"
-            android:layout_width="@dimen/dp_20"
-            android:layout_height="@dimen/dp_20"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_30"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/icon_mine_wallet"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="@drawable/sel_border_gray"
+            android:padding="@dimen/dp_15"
             app:layout_constraintStart_toStartOf="@id/v_login"
-            app:layout_constraintTop_toBottomOf="@id/ll_function" />
+            app:layout_constraintTop_toBottomOf="@id/ll_function">
 
-        <TextView
-            android:id="@+id/tv_wallet"
-            style="@style/style_font_black"
-            android:layout_marginStart="@dimen/dp_10"
-            android:text="我的钱包"
-            app:layout_constraintStart_toEndOf="@id/iv_icon"
-            app:layout_constraintTop_toTopOf="@id/iv_icon"
-            tools:ignore="HardcodedText" />
+            <!--钱包模块-->
 
-        <TextView
-            android:id="@+id/tv_money"
-            style="@style/style_font_orange_small"
-            android:text="查看余额"
-            app:layout_constraintBottom_toBottomOf="@id/btn_recharge"
-            app:layout_constraintStart_toStartOf="@id/tv_wallet"
-            app:layout_constraintTop_toBottomOf="@id/iv_icon"
-            tools:ignore="HardcodedText" />
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_mine_wallet"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_recharge"
-            style="@style/style_font_white_small"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_22"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:background="@drawable/sel_mine_recharge"
-            android:text="充值"
-            app:layout_constraintEnd_toEndOf="@id/v_login"
-            app:layout_constraintTop_toBottomOf="@id/iv_icon"
-            tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/tv_wallet"
+                style="@style/style_font_black"
+                android:layout_marginStart="@dimen/dp_10"
+                android:text="我的钱包"
+                app:layout_constraintStart_toEndOf="@id/iv_icon"
+                app:layout_constraintTop_toTopOf="@id/iv_icon"
+                tools:ignore="HardcodedText" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_withdrawal"
-            style="@style/style_font_white_small"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_22"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:background="@drawable/sel_mine_withdraw"
-            android:text="提现"
-            android:textColor="@color/colo_orange_ff9600"
-            app:layout_constraintEnd_toStartOf="@id/btn_recharge"
-            app:layout_constraintTop_toTopOf="@id/btn_recharge"
-            tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/tv_money"
+                style="@style/style_font_orange_small"
+                android:text="查看余额"
+                app:layout_constraintBottom_toBottomOf="@id/btn_recharge"
+                app:layout_constraintStart_toStartOf="@id/tv_wallet"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_recharge"
+                style="@style/style_font_white_small"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_22"
+                android:background="@drawable/sel_mine_recharge"
+                android:text="充值"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_withdrawal"
+                style="@style/style_font_white_small"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_22"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/sel_mine_withdraw"
+                android:text="提现"
+                android:textColor="@color/colo_orange_ff9600"
+                app:layout_constraintEnd_toStartOf="@id/btn_recharge"
+                app:layout_constraintTop_toTopOf="@id/btn_recharge"
+                tools:ignore="HardcodedText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--功能区-->
 
         <com.zhkj.smartpolice.widget.ItemLayout
             android:id="@+id/item_help"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_56"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_10"
+            style="@style/style_layout_mine_function"
             app:endIcon="@drawable/svg_btn_more"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/ll_function"
-            app:layout_constraintTop_toBottomOf="@id/tv_money"
+            app:layout_constraintTop_toBottomOf="@id/cl_wallet"
             app:lineVisible="true"
             app:startAfterText="帮助"
             app:startAfterTextColor="@color/color_black"
@@ -310,8 +318,7 @@
 
         <com.zhkj.smartpolice.widget.ItemLayout
             android:id="@+id/item_about"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_56"
+            style="@style/style_layout_mine_function"
             app:endIcon="@drawable/svg_btn_more"
             app:layout_constraintEnd_toEndOf="@id/item_help"
             app:layout_constraintStart_toStartOf="@id/item_help"
@@ -323,8 +330,7 @@
 
         <com.zhkj.smartpolice.widget.ItemLayout
             android:id="@+id/item_setting"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_56"
+            style="@style/style_layout_mine_function"
             app:endIcon="@drawable/svg_btn_more"
             app:layout_constraintEnd_toEndOf="@id/item_help"
             app:layout_constraintStart_toStartOf="@id/item_help"

@@ -119,7 +119,7 @@ class MainActivity : BaseActivity(), VersionContract.View {
 
 
     private fun enable() {
-        PushAgent.getInstance(this).addAlias(UserManager.getUserBean().userId, "ytzhjb") { isSuccess, message ->
+        PushAgent.getInstance(this).addAlias(UserManager.getUserBean().userId, Constant.aliasType) { isSuccess, message ->
             LogUtil.i("友盟推送绑定别名: isSuccess = $isSuccess ||| message = $message")
         }
         PushAgent.getInstance(this).tagManager.addTags(TagManager.TCallBack { isSuccess, message ->

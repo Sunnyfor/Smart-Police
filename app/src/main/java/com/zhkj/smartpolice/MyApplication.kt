@@ -1,12 +1,17 @@
 package com.zhkj.smartpolice
 
 import android.app.Application
+import android.content.Context
+import android.text.TextUtils
 import com.alibaba.android.arouter.launcher.ARouter
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.utils.LogUtil
 import com.umeng.commonsdk.UMConfigure
 import com.umeng.message.IUmengRegisterCallback
 import com.umeng.message.PushAgent
+import com.umeng.message.UmengNotificationClickHandler
+import com.umeng.message.entity.UMessage
+import com.zhkj.smartpolice.notice.NoticeDetailActivity
 
 class MyApplication : Application() {
     override fun onCreate() {
@@ -30,12 +35,20 @@ class MyApplication : Application() {
                 LogUtil.i("友盟注册失败:s:$s - s1:$s1")
             }
         })
-/*
+
         val notificationClickHandler: UmengNotificationClickHandler = object : UmengNotificationClickHandler() {
-            override fun dealWithCustomAction(context: Context?, msg: UMessage) {
+            override fun openActivity(context: Context, msg: UMessage) {
+                msg.activity?.let {
+                    if (it.trim().isNotEmpty()){
+                        if (it.contains("NoticeDetailActivity")){
+                            NoticeDetailActivity.intent(context,msg.extra["noticeId"])
+                        }
+                    }
+                }
                 LogUtil.i("友盟:${msg.custom}")
             }
         }
-        PushAgent.getInstance(this).notificationClickHandler = notificationClickHandler*/
+        PushAgent.getInstance(this).notificationClickHandler = notificationClickHandler
+
     }
 }

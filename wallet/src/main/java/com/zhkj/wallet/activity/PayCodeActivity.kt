@@ -64,6 +64,9 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
             defaultTitle("支付码")
         }
 
+        circleCountDownView.setStartCountValue(30)
+        circleCountDownView.setAnimationInterpolator { inputFraction -> inputFraction * inputFraction }
+
     }
 
     override fun loadData() {
@@ -82,7 +85,9 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     override fun showPayCodeData(file: File) {
-        walletPresenter.startTimer() //启动倒计时
+        //启动倒计时
+        circleCountDownView.restart()
+        walletPresenter.startTimer()
         //加载显示付款码
         GlideApp.with(this)
             .load(file)
@@ -93,7 +98,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     override fun showCountdownData(number: String) {
-        tv_hint.text = ("$number 秒后刷新")
+//        tv_hint.text = ("$number 秒后刷新")
     }
 
     override fun showSocketResult(isSuccess: Boolean) {

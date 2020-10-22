@@ -6,61 +6,60 @@
     android:layout_height="match_parent"
     tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/tv_hint"
-        style="@style/style_font_gray"
-        android:layout_marginTop="@dimen/dp_40"
+
+    <com.zhkj.wallet.widget.CircleCountDownView
+        android:id="@+id/circleCountDownView"
+        android:layout_width="@dimen/dp_90"
+        android:layout_height="@dimen/dp_90"
+        android:layout_marginTop="@dimen/dp_30"
+        app:circleBorderColor="#d9d9d9"
+        app:circleBorderWidth="@dimen/dp_3"
+        app:circleImgSrc="@drawable/ic_radar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="30s" />
-
-<!--
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/view_count"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_centerInParent="true"
-        app:circleBorderColor="@color/color_light_grey"
-        app:circleBorderWidth="3dp"
-        app:circleImgSrc="@mipmap/ic_radar"
-        app:padding="5dp"
-        app:processBlurMaskRadius="3dp"
-        app:processColorEnd="#35adc6"
-        app:processColorStart="#00ffff"
+        app:padding="@dimen/dp_5"
+        app:processBlurMaskRadius="@dimen/dp_3"
+        app:processColorEnd="@color/btn_pressed_color"
+        app:processColorStart="@color/color_theme"
         app:showProgress="true"
-        app:valueTextColor="@color/color_common_white"
-        app:valueTextSize="16sp" />
--->
+        app:valueTextColor="@color/white"
+        app:valueTextSize="@dimen/sp_16" />
 
+    <TextView
+        android:id="@+id/tv_hint"
+        style="@style/style_font_gray"
+        android:layout_marginStart="@dimen/dp_5"
+        android:text="秒后刷新"
+        app:layout_constraintBottom_toBottomOf="@id/circleCountDownView"
+        app:layout_constraintStart_toEndOf="@id/circleCountDownView"
+        app:layout_constraintTop_toTopOf="@id/circleCountDownView" />
 
     <ImageView
         android:id="@+id/iv_qr_code"
         android:layout_width="@dimen/dp_260"
         android:layout_height="@dimen/dp_260"
-        android:layout_marginTop="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_40"
         android:contentDescription="@string/placeholder"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_hint"
+        app:layout_constraintTop_toBottomOf="@id/circleCountDownView"
         tools:src="@drawable/svg_pay_qr_code" />
-
-    <TextView
-        android:id="@+id/tv_prompt"
-        style="@style/style_font_black_big"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10"
-        android:text="提示："
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_qr_code" />
 
     <TextView
         android:id="@+id/tv_desc"
         style="@style/style_font_black"
-        android:layout_marginTop="@dimen/dp_5"
-        android:text="用于就餐支付时，每个就餐时间只可支付一次"
-        app:layout_constraintStart_toStartOf="@id/tv_prompt"
-        app:layout_constraintTop_toBottomOf="@id/tv_prompt" />
+        android:layout_margin="@dimen/dp_20"
+        android:text="使用说明:\n
+1.用于就餐支付时，每个就餐时间段只可扫码支付一次\n
+2.乘坐班车时，扫码支付没有次数限制\n
+3.理发店因流程原因，需进出各扫码一次\n
+4.理疗店需扫码进行预约身份校验\n
+5.洗衣店送衣和领衣时，凭二维码进行登记身份校验\n
+6.室外运动场和澡堂进入时，扫码进行人员登记"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_qr_code" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

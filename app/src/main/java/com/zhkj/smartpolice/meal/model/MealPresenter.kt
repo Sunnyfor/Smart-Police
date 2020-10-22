@@ -2,7 +2,7 @@ package com.zhkj.smartpolice.meal.model
 
 import com.sunny.zy.base.IBaseView
 import com.zhkj.smartpolice.meal.bean.MealBean
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
 class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
@@ -12,7 +12,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
     }
 
     override fun loadRestaurantList(page: Int) {
-        launch(Dispatchers.Main) {
+        launch(Main) {
             showLoading()
             mealModel.loadRestaurantList(page)?.let {
                 if (view is MealContract.IRestaurantView) {
@@ -24,7 +24,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
     }
 
     override fun loadMealMenu() {
-        launch(Dispatchers.Main) {
+        launch(Main) {
             showLoading()
             mealModel.loadMealMenu()?.let {
                 if (view is MealContract.IMealMenuView) {
@@ -36,7 +36,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
     }
 
     override fun loadMealList(page: Int, isDine: Boolean, labelId: String) {
-        launch(Dispatchers.Main) {
+        launch(Main) {
             showLoading()
             mealModel.loadMealList(page, isDine, labelId)?.let {
                 if (view is MealContract.IMealMenuView) {
@@ -48,7 +48,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
     }
 
     override fun loadMealRecord(page: Int, isConsumeRecord: Boolean?) {
-        launch(Dispatchers.Main) {
+        launch(Main) {
             showLoading()
             mealModel.loadMealRecord(page, isConsumeRecord)?.let {
                 if (view is MealContract.IMealRecordView) {
@@ -71,7 +71,7 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
             return
         }
 
-        launch(Dispatchers.Main) {
+        launch(Main) {
             showLoading()
             mealModel.commitMealOrder(shopId, createUserName, mobile, totalPrice, goodsList)?.let {
                 if (view is MealContract.IMealPlaceAnOrderView) {
@@ -82,10 +82,21 @@ class MealPresenter(iBaseView: IBaseView) : MealContract.Presenter(iBaseView) {
         }
     }
 
+    override fun confirmReceive(orderId: String) {
+        launch(Main) {
+            showLoading()
+            mealModel.confirmReceive(orderId)?.let {
+                if (view is MealContract.IConfirmReceive) {
+                    (view as MealContract.IConfirmReceive).confirmReceive(it)
+                }
+            }
+            hideLoading()
+        }
+    }
 
 
     fun loadMealRecordDetail(id: String) {
-        launch(Dispatchers.Main) {
+        launch(Main) {
             showLoading()
             mealModel.loadMealRecordDetail(id)?.let {
                 if (view is MealContract.IMealRecordDetailView) {

@@ -163,4 +163,21 @@ class MealModel {
         return null
     }
 
+
+    /**
+     * 确认收货
+     */
+    suspend fun confirmReceive(orderId: String): String? {
+        val params = JSONObject()
+        params.put("id", orderId)
+
+        val httpResultBean = object : HttpResultBean<BaseModel<String>>() {}
+        ZyHttp.postJson(UrlConstant.CONFIRM_RECEIVE_URL, params.toString(), httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.msg
+            }
+        }
+        return null
+    }
 }

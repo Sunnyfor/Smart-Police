@@ -34,7 +34,7 @@ import com.zhkj.smartpolice.notice.NoticeActivity
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
-import com.zhkj.smartpolice.physiotherapy.activity.PhysiotherapyActivity
+import com.zhkj.smartpolice.physiotherapy.PhysiotherapyActivity
 import com.zhkj.smartpolice.shuttle.ShuttleBusActivity
 import com.zhkj.smartpolice.stadium.StadiumActivity
 import com.zhkj.smartpolice.widget.TextSwitcherAnimation

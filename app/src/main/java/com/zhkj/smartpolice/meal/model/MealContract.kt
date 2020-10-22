@@ -31,6 +31,10 @@ interface MealContract {
         fun showPlaceAnOrderResult(data: BaseModel<MealRecordBean>)
     }
 
+    interface IConfirmReceive : IBaseView {
+        fun confirmReceive(msg: String)
+    }
+
     abstract class Presenter(iBaseView: IBaseView) : BasePresenter<IBaseView>(iBaseView) {
 
         //餐厅列表
@@ -48,5 +52,7 @@ interface MealContract {
         //下单
         abstract fun commitMealOrder(shopId: String, createUserName: String, mobile: String, totalPrice: String, goodsList: ArrayList<MealBean>)
 
+        //确认收货
+        abstract fun confirmReceive(orderId: String)
     }
 }

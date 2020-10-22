@@ -138,7 +138,7 @@
         <activity android:name=".shuttle.ShuttleBusActivity" />
 
         <!--理疗-->
-        <activity android:name=".physiotherapy.activity.PhysiotherapyActivity" />
+        <activity android:name=".physiotherapy.PhysiotherapyActivity" />
 
 
         <provider

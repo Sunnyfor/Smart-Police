@@ -45,6 +45,11 @@ object UrlConstant {
     const val PLACE_AN_ORDER = "logistics/shoporders/saveForUser"
 
     /**
+     * 确认收货接口
+     */
+    const val CONFIRM_RECEIVE_URL = "logistics/shoporders/finish"
+
+    /**
      * 商品详情页
      */
     const val RESTAURANT_INFO_URL = "logistics/shop/info/%s"

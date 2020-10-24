@@ -18,6 +18,7 @@ class MerchantTime {
     var createTime: String? = null
     var shopId: String? = null
     var reserveNumber: Int = 0
+    var resourceImageId: Int = 0
     var resourceName: String? = null
     var manageTime: String? = null
     var manageDate: String? = null

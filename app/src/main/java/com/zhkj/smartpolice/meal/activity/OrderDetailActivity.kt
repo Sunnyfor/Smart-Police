@@ -118,7 +118,11 @@ class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView, 
     }
 
     override fun confirmReceive(msg: String) {
-        ToastUtil.show(msg)
-        finish()
+        if (msg == "success") {
+            ToastUtil.show("收获成功")
+            finish()
+        } else {
+            ToastUtil.show(msg)
+        }
     }
 }

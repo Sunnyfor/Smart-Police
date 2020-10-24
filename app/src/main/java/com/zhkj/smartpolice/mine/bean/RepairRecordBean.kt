@@ -21,11 +21,13 @@ class RepairRecordBean {
     val processId: String? = null
     val publishState: String? = null
     val shopGoodsId: String? = null
+        val repairType: String? = null
     val repairRecordEntity: RepairRecordEntity? = null
 
     class RepairRecordEntity {
         val content: String? = null         //维修记录内容
-        val createTime: String? = null      //维修时间
+        val createTime: String? = null
+        val finishDate: String? = null      //维修时间
         val createUserId: String? = null
         val createUserName: String? = null
         val groupId: String? = null

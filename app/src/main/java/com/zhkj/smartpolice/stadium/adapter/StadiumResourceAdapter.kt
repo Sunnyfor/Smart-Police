@@ -35,7 +35,7 @@ class StadiumResourceAdapter : BaseRecycleAdapter<MerchantTime>(arrayListOf()) {
             holder.itemView.tv_count.setTextColor(ContextCompat.getColor(context, R.color.font_gray))
         }
 
-        getData(position).resourceId?.let {
+        getData(position).resourceImageId?.let {
             GlideApp.with(context)
                 .load(UrlConstant.LOAD_IMAGE_PATH_URL + it)
                 .placeholder(R.drawable.svg_default_head)

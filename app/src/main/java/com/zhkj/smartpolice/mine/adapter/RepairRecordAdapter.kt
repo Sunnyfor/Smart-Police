@@ -21,13 +21,15 @@ class RepairRecordAdapter : BaseRecycleAdapter<RepairRecordBean>(arrayListOf()) 
         holder.itemView.tv_apply_title.text = getData(position).applyContent
         holder.itemView.tv_apply_name.text = ("申请人：${getData(position).petitioner}（${getData(position).petitionerPhone}）")
         holder.itemView.tv_apply_time.text = ("预约时间：${getDate(isStrEmpty(getData(position).applyDate))}")
-        holder.itemView.tv_order_number.text = ("维修状态：${setType(getData(position).applyState?.toInt())}" )
-        holder.itemView.tv_order_time.text = ("( ${isStrEmpty(getData(position).repairRecordEntity?.createTime, "暂无")} )")
+        holder.itemView.tv_order_number.text = ("维修状态：${setType(getData(position).applyState?.toInt())}")
+        holder.itemView.tv_order_time.text = ("维修日期： ${isStrEmpty(getData(position).repairRecordEntity?.finishDate, "")} ")
         holder.itemView.tv_content.text = isStrEmpty(getData(position).repairRecordEntity?.content, "暂无")
+        val repairType = if (getData(position).repairType == "1") "维修" else "换件"
+        holder.itemView.tv_repair_type.text = ("维修类型： $repairType")
     }
 
-    private fun setType(type: Int?) : String{
-       var strType: String? = null
+    private fun setType(type: Int?): String {
+        var strType: String? = null
         when (type) {
             1 -> strType = "审核中"
 
@@ -38,7 +40,7 @@ class RepairRecordAdapter : BaseRecycleAdapter<RepairRecordBean>(arrayListOf()) 
         return strType ?: ""
     }
 
-    private fun getDate(str: String) : String {
+    private fun getDate(str: String): String {
         val formatter = SimpleDateFormat("yyyy-MM-dd")
         var date = formatter.parse(str)
         return SimpleDateFormat("yyyy-MM-dd").format(date)

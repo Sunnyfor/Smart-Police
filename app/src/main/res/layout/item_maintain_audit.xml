@@ -71,7 +71,7 @@
         android:id="@+id/tv_style_font_black_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="问题描述：灯不亮111111111111111111111111111111111"
+        tools:text="问题描述：灯不亮"
         android:layout_below="@id/tv_goods"
         style="@style/style_font_black_small"
         android:layout_toEndOf="@id/iv_maintain_img"

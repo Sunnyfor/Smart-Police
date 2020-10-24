@@ -9,6 +9,7 @@ import com.sunny.zy.utils.isStrEmpty
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.mine.bean.RepairRecordBean
 import kotlinx.android.synthetic.main.item_repair_record.view.*
+import java.text.SimpleDateFormat
 
 class RepairRecordAdapter : BaseRecycleAdapter<RepairRecordBean>(arrayListOf()) {
 
@@ -19,10 +20,27 @@ class RepairRecordAdapter : BaseRecycleAdapter<RepairRecordBean>(arrayListOf()) 
     override fun onBindViewHolder(holder: BaseRecycleViewHolder, position: Int) {
         holder.itemView.tv_apply_title.text = getData(position).applyContent
         holder.itemView.tv_apply_name.text = ("申请人：${getData(position).petitioner}（${getData(position).petitionerPhone}）")
-        holder.itemView.tv_apply_time.text = ("申请时间：${isStrEmpty(getData(position).createTime, "暂无")}")
-        holder.itemView.tv_order_number.text = ("订单号：${getData(position).attachmentGroupId ?: ""}")
+        holder.itemView.tv_apply_time.text = ("预约时间：${getDate(isStrEmpty(getData(position).applyDate))}")
+        holder.itemView.tv_order_number.text = ("维修状态：${setType(getData(position).applyState?.toInt())}" )
         holder.itemView.tv_order_time.text = ("( ${isStrEmpty(getData(position).repairRecordEntity?.createTime, "暂无")} )")
         holder.itemView.tv_content.text = isStrEmpty(getData(position).repairRecordEntity?.content, "暂无")
     }
 
+    private fun setType(type: Int?) : String{
+       var strType: String? = null
+        when (type) {
+            1 -> strType = "审核中"
+
+            2 -> strType = "审核通过"
+
+            3 -> strType = "审核驳回"
+        }
+        return strType ?: ""
+    }
+
+    private fun getDate(str: String) : String {
+        val formatter = SimpleDateFormat("yyyy-MM-dd")
+        var date = formatter.parse(str)
+        return SimpleDateFormat("yyyy-MM-dd").format(date)
+    }
 }

@@ -69,12 +69,14 @@
 
     <TextView
         android:id="@+id/tv_style_font_black_small"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="问题描述：灯不亮"
+        tools:text="问题描述：灯不亮111111111111111111111111111111111"
         android:layout_below="@id/tv_goods"
         style="@style/style_font_black_small"
         android:layout_toEndOf="@id/iv_maintain_img"
         android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_9"/>
+        android:layout_marginTop="@dimen/dp_9"
+        android:ellipsize="end"
+        android:lines="1"/>
 </RelativeLayout>

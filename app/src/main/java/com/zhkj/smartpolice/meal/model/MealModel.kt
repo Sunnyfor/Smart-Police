@@ -99,7 +99,7 @@ class MealModel {
 
         if (isConsumeRecord == true) {
             params["payState"] = "1"
-            params["isMyShop"] = "1"
+            params["createUserId"] = "1"
         } else {
             params["shopType"] = "1"
             params["createUserId"] = UserManager.getUserBean().userId ?: ""

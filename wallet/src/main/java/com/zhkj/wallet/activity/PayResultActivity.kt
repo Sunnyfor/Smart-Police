@@ -9,7 +9,6 @@ import com.sunny.zy.base.BaseActivity
 import com.sunny.zy.utils.RouterManager
 import com.zhkj.wallet.R
 import kotlinx.android.synthetic.main.act_pay_result.*
-import org.json.JSONObject
 
 @Route(path = RouterManager.PAY_RESULT_ACTIVITY)
 class PayResultActivity : BaseActivity() {
@@ -65,11 +64,7 @@ class PayResultActivity : BaseActivity() {
             }
             "4" -> {
                 iv_icon.setImageResource(R.drawable.svg_pay_fail)
-                errMsg?.let {
-                    val jsonObj = JSONObject(it)
-                    tv_desc.text = jsonObj.optString("resultMsg")
-
-                }
+                tv_desc.text = errMsg
                 btn_finish.text = "关闭"
                 btn_finish.setOnClickListener {
                     finish()

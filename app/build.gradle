@@ -94,4 +94,6 @@ dependencies {
     implementation 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
     implementation 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+
 }

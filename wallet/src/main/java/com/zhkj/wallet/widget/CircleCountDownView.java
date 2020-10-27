@@ -183,6 +183,10 @@ public class CircleCountDownView extends View {
         invalidate();
     }
 
+    public void stop(){
+        countDownAnimator.cancel();
+    }
+
     public void restart() {
         reset();
         startCountDown();

@@ -15,7 +15,6 @@ import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.presenter.WalletPresenter
 import com.zhkj.wallet.utils.PayPasswordUtil
 import kotlinx.android.synthetic.main.act_pay_code.*
-import kotlinx.coroutines.cancel
 import org.json.JSONObject
 import java.io.File
 
@@ -79,9 +78,10 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     override fun close() {
+        circleCountDownView.stop()
         walletPresenter.stopTimer()
         walletPresenter.socketResultBean.bean?.cancel()
-        walletPresenter.cancel()
+        walletPresenter.onDestroy()
     }
 
     override fun showPayCodeData(file: File) {
@@ -124,8 +124,8 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
 
             when (msgObj.optInt("status")) {
                 1 -> {
-                    finish()
                     PayResultActivity.intent("1", msgObj.optString("message"))
+                    finish()
                 }
                 2 -> {
                     msgObj.optJSONObject("data")?.let {

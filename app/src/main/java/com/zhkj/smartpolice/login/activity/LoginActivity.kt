@@ -140,6 +140,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     }
 
     override fun close() {
+        biometricPromptManager.setActivity(null)
         userPresenter.cancel()
     }
 

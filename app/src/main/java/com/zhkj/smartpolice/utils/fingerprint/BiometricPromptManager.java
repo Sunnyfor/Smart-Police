@@ -15,6 +15,10 @@ public class BiometricPromptManager {
     private IBiometricPromptImpl mImpl;
     private Activity mActivity;
 
+    public void setActivity(Activity mActivity) {
+       this.mActivity = mActivity;
+    }
+
     public interface OnBiometricIdentifyCallback {
         void onUsePassword();
 

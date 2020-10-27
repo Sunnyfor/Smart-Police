@@ -54,7 +54,6 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
                         })
                 .build();
 
-
         try {
             KeyPair keyPair = generateKeyPair();
             // Send public key part of key pair to the server, this public key will be used for authentication
@@ -71,6 +70,7 @@ public class BiometricPromptApi28 implements IBiometricPromptImpl {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.P)

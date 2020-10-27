@@ -6,6 +6,7 @@ package com.zhkj.smartpolice.mine.bean
 class RepairRecordBean {
 
     val applyContent: String? = null    //申请标题：申请测试
+    val shopGoodsName: String? = null
     val applyDate: String? = null
     val applyId: String? = null
     val applyState: String? = null

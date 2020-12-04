@@ -1,4 +1,4 @@
-package com.zhkj.smartpolice.physiotherapy.activity
+package com.zhkj.smartpolice.physiotherapy
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager

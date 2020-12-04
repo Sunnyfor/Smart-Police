@@ -7,7 +7,9 @@ import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import com.sunny.zy.base.BaseRecycleAdapter
 import com.sunny.zy.base.BaseRecycleViewHolder
+import com.sunny.zy.utils.GlideApp
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.UrlConstant
 import com.zhkj.smartpolice.haircut.bean.MerchantTime
 import kotlinx.android.synthetic.main.item_stadium_reserve_resource.view.*
 
@@ -33,13 +35,20 @@ class StadiumResourceAdapter : BaseRecycleAdapter<MerchantTime>(arrayListOf()) {
             holder.itemView.tv_count.setTextColor(ContextCompat.getColor(context, R.color.font_gray))
         }
 
+        getData(position).resourceImageId?.let {
+            GlideApp.with(context)
+                .load(UrlConstant.LOAD_IMAGE_PATH_URL + it)
+                .placeholder(R.drawable.svg_default_head)
+                .into(holder.itemView.iv_image)
+        }
+
         holder.itemView.checkbox.isChecked = index == position
 
         holder.itemView.checkbox.setOnCheckedChangeListener { _, isChecked ->
 
             lastCheckBox?.let {
-                if (it !=  holder.itemView.checkbox)
-                it.isChecked = false
+                if (it != holder.itemView.checkbox)
+                    it.isChecked = false
             }
 
             if (isChecked) {
@@ -47,7 +56,7 @@ class StadiumResourceAdapter : BaseRecycleAdapter<MerchantTime>(arrayListOf()) {
 
                 index = position
             } else {
-                if (index == position){
+                if (index == position) {
                     index = -1
                 }
             }

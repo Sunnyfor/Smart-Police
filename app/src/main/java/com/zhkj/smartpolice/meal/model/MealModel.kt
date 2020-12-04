@@ -88,6 +88,7 @@ class MealModel {
 
     /**
      *  订餐记录
+     *  消费记录
      */
     suspend fun loadMealRecord(page: Int, isConsumeRecord: Boolean?): ArrayList<MealRecordBean>? {
         val httpResultBean = object : HttpResultBean<PageModel<MealRecordBean>>() {}
@@ -98,6 +99,7 @@ class MealModel {
 
         if (isConsumeRecord == true) {
             params["payState"] = "1"
+            params["createUserId"] = "1"
         } else {
             params["shopType"] = "1"
             params["createUserId"] = UserManager.getUserBean().userId ?: ""
@@ -161,4 +163,21 @@ class MealModel {
         return null
     }
 
+
+    /**
+     * 确认收货
+     */
+    suspend fun confirmReceive(orderId: String): String? {
+        val params = JSONObject()
+        params.put("id", orderId)
+
+        val httpResultBean = object : HttpResultBean<BaseModel<String>>() {}
+        ZyHttp.postJson(UrlConstant.CONFIRM_RECEIVE_URL, params.toString(), httpResultBean)
+        if (httpResultBean.isSuccess()) {
+            if (httpResultBean.bean?.isSuccess() == true) {
+                return httpResultBean.bean?.msg
+            }
+        }
+        return null
+    }
 }

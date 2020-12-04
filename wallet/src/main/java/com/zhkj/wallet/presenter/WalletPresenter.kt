@@ -8,6 +8,7 @@ import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.model.WalletModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.Response
@@ -206,4 +207,8 @@ class WalletPresenter(iBaseView: IBaseView) :
         walletModel.connectWebSocket(socketResultBean)
     }
 
+    fun onDestroy() {
+        view = null
+        cancel()
+    }
 }

@@ -30,10 +30,11 @@ import com.zhkj.smartpolice.merchant.model.MerchantPresenter
 import com.zhkj.smartpolice.mine.activity.ConsumeRecordActivity
 import com.zhkj.smartpolice.mine.activity.RepairRecordActivity
 import com.zhkj.smartpolice.mine.activity.ReserveRecordActivity
+import com.zhkj.smartpolice.notice.NoticeActivity
 import com.zhkj.smartpolice.notice.bean.NoticeBean
 import com.zhkj.smartpolice.notice.contract.NoticeContract
 import com.zhkj.smartpolice.notice.presenter.NoticePresenter
-import com.zhkj.smartpolice.physiotherapy.activity.PhysiotherapyActivity
+import com.zhkj.smartpolice.physiotherapy.PhysiotherapyActivity
 import com.zhkj.smartpolice.shuttle.ShuttleBusActivity
 import com.zhkj.smartpolice.stadium.StadiumActivity
 import com.zhkj.smartpolice.widget.TextSwitcherAnimation
@@ -63,6 +64,10 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
 
         getBaseActivity().simpleTitle("后勤")
 
+        arguments?.let {
+            updatePoint(it.getBoolean("hasUnread"))
+        }
+
         // 跑马灯效果
         textSwitcher.setFactory {
             val tv = TextView(requireContext())
@@ -73,7 +78,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
         setOnClickListener(
             tv_restaurant, tv_haircut, tv_drugstore, tv_shuttle_bus,
             tv_laundry, tv_stadium, tv_maintain, tv_physical_therapy,
-            ll_meal, ll_repair, ll_reserve, ll_consume,
+            ll_meal, ll_repair, ll_reserve, ll_consume, ll_notice,
             tv_office_supplies, tv_vehicle_apply
         )
     }
@@ -155,6 +160,7 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
             ll_repair.id -> startActivity(Intent(requireContext(), RepairRecordActivity::class.java))
             ll_reserve.id -> startActivity(Intent(requireContext(), ReserveRecordActivity::class.java))
             ll_consume.id -> startActivity(Intent(requireContext(), ConsumeRecordActivity::class.java))
+            ll_notice.id -> startActivity(Intent(requireContext(), NoticeActivity::class.java))
 
             tv_office_supplies.id -> ToastUtil.show()
             tv_vehicle_apply.id -> ToastUtil.show()
@@ -185,11 +191,14 @@ class LogisticsFragment : BaseFragment(), MerchantContract.IMerchantListView, No
             data.forEachIndexed { index, noticeHornInfo ->
                 textList.add("${index + 1}. ${noticeHornInfo.noticeValue}")
             }
-            TextSwitcherAnimation(textSwitcher, textList, false).create()
+            TextSwitcherAnimation(textSwitcher, textList, true).create()
             textSwitcher.setOnClickListener(this)
         } else {
             ll_announcement.visibility = View.GONE
         }
     }
 
+    fun updatePoint(hasUnread: Boolean) {
+        tv_point.visibility = if (hasUnread) View.VISIBLE else View.GONE
+    }
 }

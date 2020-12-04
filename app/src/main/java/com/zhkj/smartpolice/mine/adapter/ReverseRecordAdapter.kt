@@ -25,7 +25,7 @@ class ReverseRecordAdapter : BaseRecycleAdapter<ReserveRecordBean>(arrayListOf()
         holder.itemView.tv_order_time.text = ("预约时间：${getData(position).reserveTime}")
         holder.itemView.tv_order_number.text = ("订单号：${getData(position).reserveNumber ?: ""}")
         holder.itemView.tv_create_time.text = ("创建时间：${getData(position).createTime}")
-        holder.itemView.tv_remark.text = ("备注：${getData(position).remark ?: ""}")
+        holder.itemView.tv_remark.text = (getData(position).remark ?: "")
     }
 
 }

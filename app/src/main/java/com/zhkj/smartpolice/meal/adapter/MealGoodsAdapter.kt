@@ -34,6 +34,7 @@ class MealGoodsAdapter(var onClickListener: View.OnClickListener? = null, var is
             holder.itemView.iv_select.tag = getData(position)
             holder.itemView.iv_select.visibility = View.VISIBLE
             holder.itemView.iv_select.setOnClickListener(onClickListener)
+            holder.itemView.tv_count.text = ("剩余${getData(position).remaining}份")
         }
     }
 }

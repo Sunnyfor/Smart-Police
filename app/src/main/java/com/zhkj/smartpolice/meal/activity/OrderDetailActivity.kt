@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.base.BaseActivity
+import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.adapter.MealOrderDetailAdapter
 import com.zhkj.smartpolice.meal.bean.MealRecordBean
@@ -16,7 +17,9 @@ import kotlinx.android.synthetic.main.act_order_detail.*
 /**
  * 订单详情
  */
-class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView {
+class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView, MealContract.IConfirmReceive {
+
+    private var mealRecordBean: MealRecordBean? = null
 
     private val payUtil: PayPasswordUtil by lazy {
         PayPasswordUtil(btn_commit, this).apply {
@@ -51,15 +54,23 @@ class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView {
     override fun onClickEvent(view: View) {
         when (view.id) {
             btn_commit.id -> {
-                //发起支付
-                payUtil.showPayPasswordWindow(payUtil.pay, ordersId, price)
+                if (mealRecordBean?.ordersState == "2") {
+                    //确认收货
+                    presenter.confirmReceive(ordersId)
+                } else {
+                    //发起支付
+                    payUtil.showPayPasswordWindow(payUtil.pay, ordersId, price)
+                }
             }
         }
 
     }
 
     override fun loadData() {
-        ZyFrameStore.getData<MealRecordBean>(MealRecordBean::class.java.simpleName, true)?.let {
+
+        mealRecordBean = ZyFrameStore.getData<MealRecordBean>(MealRecordBean::class.java.simpleName, true)
+
+        mealRecordBean?.let {
             ordersId = it.ordersId.toString()
             tv_shop_name.text = it.shopName
             tv_order_time.text = it.createTime
@@ -74,6 +85,7 @@ class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView {
             val payState = when (it.payState) {
                 "0" -> {
                     btn_commit.visibility = View.VISIBLE
+                    btn_commit.text = "支付"
                     "待支付"
                 }
                 "1" -> "支付成功"
@@ -85,6 +97,11 @@ class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView {
                 else -> ""
             }
             tv_state.text = payState
+
+            if (it.ordersState == "2") {
+                btn_commit.visibility = View.VISIBLE
+                btn_commit.text = "确认收货"
+            }
 
             presenter.loadMealRecordDetail(ordersId)
         }
@@ -98,5 +115,14 @@ class OrderDetailActivity : BaseActivity(), MealContract.IMealRecordDetailView {
         adapter.clearData()
         adapter.addData(data.ordersLinkEntityList ?: arrayListOf())
         adapter.notifyDataSetChanged()
+    }
+
+    override fun confirmReceive(msg: String) {
+        if (msg == "success") {
+            ToastUtil.show("收获成功")
+            finish()
+        } else {
+            ToastUtil.show(msg)
+        }
     }
 }

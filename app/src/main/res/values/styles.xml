@@ -187,4 +187,12 @@
         <item name="android:layout_marginStart">@dimen/dp_21</item>
         <item name="android:layout_marginTop">@dimen/dp_26</item>
     </style>
+
+    <style name="style_layout_mine_function">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/dp_56</item>
+        <item name="android:paddingEnd">@dimen/dp_10</item>
+        <item name="android:paddingStart">@dimen/dp_10</item>
+        <item name="android:background">@color/color_white</item>
+    </style>
 </resources>

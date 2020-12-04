@@ -34,8 +34,9 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
+            android:id="@+id/icon"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/dp_20"
             android:contentDescription="@string/placeholder"

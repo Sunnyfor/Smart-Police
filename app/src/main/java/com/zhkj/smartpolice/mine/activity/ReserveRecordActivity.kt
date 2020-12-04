@@ -29,7 +29,6 @@ class ReserveRecordActivity : BaseActivity(), ReserveContract.IReverseRecordView
 
         defaultTitle("预约记录")
 
-
         pullRefreshFragment.adapter = adapter
         pullRefreshFragment.loadData = {
             loadData()

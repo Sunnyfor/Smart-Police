@@ -129,7 +129,7 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
         }
 
         gridviewadapter.onClickImageMagnify = { id ->
-            var imageDialog: ImageDialog = ImageDialog(this, id)
+            val imageDialog = ImageDialog(this, id)
             imageDialog.show()
             imageDialog.onImageClickList = {
                 imageDialog.dismiss()
@@ -162,41 +162,56 @@ class MaintainApplyActivity : BaseActivity(), IMaintainView, UserContract.IImage
             }
 
             R.id.tv_maintain_put -> {
-                if (tv_apply_name.text.toString().isNotEmpty()) {
-                    if (tv_apply_cellphone.text.toString().isNotEmpty()) {
-                        if (tv_section.text != null) {
-                            if (tv_date.text.toString() != "请选择") {
-                                val maintainRequestPushBean = MaintainRequestPushBean()
-                                maintainRequestPushBean.applyState = "1"
-                                maintainRequestPushBean.approvalId = "1"
-                                maintainRequestPushBean.petitioner = tv_apply_name.text.toString()
-                                maintainRequestPushBean.petitionerPhone =
-                                    tv_apply_cellphone.text.toString()
-                                maintainRequestPushBean.createTime =
-                                    tv_date.text.toString() + " 00:00:00"
-                                maintainRequestPushBean.applyDate =
-                                    tv_date.text.toString() + " 00:00:00"
-                                maintainRequestPushBean.deptId = UserManager.getUserBean().deptId
-                                maintainRequestPushBean.deptName = deptName
-                                maintainRequestPushBean.applyContent = tv_info.text.toString()
-                                maintainRequestPushBean.shopGoodsId = goodsId
-                                maintainRequestPushBean.attachmentGroupId = groupId
-                                LogUtil.i(maintainRequestPushBean.attachmentGroupId.orEmpty())
-                                maintainPresenter.onMaintainRequestPush(maintainRequestPushBean)
-                            } else {
-                                ToastUtil.show("维修时间不能为空")
-                            }
-                        } else {
-                            ToastUtil.show("维修地点不能为空")
-                        }
-                    } else {
-                        ToastUtil.show("维修人手机号不能为空")
-                    }
-                } else {
+
+                if (tv_apply_name.text.toString().isEmpty()) {
                     ToastUtil.show("维修人姓名不能为空")
+                    return
                 }
+                if (tv_apply_cellphone.text.toString().isEmpty()) {
+                    ToastUtil.show("维修人手机号不能为空")
+                    return
+                }
+
+                if (tv_section.text == null) {
+                    ToastUtil.show("维修地点不能为空")
+                    return
+                }
+
+                if (tv_date.text.toString() == "请选择") {
+                    ToastUtil.show("维修时间不能为空")
+                    return
+                }
+
+                if (tv_info.text.isEmpty()) {
+                    ToastUtil.show("维修问题不能为空")
+                    return
+                }
+
+                if (imageList.size <= 0) {
+                    ToastUtil.show("维修图片不能为空")
+                    return
+                }
+
+                val maintainRequestPushBean = MaintainRequestPushBean()
+                maintainRequestPushBean.applyState = "1"
+                maintainRequestPushBean.approvalId = "1"
+                maintainRequestPushBean.petitioner = tv_apply_name.text.toString()
+                maintainRequestPushBean.petitionerPhone =
+                    tv_apply_cellphone.text.toString()
+                maintainRequestPushBean.createTime =
+                    tv_date.text.toString() + " 00:00:00"
+                maintainRequestPushBean.applyDate =
+                    tv_date.text.toString() + " 00:00:00"
+                maintainRequestPushBean.deptId = UserManager.getUserBean().deptId
+                maintainRequestPushBean.deptName = deptName
+                maintainRequestPushBean.applyContent = tv_info.text.toString()
+                maintainRequestPushBean.shopGoodsId = goodsId
+                maintainRequestPushBean.attachmentGroupId = groupId
+                LogUtil.i(maintainRequestPushBean.attachmentGroupId.orEmpty())
+                maintainPresenter.onMaintainRequestPush(maintainRequestPushBean)
             }
         }
+
     }
 
     override fun loadData() {

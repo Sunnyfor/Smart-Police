@@ -10,7 +10,7 @@ class MealBean {
     var goodsId: String? = null
     var date: String? = null
     var total: String? = null
-    var remaining: String? = null
+    var remaining: String? = null //剩余份数
     var type: String? = null
     var classify: String? = null
     var createTime: String? = null

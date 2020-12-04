@@ -7,218 +7,232 @@
     android:background="@color/color_F6F6F6"
     tools:context=".maintain.activity.AuditInfoActivity">
 
-    <RelativeLayout
-        android:id="@+id/rl_layout"
-        android:layout_width="@dimen/dp_340"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_12"
-        android:background="@drawable/sel_audit_border_background"
-        android:paddingLeft="@dimen/sp_20"
-        android:paddingTop="@dimen/dp_32"
-        android:paddingRight="@dimen/sp_20"
-        android:paddingBottom="@dimen/dp_32">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:layout_above="@id/tv_confirm"
+        android:layout_marginBottom="@dimen/dp_25">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/rl_layout"
+            android:layout_width="@dimen/dp_340"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@drawable/sel_audit_border_background"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/sp_20"
+            android:paddingTop="@dimen/dp_32"
+            android:paddingRight="@dimen/sp_20"
+            android:paddingBottom="@dimen/dp_32">
 
-            <TextView
-                style="@style/style_font_audit_function"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名：" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_petitioner"
-                style="@style/style_font_audit_text_latyou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="戴永明" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_32"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/style_font_audit_function"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="部门：" />
-
-            <TextView
-                android:id="@+id/tv_deptName"
-                style="@style/style_font_audit_text_latyou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="财务部" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_issue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_64"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/style_font_audit_function"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="维修问题：" />
-
-            <TextView
-                android:id="@+id/tv_apply_content"
-                style="@style/style_font_audit_text_latyou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="冰箱" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_150"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/style_font_audit_function"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="手机号：" />
-
-            <TextView
-                android:id="@+id/tv_petitioner_phone"
-                style="@style/style_font_audit_text_latyou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text=" 18311111111 " />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_150"
-            android:layout_marginTop="@dimen/dp_32"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/style_font_audit_function"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="预约时间：" />
-
-            <TextView
-                android:id="@+id/tv_apply_date"
-                style="@style/style_font_audit_text_latyou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="06-25-18：00" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/rl_maintain_type"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:layout_below="@id/ll_issue"
-            android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/dp_10">
-
-            <TextView
-                android:id="@+id/tv_type_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/style_font_audit_function"
-                android:layout_marginTop="@dimen/dp_1"
-                android:text="维修类型："/>
-
-            <TextView
-                android:id="@+id/tv_repair_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/style_font_audit_text_latyou"
-                android:layout_marginTop="@dimen/dp_1"
-                tools:text="维修类型"
-                android:layout_toEndOf="@id/tv_type_name"
-                android:visibility="invisible"/>
-
-            <RadioGroup
-                android:id="@+id/rg_maintain_form"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_toEndOf="@id/tv_type_name">
-                <RadioButton
-                    android:id="@+id/rb_maintain"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_20"
-                    android:layout_marginStart="@dimen/dp_10"
-                    android:text="维修" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rb_change"
+                    <TextView
+                        style="@style/style_font_audit_function"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="姓名：" />
+
+                    <TextView
+                        android:id="@+id/tv_petitioner"
+                        style="@style/style_font_audit_text_latyou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="戴永明" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_20"
-                    android:layout_marginStart="@dimen/dp_10"
-                    android:text="换件"/>
-            </RadioGroup>
-        </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_32"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_img"
-            style="@style/style_font_audit_function"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:text="照片："
-            android:layout_below="@id/rl_maintain_type"/>
+                    <TextView
+                        style="@style/style_font_audit_function"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="部门：" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_maintain_img"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_76"
-            android:layout_below="@id/tv_img"
-            android:layout_marginTop="17dp" />
+                    <TextView
+                        android:id="@+id/tv_deptName"
+                        style="@style/style_font_audit_text_latyou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="财务部" />
+                </LinearLayout>
 
-    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_150"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/style_font_audit_function"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手机号：" />
+
+                    <TextView
+                        android:id="@+id/tv_petitioner_phone"
+                        style="@style/style_font_audit_text_latyou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text=" 18311111111 " />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_150"
+                    android:layout_marginTop="@dimen/dp_32"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/style_font_audit_function"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预约时间：" />
+
+                    <TextView
+                        android:id="@+id/tv_apply_date"
+                        style="@style/style_font_audit_text_latyou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="06-25-18：00" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/style_font_audit_function"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="维修问题：" />
+
+                <TextView
+                    android:id="@+id/tv_apply_content"
+                    style="@style/style_font_audit_text_latyou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="冰箱" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_maintain_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:layout_below="@id/ll_date"
+                android:layout_marginTop="@dimen/dp_15"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_type_name"
+                    style="@style/style_font_audit_function"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_1"
+                    android:text="维修类型：" />
+
+                <TextView
+                    android:id="@+id/tv_repair_type"
+                    style="@style/style_font_audit_text_latyou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_1"
+                    android:layout_toEndOf="@id/tv_type_name"
+                    android:visibility="invisible"
+                    tools:text="维修类型" />
+
+                <RadioGroup
+                    android:id="@+id/rg_maintain_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tv_type_name"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_maintain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:text="维修" />
+
+                    <RadioButton
+                        android:id="@+id/rb_change"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:text="换件" />
+                </RadioGroup>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_img"
+                style="@style/style_font_audit_function"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_maintain_type"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="照片：" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_maintain_img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_76"
+                android:layout_below="@id/tv_img"
+                android:layout_marginTop="17dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <TextView
         android:id="@+id/tv_refuse"
+        style="@style/style_button_layout"
         android:layout_width="@dimen/dp_103"
         android:layout_height="@dimen/dp_33"
-        style="@style/style_button_layout"
-        android:text="拒绝比准"
+        android:layout_marginBottom="@dimen/dp_100"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/sel_audit_button_border"
-        android:layout_below="@id/rl_layout"
-        android:layout_marginTop="@dimen/dp_40" />
+        android:text="拒绝比准" />
 
     <TextView
         android:id="@+id/tv_confirm"
+        style="@style/style_button_checked_layout"
         android:layout_width="@dimen/dp_103"
         android:layout_height="@dimen/dp_33"
-        style="@style/style_button_checked_layout"
-        android:text="确认审批"
+        android:layout_marginBottom="@dimen/dp_100"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/sel_audit_button_border_checked"
-        android:layout_below="@id/rl_layout"
-        android:layout_marginTop="@dimen/dp_40"
-        android:layout_alignParentRight="true" />
-    
-    
+        android:text="确认审批" />
+
+
     <TextView
         android:id="@+id/tv_task_issue"
+        style="@style/style_button_checked_layout"
         android:layout_width="@dimen/dp_118"
         android:layout_height="@dimen/dp_33"
-        style="@style/style_button_checked_layout"
-        android:text="下发"
-        android:background="@drawable/sel_audit_button_border_checked"
-        android:layout_below="@id/rl_layout"
-        android:layout_marginTop="@dimen/dp_40"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_100"
+        android:background="@drawable/sel_audit_button_border_checked"
+        android:text="下发"
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -44,7 +44,7 @@ class MealRecordAdapter : BaseRecycleAdapter<MealRecordBean>(arrayListOf()) {
             3 -> "已撤销"
             4 -> "待退款"
             5 -> "退款成功"
-            6 -> "交易结束，不可退款"
+            6 -> "已完成"
             else -> ""
         }
     }

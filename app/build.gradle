@@ -25,7 +25,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.22"
+        versionName "1.0.30"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,7 +46,7 @@ android {
     android.applicationVariants.all {
         variant ->
             variant.outputs.all {
-                outputFileName = "${variant.name}-v${variant.versionName}-${releaseTime()}.apk"
+                outputFileName = "ZHJB-${variant.name}-v${variant.versionName}-${releaseTime()}.apk"
             }
     }
 }
@@ -93,5 +93,7 @@ dependencies {
     implementation 'com.umeng.umsdk:agoo_networksdk:3.5.5'
     implementation 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
     implementation 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
+
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 
 }

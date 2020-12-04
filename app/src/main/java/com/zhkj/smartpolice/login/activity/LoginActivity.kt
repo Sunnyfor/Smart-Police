@@ -17,6 +17,7 @@ import com.sunny.zy.utils.ToastUtil
 import com.umeng.message.PushAgent
 import com.umeng.message.tag.TagManager
 import com.zhkj.smartpolice.R
+import com.zhkj.smartpolice.app.Constant
 import com.zhkj.smartpolice.app.MainActivity
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.bean.UserInfoBean
@@ -142,6 +143,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     }
 
     override fun close() {
+        biometricPromptManager.setActivity(null)
         userPresenter.cancel()
     }
 
@@ -160,6 +162,11 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
                 ToastUtil.show(it.msg)
             }
         }
+    }
+
+    override fun doVerifyPhone(msg: String) {
+        ToastUtil.show("该账户已绑定其他手机,需要进行手机号验证")
+        VerifyPhoneActivity.intent(this, et_username.text.toString(), et_password.text.toString())
     }
 
     override fun loadUserInfo(data: UserBean) {
@@ -186,7 +193,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
     }
 
     private fun disable() {
-        PushAgent.getInstance(this).deleteAlias(UserManager.getUserBean().userId, "ytzhjb") { isSuccess: Boolean, message: String ->
+        PushAgent.getInstance(this).deleteAlias(UserManager.getUserBean().userId, Constant.aliasType) { isSuccess: Boolean, message: String ->
             LogUtil.i("友盟推送删除别名: isSuccess = $isSuccess ||| message = $message")
         }
 

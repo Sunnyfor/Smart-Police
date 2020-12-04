@@ -15,7 +15,6 @@ import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.presenter.WalletPresenter
 import com.zhkj.wallet.utils.PayPasswordUtil
 import kotlinx.android.synthetic.main.act_pay_code.*
-import kotlinx.coroutines.cancel
 import org.json.JSONObject
 import java.io.File
 
@@ -58,11 +57,14 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         ARouter.getInstance().inject(this)
 
         if (isFromMainActivity) {
-            defaultTitle("一码通")
+            defaultTitle("警营一码通")
             tv_desc.visibility = View.VISIBLE
         } else {
             defaultTitle("支付码")
         }
+
+        circleCountDownView.setStartCountValue(30)
+        circleCountDownView.setAnimationInterpolator { inputFraction -> inputFraction * inputFraction }
 
     }
 
@@ -76,13 +78,16 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     override fun close() {
+        circleCountDownView.stop()
         walletPresenter.stopTimer()
         walletPresenter.socketResultBean.bean?.cancel()
-        walletPresenter.cancel()
+        walletPresenter.onDestroy()
     }
 
     override fun showPayCodeData(file: File) {
-        walletPresenter.startTimer() //启动倒计时
+        //启动倒计时
+        circleCountDownView.restart()
+        walletPresenter.startTimer()
         //加载显示付款码
         GlideApp.with(this)
             .load(file)
@@ -93,7 +98,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     override fun showCountdownData(number: String) {
-        tv_hint.text = ("$number 秒后刷新")
+//        tv_hint.text = ("$number 秒后刷新")
     }
 
     override fun showSocketResult(isSuccess: Boolean) {
@@ -119,8 +124,8 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
 
             when (msgObj.optInt("status")) {
                 1 -> {
+                    PayResultActivity.intent("1", msgObj.optString("message"))
                     finish()
-                    PayResultActivity.intent("1")
                 }
                 2 -> {
                     msgObj.optJSONObject("data")?.let {

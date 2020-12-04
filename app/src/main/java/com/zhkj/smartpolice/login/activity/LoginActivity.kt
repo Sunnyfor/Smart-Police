@@ -85,12 +85,15 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
         ll_fingerprint.visibility = if (mIsFingerprintLogin) View.VISIBLE else View.GONE
 
+        et_username.setText("13671002171")
+        et_password.setText("002171")
         setOnClickListener(
             btn_login,
             iv_eye,
             tv_forget_pwd,
             iv_fingerprint
         )
+
     }
 
     override fun onClickEvent(view: View) {
@@ -172,7 +175,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
             SpUtil.setString(SpKey.username, username)
             SpUtil.setString(SpKey.password, password)
         }
-
+        LogUtil.i("下载下来的数据=========$data")
         ToastUtil.show("登录成功")
         startActivity(Intent(this, MainActivity::class.java))
         finish()

@@ -79,8 +79,8 @@
         <activity android:name=".mine.activity.SettingActivity" />
         <activity android:name=".mine.activity.ModifyPasswordActivity" />
         <activity android:name=".mine.activity.ConsumeRecordActivity" />
-        <activity android:name=".notice.NoticeActivity"/>
-        <activity android:name=".notice.NoticeDetailActivity"/>
+        <activity android:name=".notice.NoticeActivity" />
+        <activity android:name=".notice.NoticeDetailActivity" />
 
         <!--餐厅模块-->
         <activity android:name=".meal.activity.MealDetailActivity" />
@@ -114,6 +114,7 @@
         <activity android:name=".maintain.activity.MaintainContentActivity" />
         <activity android:name=".maintain.activity.PropertyManageActivity" />
         <activity android:name=".maintain.activity.MaintainTaskActivity" />
+        <activity android:name=".maintain.activity.MaintainFulfillActivity" />
         <activity
             android:name=".maintain.activity.MaintainTaskInfoActivity"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />

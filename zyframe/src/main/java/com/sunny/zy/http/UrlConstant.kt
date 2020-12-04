@@ -12,7 +12,7 @@ object UrlConstant {
 
 //    const val host = "http://114.242.23.225:8086/" //正式地址
 
-    const val IP = "122.51.69.116:8082" //测试环境
+    const val IP = "122.51.69.116:8082/zhjb" //测试环境
 //    const val IP = "114.242.23.225:8086"  //测试环境
 
 //    const val IP = "192.168.1.106:80" //演示接口

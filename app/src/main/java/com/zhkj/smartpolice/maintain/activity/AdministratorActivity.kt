@@ -1,5 +1,6 @@
 package com.zhkj.smartpolice.maintain.activity
 
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sunny.zy.base.BaseActivity
@@ -41,7 +42,7 @@ class AdministratorActivity : BaseActivity(), IMaintainView {
         tv_petitioner_phone.text = intent.getStringExtra("petitionerPhone")
         tv_deptName.text = intent.getStringExtra("deptName")
         tv_apply_date.text = intent.getStringExtra("applyDate")
-        tv_apply_content.text = intent.getStringExtra("goodsName")
+        tv_apply_content.text = intent.getStringExtra("applyContent")
         isType = intent.getBooleanExtra("isType", true)
         var groupId = intent.getStringExtra("attachmentGroupId")
         intent.getStringExtra("repairType")?.let {
@@ -68,7 +69,7 @@ class AdministratorActivity : BaseActivity(), IMaintainView {
     }
 
     override fun loadData() {
-
+        
     }
 
     override fun close() {

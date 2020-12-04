@@ -12,6 +12,7 @@ import com.sunny.zy.utils.DataKey
 import com.sunny.zy.utils.LogUtil
 import com.sunny.zy.utils.RouterManager
 import com.sunny.zy.utils.ToastUtil
+import com.sunny.zy.widget.dialog.ConfirmDialog
 import com.sunny.zy.widget.dialog.DownLoadDialog
 import com.umeng.message.PushAgent
 import com.umeng.message.tag.TagManager
@@ -21,6 +22,7 @@ import com.zhkj.smartpolice.app.fragment.LogisticsFragment
 import com.zhkj.smartpolice.app.fragment.MineFragment
 import com.zhkj.smartpolice.base.UserManager
 import com.zhkj.smartpolice.login.activity.LoginActivity
+import com.zhkj.smartpolice.mine.activity.PersonalInfoActivity
 import com.zhkj.smartpolice.notice.NoticeReceiver
 import com.zhkj.smartpolice.notice.NoticeService
 import com.zhkj.smartpolice.version.VersionUpdateDialog
@@ -58,6 +60,15 @@ class MainActivity : BaseActivity(), VersionContract.View {
         }
     }
 
+    private val confirmDialog: ConfirmDialog by lazy {
+        val dialog = ConfirmDialog(this)
+        dialog.prompt = "您的个人信息尚未完善，\n是否进行完善？"
+        dialog.onConfirmListener = {
+            PersonalInfoActivity.intent(this, true)
+        }
+        dialog
+    }
+
     override fun setLayout(): Int = R.layout.act_main
 
     override fun initView() {
@@ -75,6 +86,8 @@ class MainActivity : BaseActivity(), VersionContract.View {
 
 
         enable()
+
+        checkPersonalCompleteness()
 
         bottom_navigation_view.setOnNavigationItemSelectedListener {
             nav_host_fragment.findNavController().let { controller ->
@@ -148,4 +161,14 @@ class MainActivity : BaseActivity(), VersionContract.View {
         downLoadDialog.setProgress(progress)
     }
 
+    /**
+     * 检查个人资料是否完善
+     */
+    private fun checkPersonalCompleteness() {
+        val it = UserManager.getInfo()
+        if (it.deptId.isNullOrEmpty()) {
+            confirmDialog.show()
+            return
+        }
+    }
 }

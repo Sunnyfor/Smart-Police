@@ -1,4 +1,4 @@
-package com.sunny.zy.utils
+package com.zhkj.smartpolice.utils.dict
 
 import android.app.Activity
 import androidx.core.content.ContextCompat
@@ -9,8 +9,8 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.OptionsPickerView
 import com.bigkoo.pickerview.view.TimePickerView
 import com.sunny.zy.R
-import com.sunny.zy.bean.DictBean
 import com.sunny.zy.bean.RegionBean
+import com.zhkj.smartpolice.utils.dict.bean.PickBean
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -20,7 +20,7 @@ import kotlin.collections.ArrayList
  * @Author:         张野
  * @CreateDate:     2018/10/18 14:35
  */
-class PickerViewUtils(var activity: Activity) {
+class PickerViewUtil(var activity: Activity) {
 
     private val textSize = 24
     private val titleSize = 18
@@ -28,7 +28,7 @@ class PickerViewUtils(var activity: Activity) {
     private val bgColor = ContextCompat.getColor(activity, R.color.bg_gray)
 
     private var timePickerView: TimePickerView? = null
-    private var singlePickerView: OptionsPickerView<DictBean>? = null
+    private var singlePickerView: OptionsPickerView<PickBean>? = null
     private var addressPickerView: OptionsPickerView<RegionBean.Province>? = null
 
     /**
@@ -95,13 +95,10 @@ class PickerViewUtils(var activity: Activity) {
      */
     fun showSingleChoice(hashMap: HashMap<String, String>?, onPickerViewResultListener: OnSingleChoiceResultListener) {
 
-        val options1Items = ArrayList<DictBean>()
+        val options1Items = ArrayList<PickBean>()
         hashMap?.entries?.forEach {
             options1Items.add(
-                DictBean().apply {
-                    id = it.key
-                    name = it.value
-                }
+                PickBean(it.key, it.value)
             )
         }
         singlePickerView = OptionsPickerBuilder(activity, OnOptionsSelectListener { options1, _, _, _ ->
@@ -123,19 +120,10 @@ class PickerViewUtils(var activity: Activity) {
     /**
      * 单向选择器
      */
-    fun showSingleChoice(list: ArrayList<DictBean>, onPickerViewResultListener: OnSingleChoiceResultListener) {
-        val options1Items = ArrayList<DictBean>()
-        list.forEach {
-            options1Items.add(
-                DictBean().apply {
-                    id = it.code
-                    name = it.value
-                }
-            )
-        }
+    fun showSingleChoice(list: ArrayList<PickBean>, onPickerViewResultListener: OnSingleChoiceResultListener) {
         singlePickerView = OptionsPickerBuilder(activity, OnOptionsSelectListener { i, _, _, _ ->
             //返回的分别是三个级别的选中位置
-            onPickerViewResultListener.onPickerViewResult(options1Items[i].id ?: "", options1Items[i].name ?: "")
+            onPickerViewResultListener.onPickerViewResult(list[i].id ?: "", list[i].name ?: "")
 
         })
             .setContentTextSize(textSize)
@@ -144,7 +132,7 @@ class PickerViewUtils(var activity: Activity) {
             .setTitleColor(bgColor)
             .build()
 
-        singlePickerView?.setPicker(options1Items)
+        singlePickerView?.setPicker(list)
         singlePickerView?.show()
 
     }

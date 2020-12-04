@@ -94,6 +94,9 @@ dependencies {
     implementation 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
     implementation 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
 
+    //日期选择器
+    implementation 'com.contrarywind:Android-PickerView:4.1.6'
+
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 
 }

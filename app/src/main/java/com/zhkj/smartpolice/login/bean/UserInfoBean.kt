@@ -6,7 +6,7 @@ class UserInfoBean {
     var roleId: Int = 0
     var roleName: String? = null
     var remark: String? = null
-    var deptId: Int = 0
+    var deptId: String? = null
     var deptName: String? = null
     var menuIdList: String? = null
     var deptIdList: String? = null

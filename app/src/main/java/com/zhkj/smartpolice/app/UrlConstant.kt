@@ -236,4 +236,16 @@ object UrlConstant {
     // 发送验证码
     const val SEND_VERIFICATION_CODE_URL = "sys/user/open/sendVerificationCode"
 
+
+    /**
+     * 字典表
+     */
+
+    // 部门列表：get
+    const val DEPT_LIST_URL = "sys/dept/list"
+
+    // 字典列表：post
+    const val DICT_LIST_URL = "sys/dict/listByCache"
+
+
 }

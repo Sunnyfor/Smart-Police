@@ -38,7 +38,7 @@
 
         <TextView
             style="@style/style_register_item_text"
-            android:text="姓名"
+            android:text="姓名 *"
             tools:ignore="HardcodedText" />
 
         <com.sunny.zy.widget.edittext.ClearEditText
@@ -52,7 +52,7 @@
 
         <TextView
             style="@style/style_register_item_text"
-            android:text="手机号"
+            android:text="手机号 *"
             tools:ignore="HardcodedText" />
 
         <com.sunny.zy.widget.edittext.ClearEditText
@@ -74,6 +74,44 @@
             style="@style/style_mine_item_edit"
             tools:ignore="HardcodedText" />
     </LinearLayout>
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_sex"
+        style="@style/style_mine_item_text"
+        app:endText="男"
+        app:startText="性别 *"
+        app:startTextColor="@color/font_black"
+        app:startTextSize="@dimen/sp_16" />
+
+    <View style="@style/style_line_horizontal" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_department"
+        style="@style/style_mine_item_text"
+        app:endText="请选择"
+        app:startText="部门 *"
+        app:startTextColor="@color/font_black"
+        app:startTextSize="@dimen/sp_16" />
+
+    <View style="@style/style_line_horizontal" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_position"
+        style="@style/style_mine_item_text"
+        app:endText="请选择"
+        app:startText="职位 *"
+        app:startTextColor="@color/font_black"
+        app:startTextSize="@dimen/sp_16" />
+
+    <View style="@style/style_line_horizontal" />
+
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_user_type"
+        style="@style/style_mine_item_text"
+        app:endText="请选择"
+        app:startText="用户类型 *"
+        app:startTextColor="@color/font_black"
+        app:startTextSize="@dimen/sp_16" />
 
     <LinearLayout
         android:layout_width="match_parent"

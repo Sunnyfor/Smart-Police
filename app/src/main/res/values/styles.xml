@@ -76,6 +76,10 @@
         <item name="android:layout_marginEnd">@dimen/dp_20</item>
     </style>
 
+    <style name="style_mine_item_text" parent="style_mine_item_layout">
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+    </style>
+
     <!--【个人资料】子条目编辑框样式-->
 
     <style name="style_mine_item_edit" parent="style_common_edit">

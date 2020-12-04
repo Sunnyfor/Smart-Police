@@ -80,6 +80,5 @@
         android:ellipsize="end"
         android:layout_marginStart="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_9"
-        android:ellipsize="end"
         android:lines="1"/>
 </RelativeLayout>

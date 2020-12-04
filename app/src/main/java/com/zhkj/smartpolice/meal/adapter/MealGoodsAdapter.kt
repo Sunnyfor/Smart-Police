@@ -26,7 +26,6 @@ class MealGoodsAdapter(var onClickListener: View.OnClickListener? = null, var is
                 .into(holder.itemView.iv_image)
 
             holder.itemView.tv_title.text = it.goodsName
-            holder.itemView.tv_price.text = ("￥${it.price}")
         }
 
 
@@ -35,6 +34,8 @@ class MealGoodsAdapter(var onClickListener: View.OnClickListener? = null, var is
             holder.itemView.iv_select.visibility = View.VISIBLE
             holder.itemView.iv_select.setOnClickListener(onClickListener)
             holder.itemView.tv_count.text = ("剩余${getData(position).remaining}份")
+            holder.itemView.tv_price.text = ("￥${getData(position).shopGoodsEntity?.price}")
+            holder.itemView.tv_price.visibility = View.VISIBLE
         }
     }
 }

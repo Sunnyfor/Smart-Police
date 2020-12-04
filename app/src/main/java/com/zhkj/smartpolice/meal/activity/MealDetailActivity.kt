@@ -59,6 +59,7 @@ class MealDetailActivity : BaseActivity() {
 
         if (!isCanBuy) {
             tv_shopping_cart.visibility = View.GONE
+            tv_price.visibility = View.GONE
         }
     }
 

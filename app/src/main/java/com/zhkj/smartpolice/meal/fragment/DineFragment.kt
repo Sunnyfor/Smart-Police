@@ -42,15 +42,7 @@ class DineFragment : BaseFragment(), MealContract.IMealMenuView {
     }
 
     private val mealGoodsAdapter: MealGoodsAdapter by lazy {
-        MealGoodsAdapter(View.OnClickListener {
-            val bean = it.tag as MealBean
-            if (goodsList.contains(bean)) {
-                goodsList[goodsList.indexOf(bean)].count++
-            } else {
-                goodsList.add(bean)
-            }
-
-        }).apply {
+        MealGoodsAdapter().apply {
             setOnItemClickListener { _, i ->
                 MealDetailActivity.intent(requireContext(), getData(i), false)
             }

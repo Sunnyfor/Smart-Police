@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/dp_10"
-    android:paddingEnd="@dimen/dp_10">
+    android:paddingEnd="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/iv_image"
@@ -39,6 +40,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:text="¥ 0.0"
         android:textStyle="bold"
+        android:visibility="gone"
         tools:ignore="HardcodedText" />
 
     <ImageView

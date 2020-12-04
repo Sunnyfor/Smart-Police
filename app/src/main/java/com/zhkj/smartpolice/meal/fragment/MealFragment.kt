@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sunny.zy.ZyFrameStore
 import com.sunny.zy.activity.PullRefreshFragment
 import com.sunny.zy.base.BaseFragment
+import com.sunny.zy.utils.ToastUtil
 import com.zhkj.smartpolice.R
 import com.zhkj.smartpolice.meal.activity.MealDetailActivity
 import com.zhkj.smartpolice.meal.activity.MealOrderActivity
@@ -51,15 +52,19 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
     private val mealGoodsAdapter: MealGoodsAdapter by lazy {
         MealGoodsAdapter(View.OnClickListener {
             val bean = it.tag as MealBean
-            if (goodsList.contains(bean)) {
-                goodsList[goodsList.indexOf(bean)].count++
+            if (bean.remaining?.toInt() ?: 0 > 0) {
+                if (goodsList.contains(bean)) {
+                    goodsList[goodsList.indexOf(bean)].count++
+                } else {
+                    goodsList.add(bean)
+                }
             } else {
-                goodsList.add(bean)
+                ToastUtil.show("份数不足")
             }
 
             updateShoppingHit()
 
-        },true).apply {
+        }, true).apply {
             setOnItemClickListener { _, i ->
                 MealDetailActivity.intent(requireContext(), getData(i))
             }
@@ -119,7 +124,7 @@ class MealFragment : BaseFragment(), MealContract.IMealMenuView {
         menuList.clear()
         menuList.addAll(data)
         mealMenuAdapter.notifyDataSetChanged()
-        if(data.isNotEmpty()){
+        if (data.isNotEmpty()) {
             presenter.loadMealList(pullRefreshFragment.page, false, data[0].labelId ?: "")
         }
     }

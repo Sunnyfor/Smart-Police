@@ -54,6 +54,12 @@ class UserModel {
         params.put("nickName", bean.nickName)
         params.put("userName", bean.userName)
 
+        params.put("sex", bean.sex)
+        params.put("deptId", bean.deptId)
+        params.put("deptName", bean.deptName)
+        params.put("position", bean.position)
+        params.put("userType", bean.userType)
+
         ZyHttp.postJson(UrlConstant.UPDATE_USER_INFO_URL, params.toString(), httpResultBean)
 
         return httpResultBean.bean?.msg ?: ""

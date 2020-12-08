@@ -21,6 +21,7 @@ import com.zhkj.smartpolice.utils.dict.DictContract
 import com.zhkj.smartpolice.utils.dict.PickerViewUtil
 import com.zhkj.smartpolice.utils.dict.bean.DeptBean
 import com.zhkj.smartpolice.utils.dict.bean.PickBean
+import com.zhkj.smartpolice.widget.dialog.DeptDialog
 import kotlinx.android.synthetic.main.act_personal_info.*
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -58,6 +59,10 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
 
     private val cameraDialog: CameraDialog by lazy {
         CameraDialog(this, cameraUtil)
+    }
+
+    private val deptDialog: DeptDialog by lazy {
+        DeptDialog(this)
     }
 
     private val dictPresenter: DictContract.Presenter by lazy {
@@ -109,29 +114,25 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
             R.id.item_position -> dictPresenter.loadDictList(dictPresenter.position)
             R.id.item_user_type -> dictPresenter.loadDictList(dictPresenter.userType)
             R.id.item_department -> {
-                val list = ArrayList<PickBean>()
-                deptList.forEach {
-                    list.add(PickBean().apply { init(it) })
+                deptDialog.show()
+                deptDialog.onConfirmBtnListener = {
+                    userBean.deptId = it.deptId
+                    userBean.deptName = it.name
+
+                    mDepartmentId = it.deptId
+                    item_department.endTextView.text = it.name
                 }
-                pickerViewUtil.showSingleChoice(list, object : PickerViewUtil.OnSingleChoiceResultListener {
-                    override fun onPickerViewResult(id: String, value: String) {
-                        mDepartmentId = id
-                        item_department.endTextView.text = value
-                    }
-                })
             }
         }
     }
 
     override fun loadData() {
-        showLoading()
         presenter.loadUserInfo()
         dictPresenter.loadDeptList()
     }
 
     override fun close() {
         presenter.cancel()
-        dictPresenter.cancel()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -139,11 +140,28 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
         cameraUtil.onActivityResult(requestCode, resultCode, data)
     }
 
-
     override fun loadDeptList(data: ArrayList<DeptBean>) {
         deptList.clear()
-        deptList.addAll(data)
-        deptList.find { it.deptId == userBean.deptId }?.let {
+        deptList.addAll(data.filter { it.parentId == "-1" })
+
+        deptList.forEach { firstBean ->
+            firstBean.childrenList.addAll(data.filter { it.parentId == firstBean.deptId })
+            firstBean.childrenList.forEach {
+                it.listLevel = 2
+            }
+
+            firstBean.childrenList.forEach { twoBean ->
+                twoBean.childrenList.addAll(data.filter { it.parentId == twoBean.deptId })
+                twoBean.childrenList.forEach {
+                    it.listLevel = 3
+                }
+
+            }
+        }
+
+        deptDialog.deptList = deptList
+
+        data.find { it.deptId == userBean.deptId }?.let {
             item_department.endTextView.text = it.name
         }
     }
@@ -172,6 +190,7 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
             }
         })
     }
+
 
     override fun uploadImage(bean: ImageBean) {
         bean.id.let {
@@ -202,6 +221,11 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
         et_phone.setText(data.mobile)
         et_email.setText(data.email)
 
+        mSexId = data.sex
+        mPositionId = data.position
+        mUserTypeId = data.userType
+        mDepartmentId = data.deptId
+
         dictPresenter.launch {
             item_sex.endTextView.text = dictPresenter.getDictBean(userBean.sex ?: "", dictPresenter.sex)
             item_position.endTextView.text = dictPresenter.getDictBean(userBean.position ?: "", dictPresenter.position)
@@ -217,6 +241,7 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
             ToastUtil.show(msg)
         }
     }
+
 
     /**
      * 设置编辑状态
@@ -289,7 +314,6 @@ class PersonalInfoActivity : BaseActivity(), UserContract.IUserInfoView, UserCon
             userBean.email = email
 
             userBean.sex = mSexId
-            userBean.deptId = mDepartmentId
             userBean.position = mPositionId
             userBean.userType = mUserTypeId
 

@@ -86,8 +86,6 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
 
         ll_fingerprint.visibility = if (mIsFingerprintLogin) View.VISIBLE else View.GONE
 
-        et_username.setText("13671002171")
-        et_password.setText("002171")
         setOnClickListener(
             btn_login,
             iv_eye,

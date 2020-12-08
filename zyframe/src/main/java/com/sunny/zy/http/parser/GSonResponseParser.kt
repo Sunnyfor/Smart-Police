@@ -40,11 +40,10 @@ class GSonResponseParser : IResponseParser {
                 }
             }
         } else {
-            val json = responseBody.string()
             if (type is ParameterizedType) {
-                val jsonObj = JSONObject(json)
                 when (type.rawType) {
                     BaseModel::class.java -> {
+                        val jsonObj = JSONObject(responseBody.string())
                         val childType = type.actualTypeArguments[0]
                         val baseModel = BaseModel<Any>()
                         baseModel.msg = jsonObj.optString("msg")
@@ -55,6 +54,7 @@ class GSonResponseParser : IResponseParser {
                         return baseModel as T
                     }
                     PageModel::class.java -> {
+                        val jsonObj = JSONObject(responseBody.string())
                         jsonObj.put("data", jsonObj.optJSONObject("page"))
                         jsonObj.remove("page")
                         return mGSon.fromJson(jsonObj.toString(), type)

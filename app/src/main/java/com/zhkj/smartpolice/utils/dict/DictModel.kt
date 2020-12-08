@@ -1,7 +1,6 @@
 package com.zhkj.smartpolice.utils.dict
 
 import com.sunny.zy.base.BaseModel
-import com.sunny.zy.base.PageModel
 import com.sunny.zy.bean.DictBean
 import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
@@ -31,7 +30,7 @@ class DictModel {
         }
     }
 
-    suspend fun loadDictList(type: String): ArrayList<DictBean>? {
+    private suspend fun loadDictList(type: String): ArrayList<DictBean>? {
         val httpResultBean = object : HttpResultBean<BaseModel<ArrayList<DictBean>>>() {}
         ZyHttp.post(UrlConstant.DICT_LIST_URL, hashMapOf(Pair("type", type)), httpResultBean)
         httpResultBean.isSuccess()
@@ -40,11 +39,10 @@ class DictModel {
     }
 
     suspend fun loadDeptList(): ArrayList<DeptBean>? {
-        val httpResultBean = object : HttpResultBean<PageModel<DeptBean>>() {}
-        ZyHttp.post(UrlConstant.DEPT_LIST_URL, hashMapOf(), httpResultBean)
+        val httpResultBean = object : HttpResultBean<ArrayList<DeptBean>>() {}
+        ZyHttp.get(UrlConstant.DEPT_LIST_URL, hashMapOf(), httpResultBean)
         httpResultBean.isSuccess()
-        httpResultBean.bean?.isSuccess()
-        return httpResultBean.bean?.data?.list
+        return httpResultBean.bean
     }
 
 }

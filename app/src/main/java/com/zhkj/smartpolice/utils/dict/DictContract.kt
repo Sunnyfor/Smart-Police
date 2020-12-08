@@ -39,24 +39,20 @@ interface DictContract {
 
         fun loadDictList(type: String) {
             launch(Dispatchers.Main) {
-                showLoading()
                 dictModel.findDiceList(type)?.let {
                     if (view is IDictView)
                         (view as IDictView).loadDictList(it)
                 }
-                hideLoading()
             }
         }
 
 
         fun loadDeptList() {
             launch(Dispatchers.Main) {
-                showLoading()
                 dictModel.loadDeptList()?.let {
                     if (view is IDeptView)
                         (view as IDeptView).loadDeptList(it)
                 }
-                hideLoading()
             }
         }
 

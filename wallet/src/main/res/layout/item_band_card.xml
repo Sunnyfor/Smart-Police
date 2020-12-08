@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/style_item_card_view"
+    android:layout_width="match_parent"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        android:id="@+id/tv_bank_name"
+        style="@style/style_item_card_font"
+        android:layout_marginStart="@dimen/dp_18"
+        android:text="银行名称"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_card_number"
+        style="@style/style_item_card_font"
+        android:layout_marginStart="@dimen/dp_20"
+        android:text="***************000"
+        app:layout_constraintStart_toEndOf="@id/tv_bank_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/dp_18"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        style="@style/wallet_item_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/radioButton"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

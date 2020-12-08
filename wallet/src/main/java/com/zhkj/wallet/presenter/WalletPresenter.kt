@@ -160,6 +160,57 @@ class WalletPresenter(iBaseView: IBaseView) :
         }
     }
 
+    /**
+     * 加载银行卡列表
+     */
+    override fun loadBandCardList() {
+        launch {
+            view?.showLoading()
+            if (view is WalletContract.IBandCardView) {
+                (view as WalletContract.IBandCardView).showBandCard(walletModel.loadBandCardList())
+            }
+            view?.hideLoading()
+        }
+    }
+
+    /**
+     *  添加银行卡
+     */
+    override fun addBandCard(bandCard: String, idCard: String, name: String, bankName: String) {
+        launch {
+            if (view is WalletContract.IBandCardView) {
+                (view as WalletContract.IBandCardView).showAddBandCardResult(walletModel.addBandCard(bandCard, idCard, name, bankName))
+            }
+        }
+    }
+
+    /**
+     *  发送验证码
+     */
+    override fun sendVerificationCode(phone: String) {
+        launch(Main) {
+            showLoading()
+            walletModel.sendVerificationCode(phone).let {
+                if (view is WalletContract.IWithdrawalView) {
+                    (view as WalletContract.IWithdrawalView).showVerificationCodeResult(it)
+                }
+            }
+            hideLoading()
+        }
+    }
+
+    /**
+     *  提现
+     */
+    override fun withdrawal(amount: String, bandCardId: String, verificationCode: String) {
+        launch {
+            showLoading()
+            if (view is WalletContract.IWithdrawalView) {
+                (view as WalletContract.IWithdrawalView).showWithdrawalResult(walletModel.withdrawal(amount, bandCardId, verificationCode))
+            }
+        }
+    }
+
 
     //启动倒计时刷新付款码
     fun startTimer() {

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dp_350"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:padding="@dimen/dp_10"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/style_font_black_big"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="添加银行卡"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:padding="@dimen/dp_10"
+        android:src="@drawable/svg_title_back"
+        app:layout_constraintBottom_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_title"
+        android:contentDescription="@string/app_name"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_card_number"
+        style="@style/style_item_card_view"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+        <TextView
+            android:id="@+id/tv_card_number"
+            style="@style/style_item_card_font"
+            android:layout_width="wrap_content"
+            android:text="银行卡号"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_card_number"
+            style="@style/style_common_edit"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:hint="请输入银行卡号"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_card_number"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_id_card"
+        style="@style/style_item_card_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_card_number">
+
+        <TextView
+            android:id="@+id/tv_id_card"
+            style="@style/style_item_card_font"
+            android:layout_width="wrap_content"
+            android:text="身份证号"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_id_card"
+            style="@style/style_common_edit"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:hint="请输入身份证号"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_id_card"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_user_name"
+        style="@style/style_item_card_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_id_card">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/style_item_card_font"
+            android:layout_width="wrap_content"
+            android:text="用户姓名"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_user_name"
+            style="@style/style_common_edit"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:hint="请输入用户姓名"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_user_name"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bank_name"
+        style="@style/style_item_card_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_user_name">
+
+        <TextView
+            android:id="@+id/tv_bank_name"
+            style="@style/style_item_card_font"
+            android:layout_width="wrap_content"
+            android:text="所属银行"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_bank_name"
+            style="@style/style_common_edit"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:hint="请输入所属银行"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_bank_name"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add"
+        style="@style/style_common_btn"
+        android:text="添加"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_bank_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

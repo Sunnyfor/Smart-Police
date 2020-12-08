@@ -180,6 +180,7 @@ class LoginActivity : BaseActivity(), LoginView, UserContract.IUserInfoView {
             SpUtil.setString(SpKey.username, username)
             SpUtil.setString(SpKey.password, password)
         }
+        SpUtil.setString(SpKey.phone, data.mobile ?: "")
         LogUtil.i("下载下来的数据=========$data")
         ToastUtil.show("登录成功")
         startActivity(Intent(this, MainActivity::class.java))

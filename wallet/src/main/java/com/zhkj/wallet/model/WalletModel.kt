@@ -7,6 +7,7 @@ import com.sunny.zy.http.ZyHttp
 import com.sunny.zy.http.bean.HttpResultBean
 import com.sunny.zy.utils.SpUtil
 import com.sunny.zy.utils.ToastUtil
+import com.zhkj.wallet.bean.BandCardBean
 import com.zhkj.wallet.bean.PurseBean
 import com.zhkj.wallet.bean.RecordBean
 import com.zhkj.wallet.http.WalletUrlConstant
@@ -103,7 +104,67 @@ class WalletModel {
         return null
     }
 
-    fun connectWebSocket(bean :HttpResultBean<WebSocket>){
+    /**
+     * 银行卡列表
+     */
+    suspend fun loadBandCardList(): ArrayList<BandCardBean> {
+        val httpResultBean = object : HttpResultBean<PageModel<BandCardBean>>() {}
+        val params = HashMap<String, String>()
+        params["userId"] = SpUtil.getString(SpUtil.userId)
+        ZyHttp.post(WalletUrlConstant.BAND_CARD_LIST_URL, params, httpResultBean)
+        httpResultBean.isSuccess()
+        return httpResultBean.bean?.data?.list ?: arrayListOf()
+    }
+
+    /**
+     *  添加银行卡
+     */
+    suspend fun addBandCard(bandCard: String, idCard: String, name: String, bankName: String): Boolean {
+        val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
+        val params = JSONObject()
+        params.put("bandCard", bandCard)
+        params.put("idCard", idCard)
+        params.put("name", name)
+        params.put("bankName", bankName)
+
+        ZyHttp.postJson(WalletUrlConstant.BAND_CARD_SAVE_URL, params.toString(), httpResultBean)
+        if (httpResultBean.isSuccess() && httpResultBean.bean?.isSuccess() == true) {
+            return true
+        }
+        return false
+    }
+
+    /**
+     *  发送验证码
+     */
+    suspend fun sendVerificationCode(phone: String): Boolean {
+        val httpResultBean = object : HttpResultBean<BaseModel<String>>() {}
+        ZyHttp.post(WalletUrlConstant.SEND_VERIFICATION_CODE_URL, hashMapOf(Pair("mobile", phone)), httpResultBean)
+        ToastUtil.show(httpResultBean.bean?.msg)
+        if (httpResultBean.bean?.code == "500") {
+            return true
+        }
+        return false
+    }
+
+    /**
+     * 提现
+     */
+    suspend fun withdrawal(amount: String, bandCardId: String, verificationCode: String): Boolean {
+        val httpResultBean = object : HttpResultBean<BaseModel<Any>>() {}
+        val params = JSONObject()
+        params.put("amount", amount)
+        params.put("bandCardId", bandCardId)
+        params.put("verificationCode", verificationCode)
+        ZyHttp.postJson(WalletUrlConstant.RECORD_QMF_PAYMENT, params.toString(), httpResultBean)
+        if (httpResultBean.isSuccess() && httpResultBean.bean?.isSuccess() == true) {
+            return true
+        }
+        return false
+    }
+
+
+    fun connectWebSocket(bean: HttpResultBean<WebSocket>) {
         ZyHttp.webSocket(String.format(WalletUrlConstant.WEB_SOCKET_HOST, userId), bean)
     }
 }

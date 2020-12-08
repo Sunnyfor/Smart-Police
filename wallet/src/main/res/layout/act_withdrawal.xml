@@ -1,49 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    tools:ignore="HardcodedText">
 
-
-    <View
-        android:id="@+id/view_account_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_band_card"
         style="@style/style_item_card_view"
-        android:layout_marginTop="@dimen/dp_4"
-        android:background="@color/color_white"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/tv_account"
-        style="@style/wallet_item_text"
-        android:layout_marginStart="@dimen/dp_18"
-        android:text="@string/wx_account"
-        app:layout_constraintBottom_toBottomOf="@id/view_account_parent"
-        app:layout_constraintStart_toStartOf="@id/view_account_parent"
-        app:layout_constraintTop_toTopOf="@id/view_account_parent" />
+        <TextView
+            android:id="@+id/tv_bank_hint"
+            style="@style/style_item_card_font"
+            android:layout_marginStart="@dimen/dp_18"
+            android:text="到账银行卡"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_account"
-        style="@style/style_item_card_view"
-        android:layout_marginStart="@dimen/dp_20"
-        android:background="@color/color_transparent"
-        android:hint="@string/input_account_wx"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@id/view_account_parent"
-        app:layout_constraintStart_toEndOf="@id/tv_account"
-        app:layout_constraintTop_toTopOf="@id/view_account_parent" />
+        <TextView
+            android:id="@+id/tv_bank_name"
+            style="@style/style_item_card_font"
+            android:layout_marginStart="@dimen/dp_18"
+            android:textColor="@color/color_theme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_bank_hint"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="贞和银行" />
 
-    <View
-        android:id="@+id/view_money_parent"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dp_120"
-        android:layout_marginTop="@dimen/dp_4"
-        android:background="@color/color_white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_account_parent" />
+        <TextView
+            android:id="@+id/tv_card_number"
+            style="@style/style_item_card_font"
+            android:textColor="@color/color_theme"
+            app:layout_constraintStart_toEndOf="@id/tv_bank_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="（0000）" />
+
+        <ImageView
+            android:id="@+id/radioButton"
+            style="@style/style_item_card_img"
+            android:layout_marginEnd="@dimen/dp_18"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            style="@style/wallet_item_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/radioButton"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_money"
@@ -51,8 +64,8 @@
         android:layout_marginStart="@dimen/dp_18"
         android:layout_marginTop="@dimen/dp_18"
         android:text="@string/withdrawal_money"
-        app:layout_constraintStart_toStartOf="@id/view_money_parent"
-        app:layout_constraintTop_toTopOf="@id/view_money_parent" />
+        app:layout_constraintStart_toStartOf="@id/cl_band_card"
+        app:layout_constraintTop_toBottomOf="@id/cl_band_card" />
 
     <TextView
         android:id="@+id/tv_rmb"
@@ -78,97 +91,73 @@
         android:paddingEnd="@dimen/dp_10"
         android:textSize="@dimen/sp_24"
         app:layout_constraintBottom_toBottomOf="@id/tv_rmb"
-        app:layout_constraintEnd_toEndOf="@id/view_money_parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_rmb"
         app:layout_constraintTop_toTopOf="@id/tv_rmb" />
 
     <TextView
+        android:id="@+id/tv_balance"
         style="@style/style_font_gray_small"
         android:layout_marginStart="@dimen/dp_18"
         android:text="@string/available_balance"
-        app:layout_constraintStart_toStartOf="@id/view_money_parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edt_money" />
 
-    <!--微信支付-->
-    <View
-        android:id="@+id/view_wx_parent"
-        style="@style/style_item_card_view"
-        android:background="@color/color_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_money_parent" />
-
-    <View
-        android:id="@+id/view_wx_icon"
-        android:layout_width="@dimen/dp_25"
-        android:layout_height="@dimen/dp_25"
-        android:layout_marginStart="@dimen/dp_18"
-        android:background="@drawable/svg_pay_wx"
-        app:layout_constraintBottom_toBottomOf="@id/view_wx_parent"
-        app:layout_constraintStart_toStartOf="@id/view_wx_parent"
-        app:layout_constraintTop_toTopOf="@id/view_wx_parent" />
 
     <TextView
-        style="@style/wallet_item_text"
-        android:layout_marginStart="@dimen/dp_20"
-        android:text="@string/wx"
-        app:layout_constraintStart_toEndOf="@id/view_wx_icon"
-        app:layout_constraintTop_toTopOf="@id/view_wx_parent" />
-
-    <RadioButton
-        android:id="@+id/rbtn_wx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_18"
-        android:checked="true"
-        app:layout_constraintBottom_toBottomOf="@id/view_wx_parent"
-        app:layout_constraintEnd_toEndOf="@id/view_wx_parent"
-        app:layout_constraintTop_toTopOf="@id/view_wx_parent" />
-
-    <View
-        style="@style/wallet_item_line"
-        app:layout_constraintBottom_toBottomOf="@id/view_wx_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!--支付宝支付-->
-    <View
-        android:id="@+id/view_ali_parent"
-        style="@style/style_item_card_view"
-        android:background="@color/color_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_wx_parent" />
-
-    <View
-        android:id="@+id/view_ali_icon"
-        android:layout_width="@dimen/dp_25"
-        android:layout_height="@dimen/dp_25"
-        android:layout_marginStart="@dimen/dp_18"
-        android:background="@drawable/svg_pay_ali"
-        app:layout_constraintBottom_toBottomOf="@id/view_ali_parent"
-        app:layout_constraintStart_toStartOf="@id/view_ali_parent"
-        app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
+        android:id="@+id/tv_phone_hint"
+        style="@style/style_font_black"
+        android:text="手机号码："
+        app:layout_constraintStart_toStartOf="@id/tv_balance"
+        app:layout_constraintTop_toBottomOf="@id/tv_balance"
+        android:layout_marginTop="@dimen/dp_10"
+        />
 
     <TextView
-        style="@style/wallet_item_text"
-        android:layout_marginStart="@dimen/dp_20"
-        android:text="@string/ali"
-        app:layout_constraintStart_toEndOf="@id/view_ali_icon"
-        app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
+        android:id="@+id/tv_phone"
+        style="@style/style_font_black"
+        app:layout_constraintStart_toEndOf="@id/tv_phone_hint"
+        app:layout_constraintTop_toTopOf="@id/tv_phone_hint"
+        app:layout_constraintBottom_toBottomOf="@id/tv_phone_hint"
+        android:textColor="@color/color_theme"
+        tools:text="13000000000" />
 
-    <RadioButton
-        android:id="@+id/rbtn_ali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_18"
-        android:checked="false"
-        app:layout_constraintBottom_toBottomOf="@id/view_ali_parent"
-        app:layout_constraintEnd_toEndOf="@id/view_ali_parent"
-        app:layout_constraintTop_toTopOf="@id/view_ali_parent" />
+    <LinearLayout
+        android:id="@+id/ll_code"
+        style="@style/style_item_card_view"
+        android:layout_marginStart="@dimen/dp_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone_hint"
+        android:layout_marginTop="@dimen/dp_10">
+
+        <TextView
+            style="@style/style_item_card_font"
+            android:text="验证码：" />
+
+        <com.sunny.zy.widget.edittext.ClearEditText
+            android:id="@+id/et_verify_code"
+            style="@style/style_common_edit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:hint="输入验证码"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_obtain"
+            style="@style/style_common_btn_small"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="获取" />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_commit"
         style="@style/style_common_btn"
-        android:text="@string/withdrawal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="提现"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_ali_parent" />
+        app:layout_constraintTop_toBottomOf="@id/ll_code"
+        android:layout_marginTop="@dimen/dp_40"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

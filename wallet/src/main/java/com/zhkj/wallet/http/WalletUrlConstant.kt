@@ -42,4 +42,25 @@ object WalletUrlConstant {
      * 获取第三方支付参数
      */
     const val PAY_RECORD_SAVE = "pay/record/save"
+
+    /**
+     * 查询银行卡列表
+     */
+    const val BAND_CARD_LIST_URL = "pay/bandcard/list"
+
+    /**
+     *  添加银行卡
+     */
+    const val BAND_CARD_SAVE_URL = "pay/bandcard/save"
+
+    /**
+     * 提现接口
+     */
+    const val RECORD_QMF_PAYMENT = "pay/record/qmfPayment"
+
+    /**
+     *  验证码
+     */
+    const val SEND_VERIFICATION_CODE_URL = "sys/user/open/sendVerificationCode"
+
 }

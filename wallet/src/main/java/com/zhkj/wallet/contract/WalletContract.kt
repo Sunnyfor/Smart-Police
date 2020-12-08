@@ -1,8 +1,8 @@
 package com.zhkj.wallet.contract
 
-import com.sunny.zy.base.BaseModel
 import com.sunny.zy.base.BasePresenter
 import com.sunny.zy.base.IBaseView
+import com.zhkj.wallet.bean.BandCardBean
 import com.zhkj.wallet.bean.PurseBean
 import com.zhkj.wallet.bean.RecordBean
 import java.io.File
@@ -15,8 +15,8 @@ interface WalletContract {
     interface IPayCodeView : IBaseView {
         fun showPayCodeData(file: File)
         fun showCountdownData(number: String)
-        fun showSocketResult(isSuccess:Boolean)
-        fun showSocketMessage(message:String)
+        fun showSocketResult(isSuccess: Boolean)
+        fun showSocketMessage(message: String)
     }
 
     interface IRecordView : IBaseView {
@@ -28,6 +28,17 @@ interface WalletContract {
         fun paySuccess()
         fun updatePayPassword()
     }
+
+    interface IWithdrawalView : IBaseView {
+        fun showVerificationCodeResult(isSuccess: Boolean)
+        fun showWithdrawalResult(isSuccess: Boolean)
+    }
+
+    interface IBandCardView : IBaseView {
+        fun showBandCard(data: ArrayList<BandCardBean>)
+        fun showAddBandCardResult(isSuccess: Boolean)
+    }
+
 
     abstract class Presenter(iBaseView: IBaseView) : BasePresenter<IBaseView>(iBaseView) {
         //加载钱包数据
@@ -47,5 +58,17 @@ interface WalletContract {
 
         //支付方法
         abstract fun pay(orderId: String, payPassword: String)
+
+        //加载银行卡列表
+        abstract fun loadBandCardList()
+
+        //添加银行卡
+        abstract fun addBandCard(bandCard: String, idCard: String, name: String, bankName: String)
+
+        //发送验证码
+        abstract fun sendVerificationCode(phone: String)
+
+        //提现
+        abstract fun withdrawal(amount: String, bandCardId: String, verificationCode: String)
     }
 }

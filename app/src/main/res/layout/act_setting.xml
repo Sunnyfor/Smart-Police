@@ -92,6 +92,12 @@
         app:lineVisible="true"
         app:startAfterText="设置指纹" />
 
+    <com.zhkj.smartpolice.widget.ItemLayout
+        android:id="@+id/item_face"
+        style="@style/style_register_item_layout"
+        app:endIcon="@drawable/svg_btn_more"
+        app:lineVisible="true"
+        app:startAfterText="设置人脸" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_logout"

@@ -13,6 +13,11 @@ object UrlConstant {
     const val LOAD_IMAGE_PATH_URL = "${UrlConstant.host}/sys/attachment/download?attID="
 
     /**
+     * 上传人脸ID
+     */
+    const val USER_UPDATE_FACE_URL = "sys/user/updateFace"
+
+    /**
      * 图片上传地址
      */
     const val UPLOAD_IMAGE_PATH_URL = "sys/attachment/upload"

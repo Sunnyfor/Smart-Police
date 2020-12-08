@@ -208,6 +208,7 @@ class WalletPresenter(iBaseView: IBaseView) :
             if (view is WalletContract.IWithdrawalView) {
                 (view as WalletContract.IWithdrawalView).showWithdrawalResult(walletModel.withdrawal(amount, bandCardId, verificationCode))
             }
+            hideLoading()
         }
     }
 

@@ -99,15 +99,26 @@ class WithdrawalActivity : BaseActivity(), WalletContract.IWalletView, WalletCon
             ToastUtil.show("请输入正确的验证码！")
             return
         }
+        presenter.withdrawal(edt_money.text.toString(), selectBandCard?.id ?: "", et_verify_code.text.toString())
     }
 
     private fun showSelectDialog() {
         AlertDialog.Builder(this)
             .setTitle("选择银行卡")
-            .setItems(Array(bandCardList.size) { bandCardList[it].bandCard ?: "" }) { dialog: DialogInterface, index: Int ->
-                setBandCard(bandCardList[index])
+            .setItems(Array(bandCardList.size) {
+                if (it != bandCardList.size - 1) {
+                    bandCardList[it].bankName + "(" + (bandCardList[it].bandCard ?: "") + ")"
+                } else {
+                    "添加新的银行卡"
+                }
+            }) { dialog: DialogInterface, index: Int ->
+                if (index != bandCardList.size - 1) {
+                    setBandCard(bandCardList[index])
+                } else {
+                    showAddDialog()
+                }
                 dialog.dismiss()
-            }
+            }.show()
     }
 
 
@@ -131,6 +142,7 @@ class WithdrawalActivity : BaseActivity(), WalletContract.IWalletView, WalletCon
         bandCardList.addAll(data)
         if (data.isNotEmpty()) {
             setBandCard(data[0])
+            bandCardList.add(BandCardBean())
         }
     }
 
@@ -153,7 +165,7 @@ class WithdrawalActivity : BaseActivity(), WalletContract.IWalletView, WalletCon
         btn_obtain.isClickable = true
         if (isSuccess) {
             TimeCount().start()
-        }else{
+        } else {
             btn_obtain.text = "获取"
         }
     }

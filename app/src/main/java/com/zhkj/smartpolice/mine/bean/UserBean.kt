@@ -27,6 +27,7 @@ class UserBean {
     var phoneUuid: String? = null
     var leaderId: String? = null
     var verificationCode: String? = null
+    var faceImg: String? = null
     var authorities: String? = null
 
     override fun toString(): String {

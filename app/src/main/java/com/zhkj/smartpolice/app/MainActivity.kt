@@ -48,7 +48,7 @@ class MainActivity : BaseActivity(), VersionContract.View {
 
     private val noticeReceiver: NoticeReceiver by lazy {
         NoticeReceiver {
-            tv_point.visibility = if (it) View.VISIBLE else View.GONE
+            tv_message_point.visibility = if (it) View.VISIBLE else View.GONE
             nav_host_fragment.childFragmentManager.fragments[0].let { fragment ->
                 if (fragment is LogisticsFragment) {
                     fragment.updatePoint(it)
@@ -94,7 +94,7 @@ class MainActivity : BaseActivity(), VersionContract.View {
                 var args: Bundle? = null
                 if (it.itemId == R.id.mine_dest) {
                     args = Bundle()
-                    args.putBoolean("hasUnread", tv_point.visibility == View.VISIBLE)
+                    args.putBoolean("hasUnread", tv_message_point.visibility == View.VISIBLE)
                 }
                 controller.navigate(it.itemId, args)
             }

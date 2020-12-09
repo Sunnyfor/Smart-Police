@@ -99,6 +99,9 @@ abstract class BaseFragment : Fragment(), IBaseView, View.OnClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        rootView?.removeAllViews()
+        rootView = null
+        bodyView = null
         close()
     }
 

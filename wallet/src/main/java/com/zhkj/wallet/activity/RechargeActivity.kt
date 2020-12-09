@@ -36,7 +36,7 @@ class RechargeActivity : BaseActivity(), UnifyPayContract.IView {
     override fun initView() {
         defaultTitle("充值")
         edt_money.filters = arrayOf(MoneyInputFilter())
-        UnifyPayPlugin.getInstance(this).setListener { resultCode, resultInfo ->
+        UnifyPayPlugin.getInstance(this.applicationContext).setListener { resultCode, resultInfo ->
             if ("0000" == resultCode) {
                 //支付成功
                 PayResultActivity.intent("3")

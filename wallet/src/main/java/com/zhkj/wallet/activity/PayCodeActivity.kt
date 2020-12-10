@@ -126,7 +126,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     }
 
     private fun localPayCode() {
-        ((System.currentTimeMillis() / 1000).toString() + SpUtil.getString(SpUtil.userId)).let {
+        (System.currentTimeMillis().toString() + SpUtil.getString(SpUtil.userId)).let {
             val localPayCode = SM4Utils().encrypt(it)
             val size = resources.getDimension(R.dimen.dp_260).toInt()
             val bitmap = CreateQRCodeBitmap.createQRCodeBitmap(

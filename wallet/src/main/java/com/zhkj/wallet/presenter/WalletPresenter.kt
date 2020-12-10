@@ -1,6 +1,5 @@
 package com.zhkj.wallet.presenter
 
-import com.sunny.zy.base.ErrorViewType
 import com.sunny.zy.base.IBaseView
 import com.sunny.zy.http.bean.HttpResultBean
 import com.sunny.zy.utils.LogUtil
@@ -88,13 +87,11 @@ class WalletPresenter(iBaseView: IBaseView) :
             showLoading()
             val file = walletModel.generatePayQrCode()
             hideLoading()
-            if (file != null) {
-                if (view is WalletContract.IPayCodeView) {
-                    (view as WalletContract.IPayCodeView).showPayCodeData(file)
-                }
-            } else {
-                view?.showError(ErrorViewType(ErrorViewType.emptyData, "生成付款码失败", 0))
+
+            if (view is WalletContract.IPayCodeView) {
+                (view as WalletContract.IPayCodeView).showPayCodeData(file)
             }
+
         }
     }
 

@@ -156,7 +156,11 @@ object ZyHttp {
 
     fun webSocket(url: String, httpResultBean: HttpResultBean<WebSocket>) {
         val request = zyRequest.getRequest(url, null)
-        getOkHttpClient(httpResultBean).newWebSocket(request, httpResultBean)
+        try {
+            getOkHttpClient(httpResultBean).newWebSocket(request, httpResultBean)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     /**

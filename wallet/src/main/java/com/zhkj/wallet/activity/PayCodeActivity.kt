@@ -1,5 +1,6 @@
 package com.zhkj.wallet.activity
 
+import android.graphics.Color
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -13,7 +14,9 @@ import com.sunny.zy.utils.SpUtil
 import com.zhkj.wallet.R
 import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.presenter.WalletPresenter
+import com.zhkj.wallet.utils.CreateQRCodeBitmap
 import com.zhkj.wallet.utils.PayPasswordUtil
+import com.zhkj.wallet.utils.SM4Utils
 import kotlinx.android.synthetic.main.act_pay_code.*
 import org.json.JSONObject
 import java.io.File
@@ -71,6 +74,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     override fun loadData() {
         //建立长连接
         walletPresenter.connectWebSocket()
+
     }
 
     override fun onClickEvent(view: View) {
@@ -84,17 +88,21 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         walletPresenter.onDestroy()
     }
 
-    override fun showPayCodeData(file: File) {
+    override fun showPayCodeData(file: File?) {
         //启动倒计时
         circleCountDownView.restart()
         walletPresenter.startTimer()
         //加载显示付款码
-        GlideApp.with(this)
-            .load(file)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(true)
-            .placeholder(R.drawable.svg_pay_qr_code)
-            .into(iv_qr_code)
+        if (file != null) {
+            GlideApp.with(this)
+                .load(file)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .placeholder(R.drawable.svg_pay_qr_code)
+                .into(iv_qr_code)
+        } else {
+            localPayCode()
+        }
     }
 
     override fun showCountdownData(number: String) {
@@ -108,11 +116,26 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         if (isSuccess) {
             walletPresenter.generatePayQrCode()
         } else {
-            walletPresenter.stopTimer()
-            walletPresenter.setDefaultTime()
+            runOnUiThread{
+                showPayCodeData(null)
+            }
             iv_qr_code.postDelayed({
                 loadData()
-            }, 5000)
+            }, 30000)
+        }
+    }
+
+    private fun localPayCode() {
+        ((System.currentTimeMillis() / 1000).toString() + SpUtil.getString(SpUtil.userId)).let {
+            val localPayCode = SM4Utils().encrypt(it)
+            val size = resources.getDimension(R.dimen.dp_260).toInt()
+            val bitmap = CreateQRCodeBitmap.createQRCodeBitmap(
+                localPayCode, size, size, "UTF-8",
+                "H", "1", Color.BLACK, Color.WHITE
+            )
+            runOnUiThread {
+                iv_qr_code.setImageBitmap(bitmap)
+            }
         }
     }
 

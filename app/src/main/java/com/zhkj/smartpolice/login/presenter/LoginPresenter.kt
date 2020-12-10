@@ -35,8 +35,6 @@ class LoginPresenter(view: LoginView) : BasePresenter<LoginView>(view) {
         launch(Main) {
             ZyHttp.post(UrlConstant.USER_LOGIN_URL, params, httpResultBean)
             if (httpResultBean.isSuccess()) {
-                view?.hideLoading()
-
                 if (httpResultBean.bean?.code == "300") {
                     view?.doVerifyPhone(httpResultBean.msg ?: "")
                 } else {
@@ -45,6 +43,7 @@ class LoginPresenter(view: LoginView) : BasePresenter<LoginView>(view) {
 
             }
         }
+        view?.hideLoading()
     }
 
 

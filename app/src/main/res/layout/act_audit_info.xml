@@ -209,7 +209,7 @@
         android:layout_marginBottom="@dimen/dp_100"
         android:layout_alignParentBottom="true"
         android:background="@drawable/sel_audit_button_border"
-        android:text="拒绝比准" />
+        android:text="拒绝审批" />
 
     <TextView
         android:id="@+id/tv_confirm"

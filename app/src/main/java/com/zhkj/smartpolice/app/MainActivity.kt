@@ -29,6 +29,7 @@ import com.zhkj.smartpolice.version.VersionUpdateDialog
 import com.zhkj.smartpolice.version.bean.VersionBean
 import com.zhkj.smartpolice.version.contract.VersionContract
 import com.zhkj.smartpolice.version.presenter.VersionPresenter
+import com.zhkj.wallet.utils.BeeperUtils
 import kotlinx.android.synthetic.main.act_main.*
 import kotlinx.coroutines.cancel
 import java.io.File
@@ -128,6 +129,7 @@ class MainActivity : BaseActivity(), VersionContract.View {
     override fun close() {
         presenter.cancel()
         unregisterReceiver(noticeReceiver)
+        BeeperUtils.release()
     }
 
 

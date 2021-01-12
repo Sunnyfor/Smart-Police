@@ -12,9 +12,9 @@ object UrlConstant {
 
 //    const val host = "http://114.242.23.225:8086/"
 
-    const val IP = "114.242.23.225:8086/zhjb"  //服务器环境
+//    const val IP = "114.242.23.225:8086/zhjb"  //服务器环境
 //    const val IP = "122.51.69.116:8082/zhjb"  //腾讯云测试环境
-//    const val IP = "gaapp.yantai.gov.cn/zhjb" //正式地址
+    const val IP = "gaapp.yantai.gov.cn/zhjb" //正式地址
 
 //    const val IP = "192.168.1.106:80" //演示接口
 

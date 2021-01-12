@@ -14,6 +14,7 @@ import com.sunny.zy.utils.SpUtil
 import com.zhkj.wallet.R
 import com.zhkj.wallet.contract.WalletContract
 import com.zhkj.wallet.presenter.WalletPresenter
+import com.zhkj.wallet.utils.BeeperUtils
 import com.zhkj.wallet.utils.CreateQRCodeBitmap
 import com.zhkj.wallet.utils.PayPasswordUtil
 import com.zhkj.wallet.utils.SM4Utils
@@ -74,7 +75,6 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
     override fun loadData() {
         //建立长连接
         walletPresenter.connectWebSocket()
-
     }
 
     override fun onClickEvent(view: View) {
@@ -116,7 +116,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
         if (isSuccess) {
             walletPresenter.generatePayQrCode()
         } else {
-            runOnUiThread{
+            runOnUiThread {
                 showPayCodeData(null)
             }
             iv_qr_code.postDelayed({
@@ -147,6 +147,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
 
             when (msgObj.optInt("status")) {
                 1 -> {
+                    BeeperUtils.beepSuccess()
                     PayResultActivity.intent("1", msgObj.optString("message"))
                     finish()
                 }
@@ -164,6 +165,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
                     }
                 }
                 3 -> {
+                    BeeperUtils.beepFailed()
                     PayResultActivity.intent("0")
                 }
 
@@ -175,6 +177,7 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
                     )
                 }
                 else -> {
+                    BeeperUtils.beepFailed()
                     PayResultActivity.intent("4", msgObj.optString("message"))
                 }
             }

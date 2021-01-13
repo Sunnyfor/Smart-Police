@@ -113,6 +113,7 @@ class MainActivity : BaseActivity(), VersionContract.View {
 
         setOnClickListener(rl_one_code)
 
+        BeeperUtils.init()
     }
 
     override fun onClickEvent(view: View) {

@@ -69,7 +69,6 @@ class PayCodeActivity : BaseActivity(), WalletContract.IPayCodeView {
 
         circleCountDownView.setStartCountValue(30)
         circleCountDownView.setAnimationInterpolator { inputFraction -> inputFraction * inputFraction }
-
     }
 
     override fun loadData() {

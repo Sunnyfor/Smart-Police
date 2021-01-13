@@ -2,6 +2,7 @@ package com.zhkj.wallet.utils
 
 import android.content.Context
 import android.media.SoundPool
+import com.sunny.zy.ZyFrameStore
 import com.zhkj.wallet.R
 
 /**
@@ -24,9 +25,9 @@ object BeeperUtils {
             .build()
     }
 
-    fun init(context: Context) {
-        successSoundPool.load(context.applicationContext, R.raw.sacn_success, BEEPER_SHORT)
-        filedSoundPool.load(context.applicationContext, R.raw.sacn_failed, BEEPER_SHORT)
+    fun init() {
+        successSoundPool.load(ZyFrameStore.getContext(), R.raw.sacn_success, BEEPER_SHORT)
+        filedSoundPool.load(ZyFrameStore.getContext(), R.raw.sacn_failed, BEEPER_SHORT)
     }
 
     fun beepSuccess() {
